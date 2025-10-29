@@ -1,0 +1,9 @@
+/* html,body { height: 100%; overflow: hidden;} */
+body{ display:flex; flex-direction: column; justify-content: flex-start;}
+
+#app_wrapper{display: flex; flex-direction: column; flex: 1;  width:100%; max-width:39.3rem; margin:0 auto;  }
+#app_wrapper.hidden{overflow-y: hidden!important;}
+#app_wrapper main{flex:1 1 0;padding-bottom:var(--lc-gap-l)}
+
+#app_wrapper::-webkit-scrollbar { display: none;}
+.is-hidden + #app_wrapper{margin-top:-6rem;}

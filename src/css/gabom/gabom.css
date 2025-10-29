@@ -1,0 +1,16 @@
+@import '../base/base.css';
+@import '../components/headerComponents.css';
+@import '../components/footerComponents.css';
+@import '../components/components.css';
+
+header .container{padding-inline:1.6rem;}
+.category_toggle_navigation{top:5.4rem;}
+.sub_visual_container{margin-top:1.6rem}
+/* .title_container{margin-bottom:3rem;} */
+
+/* .list_container .list_contents{ display: flex; flex-direction: column; align-items: flex-start; justify-content: flex-start; gap:3rem;} */
+/* .list_container.list_05 {padding-inline:1.6rem 0;}
+.list_container.list_05 .list_horizontal{gap:1.2rem;} */
+.banner_container {height:auto; padding-inline:var(--pd-in); aspect-ratio: 361/124; overflow:hidden;}
+.banner_container .component_card_slider.card_361_124{border-radius:0.8rem;}
+.btn_view_more_container{margin-top:3rem;}

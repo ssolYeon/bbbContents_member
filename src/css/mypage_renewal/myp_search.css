@@ -1,0 +1,220 @@
+@import "../base/base.css";
+@import "../components/headerComponents.css";
+@import "../components/footerComponents.css";
+@import "../components/components.css";
+@import "myp_common.css";
+
+/* header */
+header .container {
+  position: relative;
+  padding-inline: 1.6rem;
+}
+header .container a {
+  width: 2.4rem;
+  height: 2.4rem;
+}
+header .container h1 {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-family: var(--font-700);
+  font-size: 1.8rem;
+  line-height: 1.4;
+}
+
+/* 검색 창 */
+.myp_search_container {
+  padding-top: 2.4rem;
+}
+.myp_search_inner {
+  padding: 0 1.6rem;
+  margin-bottom: 4rem;
+}
+
+.myp_search_form {
+  display: flex;
+  align-items: center;
+  gap: 1.2rem;
+  height: 5.4rem;
+  padding: 0 1.6rem;
+}
+.myp_search_form .back_link {
+  display: block;
+  width: 2.4rem;
+  height: 2.4rem;
+}
+.myp_search_form form {
+  flex: 1;
+  display: flex;
+  gap: 1.2rem;
+  align-items: center;
+}
+.myp_search_form .delete_btn {
+  position: absolute;
+  right: 0.6rem;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 1.6rem;
+  height: 1.6rem;
+}
+.myp_search_form input {
+  height: 3.6rem;
+  width: 100%;
+  padding: 0 3rem 0 1.2rem;
+  color: #000;
+  font-family: var(--font-500);
+  font-size: 1.4rem;
+}
+.myp_search_form input::placeholder {
+  color: rgba(0, 0, 0, 0.4);
+}
+.myp_search_input {
+  position: relative;
+  flex: 1;
+  height: 3.6rem;
+  width: 100%;
+  border-bottom: 1px solid #000;
+}
+.myp_search_btn {
+  width: 2.4rem;
+  height: 2.4rem;
+}
+
+.myp_search_title {
+  margin-bottom: 1.2rem;
+  color: #000;
+  font-family: var(--font-700);
+  font-size: 1.6rem;
+  line-height: 1.3;
+  letter-spacing: -0.016rem;
+}
+.myp_search_list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.8rem 0.4rem;
+}
+.myp_search_item {
+  display: flex;
+  align-items: center;
+  padding: 0.8rem 0.7rem 0.8rem 1.2rem;
+  border-radius: 0.4rem;
+  border: 1px solid #eee;
+  background-color: #fff;
+}
+.myp_search_item .search_link {
+  color: #000;
+  font-size: 1.4rem;
+  font-family: var(--font-400);
+  line-height: 1;
+  letter-spacing: -0.014rem;
+}
+.myp_search_item .delete_btn {
+  width: 1.6rem;
+  height: 1.6rem;
+  margin-left: 0.2rem;
+}
+
+.myp_search_suggested {
+  margin-left: -1.6rem;
+  margin-right: -1.6rem;
+  padding-left: 1.6rem;
+  padding-right: 1.6rem;
+}
+.myp_search_suggested .swiper-slide {
+  width: 10.4rem;
+}
+.myp_search_suggested .swiper-slide + .swiper-slide {
+  margin-left: 0.8rem;
+}
+.myp_search_suggested .title {
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  align-self: stretch;
+  margin-top: 0.8rem;
+  color: #000;
+  text-overflow: ellipsis;
+  font-size: 1.2rem;
+  font-family: var(--font-400);
+  line-height: 1.4;
+  letter-spacing: -0.012rem;
+}
+
+/* 검색 결과 */
+.myp_searchResult_navigation {
+  display: flex;
+  gap: 2.4rem;
+  padding: 0.8rem 1.6rem 1.2rem 1.6rem;
+}
+.myp_searchResult_navigation:nth-of-type(1) {
+  margin-top: 2rem;
+}
+.myp_searchResult_navigation a {
+  padding: 0.4rem 0;
+  color: rgba(0, 0, 0, 0.4);
+  font-family: var(--font-700);
+  font-size: 2rem;
+  line-height: 1.4;
+  letter-spacing: -0.02rem;
+}
+.myp_searchResult_navigation a.avtive {
+  color: #000;
+}
+.myp_searchResult_navigation.sub a {
+  font-size: 2.4rem;
+  letter-spacing: -0.024rem;
+}
+
+.myp_searchResult .category_navigation {
+  gap: 2.8rem;
+}
+
+.myp_searchResult_container {
+  padding: 0 1.6rem;
+}
+.myp_searchResult_num {
+  display: flex;
+  align-items: center;
+  gap: 0.2rem;
+  height: 2.4rem;
+  color: #000;
+  font-size: 1.3rem;
+  font-family: var(--font-500);
+  line-height: 1;
+  letter-spacing: -0.013rem;
+}
+.myp_searchResult_num .number {
+  color: #e32727;
+  font-family: "Inter", sans-serif;
+  font-weight: 700;
+  transform: translateY(-0.06rem);
+}
+
+.myp_searchResult_container .list_contents {
+  margin-top: 1.6rem;
+}
+.myp_searchResult_container .thumbnail .card_top_marker span {
+  max-width: 12.2rem;
+  display: inline-block; /* flex 금지 */
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.myp_searchResult_container .component_information_container a {
+  padding-top: 1.2rem;
+}
+.myp_searchResult_container
+  .contents_card.half
+  .component_information_container
+  .card_tag_container {
+  display: flex;
+}
+.myp_searchResult_container
+  .component_information_container
+  .card_tag_container
+  span {
+  font-size: 1.1rem;
+  letter-spacing: -0.011rem;
+}

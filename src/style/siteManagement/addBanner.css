@@ -1,0 +1,39 @@
+@import "../base/common.css";
+
+.input_box {
+    .input_item {
+        &.url {
+            .inner_box {
+                flex-wrap: nowrap;
+                align-items: center;
+                gap: 0.8rem;
+                .chk_input {
+                    width: 17rem;
+                    flex-shrink: 0;
+                    align-items: center;
+                    justify-content: center;
+                }
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 820px) {
+    .input_box {
+        .input_item {
+            &.url {
+                .inner_box {
+                    .chk_input {
+                        width: 12rem;
+                        span {
+                            font-size: 1.4rem;
+                            &::before {
+                                top: -0.4rem;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

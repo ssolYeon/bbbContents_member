@@ -1,0 +1,226 @@
+@import "../base/common.css";
+
+.input_box {
+    .input_item {
+        &:last-child {
+            grid-column: 1 / -1;
+        }
+    }
+}
+
+.search_result {
+    .common_table {
+        .num {
+            width: 6.72%;
+        }
+        .id, .email {
+            flex: 1;
+        }
+        .id {
+            text-align: center !important;
+        }
+        .name, .state {
+            width: 9%;
+        }
+        .right {
+            width: 11%;
+        }
+        .tel, .date {
+            width: 13.86%;
+        }
+        .right {
+            order: 7;
+        }
+        .state {
+            order: 8;
+        }
+        .tbody {
+            li {
+                &.grade_1 {
+                    .right {
+                        p {
+                            &::before {
+                                background: url("/src/assets/images/user_grade_1.png") 50% 50% / contain no-repeat;
+                            }
+                        }
+                    }
+                }
+                &.grade_2 {
+                    .right {
+                        p {
+                            &::before {
+                                background: url("/src/assets/images/user_grade_2.png") 50% 50% / contain no-repeat;
+                            }
+                        }
+                    }
+                }
+                &.grade_3 {
+                    .right {
+                        p {
+                            &::before {
+                                background: url("/src/assets/images/user_grade_3.png") 50% 50% / contain no-repeat;
+                            }
+                        }
+                    }
+                }
+                &.grade_4 {
+                    .right {
+                        p {
+                            &::before {
+                                background: url("/src/assets/images/user_grade_4.png") 50% 50% / contain no-repeat;
+                            }
+                        }
+                    }
+                }
+                &.grade_5 {
+                    .right {
+                        p {
+                            &::before {
+                                background: url("/src/assets/images/user_grade_5.png") 50% 50% / contain no-repeat;
+                            }
+                        }
+                    }
+                }
+                &.grade_6 {
+                    .right {
+                        p {
+                            &::before {
+                                background: url("/src/assets/images/manager_grade_1.png") 50% 50% / contain no-repeat;
+                            }
+                        }
+                    }
+                }
+                &.grade_7 {
+                    .right {
+                        p {
+                            &::before {
+                                background: url("/src/assets/images/manager_grade_2.png") 50% 50% / contain no-repeat;
+                            }
+                        }
+                    }
+                }
+                &.grade_8 {
+                    .right {
+                        p {
+                            &::before {
+                                background: url("/src/assets/images/manager_grade_3.png") 50% 50% / contain no-repeat;
+                            }
+                        }
+                    }
+                }
+                &.grade_9 {
+                    .right {
+                        p {
+                            &::before {
+                                background: url("/src/assets/images/manager_grade_4.png") 50% 50% / contain no-repeat;
+                            }
+                        }
+                    }
+                }
+                &.grade_10 {
+                    .right {
+                        p {
+                            &::before {
+                                background: url("/src/assets/images/manager_grade_5.png") 50% 50% / contain no-repeat;
+                            }
+                        }
+                    }
+                }
+                &.normal {
+                    .state {
+                        p {
+                            background: #E0EBFF;
+                            color: #6695EE;
+                        }
+                    }
+                }
+                &.withdrawal {
+                    .state {
+                        p {
+                            background: #FFE6F7;
+                            color: #FF3FC1;
+                        }
+                    }
+                }
+                &.inactive {
+                    .state {
+                        p {
+                            background: #FFF4E0;
+                            color: #F59208;
+                        }
+                    }
+                }
+                &.block {
+                    .state {
+                        p {
+                            background: #EAEAEA;
+                            border: 1px solid rgba(17, 25, 38, 0.05);
+                            color: #6C6C6C;
+                        }
+                    }
+                }
+            }
+            .right {
+                P {
+                    /* width: fit-content;
+                    padding-left: 4.2rem;
+                    position: relative;
+                    text-align: left; */
+                    &::before {
+                        content: "";
+                        width: 3.2rem;
+                        height: 3.2rem;
+                        position: absolute;
+                        top: 50%;
+                        transform: translateY(-50%);
+                        left: 0;
+                    }
+                }
+            }
+            .state {
+                p {
+                    width: fit-content;
+                    padding: 0.5rem 1rem;
+                    border-radius: 0.6rem;
+                    border: 1px solid var(--color-border);
+                    font-family: var(--font-p500);
+                    font-size: 1.3rem;
+                    text-align: center;
+                    margin: 0 auto;
+                }
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 820px) {
+    .search_result {
+        .common_table {
+            .tbody {
+                li {
+                    .state {
+                        order: 1;
+                    }
+                    .num {
+                        order: 2;
+                    }
+                    .id {
+                        order: 3;
+                    }
+                    .name {
+                        order: 4;
+                    }
+                    .email {
+                        order: 5;
+                    }
+                    .tel {
+                        order: 6;
+                    }
+                    .date {
+                        order: 7;
+                    }
+                }
+            }
+        }
+    }
+}

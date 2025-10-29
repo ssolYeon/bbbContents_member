@@ -1,0 +1,22 @@
+@import '../base/base.css';
+@import '../components/headerComponents.css';
+@import '../components/footerComponents.css';
+@import '../components/components.css';
+
+header .container{padding-inline:1.6rem;}
+
+.bombom_category_navigation{ display: flex; gap:2.4rem; margin-bottom:1.2rem; padding:0.8rem 1.6rem;}
+.bombom_category_navigation a{ font-family: var(--font-700); font-size:2.4rem; line-height:1.4; letter-spacing:-0.024em; opacity: 0.4}
+.bombom_category_navigation a.active{ opacity: 1;}
+
+.bombom_contents_container{padding:0 1.6rem 6rem;}
+.bombom_contents_container .list_contents{display: flex; flex-direction: column; gap:4rem; margin-top:3rem;}
+
+.bombom_series_container{padding-inline:1.6rem; padding-bottom:6rem;}
+.bombom_series_container .list_contents{display: flex; flex-direction: column; gap:1.6rem; margin-top:3rem;}
+
+.bombom_contents_custom_container{padding:0 1.6rem 6rem;}
+.bombom_contents_custom_container .list_contents{display: flex; flex-direction: column; gap:4rem; margin-top:3rem;}
+
+.bombom_contents_new_container{padding:0 1.6rem 6rem;}
+.bombom_contents_new_container .list_contents{display: flex; flex-direction: column; gap:4rem; margin-top:3rem;}

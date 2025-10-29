@@ -1,0 +1,39 @@
+.nodata {
+    width: 100%;
+    position: relative;
+    > div {
+        p {
+            font-size: 1.6rem;
+            color: var(--color-gray-3);
+            font-family: var(--font-p500);
+            position: relative;
+            padding-block: 12.4rem 4.5rem;
+            text-align: center;
+            &::before {
+                content: "";
+                width: 8.1rem;
+                height: 10rem;
+                background: url("/src/assets/icons/nodata.png") 50% 50% / contain no-repeat;
+                position: absolute;
+                top: 0;
+                left: 50%;
+                transform: translateX(-50%);
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 820px) {
+    .nodata {
+        > div {
+            p {
+                font-size: 1.4rem;
+                padding-block: 8.4rem 4rem;
+                &::before {
+                    width: 5.5rem;
+                    height: 6.8rem;
+                }
+            }
+        }
+    }
+}

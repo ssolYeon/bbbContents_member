@@ -1,0 +1,75 @@
+@import '../base/base.css';
+@import '../components/headerComponents.css';
+@import '../components/footerComponents.css';
+@import '../components/components.css';
+
+/* header */
+header .container{position:relative; padding-inline:1.6rem;}
+header .container a{width:2.4rem; height:2.4rem;}
+header .container h1{position:absolute; top:50%; left:50%; transform:translate(-50%, -50%); font-family:var(--font-700); font-size:1.8rem; line-height:1.4;}
+
+/* footer */
+footer{display: none;}
+
+/* main & form */
+#app_wrapper.hidden{overflow:hidden;}
+#app_wrapper.hidden form{display:flex; flex-direction:column; height:100%; min-height:0;}
+#app_wrapper.hidden main{height:100%;}
+
+/* 상단 카테고리 탭 */
+.wishlist_category{display:flex; gap:2.2rem; padding:1.6rem;}
+.wishlist_category a{position:relative; color:rgba(0,0,0,0.4); font-family:var(--font-700); font-size:2.2rem; line-height:1.4; letter-spacing:-0.018em;}
+.wishlist_category a.active{color:#000;}
+.wishlist_category a i{display:flex; align-items:center; justify-content:center; position:absolute; right:0; top:0; transform:translate(100%, -0.4rem); width:2rem; height:2rem; padding-top:0.1rem; color:#fff; font-size:1.1rem; line-height:1; font-style:normal; background-color:#d90000; border-radius:50%;}
+
+/* 리스트 컨테이너(섹션) */
+.wishlist_list_container{flex:1; display:flex; flex-direction:column; align-items:flex-start; position:relative; padding:2rem 1.6rem 0; height:calc(100% - 5.7rem); min-height:0;}
+.wishlist_list_container:has(.bbb_empty_container){display: flex; flex-direction: column; height:100%;}
+.wishlist_list_container > form{display:flex; flex-direction:column; flex:1 1 auto; min-height:0;}
+.wishlist_list_container .product_condition_container{margin-block:0;margin-bottom:var(--lc-gap-hz-half);padding-inline:0;}
+/* 상단 컨트롤러(전체선택/선택삭제) */
+/* .wishlist_list_container .total_posts{display:block; width:100%; margin-bottom:1.2rem; padding-bottom:1.2rem; border-bottom:1px solid rgba(0,0,0,0.08); font-family: var(--font-500); font-size:1.4rem; line-height:1; letter-spacing: -0.042em;} */
+.wishlist_list_container:has(.bbb_empty_container) .total_posts{display: none;}
+
+/* 스크롤 영역 */
+.list_contents{flex:1 1 auto; display: flex; gap:3rem 1.2rem; flex-wrap: wrap; width:100%; overflow-y:auto; -webkit-overflow-scrolling:touch; -ms-overflow-style:none; scrollbar-width:none; min-height:0;}
+.list_contents::-webkit-scrollbar{display:none;}
+.list_contents li .content{flex:1; margin-inline:0.8rem 1.6rem; padding-block:0.4rem 0.8rem;}
+.list_contents li button{flex-shrink:0; width:2.4rem;}
+.list_contents li .title{font-family:var(--font-700); font-size:1.4rem; letter-spacing:-0.014em; line-height:1.4;}
+.list_contents li .description{margin-top:0.4rem; font-size:1.4rem; letter-spacing:-0.014em; line-height:1.4;}
+.list_contents li .date{display:block; margin-top:0.8rem; color:rgba(0,0,0,0.56); font-size:1.4rem; letter-spacing:-0.012em; line-height:1;}
+
+.list_contents .select_container{display: flex; align-items: center; margin-bottom:0.8rem;}
+.list_contents .select_container .select_button_container{margin-left:auto;}
+.list_contents .select_container .select_button_container button{color:rgba(0,0,0,0.56); font-family: var(--font-500); font-size:1.2rem; letter-spacing:-0.012em; line-height:1; text-decoration-line: underline; text-decoration-style: solid; text-decoration-skip-ink: auto; text-decoration-thickness: auto; text-underline-offset: auto; text-underline-position: from-font;}
+.list_contents .select_container .select_button_container .btn_cart{position:relative; margin-right:0.8rem; padding-right:0.8rem; color:rgba(0,0,0,0.8)}
+.list_contents .select_container .select_button_container .btn_cart::before{content:""; position:absolute; top:50%; right:0; transform: translateY(-50%); width:1px; height:0.8rem; background-color:#000; opacity: 0.2;}
+
+/* 하단 페이지네이션(섹션 하단) */
+.pagination_container{display:flex; align-items:center; justify-content:center; gap:2.45rem; width:100%; padding-block:2rem 3rem; pointer-events:auto;}
+.pagination_num_container{display:flex; align-items:center; justify-content:center; gap:0.8rem;}
+.pagination_num_container a{display:flex; align-items:center; justify-content:center; width:4rem; height:4rem; border-radius:1.2rem; font-family:var(--font-700); font-size:1.4rem; background-color:#fff;}
+.pagination_num_container a.active{color:#fff; background-color:#000;}
+.pagination_container .btn_page_preview,
+.pagination_container .btn_page_next{display:flex; align-items:center; justify-content:center; width:4rem; height:4rem; border-radius:1.2rem; background-color:#fff;}
+.pagination_container .btn_page_preview img,
+.pagination_container .btn_page_next img{width:2rem; height:2rem;}
+
+/*알림 설정*/
+.wishlist_setting_container {height:100%; padding:2.4rem 1.6rem; background-color:#f5f5f5;}
+.wishlist_setting_container .setting_container{padding:2.4rem 1.6rem; background-color:#fff; border-radius: 1.2rem;}
+.wishlist_setting_container .setting_container h2 { margin-bottom:1.6rem; padding-bottom:1.6rem; border-bottom: 1px solid rgba(0, 0, 0, 0.08); font-family: var(--font-700); font-size:1.6rem; line-height:1; }
+.wishlist_setting_container .option_box { display: flex; align-items: center; justify-content: space-between; margin-bottom:0.8rem; font-family: var(--font-500); font-size:1.4rem; line-height:1; letter-spacing:-0.014em;}
+.button_container{display: flex;align-items: center;justify-content: center;}
+.button_container button{ display: inline-flex; padding:1.5rem 2.5rem; margin-top:3rem; color:#fff; font-family: var(--font-600); font-size:1.4rem; line-height:1; letter-spacing:-0.001em; background-color:#000; border-radius: 0.4rem;}
+
+/*예약찜, 상품찜 카드 컴포넌트 커스텀*/
+.component_card.shop_174_174 .component_information_container a{padding:0;}
+.component_card.shop_174_174 .card_title {margin-top:0;}
+.component_card.shop_174_174 .card_place {display:flex; align-items: center; justify-content: flex-start; gap: 0.4rem; margin-top:0.8rem; color:#444; font-size:1.3rem; line-height:1; letter-spacing: -0.013em;}
+.component_card.shop_174_174 .card_place img{ width:1rem; height:1.3rem;}
+.component_card.shop_174_174 .card_date_container{margin-top:1.2rem;}
+.component_card.shop_174_174 .card_date_container span{color:#888; font-size:1.2rem; line-height:1; letter-spacing: -0.012em;}
+.component_card.shop_174_174 .btn_cart{display: flex; align-items: center; justify-content: center; width:100%; height:3.2rem; margin-top:1.5rem; color:rgba(0,0,0,0.8); font-family: var(--font-600); font-size:1.4rem; line-height:1; letter-spacing: -0.014em; border-radius: 0.4rem;
+    border: 1px solid rgba(0, 0, 0, 0.08);}

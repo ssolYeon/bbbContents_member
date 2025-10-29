@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>검색 - 검색 결과 - 봄봄 콘텐츠</title>
+
+    <link rel="stylesheet" href="/src/css/mypage_renewal/myp_search.css" />
+  </head>
+  <body>
+    <div id="app_wrapper">
+      <main>
+        <!-- 검색 결과 -->
+        <div class="myp_search_form">
+          <a href="#" class="back_link"
+            ><img src="/src/assets/images/icons/icon_back_black@x3.png"
+          /></a>
+          <form action="/search" method="get" role="search">
+            <div class="myp_search_input">
+              <label for="search-input" class="sr-only">검색어 입력</label>
+              <input
+                type="text"
+                id="search-input"
+                name=""
+                placeholder="검색어를 입력하세요"
+                value="여름휴양지"
+                required
+              />
+              <button class="delete_btn" type="button">
+                <img
+                  src="/src/assets/images/icons/myp_icon_del_bg@x3.png"
+                  alt="검색어 삭제"
+                />
+              </button>
+            </div>
+
+            <button class="myp_search_btn" type="submit">
+              <img
+                src="/src/assets/images/icons/myp_icon_search@x3.png"
+                alt="검색"
+              />
+            </button>
+          </form>
+        </div>
+
+        <nav class="myp_searchResult_navigation">
+          <a class="avtive" href="#">봄, 봄</a>
+          <a href="#">해봄</a>
+          <a href="#">가봄</a>
+          <a href="#">사봄</a>
+        </nav>
+
+        <nav class="myp_searchResult_navigation sub">
+          <a class="avtive" href="#">콘텐츠</a>
+          <a href="#">시리즈</a>
+        </nav>
+
+        <!-- 기존 작업 된 카테고리 사용 -->
+        <div class="category_navigation_container myp_searchResult">
+          <nav class="category_navigation">
+            <a href="#" class="active">전체</a>
+            <a href="#">운동</a>
+            <a href="#">라이프</a>
+            <a href="#">트랜드</a>
+            <a href="#">인터뷰</a>
+            <a href="#">헤드라인</a>
+          </nav>
+          <button type="button" class="btn_category_toggle">
+            <img
+              src="/src/assets/images/icons/icon_category_toggle@x3.png"
+              alt=""
+            />
+          </button>
+        </div>
+        <nav class="category_toggle_navigation">
+          <button type="button" class="btn_category_closed">
+            <img
+              src="/src/assets/images/icons/icon_category_toggle@x3.png"
+              alt=""
+            />
+          </button>
+          <ul class="scroller_container">
+            <li>카테고리</li>
+            <li>
+              <a href="#">전체</a>
+            </li>
+            <li>
+              <a href="#">운동</a>
+            </li>
+            <li>
+              <a href="#">라이프</a>
+            </li>
+            <li>
+              <a href="#">트랜드</a>
+            </li>
+            <li>
+              <a href="#">인터뷰</a>
+            </li>
+            <li>
+              <a href="#">헤드라인</a>
+            </li>
+          </ul>
+        </nav>
+        <!-- // 기존 작업 된 카테고리 사용 -->
+
+        <div class="myp_searchResult_container">
+          <p class="myp_searchResult_num">
+            검색결과 <span class="number">4</span>개
+          </p>
+
+          <!-- 기존 작업된 리스트 컨텐츠 사용 -->
+          <ul role="list" class="list_contents">
+            <li class="contents_card half">
+              <div class="thumbnail">
+                <a href="#1">
+                  <picture class="lazy_loading_container">
+                    <img
+                      alt="미슐랭 가시기 전 이것만 숙지하면 기죽을 일 없어요"
+                      loading="lazy"
+                      class="is-loaded"
+                      src="/src/assets/images/components/sample_visual_01@x3.jpg"
+                    />
+                  </picture>
+                </a>
+                <div class="card_top_marker">
+                  <span>여행시 유용한 글로벌 예절 문화</span>
+                  <span>에티켓, 매너</span>
+                </div>
+                <button
+                  type="button"
+                  class="btn_capture"
+                  data-post-id="1"
+                  data-board-type="bc"
+                  data-capture="0"
+                  aria-pressed="false"
+                >
+                  <img
+                    src="/src/assets/images/icons/myp_icon_bookmark@x3.png"
+                    alt="캡쳐버튼"
+                  />
+                </button>
+              </div>
+              <div class="component_information_container">
+                <a href="#">
+                  <p class="card_title text_ellipsis_2">
+                    미슐랭 가시기 전 이것만 숙지하면 기죽을 일 없어요
+                  </p>
+                  <p class="card_description text_ellipsis_2">
+                    미리 알고 가면 더 편안게 즐기며 품위까지 상승할 수 있는 고급
+                    레스토랑 매너 가이드
+                  </p>
+                  <div class="card_tag_container">
+                    <span>#미슐랭</span><span>#레스토랑</span
+                    ><span>#에티켓</span>
+                  </div>
+                </a>
+              </div>
+            </li>
+            <li class="contents_card half">
+              <div class="thumbnail">
+                <a href="#1">
+                  <picture class="lazy_loading_container">
+                    <img
+                      alt="영국 귀족들만의 티타임 매너 따로 있다는 거 아셨나요?"
+                      loading="lazy"
+                      class="is-loaded"
+                      src="/src/assets/images/components/sample_visual_01@x3.jpg"
+                    />
+                  </picture>
+                </a>
+                <div class="card_top_marker">
+                  <span>여행시 유용한 글로벌 예절 문화</span>
+                  <span>에티켓, 매너</span>
+                </div>
+                <button
+                  type="button"
+                  class="btn_capture"
+                  data-post-id="1"
+                  data-board-type="bc"
+                  data-capture="0"
+                  aria-pressed="false"
+                >
+                  <img
+                    src="/src/assets/images/icons/myp_icon_bookmark@x3.png"
+                    alt="캡쳐버튼"
+                  />
+                </button>
+              </div>
+              <div class="component_information_container">
+                <a href="#">
+                  <p class="card_title text_ellipsis_2">
+                    영국 귀족들만의 티타임 매너 따로 있다는 거 아셨나요?
+                  </p>
+                  <p class="card_description text_ellipsis_2">
+                    여행 전 필수 체크! 우아함 UP되는 영국 티타임 에티켓
+                  </p>
+                  <div class="card_tag_container">
+                    <span>#영국</span><span>#귀족문화</span><span>#티타임</span>
+                  </div>
+                </a>
+              </div>
+            </li>
+            <li class="contents_card half">
+              <div class="thumbnail">
+                <a href="#1">
+                  <picture class="lazy_loading_container">
+                    <img
+                      alt="김혜수, 송혜교는 왜 갈수록 고급스러워질까?고급진 분위기 연출법"
+                      loading="lazy"
+                      class="is-loaded"
+                      src="/src/assets/images/components/sample_visual_01@x3.jpg"
+                    />
+                  </picture>
+                </a>
+                <div class="card_top_marker">
+                  <span>여행시 유용한 글로벌 예절 문화</span>
+                  <span>에티켓, 매너</span>
+                </div>
+                <button
+                  type="button"
+                  class="btn_capture"
+                  data-post-id="1"
+                  data-board-type="bc"
+                  data-capture="0"
+                  aria-pressed="false"
+                >
+                  <img
+                    src="/src/assets/images/icons/myp_icon_bookmark@x3.png"
+                    alt="캡쳐버튼"
+                  />
+                </button>
+              </div>
+              <div class="component_information_container">
+                <a href="#">
+                  <p class="card_title text_ellipsis_2">
+                    김혜수, 송혜교는 왜 갈수록 고급스러워질까?고급진 분위기
+                    연출법
+                  </p>
+                  <p class="card_description text_ellipsis_2">
+                    내가 추구하는 나만의 이미지 연출 비법
+                  </p>
+                  <div class="card_tag_container">
+                    <span>#김혜수</span><span>#송혜교</span><span>#연출</span>
+                  </div>
+                </a>
+              </div>
+            </li>
+            <li class="contents_card half">
+              <div class="thumbnail">
+                <a href="#1">
+                  <picture class="lazy_loading_container">
+                    <img
+                      alt="미슐랭 가시기 전 이것만 숙지하면 기죽을 일 없어요"
+                      loading="lazy"
+                      class="is-loaded"
+                      src="/src/assets/images/components/sample_visual_01@x3.jpg"
+                    />
+                  </picture>
+                </a>
+                <div class="card_top_marker">
+                  <span>여행시 유용한 글로벌 예절 문화</span>
+                  <span>에티켓, 매너</span>
+                </div>
+                <button
+                  type="button"
+                  class="btn_capture"
+                  data-post-id="1"
+                  data-board-type="bc"
+                  data-capture="0"
+                  aria-pressed="false"
+                >
+                  <img
+                    src="/src/assets/images/icons/myp_icon_bookmark@x3.png"
+                    alt="캡쳐버튼"
+                  />
+                </button>
+              </div>
+              <div class="component_information_container">
+                <a href="#">
+                  <p class="card_title text_ellipsis_2">
+                    서핑에 댄스까지! BTS도 즐긴 템캉스, 어디가 핫할까?
+                  </p>
+                  <p class="card_description text_ellipsis_2">
+                    휴가철 템캉스, 셀럽들도 다녀온 힙한 템플스테이 BEST 3
+                  </p>
+                  <div class="card_tag_container">
+                    <span>#템캉스</span><span>#템플스테이</span
+                    ><span>#휴가철</span>
+                  </div>
+                </a>
+              </div>
+            </li>
+          </ul>
+          <!-- // 기존 작업된 리스트 컨텐츠 사용 -->
+        </div>
+        <!-- // 검색 결과-->
+      </main>
+
+      <footer>
+        <div class="footer_top_container">
+          <a href="javascript:void(0)" class="logo">
+            <img
+              src="/src/assets/images/common/footer_logo_white@x3.png"
+              alt="봄봄봄"
+            />
+          </a>
+          <button type="button" class="btn_business_toggle">
+            사업자 정보
+            <img
+              src="/src/assets/images/icons/icon_btn_footer_down@x3.png"
+              alt=""
+            />
+          </button>
+        </div>
+        <div class="footer_business_information_container">
+          <div class="company_information">
+            <p><strong>상호명</strong> : 주식회사 비롯시앤엠</p>
+            <p><strong>대표자명</strong> : 홍길동</p>
+            <p><strong>사업자등록번호</strong> : 717-86-02532</p>
+            <p>
+              <strong>통신판매업 신고번호</strong> : 제2025-서울강남-00001호
+            </p>
+            <p>
+              <strong>주소</strong> : 서울특별시 강서구 양천로 357 려산빌딩 8층
+            </p>
+          </div>
+          <div class="contact_information">
+            <p>
+              <strong>고객센터</strong> :
+              <a href="mailto:help@bombombom.com">help@bombombom.com</a> /
+              <a href="tel:15880000">1588-0000</a>
+            </p>
+            <p>
+              <strong>개인정보보호 책임자</strong> : 김봄봄 (<a
+                href="mailto:privacy@bombombom.com"
+                >privacy@bombombom.com</a
+              >)
+            </p>
+          </div>
+        </div>
+        <div class="footer_service_container">
+          <a href="javascript:void(0)">개인정보처리방침</a>
+          <a href="javascript:void(0)">서비스 이용약관</a>
+          <a href="javascript:void(0)">제휴문의 바로가기</a>
+        </div>
+        <p class="footer_notice">
+          비롯시앤엠은 통신판매 중개자로서 통신판매의 당사자가 아니며 상품의
+          예약, 이용 및 환불 등과 관련한 의무와 책임은 각 판매자에게 있습니다.
+        </p>
+        <copy>Copyright (c) 2021 B.lot. All Rights Reserved.</copy>
+      </footer>
+    </div>
+    <nav class="gnb_container gnb">
+      <div class="container">
+        <a href="/">
+          <img src="/src/assets/images/icons/icon_gnb_home@x3.png" alt="" />
+          <span>홈</span>
+        </a>
+        <a href="/pages/bombom/bombom.html">
+          <img src="/src/assets/images/icons/icon_gnb_bombom@x3.png" alt="" />
+          <span>봄,봄</span>
+        </a>
+        <a href="/pages/haebom/haebom.html" class="active">
+          <img
+            src="/src/assets/images/icons/icon_gnb_haebom_on@x3.png"
+            alt=""
+          />
+          <span>해봄</span>
+        </a>
+        <a href="/pages/gabom/gabom.html">
+          <img src="/src/assets/images/icons/icon_gnb_gabom@x3.png" alt="" />
+          <span>가봄</span>
+        </a>
+        <a href="/pages/sabom/sabom.html">
+          <img src="/src/assets/images/icons/icon_gnb_sabom@x3.png" alt="" />
+          <span>사봄</span>
+        </a>
+      </div>
+    </nav>
+
+    <script>
+      const btnToggle = document.querySelector(".btn_category_toggle");
+      const btnclosed = document.querySelector(".btn_category_closed");
+      const categoryNavi = document.querySelector(
+        ".category_toggle_navigation"
+      );
+
+      btnToggle.addEventListener("click", function () {
+        categoryNavi.classList.add("active");
+      });
+
+      btnclosed.addEventListener("click", function () {
+        categoryNavi.classList.remove("active");
+      });
+    </script>
+  </body>
+</html>

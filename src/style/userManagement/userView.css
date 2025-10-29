@@ -1,0 +1,14 @@
+@import "../base/common.css";
+
+.input_box {
+    .input_item {
+        .inner_box {
+            .border_btn {
+                width: fit-content;
+                border: 1px solid var(--color-point);
+                color: var(--color-point);
+                padding: 1.3rem 2rem;
+            }
+        }
+    }
+}

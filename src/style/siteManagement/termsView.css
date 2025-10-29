@@ -1,0 +1,122 @@
+@import "../base/common.css";
+
+.nodata {
+    border-top: 1px solid var(--color-border);
+    padding-top: 3.5rem;
+}
+
+.common_table {
+    .num {
+        width: 10%;
+    }
+    .edit {
+        width: 40%;
+    }
+    .writer {
+        width: 30%;
+    }
+    .management {
+        width: 20%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        button {
+            width: 17rem;
+        }
+    }
+    .tbody {
+        li {
+            height: 6rem;
+        }
+    }
+}
+
+.pagination {
+    margin-top: 3rem;
+}
+
+.layer_wrap {
+    .input_box {
+        &.gray_box {
+            padding: 0;
+        }
+    }
+}
+
+@media screen and (max-width: 820px) {
+    .result_list {
+        width: auto;
+        margin: 0 -1.2rem -2rem;
+        padding-inline: 1.2rem;
+        background-color: #F5F5F5;
+        .nodata {
+            border-top: none;
+        }
+        .common_table {
+            .thead {
+                display: none;
+            }
+            .tbody {
+                background-color: transparent;
+                display: grid;
+                gap: 1.2rem;
+                li {
+                    position: relative;
+                    height: auto;
+                    border-radius: 0.8rem;
+                    background-color: var(--color-white);
+                    border-bottom: none;
+                    flex-direction: column;
+                    gap: 1.2rem;
+                    padding: 1.6rem 2.4rem;
+                    > div {
+                        width: 100%;
+                        display: flex;
+                        align-items: center;
+                        justify-content: space-between;
+                        padding: 0;
+                        font-size: 1.4rem;
+                        span {
+                            display: block;
+                            min-width: 9rem;
+                            text-align: left;
+                            display: block;
+                            font-size: 1.4rem;
+                            font-family: var(--font-p700);
+                            color: var(--color-gray-1);
+                        }
+                        .fill_btn.plus {
+                            width: 2.6rem;
+                            height: 2.6rem;
+                            span {
+                                width: 100%;
+                                height: 100%;
+                                font-size: 0;
+                                color: transparent;
+                                min-width: auto;
+                                padding: 0;
+                                top: 50%;
+                                left: 50%;
+                                transform: translate(-50%, -50%);
+                                &::before {
+                                    left: 50%;
+                                    transform: translate(-50%, -50%);
+                                }
+                            }
+                        }
+                        &.management {
+                            justify-content: flex-end;
+                            > span {
+                                display: none;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    .pagination {
+        display: none;
+    }
+}

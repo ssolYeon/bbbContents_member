@@ -1,0 +1,96 @@
+@import '../base/base.css';
+@import '../components/headerComponents.css';
+@import '../components/footerComponents.css';
+@import '../components/components.css';
+
+/* header */
+header .container{position:relative; padding-inline:1.6rem;}
+header .container a{width:2.4rem; height:2.4rem;}
+header .container h1{position:absolute; top:50%; left:50%; transform:translate(-50%, -50%); font-family:var(--font-700); font-size:1.8rem; line-height:1.4;}
+main{background:var(--bg-light-gray)}
+/*footer*/
+footer{display: none;}
+
+/* main & form */
+#app_wrapper.hidden{overflow:hidden;}
+#app_wrapper.hidden form{display:flex; flex-direction:column; height:100%; min-height:0;}
+#app_wrapper.hidden main{height:100%;}
+
+/* 상단 카테고리 탭 */
+.notification_category{display:flex; gap:2rem; padding:1.6rem;  flex: 0 0 auto; position:sticky; top:0; background-color:#fff; z-index: 1;}
+.notification_category a{position:relative; color:rgba(0,0,0,0.4); font-family:var(--font-700); font-size:1.8rem; line-height:1.4; letter-spacing:-0.018em;}
+.notification_category a.active{color:#000;}
+.notification_category a i{display:flex; align-items:center; justify-content:center; position:absolute; right:0; top:0; transform:translate(100%, -0.4rem); width:1.6rem; height:1.6rem; padding-top:0.1rem; color:#fff; font-size:1rem; line-height:1; font-style:normal; background-color:#d90000; border-radius:50%;}
+.notification_category a i.gray{background-color:#B1B1B1;}
+
+/* 리스트 컨테이너(섹션) */
+.notification_list_container{ display:flex; flex-direction:column; align-items:flex-start; position:relative; height:calc(100% - 5.7rem); padding:var(--lc-tit-gap) var(--pd-in) 0; }
+.notification_list_container > form{display:flex; flex-direction:column; flex:1 1 auto; min-height:0;}
+
+/* 스크롤 영역 */
+.list_contents{width:100%; height:100%; overflow: visible; min-height:0; overflow-y:auto; -webkit-overflow-scrolling:touch; overscroll-behavior:contain;}
+.list_contents::-webkit-scrollbar{display:none;}
+.list_contents li {display:flex; justify-content: space-between;  align-items:stretch; width:100%;  padding:1.2rem 1.6rem; background-color:#fff; border-radius:1.2rem; margin-bottom:0.8rem;}
+.list_contents li a{width:100%;}
+.list_contents li .content{flex:1; margin-inline:0.8rem 1.6rem; padding-block:0.4rem 0.8rem; opacity: 0.5;}
+.list_contents li button{flex-shrink:0; display:flex; align-items: flex-start; width:2.4rem; opacity: 0.5;}
+.list_contents li button img{width:2.4rem; height:2.4rem;}
+.list_contents li .title{font-family:var(--font-700); font-size:1.4rem; letter-spacing:-0.014em; line-height:1.4; opacity: 0.5;}
+.list_contents li .description{margin-top:0.4rem; font-size:1.4rem; letter-spacing:-0.014em; line-height:1.4; opacity: 0.5;}
+.list_contents li .date{display:block; margin-top:0.8rem; color:rgba(0,0,0,0.56); font-size:1.4rem; letter-spacing:-0.012em; line-height:1; opacity: 0.5;}
+
+.list_contents li.unread .content{opacity: 1;}
+.list_contents li.unread button{opacity: 1;}
+.list_contents li.unread .title{opacity: 1;}
+.list_contents li.unread .description{opacity: 1;}
+.list_contents li.unread .date{opacity: 1;}
+
+/* 하단 페이지네이션(섹션 하단) */
+.notification_list_container .pagination_container{display:flex; align-items:center; justify-content:center; gap:2.45rem; width:100%; margin-top:2rem; pointer-events:auto;}
+.notification_list_container .pagination_num_container{display:flex; align-items:center; justify-content:center; gap:0.8rem;}
+.notification_list_container .pagination_num_container a{display:flex; align-items:center; justify-content:center; width:4rem; height:4rem; border-radius:1.2rem; font-family:var(--font-700); font-size:1.4rem; background-color:#fff;}
+.notification_list_container .pagination_num_container a.active{color:#fff; background-color:#000;}
+.notification_list_container .pagination_container .btn_page_preview,
+.notification_list_container .pagination_container .btn_page_next{display:flex; align-items:center; justify-content:center; width:4rem; height:4rem; border-radius:1.2rem; background-color:#fff;}
+.notification_list_container .pagination_container .btn_page_preview img,
+.notification_list_container .pagination_container .btn_page_next img{width:2rem; height:2rem;}
+
+/*알림 설정*/
+.notification_setting_container {height:100%; padding:2.4rem 1.6rem; background-color:#f5f5f5;}
+.notification_setting_container .setting_container{padding:2.4rem 1.6rem; background-color:#fff; border-radius: 1.2rem;}
+.notification_setting_container .setting_container h2 { margin-bottom:1.6rem; padding-bottom:1.6rem; border-bottom: 1px solid rgba(0, 0, 0, 0.08); font-family: var(--font-700); font-size:1.6rem; line-height:1; }
+.notification_setting_container .option_box { display: flex; align-items: center; justify-content: space-between; margin-bottom:0.8rem; font-family: var(--font-500); font-size:1.4rem; line-height:1; letter-spacing:-0.014em;}
+.button_container{display: flex;align-items: center;justify-content: center;}
+.button_container button{ display: inline-flex; padding:1.5rem 2.5rem; margin-top:3rem; color:#fff; font-family: var(--font-600); font-size:1.4rem; line-height:1; letter-spacing:-0.001em; background-color:#000; border-radius: 0.4rem;}
+
+/*toggle button*/
+.toggle { display: inline-flex; align-items: center;}
+.toggle__input { position: absolute; opacity: 0; pointer-events: none;}
+.toggle__label { position:relative; cursor: pointer;}
+.toggle__label:before{content:"OFF"; position:absolute; top:50%; right:1rem; transform: translateY(-50%); color:rgba(0,0,0,0.4); font-family: var(--font-600); line-height:1; letter-spacing: -0.013em; font-size:1.3rem; z-index:1;}
+.toggle__track { display: flex; align-items: center; justify-content: center; position: relative; width: 6.4rem; height: 2.8rem; border-radius: 5rem; background: #eee; transition: background-color 0.3s;}
+.toggle__thumb { position: absolute; top: 0.4rem; left: 0.4rem; width: 2rem; height: 2rem; border-radius: 50%; background: #fff; transition: transform 0.3s;}
+.toggle__input:checked + .toggle__label .toggle__track { background: #000;}
+.toggle__input:checked + .toggle__label:before{content:"ON"; right:2.8rem; color:#fff;}
+.toggle__input:checked + .toggle__label .toggle__thumb { transform: translateX(3.6rem);}
+
+/*삭제 모달창*/
+.list_contents li .modal_button_container{ display: flex; flex-direction: column; justify-content: flex-end; align-items: center; gap:0.8rem; position:fixed;  inset: 0; padding:2.4rem 1.6rem; opacity: 0; visibility: hidden; pointer-events: none; background-color: rgba(0,0,0,0.0); transition: opacity .22s ease, background-color .22s ease; will-change: opacity, background-color; z-index: 2;}
+.list_contents li .modal_button_container.active{ opacity: 1; visibility: visible; pointer-events: auto; background-color: rgba(0,0,0,0.8);}
+.list_contents li .modal_button_container button{display: flex; align-items: center; justify-content: center; gap:0.6rem; width:100%; background-color:#fff; border-radius: 1.2rem; font-size:1.6rem; letter-spacing: -0.016em; line-height:1; opacity: 0; transform: translateY(12px) scale(0.98); transition: transform .28s cubic-bezier(.22,.61,.36,1), opacity   .28s ease; will-change: transform, opacity;}
+.list_contents li .modal_button_container button.btn_delete{padding:2.4rem; justify-content: flex-start; font-family: var(--font-600);}
+.list_contents li .modal_button_container button.btn_cancel{padding:1.8rem; font-family: var(--font-500);}
+.list_contents li .modal_button_container.active .btn_delete{ opacity: 1; transform: translateY(0) scale(1); transition-delay: .06s;}
+.list_contents li .modal_button_container.active .btn_cancel{ opacity: 1; transform: translateY(0) scale(1); transition-delay: .12s;}
+
+@media (prefers-reduced-motion: reduce){
+    .list_contents li .modal_button_container, .list_contents li .modal_button_container button{ transition: none !important;}
+}
+
+.modal_button_container {
+    display: none;
+}
+
+.modal_button_container.active {
+    display: block;
+}

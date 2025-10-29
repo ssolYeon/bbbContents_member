@@ -1,0 +1,206 @@
+.common_table {
+    width: 100%;
+    position: relative;
+    border-radius: 1.7rem;
+    .thead {
+        width: 100%;
+        height: 6.3rem;
+        position: relative;
+        border-radius: 1.6rem 1.6rem 0 0;
+        background-color: var(--color-bg-2);
+        border-bottom: 1px solid var(--color-border);
+        display: flex;
+        align-items: center;
+        padding-inline: 2.7rem;
+        div {
+            font-size: 1.6rem;
+            font-family: var(--font-p600);
+            color: var(--color-gray-1);
+            text-align: center;
+            &.check {
+                display: flex;
+                align-items: center;
+                gap: 1rem;
+                padding-left:1rem;
+                .chk_input {
+                    transform: translate(0, 0);
+                    span {
+                        width: 2.4rem;
+                        height: 2.4rem;
+                        padding: 0;
+                        margin: 0 auto;
+                        &::before {
+                            top: 0;
+                        }
+                    }
+                }
+                .border_btn {
+                    padding: 0.6rem 1rem;
+                    border-radius: 0.5rem;
+                    font-size: 1.2rem;
+                }
+            }
+        }
+        .sorting_btn {
+            padding-right: 3.5rem;
+            position: relative;
+            margin: 0 auto;
+            &::after {
+                content: "";
+                width: 2.8rem;
+                height: 2.8rem;
+                position: absolute;
+                top: 50%;
+                transform: translateY(-50%);
+                right: 0;
+                background: url("/src/assets/icons/sort.png") 50% 50% / contain no-repeat;
+            }
+        }
+    }
+    .tbody {
+        width: 100%;
+        position: relative;
+        padding-bottom: 3rem;
+        border-top: none;
+        background-color: var(--color-white);
+        overflow: hidden;
+        li {
+            width: 100%;
+            position: relative;
+            display: flex;
+            align-items: center;
+            background-color: var(--color-white);
+            border-bottom: 1px solid var(--color-border);
+            transition: background-color 0.2s ease;
+            padding-inline: 2.7rem;
+            padding-block:1rem;
+            > a {
+                width: 100%;
+                height: 100%;
+                display: flex;
+                align-items: center;
+                > div {
+                    position: relative;
+                    font-size: 1.6rem;
+                    color: var(--color-gray-1);
+                    text-align: center;
+                    padding-inline: 0.5rem;
+                    > span {
+                        display: none;
+                    }
+                    &.left {
+                        text-align: left;
+                    }
+                }
+            }
+            > div {
+                position: relative;
+                font-size: 1.6rem;
+                color: var(--color-gray-1);
+                text-align: center;
+                padding-inline: 0.5rem;
+                > span {
+                    display: none;
+                }
+                
+                &.left {
+                    text-align: left;
+                }
+            }
+            .check {
+                .chk_input {
+                    height: 2.4rem;
+                    position: absolute;
+                    top: 50%;
+                    left: 1rem;
+                    transform: translate(0, -50%);
+                    span {
+                        padding: 0;
+                        width: 2.4rem;
+                        height: 2.4rem;
+                        &::before {
+                            top: 0;
+                        }
+                    }
+                }
+            }
+            /* .arrow {
+                a {
+                    position: relative;
+                    padding-right: 3.2rem;
+                    &::after {
+                        content: "";
+                        width: 3rem;
+                        height: 3rem;
+                        background: url("/src/assets/icons/link_arrow.png") 50% 50% / contain no-repeat;
+                        position: absolute;
+                        top: -0.6rem;
+                        right: 0;
+                    }
+                }
+            } */
+            .list_btn {
+                flex-shrink: 0;
+                font-size: 0;
+                color: transparent;
+                width: 2.6rem;
+                height: 2.6rem;
+                background: url("/src/assets/icons/list_btn.png") 50% 50% / contain no-repeat;
+                margin: 0;
+            }
+            .del_btn {
+                flex-shrink: 0;
+                font-size: 0;
+                color: transparent;
+                width: 2.6rem;
+                height: 2.6rem;
+                background: url("/src/assets/icons/del_btn_3.png") 50% 50% / contain no-repeat;
+                margin: 0 auto;
+            }
+            .copy_btn {
+                flex-shrink: 0;
+                font-size: 0;
+                color: transparent;
+                width: 2.6rem;
+                height: 2.6rem;
+                background: url("/src/assets/icons/copy_btn.png") 50% 50% / contain no-repeat;
+                margin: 0 auto;
+            }
+            &.lock {
+                .title {
+                    p {
+                        width: fit-content;
+                        position: relative;
+                        padding-right: 3.6rem;
+                        &::after {
+                            content: "";
+                            width: 2rem;
+                            height: 2rem;
+                            background: url("/src/assets/icons/lock.png") 50% 50% / contain no-repeat;
+                            position: absolute;
+                            top: 50%;
+                            transform: translateY(-50%);
+                            right: 0;
+                        }
+                    }
+                }
+            }
+            &:hover {
+                background-color: #F3F6FA;
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 1100px) {
+    .common_table {
+        .thead {
+            padding-inline: 2rem;
+        }
+        .tbody {
+            li {
+                padding-inline: 2rem;
+            }
+        }
+    }
+}

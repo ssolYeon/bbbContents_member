@@ -1,0 +1,80 @@
+/*
+@ :: 상세/관리자 에디터 스타일
+*/
+
+.post_content_container h1{ font-size: 3.5rem; font-family: var(--font-700); line-height: 128%; letter-spacing: -0.175rem; text-transform: uppercase;}
+.post_content_container h2{ font-size: 2.6rem; font-family: var(--font-700); line-height: 140%; letter-spacing: -0.026rem;}
+.post_content_container h3{ font-size: 2.2rem; font-family: var(--font-700); line-height: 154%; letter-spacing: -0.022rem;}
+.post_content_container p{line-height:160%; letter-spacing: -0.016rem;}
+.post_content_container blockquote{display: flex; align-items: center; justify-content: center; margin-block: 2.4rem;}
+.post_content_container blockquote p{ display: inline-flex; align-items:flex-start; justify-content: center; font-family: var(--font-600); font-size:2rem; line-height:154%; text-align: center;}
+.post_content_container blockquote p:before{flex:0 0 auto; content:""; display: block; width:2rem; height:2rem; margin-right:0.8rem; background-image: url("../../assets/images/icons/icon_blockquote_start@x3.png"); background-size: 2rem; background-position: center; background-repeat: no-repeat; }
+.post_content_container blockquote p:after{flex:0 0 auto; content:""; display: block; width:2rem; height:2rem; margin-left:0.8rem; background-image: url("../../assets/images/icons/icon_blockquote_end@x3.png"); background-size:2rem; background-position: center; background-repeat: no-repeat;}
+.post_content_container table{width:100%; border-collapse: collapse; border-spacing: 0; border:none !important;}
+.post_content_container table th{padding:1.2rem 1rem !important; color:rgba(0,0,0,0.8); font-size:1.2rem; letter-spacing: -0.012rem; line-height:140%; border: 1px solid rgba(0, 0, 0, 0.08); background: #FAFAFA;}
+.post_content_container table td{padding:1.6rem !important; color:rgba(0,0,0,0.8); font-size:1.2rem; letter-spacing: -0.012rem; line-height:140%; border: 1px solid rgba(0, 0, 0, 0.08);}
+.post_content_container figure{display: block; padding: 1.6rem; text-align: center; margin:0 auto;}
+.post_content_container figcaption{margin-top:1rem; color:rgba(0,0,0,0.56); font-size:1.2rem; line-height:1; text-align: center;}
+.post_content_container img{ margin:0 auto;}
+.post_content_container ul li{position:relative; display: inline-block; padding-left:1rem; margin-bottom:3rem; font-family: var(--font-700); font-size:1.6rem; line-height:154%; letter-spacing: -0.016rem;}
+.post_content_container ul li:before{content:"•"; position: absolute; top:-0.2rem; left:0; font-family: var(--font-700); font-size:1.6rem; line-height:154%; letter-spacing: -0.016rem;}
+.post_content_container ul .item_content, .post_content_container ol .item_content{ padding-left:1.2rem; margin-top:0.4rem; color:rgba(0,0,0,0.8); font-family: var(--font-400); font-size:1.6rem; line-height:160%; letter-spacing: -0.016rem;}
+.post_content_container ul .item_content br, .post_content_container ol .item_content br{display: none;}
+.post_content_container ol { counter-reset: li-counter; }
+.post_content_container ol li { counter-increment: li-counter; position: relative; margin-bottom:3rem; font-family: var(--font-700); font-size:1.6rem; line-height:154%; letter-spacing: -0.016rem;}
+.post_content_container ol li:before { content: counter(li-counter) ". "; font-family: var(--font-700); font-size:1.6rem; line-height:154%; letter-spacing: -0.016rem;}
+.post_content_container a{ position:relative; display: block; font-family: var(--font-400); padding-left:2.4rem; color:rgba(0,0,0,0.8); font-size:1.6rem; line-height:160%; letter-spacing: -0.016rem;}
+.post_content_container a:before{content:"";position:absolute; top:0; left:0; width:0.2rem; height:100%; background-color:#000;}
+
+.post_content_container .todo-list {display: flex; flex-direction: column; width:100%; gap: 1.2rem;}
+.post_content_container .todo-list li{display: flex; align-items: center; justify-content: flex-start; padding:0; padding:1.6rem; margin:0; border-radius: 0.8rem; border: 0.15rem solid #000; background: #FFF; box-shadow: 0 0.2rem 0 0 #000;}
+.post_content_container .todo-list li:before{content: ""; display: none;}
+.post_content_container .todo-list li span{font-family: var(--font-400) !important;}
+.post_content_container label{display: inline-flex !important; align-items: flex-start; justify-content: flex-start; padding:0 !important; gap:0.8rem;}
+.post_content_container label input{ display: none;}
+.post_content_container label input + .fake_box img{width:2.4rem; height:2.4rem;}
+.post_content_container input + .fake_box img:nth-child(1){ display: block;}
+.post_content_container input +.fake_box img:nth-child(2){ display: none;}
+.post_content_container input:checked + .fake_box img:nth-child(1){ display: none;}
+.post_content_container input:checked + .fake_box img:nth-child(2){ display: block;}
+.post_content_container input + .fake_box + .text{color:rgba(0,0,0,0.56); font-size:1.2rem; letter-spacing: -0.001rem; line-height:1;}
+
+
+
+/*
+@ :: 리사이징 설정 스타일
+*/
+
+.post_content_container{
+    --reader-scale: 1;
+    --reader-lh-scale: 1;
+    --reader-quote-scale: 1;
+    --reader-quote-lh: 1;
+}
+
+.post_content_container :where(
+  p, li, pre, code, kbd, samp, small,
+  figcaption, caption, dt, dd
+):not(.floating_actions_container *):not(.btn_share_container *):not(.resize_container *) {
+    font-size: calc(var(--reader-scale) * 1em);
+}
+
+.post_content_container h1{
+    font-size:   calc(var(--reader-scale) * 3.5rem);
+    line-height: calc(var(--reader-lh-scale) * 1.28);
+}
+
+.post_content_container h2{
+    font-size:   calc(var(--reader-scale) * 2.6rem);
+    line-height: calc(var(--reader-lh-scale) * 1.4);
+}
+
+.post_content_container h3{
+    font-size:   calc(var(--reader-scale) * 2.2rem);
+    line-height: calc(var(--reader-lh-scale) * 1.54);
+}
+
+.post_content_container blockquote p{
+    font-size:   calc(var(--reader-scale) * var(--reader-quote-scale) * 2rem);
+    line-height: calc(var(--reader-lh-scale) * var(--reader-quote-lh) * 1.54);
+}

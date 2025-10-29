@@ -1,0 +1,83 @@
+*{
+    padding:0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+/* Form & control element reset */
+form,
+fieldset {
+    margin: 0;
+    padding: 0;
+    border: none;
+}
+
+legend {
+    margin: 0;
+    padding: 0;
+    font: inherit;
+    color: inherit;
+}
+
+label {
+    margin: 0;
+    padding: 0;
+    font: inherit;
+    color: inherit;
+    cursor: pointer;
+}
+
+/* Reset common form controls */
+input,
+textarea,
+select,
+button {
+    margin: 0;
+    padding: 0;
+    border: none;
+    background: none;
+    font: inherit;
+    color: inherit;
+    box-sizing: border-box;
+    outline: none;
+}
+
+/* Ensure buttons behave like buttons */
+button,
+input[type="button"],
+input[type="submit"],
+input[type="reset"] {
+    cursor: pointer;
+    background: none;
+}
+
+/* Restore select dropdown arrow for browsers that remove it */
+select {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+}
+
+/* Remove default textarea resize handle */
+textarea {
+    resize: none;
+}
+
+/* Optional: consistent box-sizing */
+
+a{
+    color: inherit;
+    text-decoration: none;
+}
+
+ol,ul,li{
+    list-style: none;
+}
+
+img,video{
+    display: block;
+    width: 100%;
+    max-width: 100%;
+    height:100%;
+    object-fit: cover;
+}

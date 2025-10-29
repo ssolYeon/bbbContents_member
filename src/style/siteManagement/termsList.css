@@ -1,0 +1,78 @@
+@import "../base/common.css";
+
+.search_result {
+    .common_table {
+        .num {
+            width: 5%;
+        }
+        .title {
+            flex: 1;
+            p {
+                span {
+                    font-size: 1.4rem;
+                    color: var(--color-gray-3);
+                }
+            }
+        }
+        .show {
+            width: 10%;
+            order: 5;
+        }
+        .writer {
+            width: 10%;
+        }
+        .management {
+            width: 7%;
+            order: 6;
+        }
+        .time {
+            width: 15%;
+        }
+        .tbody {
+            li {
+                height: auto;
+                min-height: 5.4rem;
+                padding-block: 1.2rem;
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 820px) {
+    .search_result {
+        .common_table {
+            .tbody {
+                li {
+                    .show {
+                        order: 1;
+                    }
+                    .num {
+                        order: 2;
+                    }
+                    .title {
+                        order: 3;
+                        align-items: flex-start;
+                        p {
+                            text-align: right;
+                        }
+                    }
+                    .time {
+                        order: 5;
+                        &.register {
+                            order: 4;
+                        }
+                    }
+                    .writer {
+                        order: 6;
+                    }
+                    .management {
+                        order: 7;
+                        button {
+                            margin: 0 0 0 auto;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

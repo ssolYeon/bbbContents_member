@@ -1,0 +1,18 @@
+@import '../base/base.css';
+@import '../components/headerComponents.css';
+@import '../components/footerComponents.css';
+@import '../components/components.css';
+
+header .container{padding-inline:1.6rem;}
+.category_toggle_navigation{top:5.4rem;}
+.sub_visual_container{margin-top:1.6rem;}
+
+
+/*
+.list_container .list_horizontal{ gap:1.2rem;} */
+
+.new_list_container{padding-inline:1.6rem; /* margin-top:4rem; margin-bottom:6rem; */}
+/* .new_list_container .list_contents{display: flex; flex-wrap:wrap; gap: 3rem 1.2rem; margin-top:3rem;}
+.list_container .list_contents{display: flex; flex-wrap:wrap; gap: 3rem 1.2rem; margin-top:3rem;} */
+
+.btn_view_more_container{ margin-top: 3rem;}

@@ -1,0 +1,34 @@
+.modal_wrapper{display:none; align-items: flex-start; justify-content: center; position:fixed; top:0; left:0; width:100%; height:100%; padding-top:10rem; background-color:rgba(0,0,0,0.8); z-index:100;}
+.modal_wrapper.active{display:flex;}
+.modal_wrapper .modal_container{width:90%; max-width:160rem; height:90%; overflow-y: auto; aspect-ratio: 1600/874; padding:2.4rem 3rem 6rem; background-color:#fff; border-radius:2rem;}
+.modal_wrapper .modal_container .close_container{ display: flex; align-items: center; justify-content: flex-end;}
+.modal_wrapper .modal_container  .close_container .btn_close{width:3.6rem; height:3.6rem;}
+
+.modal_search_container{ display: flex; align-items: center; justify-content: flex-start; gap: 0.8rem;}
+.modal_search_container input{ width:100%; height:5.2rem; padding:1.5rem 1.2rem 1.5rem 2rem; border:1px solid #ddd;border-radius:0.4rem; background-color:#fff;}
+.modal_search_container input::placeholder{color:#898F9A; font-size:1.6rem; line-height:1;}
+.modal_search_container button{ width:22rem; height:5.2rem; border:1px solid #3556FC; color:#3556FC; padding:1.2rem 2.4rem; border-radius:0.3rem;}
+
+.modal_wrapper .tab_container{margin-top:2rem;}
+.modal_wrapper .tab_container .tab_navigation{display: flex; align-items: center;justify-content: flex-start; width:100%; height:4.6rem;}
+.modal_wrapper .tab_container .tab_navigation button{flex:1; display:flex; align-items: center; justify-content: center; position:relative; height:100%; color:rgba(0,0,0,0.4); font-family: var(--font-600); font-size:1.8rem; border-top:1px solid #ccc; border-right:1px solid #ccc; border-bottom:1px solid #000; border-radius: 0.8rem 0.8rem 0 0; background-color:#fff;}
+.modal_wrapper .tab_container .tab_navigation button:first-child{border-left:1px solid #ccc;}
+.modal_wrapper .tab_contents_container{ margin-top:0; padding:2rem 4rem 4rem; border:1px solid #000; border-top:none; border-radius: 0;}
+.modal_wrapper .tab_contents_container .content_list{ max-height:24rem; margin-top:4rem; overflow-y: auto;}
+
+.modal_wrapper .tab_container .tab_navigation button.active{color:#000; border:1px solid #000; border-bottom:none !important;}
+.modal_wrapper .tab_container .tab_navigation button:has( + .active){border-right:none}
+.modal_wrapper .tab_content{display: none;}
+.modal_wrapper .tab_content.active{display: block}
+.modal_wrapper .tab_content .tab_posts_count{padding-block:0.8rem; font-family: var(--font-p600); font-size:1.4rem; border-bottom: 1px solid rgba(0, 0, 0, 0.08);}
+.modal_wrapper .tab_content .tab_posts_count b{font-size:1.8rem;}
+
+.modal_wrapper .content_list{ display: flex; flex-wrap: wrap; align-items: flex-start; justify-content: flex-start;}
+.modal_wrapper .content_list li{width:20%; display: flex; flex-direction: column; align-items: flex-start; justify-content: flex-start; padding:1rem;}
+li.card_item .component_card{ max-width:100%;}
+
+.modal_wrapper .checkbox_container{display: flex; align-items: center; justify-content: flex-start; margin-bottom:1.6rem;}
+.modal_wrapper .checkbox_container .chk_input{ display: block; height: auto;}
+.modal_wrapper .checkbox_container .date span{ display: block; color:#37393B; font-size:1.2rem; line-height:1.4; letter-spacing: -0.002em; }
+
+.modal_wrapper .btn_container{ display: flex; justify-content: flex-end; margin-top:3rem; gap:1rem;}

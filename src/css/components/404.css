@@ -1,0 +1,17 @@
+@import '../base/base.css';
+@import '../components/headerComponents.css';
+
+header { position:relative; }
+header .container{padding-inline:1.6rem;}
+header .container p{ position:absolute; top:50%; left:50%; transform:translate(-50%,-50%); width:20.9rem; padding-inline:2rem; font-family: var(--font-700); font-size:1.9rem;}
+header .header_button_group{display: flex; gap:1.6rem;}
+header .header_button_group .btn_header_back, header .header_button_group .btn_header_home{width:2.4rem; height:2.4rem;}
+
+
+main{ display: flex; flex-direction: column; align-items: center; justify-content: center; position:relative; height:100%;}
+main .container_404{padding-inline: 5rem;}
+main .container_404 + p {margin-top:2.6rem; font-family: var(--font-700); text-align: center; color:rgba(0,0,0,0.8); font-size:2.4rem; line-height:1.36; letter-spacing: -0.024rem;}
+main > img {position:absolute;}
+main > img.img_1{top:5.2rem; left:25rem; width:2.8rem; height:2.8rem; transform: rotate(-179.584deg);}
+main > img.img_2{top:16rem; left:28.7rem; width:4.3rem; height:4.3rem; transform: rotate(-6.358deg);}
+main > img.img_3{top:47.4rem; left:6rem; width:4.8rem; height:4.8rem; transform: rotate(14.341deg);}

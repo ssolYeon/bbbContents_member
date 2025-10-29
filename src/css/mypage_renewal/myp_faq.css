@@ -1,0 +1,68 @@
+@import "../base/base.css";
+@import "../components/headerComponents.css";
+@import "../components/footerComponents.css";
+@import "../components/components.css";
+@import "myp_common.css";
+
+/* header */
+header .container {
+  position: relative;
+  padding-inline: 1.6rem;
+}
+header .container a {
+  width: 2.4rem;
+  height: 2.4rem;
+}
+header .container h1 {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-family: var(--font-700);
+  font-size: 1.8rem;
+  line-height: 1.4;
+}
+
+/* 자주하는질문 목록 */
+.myp_faq_container {
+  padding: 2.4rem 1.6rem 0;
+}
+.myp_faq_container .myp_common_tab {
+  margin: 1.6rem 0;
+}
+
+.myp_faq_search form {
+  position: relative;
+}
+.myp_faq_search input {
+  height: 4.4rem;
+  width: 100%;
+  border-radius: 0.6rem;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  background-color: #fff;
+  padding: 0.6rem 4.4rem 0.6rem 1.2rem;
+  color: #000;
+  font-size: 1.4rem;
+  font-family: var(--font-500);
+  line-height: 0;
+  letter-spacing: -0.014rem;
+}
+.myp_faq_search input::placeholder {
+  color: rgba(0, 0, 0, 0.2);
+}
+.myp_faq_search button {
+  position: absolute;
+  right: 2rem;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 2.4rem;
+  height: 2.4rem;
+}
+
+.myp_faq_question {
+  position: relative;
+  border-top: 1px solid rgba(0, 0, 0, 0.08);
+}
+.myp_faq_answer {
+  border-top: 1px solid rgba(0, 0, 0, 0.08);
+}

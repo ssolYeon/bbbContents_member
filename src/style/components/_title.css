@@ -1,0 +1,100 @@
+.page_title {
+    width: 100%;
+    position: relative;
+    margin-block: 2.6rem 4rem;
+    .back_btn {
+        display: none;
+    }
+    .title {
+        font-size: 2.4rem;
+        font-family: var(--font-p600);
+        color: var(--color-black);
+    }
+    .posi_right {
+        width: 12.1rem;
+        height: 4rem;
+        position: absolute;
+        top: 0;
+        right: 0;
+    }
+}
+
+.content_title_box {
+    width: 100%;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-block: 3.2rem 2rem;
+    .title {
+        font-family: var(--font-p600);
+        font-weight: 400;
+        font-size: 2.2rem;
+        color: var(--color-black);
+        display: flex;
+        align-items: center;
+    }
+    .sub_txt {
+        margin-left: 0.8rem;
+        font-size: 1.2rem;
+        color: var(--color-gray-1);
+    }
+    .fill_btn.plus {
+        width: 12.1rem;
+        height: 4rem;
+    }
+    &.no_mg {
+        margin-block: 0 2rem;
+    }
+}
+
+@media screen and (max-width: 820px) {
+    .page_title {
+        width: 100%;
+        margin: 0;
+        padding: 1.4rem 1.2rem;
+        .back_btn {
+            display: none;
+        }
+        .title {
+            font-size: 2rem;
+        }
+        &:has(.posi_right) {
+            background-color: var(--color-white);
+            padding: 0;
+            .title {
+                margin: 0;
+                padding: 1.4rem 1.2rem;
+                background-color: #F5F5F5;
+            }
+            .posi_right {
+                width: calc(100% - 2.4rem);
+                height: 4.8rem;
+                position: relative;
+                top: auto;
+                right: auto;
+                margin: 2rem auto 0;
+            }
+        }
+    }
+
+    .content_title_box {
+        margin-block: 3.2rem 2.4rem;
+        .title {
+            font-family: var(--font-p700);
+            font-size: 1.8rem;
+        }
+        /* .sub_txt {
+            margin-left: 0.8rem;
+            font-size: 1.2rem;
+            color: var(--color-gray-1);
+        }
+        .fill_btn.plus {
+            width: 12.1rem;
+            height: 4rem;
+        } */
+        &.no_mg {
+            margin-block: 0 2.4rem;
+        }
+    }
+}

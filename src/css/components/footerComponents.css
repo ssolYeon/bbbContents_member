@@ -1,0 +1,16 @@
+footer{ padding:4rem 1.6rem 4.8rem; background-color:#000;}
+footer .footer_top_container{display: flex; align-items: center; justify-content: space-between;}
+footer .footer_top_container .logo{ width:2.4rem; height:2.4rem;}
+footer .footer_top_container .btn_business_toggle{display:flex; align-items: center; justify-content: flex-start; gap:0.2rem; color:#8f8f8f; font-size:1.3rem;}
+footer .footer_top_container .btn_business_toggle img{ width:1.2rem; height:1.2rem; transition:transform .2s; opacity:0.56;}
+footer .footer_top_container .btn_business_toggle.active img{ transform:rotate(180deg);}
+footer .footer_business_information_container{ display: none; margin-top:1.6rem;}
+footer .footer_business_information_container.active{ display: block;}
+footer .footer_business_information_container p{color:#8f8f8f; font-size:1.1rem; line-height:1.48; letter-spacing: -0.01em;}
+footer .footer_service_container{display: flex; align-items: center; justify-content: flex-start; margin-top:1.6rem;}
+footer .footer_service_container a{display: flex; align-items: center; justify-content: center; position:relative; margin-right:1.6rem; padding-right:1.6rem; color:#8f8f8f; font-family: var(--font-700); font-size:1.1rem;}
+footer .footer_service_container a:last-child{margin-right:0; padding-right:0;}
+footer .footer_service_container a:after{content:''; position:absolute; right:0; top:50%; transform: translateY(-50%); width:1px; height:1.1rem; background-color:#8f8f8f;}
+footer .footer_service_container a:last-child:after{display: none;}
+footer .footer_notice{ margin-top:1.6rem; color:#8f8f8f; font-size:1.1rem;}
+footer copy{display: block; margin-top:1.6rem; color:#8f8f8f; font-size:1.1rem;}

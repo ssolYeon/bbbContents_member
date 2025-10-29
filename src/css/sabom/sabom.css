@@ -1,0 +1,19 @@
+@import '../base/base.css';
+@import '../components/headerComponents.css';
+@import '../components/footerComponents.css';
+@import '../components/components.css';
+
+
+header .container{padding-inline:1.6rem;}
+.sub_visual_container{margin-top:1.6rem}
+.category_toggle_navigation{top:5.4rem;}
+
+/* .sabom_best_container .list_horizontal{margin-top:1.6rem; gap:1.2rem;} */
+
+.sabom_edition_container{height:auto; aspect-ratio: 393/294; }
+/* .sabom_edition_container .list_horizontal{margin-top:1.6rem; gap:1.2rem;} */
+.sabom_edition_container .component_card_slider{ margin-top:1.6rem;}
+
+/* .sabom_special_container .list_contents{display: flex; flex-wrap:wrap; gap:2.8rem 1.2rem;  margin-top:1.6rem;} */
+
+.btn_view_more_container{margin-top:3rem;}
