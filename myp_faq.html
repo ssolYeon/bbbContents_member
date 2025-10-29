@@ -266,6 +266,7 @@
       mypFaqBtns.forEach((btn) => {
         const mypFaqAnswer = btn.nextElementSibling;
         btn.addEventListener("click", function () {
+          btn.classList.toggle("active");
           mypFaqAnswer.classList.toggle("active");
         });
       });

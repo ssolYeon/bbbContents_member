@@ -19,7 +19,7 @@
   white-space: nowrap; /* 보조기기 접근성 강화용 */
 }
 
-/* 탭 */
+/* 라운드 탭 */
 .myp_round_tab {
   display: flex;
   align-items: center;
@@ -38,10 +38,50 @@
   border: 1px solid rgba(0, 0, 0, 0.08);
   background-color: #fff;
 }
-.myp_round_tab a.active {
+.myp_round_tab a.active,
+.myp_round_tab button.active {
   color: #fff;
   border: 1px solid var(--color-primary-myp);
   background-color: var(--color-primary-myp);
+}
+
+/* 스퀘어 탭 */
+.myp_sqeure_tab {
+  position: sticky;
+  top: 5.4rem;
+  display: flex;
+}
+.myp_sqeure_tab a,
+.myp_sqeure_tab button {
+  position: relative;
+  flex: 1;
+  padding: 1.6rem;
+  color: rgba(0, 0, 0, 0.4);
+  font-family: var(--font-700);
+  font-size: 1.8rem;
+  line-height: 1.4;
+  letter-spacing: -0.018rem;
+  text-align: center;
+  background-color: #fff;
+}
+.myp_sqeure_tab a:before,
+.myp_sqeure_tab button:before {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  height: 0.1rem;
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.08);
+}
+.myp_sqeure_tab a.active,
+.myp_sqeure_tab button.active {
+  color: #000;
+}
+.myp_sqeure_tab a.active:before,
+.myp_sqeure_tab button.active:before {
+  height: 0.2rem;
+  background-color: #000;
 }
 
 /* 페이지네이션 */
@@ -89,7 +129,7 @@
   background-color: var(--color-primary-myp);
 }
 
-/* 버튼 */
+/* 공통 버튼 */
 .myp_button_wrap {
   display: flex;
   gap: 0.8rem;
@@ -128,4 +168,29 @@
   color: #fff;
   border: 1px solid transparent;
   background-color: var(--color-primary-myp);
+}
+
+/* 플로팅 버튼 */
+.myp_floating_btnWrap {
+  position: fixed;
+  bottom: 10rem;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  justify-content: flex-end;
+  width: 100%;
+  max-width: 39.3rem;
+  padding: 0 1.6rem;
+  z-index: 1;
+}
+.myp_floating_btn {
+  padding: 1.2rem 1.6rem;
+  color: #fff;
+  font-family: var(--font-700);
+  font-size: 1.4rem;
+  line-height: 1.4;
+  letter-spacing: -0.014rem;
+  border-radius: 3rem;
+  background-color: var(--color-primary-myp);
+  box-shadow: 0 4px 12px 0 rgba(93, 0, 255, 0.24);
 }

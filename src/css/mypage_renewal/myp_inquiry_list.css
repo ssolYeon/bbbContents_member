@@ -1,0 +1,107 @@
+@import "../base/base.css";
+@import "../components/headerComponents.css";
+@import "../components/footerComponents.css";
+@import "../components/components.css";
+@import "myp_common.css";
+
+/* header */
+header .container {
+  position: relative;
+  padding-inline: 1.6rem;
+}
+header .container a {
+  width: 2.4rem;
+  height: 2.4rem;
+}
+header .container h1 {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-family: var(--font-700);
+  font-size: 1.8rem;
+  line-height: 1.4;
+}
+
+/* 공지사항 목록 */
+#app_wrapper {
+  background-color: var(--bg-light-gray);
+}
+
+.myp_inquiry_container {
+  padding: 2.4rem 1.6rem 2rem;
+}
+.myp_inquiry_container .myp_pagination {
+  margin-top: 3rem;
+}
+
+.myp_inquiry_item {
+  padding: 2rem 1.6rem;
+  border-radius: 1.2rem;
+  background-color: #fff;
+}
+.myp_inquiry_item + .myp_inquiry_item {
+  margin-top: 1rem;
+}
+.myp_inquiry_title {
+  color: #000;
+  font-family: var(--font-600);
+  font-size: 1.6rem;
+  line-height: 1.4;
+  letter-spacing: -0.016rem;
+}
+.myp_inquiry_bottom {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 1.2rem;
+}
+.myp_inquiry_info {
+  display: flex;
+}
+.myp_inquiry_info .sub_title,
+.myp_inquiry_info .date {
+  font-family: var(--font-400);
+  font-size: 1.2rem;
+  line-height: 1;
+  letter-spacing: -0.012rem;
+}
+.myp_inquiry_info .sub_title {
+  color: rgba(0, 0, 0, 0.56);
+}
+.myp_inquiry_info .sub_title:after {
+  content: "";
+  margin: 0 0.8rem;
+  display: inline-block;
+  height: 0.8rem;
+  width: 0.1rem;
+  background-color: rgba(0, 0, 0, 0.2);
+}
+.myp_inquiry_info .date {
+  display: flex;
+  gap: 0.4rem;
+  color: rgba(0, 0, 0, 0.4);
+}
+.myp_inquiry_status {
+  color: rgba(0, 0, 0, 0.56);
+  font-family: var(--font-400);
+  font-size: 1.2rem;
+  line-height: 1;
+  letter-spacing: -0.012rem;
+}
+.myp_inquiry_status.completed {
+  display: flex;
+  gap: 0.4rem;
+  color: var(--color-primary-myp);
+  font-family: var(--font-500);
+}
+.myp_inquiry_status.completed:before {
+  content: "";
+  display: inline-block;
+  width: 1.21rem;
+  height: 1.21rem;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12' fill='none'%3E%3Ccircle cx='6' cy='6' r='6' fill='%235700ED'/%3E%3Cpath d='M3 5.5L5.30769 8L9 4' stroke='white'/%3E%3C/svg%3E");
+  background-position: center;
+  background-size: 1.2rem;
+  background-repeat: no-repeat;
+}

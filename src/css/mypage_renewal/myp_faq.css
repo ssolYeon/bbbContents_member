@@ -83,6 +83,9 @@ header .container h1 {
   background-size: cover;
   background-position: center;
 }
+.myp_faq_question.active:after {
+  transform: rotate(180deg) translateY(50%);
+}
 .myp_faq_question p {
   font-size: 1.6rem;
   font-family: var(--font-600);
