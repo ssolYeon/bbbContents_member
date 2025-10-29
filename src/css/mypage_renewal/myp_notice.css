@@ -1,0 +1,86 @@
+@import "../base/base.css";
+@import "../components/headerComponents.css";
+@import "../components/footerComponents.css";
+@import "../components/components.css";
+@import "myp_common.css";
+
+/* header */
+header .container {
+  position: relative;
+  padding-inline: 1.6rem;
+}
+header .container a {
+  width: 2.4rem;
+  height: 2.4rem;
+}
+header .container h1 {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-family: var(--font-700);
+  font-size: 1.8rem;
+  line-height: 1.4;
+}
+
+/* 공지사항 목록 */
+#app_wrapper {
+  background-color: var(--bg-light-gray);
+}
+
+.myp_notice_container {
+  padding: 2.4rem 1.6rem 0;
+}
+
+.myp_notice_list {
+  margin-top: 1.6rem;
+}
+.myp_notice_item {
+  padding: 2rem;
+  border-radius: 1.2rem;
+  background-color: #fff;
+}
+.myp_notice_item + .myp_notice_item {
+  margin-top: 1rem;
+}
+.myp_notice_top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.myp_notice_info {
+  font-size: 0;
+}
+.myp_notice_info .sub_title {
+  color: #000;
+  font-family: var(--font-700);
+  font-size: 1.4rem;
+  line-height: 1.4;
+  letter-spacing: -0.014rem;
+}
+.myp_notice_info .sub_title + .sub_title:before {
+  content: "";
+  margin: 0 0.8rem;
+  display: inline-block;
+  height: 1rem;
+  width: 0.1rem;
+  background-color: rgba(0, 0, 0, 0.2);
+}
+.myp_notice_info .emphasis {
+  color: #f33;
+}
+.myp_notice_date {
+  color: rgba(0, 0, 0, 0.4);
+  font-family: var(--font-400);
+  font-size: 1.2rem;
+  line-height: 1;
+  letter-spacing: -0.012rem;
+}
+.myp_notice_title {
+  margin-top: 1.2rem;
+  color: #000;
+  font-family: var(--font-500);
+  font-size: 1.6rem;
+  line-height: 1.4;
+  letter-spacing: -0.016rem;
+}
