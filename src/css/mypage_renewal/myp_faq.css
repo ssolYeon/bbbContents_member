@@ -30,6 +30,9 @@ header .container h1 {
 .myp_faq_container .myp_common_tab {
   margin: 1.6rem 0;
 }
+.myp_faq_container .myp_pagination {
+  margin-top: 3rem;
+}
 
 .myp_faq_search form {
   position: relative;
@@ -61,8 +64,55 @@ header .container h1 {
 
 .myp_faq_question {
   position: relative;
+  width: 100%;
+  padding: 2rem 2.5rem 2rem 0;
+  text-align: left;
   border-top: 1px solid rgba(0, 0, 0, 0.08);
+  color: #000;
+}
+.myp_faq_question:after {
+  content: "";
+  position: absolute;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 2rem;
+  height: 2rem;
+  background-image: url("data:image/svg+xml,%3Csvg width='20' height='20' viewBox='0 0 20 20' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath opacity='0.26' d='M5 7.5L9.78787 12.2879C9.90503 12.405 10.095 12.405 10.2121 12.2879L15 7.5' stroke='black' stroke-linecap='round'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+}
+.myp_faq_question p {
+  font-size: 1.6rem;
+  font-family: var(--font-600);
+  line-height: 1.4;
+  letter-spacing: -0.016rem;
 }
 .myp_faq_answer {
+  display: none;
+  padding: 2rem 1.6rem;
+  color: #000;
+  font-size: 1.6rem;
+  font-family: var(--font-400);
+  line-height: 1.48;
+  letter-spacing: -0.016rem;
   border-top: 1px solid rgba(0, 0, 0, 0.08);
+  background-color: #f5f5f5;
+}
+.myp_faq_answer.active {
+  display: block;
+}
+
+.myp_faq_bottom {
+  margin-top: 6rem;
+}
+.myp_faq_bottom_title {
+  margin-bottom: 1.6rem;
+  color: #000;
+  text-align: center;
+  font-family: var(--font-500);
+  font-size: 1.4rem;
+  line-height: 1.4;
+  letter-spacing: -0.014rem;
 }
