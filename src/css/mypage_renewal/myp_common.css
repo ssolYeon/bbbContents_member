@@ -162,7 +162,7 @@
 .myp_button.bg_black {
   color: #fff;
   border: 1px solid transparent;
-  background-color: 000;
+  background-color: #000;
 }
 .myp_button.bg_point {
   color: #fff;
@@ -193,4 +193,130 @@
   border-radius: 3rem;
   background-color: var(--color-primary-myp);
   box-shadow: 0 4px 12px 0 rgba(93, 0, 255, 0.24);
+}
+
+/* 정보입력 input */
+.myp_input_group .title {
+  display: inline-block;
+  margin-bottom: 0.8rem;
+  color: rgba(0, 0, 0, 0.8);
+  font-family: var(--font-700);
+  font-size: 1.4rem;
+  line-height: 1;
+  letter-spacing: -0.014rem;
+}
+.myp_input_group .title .required {
+  color: #ff3333;
+  opacity: 0.8;
+}
+
+.myp_input_box {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+.myp_input_box input:not(input[type="radio"]),
+.myp_input_box select {
+  flex: 1;
+  height: 4.4rem;
+  padding: 0 1.2rem;
+  color: #000;
+  font-family: var(--font-500);
+  font-size: 1.4rem;
+  line-height: 1;
+  letter-spacing: -0.014rem;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  border-radius: 0.6rem;
+  background-color: #fff;
+}
+.myp_input_box input::placeholder {
+  color: rgba(0, 0, 0, 0.2);
+}
+.myp_input_box input:disabled {
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  background-color: #eee;
+}
+.myp_input_box input:disabled::placeholder {
+  color: rgba(0, 0, 0, 0.26);
+}
+
+.myp_input_box select {
+  background-color: #fff;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 16 16' fill='none'%3E%3Cpath d='M4 6.5L7.85858 10.3586C7.93668 10.4367 8.06332 10.4367 8.14142 10.3586L12 6.5' stroke='black' stroke-linecap='round'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 1.2rem center;
+  background-size: 1.6rem;
+  cursor: pointer;
+}
+
+.myp_input_box .separator {
+  color: rgba(0, 0, 0, 0.54);
+  font-family: var(--font-500);
+  font-size: 1.4rem;
+  line-height: 1;
+  letter-spacing: -0.1rem;
+}
+
+.myp_input_box.email input {
+  flex: 0;
+  width: 10.4rem;
+}
+.myp_input_box.phone input {
+  width: 11rem;
+}
+.myp_input_box.adress {
+  flex-direction: column;
+  gap: 0.6rem;
+}
+.myp_input_box.adress > * {
+  width: 100%;
+}
+.myp_input_box.adress > * input {
+  width: 100%;
+}
+.myp_input_box.adress .search {
+  font-size: 0;
+}
+.myp_input_box.adress .search input {
+  width: 8.8rem;
+  flex: 0;
+}
+.myp_input_box.adress .myp_button {
+  padding: 1.4rem 2.4rem;
+  font-size: 1.4rem;
+  letter-spacing: -0.014rem;
+  margin-left: 0.8rem;
+}
+
+.myp_input_box:has(input[type="radio"]) {
+  gap: 1.6rem;
+  height: 3.8rem;
+}
+.myp_input_box input[type="radio"] {
+  position: absolute;
+  width: 0;
+  height: 0;
+  opacity: 0;
+}
+.myp_input_box input[type="radio"] + label {
+  display: flex;
+  align-items: center;
+  gap: 0.2rem;
+  color: rgba(0, 0, 0, 0.8);
+  font-family: var(--font-500);
+  font-size: 1.4rem;
+  line-height: 1;
+  letter-spacing: -0.014rem;
+}
+.myp_input_box input[type="radio"] + label:before {
+  content: "";
+  width: 2.8rem;
+  height: 2.8rem;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='28' height='28' viewBox='0 0 28 28' fill='none'%3E%3Ccircle cx='14' cy='14' r='9.5' fill='white' stroke='%23DDDDDD'/%3E%3C/svg%3E");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: 2.8rem;
+}
+.myp_input_box input[type="radio"]:checked + label:before {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='28' height='28' viewBox='0 0 28 28' fill='none'%3E%3Ccircle cx='14' cy='14' r='9.5' fill='white' stroke='black'/%3E%3Ccircle cx='14' cy='14' r='5' fill='black'/%3E%3C/svg%3E");
 }
