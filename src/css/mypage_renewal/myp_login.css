@@ -1,0 +1,55 @@
+@import "../base/base.css";
+@import "../components/headerComponents.css";
+@import "../components/footerComponents.css";
+@import "../components/components.css";
+@import "myp_common.css";
+
+/* header */
+header .container {
+  position: relative;
+  padding-inline: 1.6rem;
+}
+header .container a {
+  width: 2.4rem;
+  height: 2.4rem;
+}
+header .container h1 {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-family: var(--font-700);
+  font-size: 1.8rem;
+  line-height: 1.4;
+}
+
+/* 가입 */
+.myp_join_container {
+  padding: 2.4rem 1.6rem 0;
+}
+.myp_join_container .myp_input_group + .myp_input_group,
+.myp_join_container .myp_button_wrap {
+  margin-top: 3rem;
+}
+.myp_join_container .myp_input_box.duplicateCheck,
+.myp_join_container .myp_input_box.pwdShowHide {
+  gap: 0.8rem;
+}
+.myp_input_box.duplicateCheck .myp_button {
+  flex: 0;
+  width: 9.6rem;
+  padding: 1.5rem 2.4rem;
+  font-size: 1.4rem;
+  letter-spacing: -0.014rem;
+}
+.myp_input_box.pwdShowHide .btn_password_show {
+  width: 2.4rem;
+  height: 2.4rem;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none'%3E%3Cpath d='M2.54062 4.71L3.25063 4L20.0006 20.75L19.2906 21.46L15.9506 18.11C14.5806 18.68 13.0806 19 11.5006 19C6.94062 19 3.00063 16.35 1.14062 12.5C2.11063 10.5 3.63063 8.83 5.50063 7.68L2.54062 4.71ZM11.5006 18C12.7906 18 14.0306 17.77 15.1706 17.34L14.0506 16.21C13.3206 16.71 12.4506 17 11.5006 17C9.00062 17 7.00063 15 7.00063 12.5C7.00063 11.55 7.29063 10.68 7.79063 9.95L6.24062 8.41C4.56627 9.38547 3.1901 10.7997 2.26063 12.5C4.04063 15.78 7.50062 18 11.5006 18ZM20.7406 12.5C18.9606 9.22 15.5006 7 11.5006 7C10.3506 7 9.23063 7.19 8.19062 7.53L7.41062 6.75C8.68062 6.26 10.0606 6 11.5006 6C16.0606 6 20.0006 8.65 21.8606 12.5C20.9519 14.3858 19.5444 15.987 17.7906 17.13L17.0706 16.4C18.6006 15.44 19.8706 14.1 20.7406 12.5ZM11.5006 8C14.0006 8 16.0006 10 16.0006 12.5C16.0006 13.32 15.7806 14.08 15.4006 14.74L14.6606 14C14.8806 13.54 15.0006 13.04 15.0006 12.5C15.0006 11.5717 14.6319 10.6815 13.9755 10.0251C13.3191 9.36875 12.4289 9 11.5006 9C10.9606 9 10.4606 9.12 10.0006 9.34L9.26062 8.6C9.92062 8.22 10.6806 8 11.5006 8ZM8.00063 12.5C8.00063 13.4283 8.36937 14.3185 9.02575 14.9749C9.68213 15.6313 10.5724 16 11.5006 16C12.1706 16 12.7906 15.81 13.3206 15.5L8.50063 10.68C8.19063 11.21 8.00063 11.83 8.00063 12.5Z' fill='black'/%3E%3C/svg%3E");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: 2.4rem;
+}
+.myp_input_box.pwdShowHide .btn_password_show.active {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none'%3E%3Cpath d='M11.5006 18C15.5006 18 18.9606 15.78 20.7406 12.5C18.9606 9.22 15.5006 7 11.5006 7C7.50062 7 4.04063 9.22 2.26063 12.5C4.04063 15.78 7.50062 18 11.5006 18ZM11.5006 6C16.0606 6 20.0006 8.65 21.8606 12.5C20.0006 16.35 16.0606 19 11.5006 19C6.94062 19 3.00063 16.35 1.14062 12.5C3.00063 8.65 6.94062 6 11.5006 6ZM11.5006 8C14.0006 8 16.0006 10 16.0006 12.5C16.0006 15 14.0006 17 11.5006 17C9.00062 17 7.00063 15 7.00063 12.5C7.00063 10 9.00062 8 11.5006 8ZM11.5006 9C10.5724 9 9.68213 9.36875 9.02575 10.0251C8.36937 10.6815 8.00063 11.5717 8.00063 12.5C8.00063 13.4283 8.36937 14.3185 9.02575 14.9749C9.68213 15.6313 10.5724 16 11.5006 16C12.4289 16 13.3191 15.6313 13.9755 14.9749C14.6319 14.3185 15.0006 13.4283 15.0006 12.5C15.0006 11.5717 14.6319 10.6815 13.9755 10.0251C13.3191 9.36875 12.4289 9 11.5006 9Z' fill='black'/%3E%3C/svg%3E");
+}

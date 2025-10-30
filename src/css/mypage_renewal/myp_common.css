@@ -277,6 +277,13 @@
 .myp_input_box textarea:disabled::placeholder {
   color: rgba(0, 0, 0, 0.26);
 }
+.myp_input_box input[type="text"]:focus,
+.myp_input_box input[type="password"]:focus,
+.myp_input_box input[type="email"]:focus,
+.myp_input_box input[type="tel"]:focus,
+.myp_input_box textarea:focus {
+  border: 1px solid var(--color-primary-myp);
+}
 
 .myp_input_box select {
   background-color: #fff;

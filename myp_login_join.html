@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>가입 - 로그인</title>
+
+    <link rel="stylesheet" href="/src/css/mypage_renewal/myp_login.css" />
+  </head>
+  <body>
+    <header>
+      <h1 class="sr-only">가입</h1>
+      <div class="container">
+        <a href="javascript:;" id="backLink"
+          ><img src="/src/assets/images/icons/icon_back_black@x3.png" alt=""
+        /></a>
+        <h1>가입</h1>
+      </div>
+    </header>
+
+    <div id="app_wrapper">
+      <!-- 로그인 작업 -->
+      <main>
+        <div class="myp_join_container">
+          <div class="myp_form_wrap">
+            <form action="#" method="post">
+              <fieldset>
+                <legend class="sr-only">로그인</legend>
+
+                <div class="myp_input_group">
+                  <label for="userId" class="title"
+                    >아이디
+                    <span aria-hidden="true" class="required">*</span></label
+                  >
+                  <div class="myp_input_box duplicateCheck">
+                    <input
+                      type="text"
+                      id="userId"
+                      name="userId"
+                      required
+                      placeholder="영문 또는 숫자 조합, 4~16자"
+                    />
+                    <button type="button" class="myp_button bg_black">
+                      중복확인
+                    </button>
+                  </div>
+                </div>
+
+                <div class="myp_input_group">
+                  <label for="userCurrentPw" class="title"
+                    >비밀번호
+                    <span aria-hidden="true" class="required">*</span></label
+                  >
+                  <div class="myp_input_box pwdShowHide">
+                    <input
+                      type="password"
+                      id="userCurrentPw"
+                      name="userCurrentPw"
+                      required
+                      placeholder="영문+숫자+특수문자 포함 8자 이상"
+                    />
+                    <button type="button" class="btn_password_show"></button>
+                  </div>
+                </div>
+
+                <div class="myp_input_group">
+                  <label for="userNewPw" class="title">비밀번호 확인</label>
+                  <div class="myp_input_box pwdShowHide">
+                    <input
+                      type="password"
+                      id="userNewPw"
+                      name="userNewPw"
+                      placeholder="비밀번호를 재 입력해주세요."
+                    />
+                    <button type="button" class="btn_password_show"></button>
+                  </div>
+                </div>
+
+                <div class="myp_input_group">
+                  <label for="userNickname" class="title"
+                    >닉네임
+                    <span aria-hidden="true" class="required">*</span></label
+                  >
+                  <div class="myp_input_box duplicateCheck">
+                    <input
+                      type="text"
+                      id="userNickname"
+                      name="userNickname"
+                      required
+                      placeholder="공백 없이 2~10자 입력"
+                    />
+                    <button type="button" class="myp_button bg_black">
+                      중복확인
+                    </button>
+                  </div>
+                </div>
+
+                <div class="myp_input_group">
+                  <p class="title">
+                    이메일 <span aria-hidden="true" class="required">*</span>
+                  </p>
+
+                  <div class="myp_input_box email">
+                    <label for="userEmailId" class="sr-only">이메일 입력</label>
+                    <input
+                      type="email"
+                      id="userEmailId"
+                      name="userEmailId"
+                      placeholder="이메일 입력"
+                      required
+                    />
+                    <span aria-hidden="true" class="separator">@</span>
+
+                    <label for="userEmailDomain" class="sr-only"
+                      >이메일 도메인 선택</label
+                    >
+                    <select
+                      id="userEmailDomain"
+                      name="userEmailDomain"
+                      required
+                    >
+                      <option value="">메일선택</option>
+                      <option value="naver.com">naver.com</option>
+                      <option value="gmail.com">gmail.com</option>
+                      <option value="daum.net">daum.net</option>
+                    </select>
+                  </div>
+                </div>
+
+                <div class="myp_input_group">
+                  <label for="userNickname" class="title"
+                    >이름
+                    <span aria-hidden="true" class="required">*</span></label
+                  >
+                  <div class="myp_input_box">
+                    <input
+                      type="text"
+                      id="userName"
+                      name="userName"
+                      required
+                      placeholder="김봄봄"
+                      disabled
+                    />
+                  </div>
+                </div>
+
+                <div class="myp_input_group">
+                  <p class="title">
+                    휴대폰 번호
+                    <span aria-hidden="true" class="required">*</span>
+                  </p>
+
+                  <div class="myp_input_box phone">
+                    <label for="userPhone_1" class="sr-only"
+                      >휴대폰 번호 첫 자리</label
+                    >
+                    <input
+                      type="tel"
+                      id="userPhone_1"
+                      name="userPhone_1"
+                      placeholder="010"
+                      maxlength="3"
+                      required
+                    />
+
+                    <span aria-hidden="true" class="separator">-</span>
+
+                    <label for="userPhone_2" class="sr-only"
+                      >휴대폰 번호 중간 자리</label
+                    >
+                    <input
+                      type="tel"
+                      id="userPhone_2"
+                      name="userPhone_2"
+                      placeholder="9278"
+                      maxlength="4"
+                      required
+                    />
+
+                    <span aria-hidden="true" class="separator">-</span>
+
+                    <label for="userPhone_3" class="sr-only"
+                      >휴대폰 번호 끝 자리</label
+                    >
+                    <input
+                      type="tel"
+                      id="userPhone_3"
+                      name="userPhone_3"
+                      placeholder="7192"
+                      maxlength="4"
+                      required
+                    />
+                  </div>
+                </div>
+
+                <div class="myp_input_group">
+                  <p class="title">
+                    생년월일 <span aria-hidden="true" class="required">*</span>
+                  </p>
+
+                  <div class="myp_input_box">
+                    <label for="userBirthYear" class="sr-only">년도 선택</label>
+                    <select id="userBirthYear" name="userBirthYear" required>
+                      <option value="">년</option>
+                      <option value="2025">2025</option>
+                      <option value="2024">2024</option>
+                      <option value="2023">2023</option>
+                    </select>
+
+                    <label for="userBirthMonth" class="sr-only">월 선택</label>
+                    <select id="userBirthMonth" name="userBirthMonth" required>
+                      <option value="">월</option>
+                      <option value="1">1</option>
+                      <option value="2">2</option>
+                      <option value="3">3</option>
+                    </select>
+
+                    <label for="userBirthDay" class="sr-only">일 선택</label>
+                    <select id="userBirthDay" name="userBirthDay" required>
+                      <option value="">일</option>
+                      <option value="1">1</option>
+                      <option value="2">2</option>
+                      <option value="3">3</option>
+                    </select>
+                  </div>
+                </div>
+
+                <div class="myp_input_group">
+                  <p class="title">
+                    주소 <span aria-hidden="true" class="required">*</span>
+                  </p>
+                  <div class="myp_input_box adress">
+                    <div class="search">
+                      <label for="userZip" class="sr-only">우편번호 입력</label>
+                      <input
+                        type="text"
+                        id="userZip"
+                        name="userZip"
+                        placeholder="우편번호"
+                        required
+                        readonly
+                      />
+                      <button type="button" class="myp_button bg_black">
+                        주소찾기
+                      </button>
+                    </div>
+
+                    <div>
+                      <label for="userAddress" class="sr-only">주소 입력</label>
+                      <input
+                        type="text"
+                        id="userAddress"
+                        name="userAddress"
+                        placeholder="서울특별시 강남구 도산대로99길 27-2"
+                        required
+                        readonly
+                      />
+                    </div>
+
+                    <div>
+                      <label for="userAddressDetail" class="sr-only"
+                        >상세주소 입력</label
+                      >
+                      <input
+                        type="text"
+                        id="userAddressDetail"
+                        name="userAddressDetail"
+                        placeholder="301호"
+                      />
+                    </div>
+                  </div>
+                </div>
+
+                <div class="myp_input_group">
+                  <p class="title">성별</p>
+                  <div class="myp_input_box">
+                    <div class="myp_input_radio">
+                      <input
+                        type="radio"
+                        id="genderNone"
+                        name="gender"
+                        value="none"
+                        checked
+                      />
+                      <label for="genderNone">선택하지 않음</label>
+                    </div>
+                    <div class="myp_input_radio">
+                      <input
+                        type="radio"
+                        id="genderMmale"
+                        name="gender"
+                        value="male"
+                      />
+                      <label for="genderMmale">남성</label>
+                    </div>
+                    <div class="myp_input_radio">
+                      <input
+                        type="radio"
+                        id="genderFemale"
+                        name="gender"
+                        value="female"
+                      />
+                      <label for="genderFemale">여성</label>
+                    </div>
+                  </div>
+                </div>
+              </fieldset>
+            </form>
+          </div>
+
+          <div class="myp_button_wrap">
+            <button type="button" class="myp_button bg_point">가입하기</button>
+          </div>
+        </div>
+      </main>
+      <!-- // 로그인 작업 -->
+
+      <footer>
+        <div class="footer_top_container">
+          <a href="javascript:void(0)" class="logo">
+            <img
+              src="/src/assets/images/common/footer_logo_white@x3.png"
+              alt="봄봄봄"
+            />
+          </a>
+          <button type="button" class="btn_business_toggle">
+            사업자 정보
+            <img
+              src="/src/assets/images/icons/icon_btn_footer_down@x3.png"
+              alt=""
+            />
+          </button>
+        </div>
+        <div class="footer_business_information_container">
+          <div class="company_information">
+            <p><strong>상호명</strong> : 주식회사 비롯시앤엠</p>
+            <p><strong>대표자명</strong> : 홍길동</p>
+            <p><strong>사업자등록번호</strong> : 717-86-02532</p>
+            <p>
+              <strong>통신판매업 신고번호</strong> : 제2025-서울강남-00001호
+            </p>
+            <p>
+              <strong>주소</strong> : 서울특별시 강서구 양천로 357 려산빌딩 8층
+            </p>
+          </div>
+          <div class="contact_information">
+            <p>
+              <strong>고객센터</strong> :
+              <a href="mailto:help@bombombom.com">help@bombombom.com</a> /
+              <a href="tel:15880000">1588-0000</a>
+            </p>
+            <p>
+              <strong>개인정보보호 책임자</strong> : 김봄봄 (<a
+                href="mailto:privacy@bombombom.com"
+                >privacy@bombombom.com</a
+              >)
+            </p>
+          </div>
+        </div>
+        <div class="footer_service_container">
+          <a href="javascript:void(0)">개인정보처리방침</a>
+          <a href="javascript:void(0)">서비스 이용약관</a>
+          <a href="javascript:void(0)">제휴문의 바로가기</a>
+        </div>
+        <p class="footer_notice">
+          비롯시앤엠은 통신판매 중개자로서 통신판매의 당사자가 아니며 상품의
+          예약, 이용 및 환불 등과 관련한 의무와 책임은 각 판매자에게 있습니다.
+        </p>
+        <copy>Copyright (c) 2021 B.lot. All Rights Reserved.</copy>
+      </footer>
+    </div>
+    <nav class="gnb_container gnb">
+      <div class="container">
+        <a href="/">
+          <img src="/src/assets/images/icons/icon_gnb_home@x3.png" alt="" />
+          <span>홈</span>
+        </a>
+        <a href="/pages/bombom/bombom.html">
+          <img src="/src/assets/images/icons/icon_gnb_bombom@x3.png" alt="" />
+          <span>봄,봄</span>
+        </a>
+        <a href="/pages/haebom/haebom.html" class="active">
+          <img
+            src="/src/assets/images/icons/icon_gnb_haebom_on@x3.png"
+            alt=""
+          />
+          <span>해봄</span>
+        </a>
+        <a href="/pages/gabom/gabom.html">
+          <img src="/src/assets/images/icons/icon_gnb_gabom@x3.png" alt="" />
+          <span>가봄</span>
+        </a>
+        <a href="/pages/sabom/sabom.html">
+          <img src="/src/assets/images/icons/icon_gnb_sabom@x3.png" alt="" />
+          <span>사봄</span>
+        </a>
+      </div>
+    </nav>
+
+    <script>
+      const btnPwdShowHide = document.querySelectorAll(".btn_password_show");
+
+      btnPwdShowHide.forEach((btn) => {
+        btn.addEventListener("click", () => {
+          const input = btn.previousElementSibling;
+        });
+      });
+
+      document.querySelectorAll(".btn_password_show").forEach((btn) => {
+        btn.addEventListener("click", () => {
+          const input = btn.previousElementSibling;
+
+          if (input.type === "password") {
+            input.type = "text";
+            btn.classList.add("active");
+          } else {
+            input.type = "password";
+            btn.classList.remove("active");
+          }
+        });
+      });
+    </script>
+  </body>
+</html>
