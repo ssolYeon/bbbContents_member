@@ -215,7 +215,10 @@
   align-items: center;
   gap: 0.4rem;
 }
-.myp_input_box input:not(input[type="radio"]),
+.myp_input_box input[type="text"],
+.myp_input_box input[type="password"],
+.myp_input_box input[type="email"],
+.myp_input_box input[type="tel"],
 .myp_input_box select {
   flex: 1;
   height: 4.4rem;
@@ -229,14 +232,27 @@
   border-radius: 0.6rem;
   background-color: #fff;
 }
-.myp_input_box input::placeholder {
+.myp_input_box input[type="text"]::placeholder,
+.myp_input_box input[type="password"]::placeholder,
+.myp_input_box input[type="email"]::placeholder,
+.myp_input_box input[type="tel"]::placeholder {
   color: rgba(0, 0, 0, 0.2);
 }
-.myp_input_box input:disabled {
+.myp_input_box input[type="text"]:disabled,
+.myp_input_box input[type="password"]:disabled,
+.myp_input_box input[type="email"]:disabled,
+.myp_input_box input[type="tel"]:disabled {
   border: 1px solid rgba(0, 0, 0, 0.08);
   background-color: #eee;
 }
-.myp_input_box input:disabled::placeholder {
+.myp_input_box
+  input[type="text"]:disabled::placeholder
+  .myp_input_box
+  input[type="password"]:disabled::placeholder
+  .myp_input_box
+  input[type="email"]:disabled::placeholder
+  .myp_input_box
+  input[type="tel"]:disabled::placeholder {
   color: rgba(0, 0, 0, 0.26);
 }
 

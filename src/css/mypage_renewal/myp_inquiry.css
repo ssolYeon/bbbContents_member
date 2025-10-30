@@ -23,8 +23,8 @@ header .container h1 {
   line-height: 1.4;
 }
 
-/* 공지사항 목록 */
-#app_wrapper {
+/* 문의내역 */
+#app_wrapper:has(.myp_inquiry_container) {
   background-color: var(--bg-light-gray);
 }
 
@@ -104,4 +104,8 @@ header .container h1 {
   background-position: center;
   background-size: 1.2rem;
   background-repeat: no-repeat;
+}
+
+/* 문의하기 */
+.myp_inqWrite_container {
 }
