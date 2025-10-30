@@ -403,12 +403,6 @@
       btnPwdShowHide.forEach((btn) => {
         btn.addEventListener("click", () => {
           const input = btn.previousElementSibling;
-        });
-      });
-
-      document.querySelectorAll(".btn_password_show").forEach((btn) => {
-        btn.addEventListener("click", () => {
-          const input = btn.previousElementSibling;
 
           if (input.type === "password") {
             input.type = "text";
