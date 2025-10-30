@@ -108,4 +108,107 @@ header .container h1 {
 
 /* 문의하기 */
 .myp_inqWrite_container {
+  padding: 4rem 1.6rem 0;
+}
+.myp_inqWrite_container .myp_chackbox label {
+  color: #000;
+  font-family: var(--font-500);
+  font-size: 1.4rem;
+  line-height: 1;
+  letter-spacing: -0.014rem;
+}
+.myp_inqWrite_container .myp_chackbox .info_text {
+  color: rgba(0, 0, 0, 0.56);
+  font-family: var(--font-400);
+  font-size: 1.4rem;
+  line-height: 1;
+  letter-spacing: -0.014rem;
+  margin-left: 2.8rem;
+}
+.myp_inqWrite_container .myp_input_group {
+  margin-bottom: 2.4rem;
+}
+.myp_inqWrite_container .myp_button_wrap {
+  margin-top: 3rem;
+}
+
+.myp_inquiry_btn {
+  display: block;
+  color: #000;
+  font-family: var(--font-500);
+  font-size: 1.4rem;
+  letter-spacing: -0.014rem;
+  height: 4.4rem;
+  width: 100%;
+  padding: 0 1.2rem;
+  line-height: 1;
+  text-align: left;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  border-radius: 0.6rem;
+  background-color: #fff;
+  background-color: #fff;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 16 16' fill='none'%3E%3Cpath d='M4 6.5L7.85858 10.3586C7.93668 10.4367 8.06332 10.4367 8.14142 10.3586L12 6.5' stroke='black' stroke-linecap='round'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 1.2rem center;
+  background-size: 1.6rem;
+}
+
+.myp_inqType_pop {
+  display: none;
+  flex-direction: column;
+  justify-content: flex-end;
+  position: fixed;
+  top: 0;
+  left: 50%;
+  max-width: 39.3rem;
+  width: 100%;
+  height: 100vh;
+  transform: translateX(-50%);
+  z-index: 100;
+}
+.myp_inqType_pop.active {
+  display: flex;
+}
+.myp_inqType_pop_dimm {
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-color: rgba(0, 0, 0, 0.8);
+  height: 100%;
+  width: 100%;
+  z-index: -1;
+}
+.myp_inqType_wrap {
+  padding: 1.6rem 1.6rem 2.4rem;
+  background-color: #fff;
+  border-radius: 1.6rem 1.6rem 0 0;
+}
+.myp_inqType_wrap .title {
+  margin-bottom: 2.4rem;
+  text-align: center;
+  color: #000;
+  font-family: var(--font-700);
+  font-size: 1.8rem;
+  line-height: 1;
+  letter-spacing: -0.018rem;
+}
+.myp_inqType_list {
+}
+.myp_inqType_item + .myp_inqType_item {
+  border-top: 1px solid rgba(0, 0, 0, 0.08);
+}
+.myp_inqType_link {
+  display: flex;
+  align-items: center;
+  gap: 1.2rem;
+  padding: 1.8rem 0.8rem;
+  color: #000;
+  font-family: var(--font-500);
+  font-size: 1.6rem;
+  line-height: 1;
+  letter-spacing: -0.016rem;
+}
+.myp_inqType_link img {
+  width: 2rem;
+  height: 2rem;
 }
