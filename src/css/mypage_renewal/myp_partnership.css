@@ -1,0 +1,95 @@
+@import "../base/base.css";
+@import "../components/headerComponents.css";
+@import "../components/footerComponents.css";
+@import "../components/components.css";
+@import "myp_common.css";
+
+/* header */
+header .container {
+  position: relative;
+  padding-inline: 1.6rem;
+}
+header .container a {
+  width: 2.4rem;
+  height: 2.4rem;
+}
+header .container h1 {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-family: var(--font-700);
+  font-size: 1.8rem;
+  line-height: 1.4;
+}
+
+/* 제휴 문의 */
+.myp_ptsInquiry_container {
+  padding: 2.4rem 1.6rem 0;
+}
+.myp_ptsInquiry_container .myp_input_group {
+  margin-bottom: 2.4rem;
+}
+.myp_ptsInquiry_container .myp_button_wrap {
+  margin-top: 3rem;
+}
+.myp_ptsInquiry_container .myp_input_attachment .info_text {
+  color: rgba(0, 0, 0, 0.56);
+  font-family: var(--font-400);
+  font-size: 1.2rem;
+  line-height: 1;
+  letter-spacing: -0.012rem;
+  margin-bottom: 1.2rem;
+}
+.myp_ptsInquiry_container .myp_attachment_inner {
+  padding: 1.6rem;
+  border-radius: 0.6rem;
+  background-color: #f5f5f5;
+}
+.myp_ptsInquiry_container .myp_attachment {
+  position: absolute;
+  width: 0;
+  height: 0;
+  opacity: 0;
+}
+.myp_ptsInquiry_container .myp_attachment + label {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 3.6rem;
+  border-radius: 0.6rem;
+  background-color: #fff;
+}
+.myp_ptsInquiry_container .myp_attachment + label img {
+  width: 2rem;
+  height: 2rem;
+}
+.myp_ptsInquiry_container .file_item {
+  color: rgba(0, 0, 0, 0.8);
+  font-family: var(--font-400);
+  font-size: 1.4rem;
+  line-height: 1;
+  letter-spacing: -0.014rem;
+  padding: 0.4rem 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.myp_ptsInquiry_container .file_item {
+  margin-top: 0.8rem;
+}
+.myp_ptsInquiry_container .file_item .btn_delete {
+  width: 2.4rem;
+  height: 2.4rem;
+  background-image: url("data:image/svg+xml,%3Csvg width='24' height='24' viewBox='0 0 24 24' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Crect x='3' y='3' width='18' height='18' rx='9' fill='black' fill-opacity='0.8'/%3E%3Cpath d='M8.25 8.25L15.75 15.75' stroke='white' stroke-linecap='round'/%3E%3Cpath d='M15.75 8.25L8.25 15.75' stroke='white' stroke-linecap='round'/%3E%3C/svg%3E%0A");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: 2.4rem;
+}
+.myp_ptsInquiry_container .myp_chackbox input + label {
+  color: rgba(0, 0, 0, 0.56);
+  font-family: var(--font-400);
+  font-size: 1.4rem;
+  line-height: 1;
+  letter-spacing: -0.1rem;
+}

@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>제휴문의</title>
+
+    <link rel="stylesheet" href="/src/css/mypage_renewal/myp_partnership.css" />
+  </head>
+  <body>
+    <header>
+      <h1 class="sr-only">제휴 문의</h1>
+      <div class="container">
+        <a href="javascript:;" id="backLink"
+          ><img src="/src/assets/images/icons/icon_back_black@x3.png" alt=""
+        /></a>
+        <h1>제휴 문의</h1>
+      </div>
+    </header>
+
+    <div id="app_wrapper">
+      <!-- 제휴 문의 작업 -->
+      <main>
+        <div class="myp_ptsInquiry_container">
+          <div class="myp_form_wrap">
+            <form action="#" method="post">
+              <fieldset>
+                <legend class="sr-only">제휴 문의</legend>
+
+                <div class="myp_input_group">
+                  <label for="userName" class="title"
+                    >담당자명
+                    <span aria-hidden="true" class="required">*</span></label
+                  >
+                  <div class="myp_input_box">
+                    <input
+                      type="text"
+                      id="userName"
+                      name="userName"
+                      required
+                      placeholder="담당자의 성함을 입력해 주세요"
+                    />
+                  </div>
+                </div>
+
+                <div class="myp_input_group">
+                  <label for="companyName" class="title"
+                    >회사명
+                    <span aria-hidden="true" class="required">*</span></label
+                  >
+                  <div class="myp_input_box">
+                    <input
+                      type="text"
+                      id="companyName"
+                      name="companyName"
+                      required
+                      placeholder="회사명을 입력해 주세요"
+                    />
+                  </div>
+                </div>
+
+                <div class="myp_input_group">
+                  <p class="title">
+                    이메일 <span aria-hidden="true" class="required">*</span>
+                  </p>
+
+                  <div class="myp_input_box email">
+                    <label for="userEmailId" class="sr-only">이메일 입력</label>
+                    <input
+                      type="email"
+                      id="userEmailId"
+                      name="userEmailId"
+                      placeholder="이메일 입력"
+                      required
+                    />
+                    <span aria-hidden="true" class="separator">@</span>
+
+                    <label for="userEmailDomain" class="sr-only"
+                      >이메일 도메인 선택</label
+                    >
+                    <select
+                      id="userEmailDomain"
+                      name="userEmailDomain"
+                      required
+                    >
+                      <option value="">메일선택</option>
+                      <option value="naver.com">naver.com</option>
+                      <option value="gmail.com">gmail.com</option>
+                      <option value="daum.net">daum.net</option>
+                    </select>
+                  </div>
+                </div>
+
+                <div class="myp_input_group">
+                  <label for="messageTitle" class="title"
+                    >제목
+                    <span aria-hidden="true" class="required">*</span></label
+                  >
+                  <div class="myp_input_box">
+                    <input
+                      type="text"
+                      id="messageTitle"
+                      name="messageTitle"
+                      required
+                      placeholder="제목을 입력해 주세요."
+                    />
+                  </div>
+                </div>
+
+                <div class="myp_input_group">
+                  <label for="userMessage" class="title"
+                    >내용
+                    <span aria-hidden="true" class="required">*</span></label
+                  >
+                  <div class="myp_input_box">
+                    <textarea
+                      id="userMessage"
+                      name="userMessage"
+                      placeholder="문의 내용을 남겨주세요."
+                      rows="5"
+                      required
+                    ></textarea>
+                  </div>
+                </div>
+
+                <div class="myp_input_group">
+                  <p class="title">첨부파일</p>
+                  <div class="myp_input_attachment">
+                    <p class="info_text">
+                      파일은 최대 3개, 각 파일 당 20MB 이하까지 첨부할 수
+                      있습니다.
+                    </p>
+                    <div class="myp_attachment_inner">
+                      <input
+                        class="myp_attachment"
+                        type="file"
+                        id="userFile"
+                        accept="image/*,application/pdf"
+                        multiple
+                      />
+                      <label for="userFile">
+                        <img
+                          src="/src/assets/images/icons/myp_icon_plus.png"
+                          alt=""
+                        />
+                      </label>
+
+                      <div class="myp_attachment_list">
+                        <!-- 파일 업로드 시 file_item 생성 -->
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="myp_chackbox">
+                  <input type="checkbox" name="checkAgree" id="checkAgree" />
+                  <label for="checkAgree"
+                    >개인정보 수집 및 이용에 동의합니다.</label
+                  >
+                </div>
+              </fieldset>
+            </form>
+          </div>
+
+          <div class="myp_button_wrap">
+            <button type="button" class="myp_button bg_grey">등록하기</button>
+          </div>
+        </div>
+      </main>
+      <!-- // 제휴 문의 작업 -->
+
+      <footer>
+        <div class="footer_top_container">
+          <a href="javascript:void(0)" class="logo">
+            <img
+              src="/src/assets/images/common/footer_logo_white@x3.png"
+              alt="봄봄봄"
+            />
+          </a>
+          <button type="button" class="btn_business_toggle">
+            사업자 정보
+            <img
+              src="/src/assets/images/icons/icon_btn_footer_down@x3.png"
+              alt=""
+            />
+          </button>
+        </div>
+        <div class="footer_business_information_container">
+          <div class="company_information">
+            <p><strong>상호명</strong> : 주식회사 비롯시앤엠</p>
+            <p><strong>대표자명</strong> : 홍길동</p>
+            <p><strong>사업자등록번호</strong> : 717-86-02532</p>
+            <p>
+              <strong>통신판매업 신고번호</strong> : 제2025-서울강남-00001호
+            </p>
+            <p>
+              <strong>주소</strong> : 서울특별시 강서구 양천로 357 려산빌딩 8층
+            </p>
+          </div>
+          <div class="contact_information">
+            <p>
+              <strong>고객센터</strong> :
+              <a href="mailto:help@bombombom.com">help@bombombom.com</a> /
+              <a href="tel:15880000">1588-0000</a>
+            </p>
+            <p>
+              <strong>개인정보보호 책임자</strong> : 김봄봄 (<a
+                href="mailto:privacy@bombombom.com"
+                >privacy@bombombom.com</a
+              >)
+            </p>
+          </div>
+        </div>
+        <div class="footer_service_container">
+          <a href="javascript:void(0)">개인정보처리방침</a>
+          <a href="javascript:void(0)">서비스 이용약관</a>
+          <a href="javascript:void(0)">제휴문의 바로가기</a>
+        </div>
+        <p class="footer_notice">
+          비롯시앤엠은 통신판매 중개자로서 통신판매의 당사자가 아니며 상품의
+          예약, 이용 및 환불 등과 관련한 의무와 책임은 각 판매자에게 있습니다.
+        </p>
+        <copy>Copyright (c) 2021 B.lot. All Rights Reserved.</copy>
+      </footer>
+    </div>
+    <nav class="gnb_container gnb">
+      <div class="container">
+        <a href="/">
+          <img src="/src/assets/images/icons/icon_gnb_home@x3.png" alt="" />
+          <span>홈</span>
+        </a>
+        <a href="/pages/bombom/bombom.html">
+          <img src="/src/assets/images/icons/icon_gnb_bombom@x3.png" alt="" />
+          <span>봄,봄</span>
+        </a>
+        <a href="/pages/haebom/haebom.html" class="active">
+          <img
+            src="/src/assets/images/icons/icon_gnb_haebom_on@x3.png"
+            alt=""
+          />
+          <span>해봄</span>
+        </a>
+        <a href="/pages/gabom/gabom.html">
+          <img src="/src/assets/images/icons/icon_gnb_gabom@x3.png" alt="" />
+          <span>가봄</span>
+        </a>
+        <a href="/pages/sabom/sabom.html">
+          <img src="/src/assets/images/icons/icon_gnb_sabom@x3.png" alt="" />
+          <span>사봄</span>
+        </a>
+      </div>
+    </nav>
+
+    <script>
+      const fileInput = document.querySelector(".myp_attachment");
+      const fileList = document.querySelector(".myp_attachment_list");
+
+      fileInput.addEventListener("change", (e) => {
+        const files = Array.from(e.target.files);
+
+        files.forEach((file) => {
+          // 파일 이름 표시용 wrapper
+          const wrapper = document.createElement("div");
+          wrapper.classList.add("file_item");
+
+          // 파일 이름
+          const fileName = document.createElement("span");
+          fileName.classList.add("file_name");
+          fileName.textContent = file.name;
+
+          // 삭제 버튼
+          const btnDelete = document.createElement("button");
+          btnDelete.type = "button";
+          btnDelete.classList.add("btn_delete");
+
+          // 삭제 기능
+          btnDelete.addEventListener("click", () => {
+            wrapper.remove();
+          });
+
+          // 리스트에 추가
+          wrapper.appendChild(fileName);
+          wrapper.appendChild(btnDelete);
+          fileList.appendChild(wrapper);
+        });
+
+        // 여러 번 선택 시 누적 업로드 가능하게 input 초기화
+        fileInput.value = "";
+      });
+    </script>
+  </body>
+</html>
