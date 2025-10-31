@@ -320,11 +320,51 @@ header .container h1 {
 
 /* 문의하기 상세 */
 .detail_attachment {
-  margin-top: 2.4rem;
+  overflow-x: scroll;
+  scrollbar-width: none;
   display: flex;
-  flex: 0 0 auto;
+  gap: 0.8rem;
+  margin-top: 2.4rem;
 }
 .detail_attachment_item {
   width: 12rem;
   height: 12rem;
+  flex: 0 0 auto;
+}
+
+.myp_detail_answer {
+  border-radius: 0.6rem;
+  background: #fafafa;
+  padding: 2.4rem 1.6rem;
+  margin-bottom: 2rem;
+}
+.myp_detail_answer .manager {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  margin-bottom: 1.2rem;
+}
+.myp_detail_answer .manager span:nth-of-type(1) {
+  border-radius: 3rem;
+  background-color: #000;
+  color: #fff;
+  font-family: var(--font-400);
+  font-size: 1.2rem;
+  line-height: 1;
+  letter-spacing: -0.012rem;
+  padding: 0.4rem 0.8rem;
+}
+.myp_detail_answer .manager span:nth-of-type(2) {
+  color: rgba(0, 0, 0, 0.8);
+  font-family: var(--font-500);
+  font-size: 1.4rem;
+  line-height: 1.4;
+  letter-spacing: -0.014rem;
+}
+.myp_detail_answer p {
+  color: rgba(0, 0, 0, 0.8);
+  font-family: var(--font-400);
+  font-size: 1.4rem;
+  line-height: 1.48;
+  letter-spacing: -0.014rem;
 }

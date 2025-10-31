@@ -400,6 +400,10 @@
 }
 .myp_detail_wrap {
   border-top: 2px solid #000;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+}
+.myp_detail_wrap:has(.myp_detail_answer) {
+  border-bottom: none;
 }
 .myp_detail_header {
   padding: 2.4rem 0;
@@ -432,7 +436,6 @@
 }
 .myp_detail_body {
   padding: 2.4rem 0;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.08);
 }
 .myp_detail_body p {
   color: rgba(0, 0, 0, 0.8);
