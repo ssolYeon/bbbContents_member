@@ -93,3 +93,48 @@ header .container h1 {
   line-height: 1;
   letter-spacing: -0.1rem;
 }
+
+/* 제휴 문의 등록 완료 */
+body:has(.myp_ptsComplete_container) {
+  height: 100vh;
+}
+body:has(.myp_ptsComplete_container) #app_wrapper main {
+  padding-bottom: 4rem;
+}
+.myp_ptsComplete_container {
+  padding: 0 1.6rem;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+.myp_ptsComplete_box {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: auto;
+}
+.myp_ptsComplete_box img {
+  width: 14rem;
+  height: 14rem;
+}
+.myp_ptsComplete_box .title {
+  color: #000;
+  text-align: center;
+  font-family: var(--font-700);
+  font-size: 2.2rem;
+  line-height: 1;
+  letter-spacing: -0.022rem;
+  margin: 3.2rem 0 1.6rem;
+}
+.myp_ptsComplete_box .desc {
+  color: rgba(0, 0, 0, 0.8);
+  text-align: center;
+  font-family: var(--font-400);
+  font-size: 1.4rem;
+  line-height: 1.48;
+  letter-spacing: -0.014rem;
+}
+.myp_ptsComplete_container .myp_button_wrap {
+  margin-top: auto;
+}
