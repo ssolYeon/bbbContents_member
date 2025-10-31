@@ -24,7 +24,7 @@ header .container h1 {
 }
 
 /* 공지사항 목록 */
-#app_wrapper {
+#app_wrapper:has(.myp_notice_container) {
   background-color: var(--bg-light-gray);
 }
 

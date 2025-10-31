@@ -393,3 +393,51 @@
 .myp_chackbox input[type="checkbox"]:checked + label:before {
   background-image: url("data:image/svg+xml,%3Csvg width='28' height='28' viewBox='0 0 28 28' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Ccircle cx='14' cy='14' r='9.5' fill='white' stroke='black'/%3E%3Cpath d='M9 13.1818L12.8889 17L19 11' stroke='black'/%3E%3C/svg%3E%0A");
 }
+
+/* 상세페이지 */
+.myp_detail_container {
+  padding: 2.4rem 1.6rem 0;
+}
+.myp_detail_wrap {
+  border-top: 2px solid #000;
+}
+.myp_detail_header {
+  padding: 2.4rem 0;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+}
+.myp_detail_header .sub_title {
+  display: inline-block;
+  padding: 0.4rem 0.8rem;
+  border-radius: 3rem;
+  border: 1px solid #777;
+  color: #777;
+  font-family: var(--font-400);
+  font-size: 1.2rem;
+  line-height: 1;
+  letter-spacing: -0.012rem;
+}
+.myp_detail_header .title {
+  margin: 1.2rem 0;
+  font-family: var(--font-700);
+  font-size: 1.8rem;
+  line-height: 1.4;
+  letter-spacing: -0.018rem;
+}
+.myp_detail_header .date {
+  color: rgba(0, 0, 0, 0.4);
+  font-family: var(--font-400);
+  font-size: 1.2rem;
+  line-height: 1;
+  letter-spacing: -0.012rem;
+}
+.myp_detail_body {
+  padding: 2.4rem 0;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+}
+.myp_detail_body p {
+  color: rgba(0, 0, 0, 0.8);
+  font-family: var(--font-400);
+  font-size: 1.4rem;
+  line-height: 1.4;
+  letter-spacing: -0.014rem;
+}
