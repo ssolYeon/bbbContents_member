@@ -4,37 +4,27 @@
 @import "../components/components.css";
 @import "myp_common.css";
 
-/* header */
-header .container {
-  position: relative;
-  padding-inline: 1.6rem;
-}
-header .container a {
-  width: 2.4rem;
-  height: 2.4rem;
-}
-header .container h1 {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  font-family: var(--font-700);
-  font-size: 1.8rem;
-  line-height: 1.4;
-}
-
 /* 문의내역 */
 #app_wrapper:has(.myp_inquiry_container) {
   background-color: var(--bg-light-gray);
 }
 
 .myp_inquiry_container {
-  padding: 2.4rem 1.6rem 2rem;
+  padding: 2.4rem 1.6rem 0;
+  height: 100%;
+  position: relative;
 }
 .myp_inquiry_container .myp_pagination {
-  margin-top: 3rem;
+  position: absolute;
+  bottom: 8rem;
+  left: 50%;
+  transform: translateX(-50%);
+  width: calc(100% - 3.2rem);
 }
 
+.myp_inquiry_list {
+  margin-bottom: 9rem;
+}
 .myp_inquiry_item {
   padding: 2rem 1.6rem;
   border-radius: 1.2rem;

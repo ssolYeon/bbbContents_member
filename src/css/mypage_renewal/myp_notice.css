@@ -4,32 +4,22 @@
 @import "../components/components.css";
 @import "myp_common.css";
 
-/* header */
-header .container {
-  position: relative;
-  padding-inline: 1.6rem;
-}
-header .container a {
-  width: 2.4rem;
-  height: 2.4rem;
-}
-header .container h1 {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  font-family: var(--font-700);
-  font-size: 1.8rem;
-  line-height: 1.4;
-}
-
 /* 공지사항 목록 */
 #app_wrapper:has(.myp_notice_container) {
   background-color: var(--bg-light-gray);
 }
 
 .myp_notice_container {
-  padding: 2.4rem 1.6rem 0;
+  padding: 2.4rem 1.6rem 7rem;
+  height: 100%;
+  position: relative;
+}
+.myp_notice_container .myp_pagination {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: calc(100% - 3.2rem);
 }
 
 .myp_notice_list {

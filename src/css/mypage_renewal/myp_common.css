@@ -19,6 +19,37 @@
   white-space: nowrap; /* 보조기기 접근성 강화용 */
 }
 
+/* layout */
+html,
+body {
+  height: 100%;
+}
+
+/* header */
+header .container {
+  position: relative;
+  padding-inline: 1.6rem;
+  height: 5.4rem;
+}
+header .container a {
+  width: 2.4rem;
+  height: 2.4rem;
+}
+header .container h1 {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-family: var(--font-700);
+  font-size: 1.8rem;
+  line-height: 1.4;
+}
+
+/* footer */
+footer {
+  padding: 4rem 1.6rem 12rem;
+}
+
 /* 라운드 탭 */
 .myp_round_tab {
   display: flex;

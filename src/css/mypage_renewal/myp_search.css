@@ -4,25 +4,6 @@
 @import "../components/components.css";
 @import "myp_common.css";
 
-/* header */
-header .container {
-  position: relative;
-  padding-inline: 1.6rem;
-}
-header .container a {
-  width: 2.4rem;
-  height: 2.4rem;
-}
-header .container h1 {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  font-family: var(--font-700);
-  font-size: 1.8rem;
-  line-height: 1.4;
-}
-
 /* 검색 창 */
 #app_wrapper:has(.myp_search_container) ~ .gnb_container {
   z-index: 1;
