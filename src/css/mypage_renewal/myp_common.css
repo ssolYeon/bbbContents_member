@@ -251,6 +251,14 @@ footer {
   letter-spacing: -0.012rem;
   margin-top: 0.4rem;
 }
+.myp_input_group .alert_massage {
+  display: none;
+  margin-top: 0.8rem;
+  color: #ff3300;
+  font-size: 1.4rem;
+  line-height: 1.4;
+  letter-spacing: -0.014rem;
+}
 
 .myp_input_box {
   display: flex;
