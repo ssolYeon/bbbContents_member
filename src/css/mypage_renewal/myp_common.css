@@ -342,8 +342,15 @@ footer {
 }
 
 .myp_input_box.email input {
-  flex: 0;
   width: 10.4rem;
+}
+.myp_input_box.email .select_domain {
+  width: 100%;
+  display: flex;
+  gap: 0.4rem;
+}
+.myp_input_box.email .domain_direct_input {
+  display: none;
 }
 .myp_input_box.phone input {
   width: 11rem;
