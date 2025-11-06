@@ -23,6 +23,7 @@
   height: 5.4rem;
   padding: 0 1.6rem;
   max-width: 39.3rem;
+  margin: 0 auto;
 }
 .myp_search_form .back_link {
   display: block;
