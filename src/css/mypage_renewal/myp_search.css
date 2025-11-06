@@ -110,6 +110,16 @@
   padding-left: 1.6rem;
   padding-right: 1.6rem;
 }
+.myp_search_suggested .thumb {
+  width: 10.4rem;
+  height: 10.4rem;
+  border-radius: 0.8rem;
+  overflow: hidden;
+}
+.myp_search_suggested .swiper-wrapper,
+.myp_search_suggested .thumb img {
+  height: auto;
+}
 .myp_search_suggested .swiper-slide {
   width: 10.4rem;
 }
