@@ -313,6 +313,21 @@
       </div>
     </nav>
 
+    <!-- 문의 등록 완료 팝업 -->
+    <div class="myp_complete_pop">
+      <div class="myp_complete_pop_dimm"></div>
+      <div class="myp_complete_wrap">
+        <p class="desc">
+          문의가 등록 되었습니다.<br />
+          빠르게 확인 후 답변드리겠습니다.<br />
+          감사합니다.
+        </p>
+        <div class="myp_button_wrap">
+          <a href="javascript:;" class="myp_button bg_black">확인</a>
+        </div>
+      </div>
+    </div>
+
     <script>
       /* 이메일 형식 조건 부힙 */
       const emailId = document.querySelector("#userEmailId");
@@ -353,7 +368,7 @@
 
       // 입력할 때마다 즉시 검사
       emailId.addEventListener("input", validateEmail);
-      emailDomain.addEventListener("change", validateEmail);
+      // emailDomain.addEventListener("change", validateEmail);
       emailDirectInput.addEventListener("input", validateEmail);
 
       /* 첨부파일 */
@@ -391,6 +406,26 @@
 
         // 여러 번 선택 시 누적 업로드 가능하게 input 초기화
         fileInput.value = "";
+      });
+
+      /* 문의 등록 완료 팝업 */
+      const completeBtn = document.querySelector(
+        ".myp_ptsInquiry_container .myp_button"
+      );
+      const mypCompleteBtn = document.querySelector(
+        ".myp_complete_pop .myp_button"
+      );
+      const mypCompletePop = document.querySelector(".myp_complete_pop");
+      const mypCompletePopDimm = document.querySelector(
+        ".myp_complete_pop_dimm"
+      );
+
+      completeBtn.addEventListener("click", () => {
+        mypCompletePop.classList.add("active");
+      });
+
+      mypCompleteBtn.addEventListener("click", () => {
+        mypCompletePop.classList.remove("active");
       });
     </script>
   </body>

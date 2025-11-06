@@ -129,7 +129,7 @@
   gap: 0.8rem;
 }
 .myp_inqWrite_container .myp_attachment_preview:has(.image_box) {
-  margin-right: 0.8rem;
+  margin-left: 0.8rem;
 }
 .myp_inqWrite_container .myp_attachment_preview .image_box {
   position: relative;
@@ -259,53 +259,6 @@
 .myp_inqType_link img {
   width: 2rem;
   height: 2rem;
-}
-
-/* 문의 등록 완료 팝업 */
-.myp_complete_pop {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  position: fixed;
-  top: 0;
-  left: 50%;
-  max-width: 39.3rem;
-  width: 100%;
-  height: 100vh;
-  transform: translateX(-50%);
-  z-index: 100;
-  padding: 0 1.6rem;
-}
-.myp_complete_pop_dimm {
-  position: absolute;
-  top: 0;
-  left: 0;
-  background-color: rgba(0, 0, 0, 0.8);
-  height: 100%;
-  width: 100%;
-  z-index: -1;
-}
-.myp_complete_wrap {
-  position: relative;
-  border-radius: 1.2rem;
-  background-color: #fff;
-  padding: 2.4rem;
-}
-.myp_complete_wrap .desc {
-  color: rgba(0, 0, 0, 0.8);
-  text-align: center;
-  font-family: var(--font-500);
-  font-size: 1.6rem;
-  line-height: 1.4;
-  letter-spacing: -0.016rem;
-  margin-bottom: 2.4rem;
-}
-.myp_complete_wrap .myp_button_wrap {
-  justify-content: center;
-}
-.myp_complete_wrap .myp_button {
-  width: 16rem;
-  flex: 0 0 auto;
 }
 
 /* 문의하기 상세 */

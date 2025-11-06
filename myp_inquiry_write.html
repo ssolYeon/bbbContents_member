@@ -95,9 +95,6 @@
                 <p class="title">첨부파일</p>
                 <div class="myp_input_attachment">
                   <div class="myp_attachment_inner">
-                    <div class="myp_attachment_preview">
-                      <!-- 이미지 첨부 시 image_box 생성 -->
-                    </div>
                     <input
                       class="myp_attachment"
                       type="file"
@@ -109,6 +106,10 @@
                         src="/src/assets/images/myp_renewl_images/myp_attachment.png"
                       />
                     </label>
+
+                    <div class="myp_attachment_preview">
+                      <!-- 이미지 첨부 시 image_box 생성 -->
+                    </div>
                   </div>
                 </div>
 
@@ -274,6 +275,21 @@
       </div>
     </div>
 
+    <!-- 문의 등록 완료 팝업 -->
+    <div class="myp_complete_pop">
+      <div class="myp_complete_pop_dimm"></div>
+      <div class="myp_complete_wrap">
+        <p class="desc">
+          문의가 등록 되었습니다.<br />
+          빠르게 확인 후 답변드리겠습니다.<br />
+          감사합니다.
+        </p>
+        <div class="myp_button_wrap">
+          <a href="javascript:;" class="myp_button bg_black">확인</a>
+        </div>
+      </div>
+    </div>
+
     <script>
       /* 첨부 파일 업로드 */
       const fileInput = document.querySelector(".myp_attachment");
@@ -329,6 +345,26 @@
 
       inquiryPopDimm.addEventListener("click", () => {
         inquiryPop.classList.remove("active");
+      });
+
+      /* 문의 등록 완료 팝업 */
+      const completeBtn = document.querySelector(
+        ".myp_inqWrite_container .myp_button"
+      );
+      const mypCompleteBtn = document.querySelector(
+        ".myp_complete_pop .myp_button"
+      );
+      const mypCompletePop = document.querySelector(".myp_complete_pop");
+      const mypCompletePopDimm = document.querySelector(
+        ".myp_complete_pop_dimm"
+      );
+
+      completeBtn.addEventListener("click", () => {
+        mypCompletePop.classList.add("active");
+      });
+
+      mypCompleteBtn.addEventListener("click", () => {
+        mypCompletePop.classList.remove("active");
       });
     </script>
   </body>
