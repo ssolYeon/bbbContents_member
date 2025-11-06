@@ -69,6 +69,7 @@
   width: 30rem;
   overflow: hidden;
   text-overflow: ellipsis;
+  white-space: nowrap;
 }
 .myp_ptsInquiry_container .myp_chackbox input + label {
   color: rgba(0, 0, 0, 0.56);
