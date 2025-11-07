@@ -4,23 +4,6 @@
 @import "../components/components.css";
 @import "myp_common.css";
 
-/* ios 이슈 */
-.gnb_container {
-  position: sticky;
-  height: calc(7.8rem + env(safe-area-inset-bottom));
-  padding-bottom: env(safe-area-inset-bottom);
-  z-index: 1;
-}
-/* .gnb_container {
-  height: calc(7.8rem + env(safe-area-inset-bottom));
-  padding-bottom: env(safe-area-inset-bottom);
-  transition: bottom 0.25s ease;
-} */
-
-footer {
-  padding: 4rem 1.6rem 4.8rem;
-}
-
 /* 검색 창 */
 #app_wrapper:has(.myp_search_container) ~ .gnb_container {
   z-index: 1;
