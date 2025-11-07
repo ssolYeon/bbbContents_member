@@ -99,6 +99,7 @@
 /* 문의하기 */
 .myp_inqWrite_container {
   padding: 4rem 1.6rem 0;
+  overflow: hidden;
 }
 
 .myp_inqWrite_container .myp_input_attachment {
