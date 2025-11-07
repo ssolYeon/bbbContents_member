@@ -4,6 +4,23 @@
 @import "../components/components.css";
 @import "myp_common.css";
 
+/* ios 이슈 */
+.gnb_container {
+  position: sticky;
+  height: calc(7.8rem + env(safe-area-inset-bottom));
+  padding-bottom: env(safe-area-inset-bottom);
+  z-index: 1;
+}
+/* .gnb_container {
+  height: calc(7.8rem + env(safe-area-inset-bottom));
+  padding-bottom: env(safe-area-inset-bottom);
+  transition: bottom 0.25s ease;
+} */
+
+footer {
+  padding: 4rem 1.6rem 4.8rem;
+}
+
 /* 검색 창 */
 #app_wrapper:has(.myp_search_container) ~ .gnb_container {
   z-index: 1;
@@ -47,11 +64,14 @@
 .myp_search_form input {
   height: 3.6rem;
   width: 100%;
-  padding: 0 3rem 0 1.2rem;
+  padding-left: 1.2rem;
   color: #000;
   font-family: var(--font-500);
-  font-size: 1.4rem;
+  font-size: 1.6rem;
+  transform: scale(0.875);
+  transform-origin: left center;
 }
+
 .myp_search_form input::placeholder {
   color: rgba(0, 0, 0, 0.4);
 }

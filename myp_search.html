@@ -254,40 +254,68 @@
         </p>
         <copy>Copyright (c) 2021 B.lot. All Rights Reserved.</copy>
       </footer>
+
+      <nav class="gnb_container gnb">
+        <div class="container">
+          <a href="/">
+            <img src="/src/assets/images/icons/icon_gnb_home@x3.png" alt="" />
+            <span>홈</span>
+          </a>
+          <a href="/pages/bombom/bombom.html">
+            <img src="/src/assets/images/icons/icon_gnb_bombom@x3.png" alt="" />
+            <span>봄,봄</span>
+          </a>
+          <a href="/pages/haebom/haebom.html" class="active">
+            <img
+              src="/src/assets/images/icons/icon_gnb_haebom_on@x3.png"
+              alt=""
+            />
+            <span>해봄</span>
+          </a>
+          <a href="/pages/gabom/gabom.html">
+            <img src="/src/assets/images/icons/icon_gnb_gabom@x3.png" alt="" />
+            <span>가봄</span>
+          </a>
+          <a href="/pages/sabom/sabom.html">
+            <img src="/src/assets/images/icons/icon_gnb_sabom@x3.png" alt="" />
+            <span>사봄</span>
+          </a>
+        </div>
+      </nav>
     </div>
-    <nav class="gnb_container gnb">
-      <div class="container">
-        <a href="/">
-          <img src="/src/assets/images/icons/icon_gnb_home@x3.png" alt="" />
-          <span>홈</span>
-        </a>
-        <a href="/pages/bombom/bombom.html">
-          <img src="/src/assets/images/icons/icon_gnb_bombom@x3.png" alt="" />
-          <span>봄,봄</span>
-        </a>
-        <a href="/pages/haebom/haebom.html" class="active">
-          <img
-            src="/src/assets/images/icons/icon_gnb_haebom_on@x3.png"
-            alt=""
-          />
-          <span>해봄</span>
-        </a>
-        <a href="/pages/gabom/gabom.html">
-          <img src="/src/assets/images/icons/icon_gnb_gabom@x3.png" alt="" />
-          <span>가봄</span>
-        </a>
-        <a href="/pages/sabom/sabom.html">
-          <img src="/src/assets/images/icons/icon_gnb_sabom@x3.png" alt="" />
-          <span>사봄</span>
-        </a>
-      </div>
-    </nav>
 
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
     <script>
       var swiper = new Swiper(".mySwiper", {
         slidesPerView: "auto",
       });
+
+      /* sticky + 마크업 위추 수정 안 먹힐 경우 시도 */
+      //   document.addEventListener("DOMContentLoaded", () => {
+      //     const searchInputs = document.querySelector(".myp_search_form input");
+      //     const gnb = document.querySelector(".gnb_container");
+
+      //     if (!gnb) return;
+
+      //     // iOS 가상 키보드 감지용
+      //     const isIOS = /iP(ad|hone|od)/i.test(navigator.userAgent);
+
+      //     searchInputs.forEach((input) => {
+      //       input.addEventListener("focus", () => {
+      //         if (isIOS) {
+      //           // 키패드가 올라왔을 때 살짝 내려줌 (시각적으로 안 사라짐)
+      //           gnb.style.bottom = `-8rem`;
+      //         }
+      //       });
+
+      //       input.addEventListener("blur", () => {
+      //         if (isIOS) {
+      //           // 키패드 내려가면 다시 제자리
+      //           gnb.style.bottom = `0`;
+      //         }
+      //       });
+      //     });
+      //   });
     </script>
   </body>
 </html>
