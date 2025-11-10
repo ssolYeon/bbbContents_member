@@ -221,7 +221,7 @@ footer {
 /* 플로팅 버튼 */
 .myp_floating_btnWrap {
   position: fixed;
-  bottom: 10rem;
+  bottom: 9.4rem;
   left: 50%;
   transform: translateX(-50%);
   display: flex;
@@ -268,7 +268,6 @@ footer {
   margin-top: 0.4rem;
 }
 .myp_input_group .alert_massage {
-  display: none;
   margin-top: 0.8rem;
   color: #ff3300;
   font-size: 1.4rem;
@@ -469,7 +468,7 @@ footer {
 
 /* 상세페이지 */
 .myp_detail_container {
-  padding: 2.4rem 1.6rem 0;
+  padding: 2.4rem 1.6rem 4rem;
 }
 .myp_detail_wrap {
   border-top: 2px solid #000;

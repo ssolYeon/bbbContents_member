@@ -4,6 +4,10 @@
 @import "../components/components.css";
 @import "myp_common.css";
 
+#app_wrapper main {
+  padding-bottom: 7.8rem;
+}
+
 /* 문의내역 */
 #app_wrapper:has(.myp_inquiry_container) {
   background-color: var(--bg-light-gray);
@@ -16,7 +20,7 @@
 }
 .myp_inquiry_container .myp_pagination {
   position: absolute;
-  bottom: 8rem;
+  bottom: 13.8rem;
   left: 50%;
   transform: translateX(-50%);
   width: calc(100% - 3.2rem);
@@ -24,6 +28,9 @@
 
 .myp_inquiry_list {
   margin-bottom: 9rem;
+}
+.myp_inquiry_container:has(.myp_pagination) .myp_inquiry_list {
+  margin-bottom: 15rem;
 }
 .myp_inquiry_item {
   padding: 2rem 1.6rem;

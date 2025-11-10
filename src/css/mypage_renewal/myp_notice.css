@@ -4,19 +4,41 @@
 @import "../components/components.css";
 @import "myp_common.css";
 
-/* 공지사항 목록 */
 #app_wrapper:has(.myp_notice_container) {
   background-color: var(--bg-light-gray);
 }
+#app_wrapper main {
+  padding-bottom: 7.8rem;
+}
 
+/* 공지사항 목록 */
 .myp_notice_container {
-  padding: 2.4rem 1.6rem 7rem;
+  padding: 2.4rem 1.6rem 4rem;
   height: 100%;
   position: relative;
 }
+
+.myp_notice_container:has(.bbb_empty_container) {
+  display: flex;
+  flex-direction: column;
+  padding-bottom: 2.4rem;
+}
+.myp_notice_container .bbb_empty_container img {
+  margin: -4.3rem auto 0;
+}
+.myp_notice_container .bbb_empty_container p {
+  font-size: 2.2rem;
+  font-weight: 600;
+  letter-spacing: -0.022rem;
+  margin-top: 1.6rem;
+}
+
+.myp_notice_container:has(.myp_pagination) {
+  padding-bottom: 11rem;
+}
 .myp_notice_container .myp_pagination {
   position: absolute;
-  bottom: 0;
+  bottom: 4rem;
   left: 50%;
   transform: translateX(-50%);
   width: calc(100% - 3.2rem);

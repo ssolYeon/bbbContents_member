@@ -4,9 +4,13 @@
 @import "../components/components.css";
 @import "myp_common.css";
 
+#app_wrapper main {
+  padding-bottom: 7.8rem;
+}
+
 /* 자주하는질문 목록 */
 .myp_faq_container {
-  padding: 2.4rem 1.6rem 0;
+  padding: 2.4rem 1.6rem 6rem;
 }
 .myp_faq_container .myp_round_tab {
   margin: 1.6rem 0;
