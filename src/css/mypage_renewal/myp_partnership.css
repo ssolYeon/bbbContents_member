@@ -7,6 +7,9 @@
 #app_wrapper main {
   padding-bottom: 4rem;
 }
+footer {
+  display: none;
+}
 
 /* 제휴 문의 */
 .myp_ptsInquiry_container {
@@ -88,8 +91,8 @@
 body:has(.myp_ptsComplete_container) {
   height: 100vh;
 }
-body:has(.myp_ptsComplete_container) #app_wrapper main {
-  padding-bottom: 4rem;
+body:has(.myp_ptsComplete_container) .gnb_container {
+  display: none;
 }
 .myp_ptsComplete_container {
   padding: 0 1.6rem;

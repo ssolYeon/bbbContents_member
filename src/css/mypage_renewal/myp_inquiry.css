@@ -4,15 +4,20 @@
 @import "../components/components.css";
 @import "myp_common.css";
 
-#app_wrapper main {
-  padding-bottom: 7.8rem;
-}
-
-/* 문의내역 */
 #app_wrapper:has(.myp_inquiry_container) {
   background-color: var(--bg-light-gray);
 }
+#app_wrapper:has(.myp_inquiry_container) main {
+  padding-bottom: 7.8rem;
+}
+#app_wrapper:has(.myp_inqWrite_container) main {
+  padding-bottom: 4rem;
+}
+footer {
+  display: none;
+}
 
+/* 문의내역 */
 .myp_inquiry_container {
   padding: 2.4rem 1.6rem 0;
   height: 100%;

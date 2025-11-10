@@ -7,6 +7,9 @@
 #app_wrapper main {
   padding-bottom: 7.8rem;
 }
+footer {
+  display: none;
+}
 
 /* 자주하는질문 목록 */
 .myp_faq_container {
