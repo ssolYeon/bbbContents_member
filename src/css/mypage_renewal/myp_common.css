@@ -355,6 +355,9 @@ footer {
   font-size: 1.4rem;
   line-height: 1;
   letter-spacing: -0.1rem;
+  margin-left: -1.3rem;
+  margin-right: 0.4rem;
+  margin-top: -0.35rem;
 }
 
 /* .myp_input_box.email input {
@@ -370,14 +373,15 @@ footer {
 } */
 .myp_input_box.phone {
   display: flex;
+  align-items: center;
 }
 .myp_input_box.phone input {
-  flex: 0 0 calc((100% / 3) / var(--input-scale));
-  width: calc((100% / 3) / var(--input-scale));
+  flex: 0 0 calc(((100% / 3) - 0.8rem) / var(--input-scale));
+  /* width: calc((100% / 3) / var(--input-scale)); */
 }
-.myp_input_box.phone input ~ input {
+/* .myp_input_box.phone input ~ input {
   margin-left: -1.7rem;
-}
+} */
 /* .myp_input_box.phone input .myp_input_box.adress {
   flex-direction: column;
   gap: 0.6rem;
