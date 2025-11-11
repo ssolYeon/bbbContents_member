@@ -8,7 +8,7 @@
   background-color: var(--bg-light-gray);
 }
 #app_wrapper main {
-  padding-bottom: 7.8rem;
+  padding-bottom: 0;
 }
 footer {
   display: none;
@@ -19,21 +19,6 @@ footer {
   padding: 2.4rem 1.6rem 4rem;
   height: 100%;
   position: relative;
-}
-
-.myp_notice_container:has(.bbb_empty_container) {
-  display: flex;
-  flex-direction: column;
-  padding-bottom: 2.4rem;
-}
-.myp_notice_container .bbb_empty_container img {
-  margin: -4.3rem auto 0;
-}
-.myp_notice_container .bbb_empty_container p {
-  font-size: 2.2rem;
-  font-weight: 600;
-  letter-spacing: -0.022rem;
-  margin-top: 1.6rem;
 }
 
 .myp_notice_container:has(.myp_pagination) {

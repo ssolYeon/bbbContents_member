@@ -406,9 +406,9 @@
       //   }
 
       // 입력할 때마다 즉시 검사
-      emailId.addEventListener("input", validateEmail);
+      // emailId.addEventListener("input", validateEmail);
       // emailDomain.addEventListener("change", validateEmail);
-      emailDirectInput.addEventListener("input", validateEmail);
+      // emailDirectInput.addEventListener("input", validateEmail);
 
       /* 첨부파일 */
       const fileInput = document.querySelector(".myp_attachment");
@@ -455,9 +455,6 @@
         ".myp_complete_pop .myp_button"
       );
       const mypCompletePop = document.querySelector(".myp_complete_pop");
-      const mypCompletePopDimm = document.querySelector(
-        ".myp_complete_pop_dimm"
-      );
 
       completeBtn.addEventListener("click", () => {
         mypCompletePop.classList.add("active");

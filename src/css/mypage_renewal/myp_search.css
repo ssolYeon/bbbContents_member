@@ -4,6 +4,22 @@
 @import "../components/components.css";
 @import "myp_common.css";
 
+/* category_toggle_navigation */
+#app_wrapper:has(.myp_searchResult_navigation a[data-tab="bb"].active)
+  .category_toggle_navigation {
+  top: 19rem;
+  height: calc(100% - 26.8rem);
+}
+#app_wrapper:has(.myp_searchResult_navigation a[data-tab="hb"].active)
+  .category_toggle_navigation,
+#app_wrapper:has(.myp_searchResult_navigation a[data-tab="gb"].active)
+  .category_toggle_navigation,
+#app_wrapper:has(.myp_searchResult_navigation a[data-tab="sb"].active)
+  .category_toggle_navigation {
+  top: 13rem;
+  height: calc(100% - 20.8rem);
+}
+
 /* 검색 창 */
 #app_wrapper:has(.myp_search_container) ~ .gnb_container {
   z-index: 1;
@@ -162,7 +178,7 @@
   line-height: 1.4;
   letter-spacing: -0.02rem;
 }
-.myp_searchResult_navigation a.avtive {
+.myp_searchResult_navigation a.active {
   color: #000;
 }
 .myp_searchResult_navigation.sub a {

@@ -5,7 +5,7 @@
 @import "myp_common.css";
 
 #app_wrapper main {
-  padding-bottom: 7.8rem;
+  padding-bottom: 0;
 }
 footer {
   display: none;
@@ -106,4 +106,24 @@ footer {
   font-size: 1.4rem;
   line-height: 1.4;
   letter-spacing: -0.014rem;
+}
+
+.myp_faq_container:has(.bbb_empty_container) {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+.myp_faq_container:has(.bbb_empty_container) .myp_faq_list,
+.myp_faq_container:has(.bbb_empty_container) #faq-pagination,
+.myp_faq_container:has(.bbb_empty_container) #faq-myp_faq_bottom {
+  margin-top: auto;
+}
+.myp_faq_container:has(.bbb_empty_container) #faq-pagination + .myp_faq_bottom {
+  margin-top: 0;
+}
+.myp_faq_container .bbb_empty_container p {
+  font-size: 2.2rem;
+  font-weight: 600;
+  letter-spacing: -0.022rem;
+  margin-top: 1.6rem;
 }

@@ -7,7 +7,7 @@
 }
 
 /* ios 이슈 */
-#app_wrapper .gnb_container {
+.gnb_container {
   position: sticky;
   height: calc(7.8rem + env(safe-area-inset-bottom));
   padding-bottom: env(safe-area-inset-bottom);
@@ -62,9 +62,9 @@ header .container h1 {
 }
 
 /* footer */
-footer {
+/* footer {
   padding-bottom: 12rem;
-}
+} */
 
 /* 라운드 탭 */
 .myp_round_tab {
