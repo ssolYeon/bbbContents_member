@@ -310,14 +310,24 @@
 
         window.visualViewport.addEventListener("resize", () => {
           const currentHeight = window.visualViewport.height;
-          // 화면 높이가 줄어들면 → 키보드가 올라온 상태
+
           if (currentHeight < initialHeight - 100) {
+            // 키보드 올라왔을 때
             gnbContainer.style.position = "absolute";
-            gnbContainer.style.bottom =
-              "calc(7.8rem + env(safe-area-inset-bottom))";
+
+            // 보이는 화면 하단에 붙이기 위해 bottom 대신 top 계산
+            const scrollTop =
+              window.scrollY || document.documentElement.scrollTop;
+            const topValue =
+              scrollTop + currentHeight - gnbContainer.offsetHeight;
+
+            gnbContainer.style.top = `${topValue}px`;
+            gnbContainer.style.bottom = "auto";
           } else {
+            // 키보드 내려갔을 때
             gnbContainer.style.position = "fixed";
             gnbContainer.style.bottom = "0";
+            gnbContainer.style.top = "auto";
           }
         });
       }
