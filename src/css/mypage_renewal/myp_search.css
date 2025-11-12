@@ -21,9 +21,6 @@
 }
 
 /* 검색 창 */
-#app_wrapper:has(.myp_search_container) ~ .gnb_container {
-  z-index: 1;
-}
 .myp_search_container {
   padding-top: 2.4rem;
 }
