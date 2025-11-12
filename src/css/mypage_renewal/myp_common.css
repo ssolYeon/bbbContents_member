@@ -11,6 +11,8 @@
   /* position: sticky;
   height: calc(7.8rem + env(safe-area-inset-bottom));
   padding-bottom: env(safe-area-inset-bottom); */
+  left: 50%;
+  transform: translateX(-50%);
   z-index: 1;
 }
 /* #app_wrapper .gnb_container {

@@ -302,7 +302,7 @@
     </div>
 
     <script>
-      const $nav = document.querySelector(".gnb_container"); // 하단 네비바
+      const gnbContainer = document.querySelector(".gnb_container"); // 하단 네비바
 
       if (window.visualViewport) {
         const initialHeight = window.visualViewport.height;
@@ -311,9 +311,9 @@
           const currentHeight = window.visualViewport.height;
           // 화면 높이가 줄어들면 → 키보드가 올라온 상태
           if (currentHeight < initialHeight - 100) {
-            $nav.style.position = "absolute";
+            gnbContainer.style.position = "absolute";
           } else {
-            $nav.style.position = "fixed";
+            gnbContainer.style.position = "fixed";
           }
         });
       }
