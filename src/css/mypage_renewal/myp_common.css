@@ -8,7 +8,6 @@
 
 /* ios 이슈 */
 .gnb_container {
-  transition: transform 0.3s ease;
   /* position: sticky;
   height: calc(7.8rem + env(safe-area-inset-bottom));
   padding-bottom: env(safe-area-inset-bottom); */
@@ -19,6 +18,9 @@
   padding-bottom: env(safe-area-inset-bottom);
   transition: bottom 0.25s ease;
 } */
+#app_wrapper:has(.gnb_container) {
+  position: relative;
+}
 #app_wrapper:has(.gnb_container) footer {
   padding-bottom: 4.2rem;
 }
