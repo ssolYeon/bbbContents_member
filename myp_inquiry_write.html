@@ -314,7 +314,7 @@
           // 키보드 올라온 상태 감지
           if (currentHeight < initialHeight - 100) {
             // nav를 화면 아래로 내리기
-            gnbContainer.style.transform = "translateY(100%)";
+            gnbContainer.style.transform = "translateY(calc(100% - 7.8rem))";
           } else {
             // 키보드 내려가면 다시 복귀
             gnbContainer.style.transform = "translateY(0)";
