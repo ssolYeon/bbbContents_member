@@ -308,22 +308,22 @@
       if (window.visualViewport) {
         const initialHeight = window.visualViewport.height;
 
-        const handleViewportChange = () => {
+        const updatePosition = () => {
           const currentHeight = window.visualViewport.height;
+          const offsetTop = window.visualViewport.offsetTop; // 키패드 올라오면 양수로 변함
 
+          // 키패드 올라왔는지 여부 판별
           if (currentHeight < initialHeight - 100) {
-            // 키패드 올라온 상태
-            gnbContainer.style.transform = "translateY(calc(100% - 7.8rem))";
+            // fixed 유지하면서 하단에 정확히 붙도록 보정
+            gnbContainer.style.transform = `translateY(${offsetTop}px)`;
           } else {
-            // 키패드 내려감
+            // 원상복귀
             gnbContainer.style.transform = "translateY(0)";
           }
         };
 
-        // 키패드 등장/사라짐 감지
-        window.visualViewport.addEventListener("resize", handleViewportChange);
-        // 키패드 올라온 상태에서 스크롤할 때도 다시 검사
-        window.visualViewport.addEventListener("scroll", handleViewportChange);
+        window.visualViewport.addEventListener("resize", updatePosition);
+        window.visualViewport.addEventListener("scroll", updatePosition);
       }
 
       /* 첨부 파일 업로드 */
