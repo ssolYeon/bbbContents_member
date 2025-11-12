@@ -12,9 +12,6 @@
   height: calc(7.8rem + env(safe-area-inset-bottom));
   padding-bottom: env(safe-area-inset-bottom); */
   z-index: 1;
-  left: 50%;
-  max-width: 39.3rem;
-  transform: translateX(-50%);
 }
 /* #app_wrapper .gnb_container {
   height: calc(7.8rem + env(safe-area-inset-bottom));

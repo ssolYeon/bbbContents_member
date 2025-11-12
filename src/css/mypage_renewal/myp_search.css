@@ -202,6 +202,18 @@
   letter-spacing: -0.022rem;
   margin-top: 1.6rem;
 }
+.myp_searchResult_container .bbb_empty_container {
+  padding-block: 12.4rem 13.8rem;
+}
+.myp_searchResult_container .bbb_empty_container img {
+  margin: 0 auto;
+}
+.myp_searchResult_container .bbb_empty_container p {
+  font-size: 2.2rem;
+  font-weight: 600;
+  letter-spacing: -0.022rem;
+  margin-top: 1.6rem;
+}
 .myp_searchResult_num {
   display: flex;
   align-items: center;

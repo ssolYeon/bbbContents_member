@@ -14,7 +14,6 @@
   padding-bottom: 7.8rem;
 }
 #app_wrapper:has(.myp_inqWrite_container) main {
-  /* padding-bottom: 4rem; */
   padding-bottom: 7.8rem;
 }
 footer {
@@ -111,7 +110,6 @@ footer {
 
 /* 문의하기 */
 .myp_inqWrite_container {
-  /* padding: 4rem 1.6rem 0; */
   padding: 4rem 1.6rem 4rem;
   overflow: hidden;
 }
@@ -232,6 +230,9 @@ footer {
 .myp_inqType_pop.active {
   display: flex;
 }
+body:has(.myp_inqType_pop.active) {
+  overflow: hidden;
+}
 .myp_inqType_pop_dimm {
   position: absolute;
   top: 0;
@@ -247,15 +248,19 @@ footer {
   border-radius: 1.6rem 1.6rem 0 0;
 }
 .myp_inqType_wrap .title {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
   margin-bottom: 2.4rem;
-  text-align: center;
   color: #000;
   font-family: var(--font-700);
   font-size: 1.8rem;
   line-height: 1;
   letter-spacing: -0.018rem;
 }
-.myp_inqType_list {
+.myp_inqType_close_btn {
+  width: 2.4rem;
+  height: 2.4rem;
 }
 .myp_inqType_item + .myp_inqType_item {
   border-top: 1px solid rgba(0, 0, 0, 0.08);

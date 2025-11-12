@@ -194,41 +194,49 @@
         </p>
         <copy>Copyright (c) 2021 B.lot. All Rights Reserved.</copy>
       </footer>
-
-      <nav class="gnb_container gnb">
-        <div class="container">
-          <a href="/">
-            <img src="/src/assets/images/icons/icon_gnb_home@x3.png" alt="" />
-            <span>홈</span>
-          </a>
-          <a href="/pages/bombom/bombom.html">
-            <img src="/src/assets/images/icons/icon_gnb_bombom@x3.png" alt="" />
-            <span>봄,봄</span>
-          </a>
-          <a href="/pages/haebom/haebom.html" class="active">
-            <img
-              src="/src/assets/images/icons/icon_gnb_haebom_on@x3.png"
-              alt=""
-            />
-            <span>해봄</span>
-          </a>
-          <a href="/pages/gabom/gabom.html">
-            <img src="/src/assets/images/icons/icon_gnb_gabom@x3.png" alt="" />
-            <span>가봄</span>
-          </a>
-          <a href="/pages/sabom/sabom.html">
-            <img src="/src/assets/images/icons/icon_gnb_sabom@x3.png" alt="" />
-            <span>사봄</span>
-          </a>
-        </div>
-      </nav>
     </div>
+
+    <nav class="gnb_container gnb">
+      <div class="container">
+        <a href="/">
+          <img src="/src/assets/images/icons/icon_gnb_home@x3.png" alt="" />
+          <span>홈</span>
+        </a>
+        <a href="/pages/bombom/bombom.html">
+          <img src="/src/assets/images/icons/icon_gnb_bombom@x3.png" alt="" />
+          <span>봄,봄</span>
+        </a>
+        <a href="/pages/haebom/haebom.html" class="active">
+          <img
+            src="/src/assets/images/icons/icon_gnb_haebom_on@x3.png"
+            alt=""
+          />
+          <span>해봄</span>
+        </a>
+        <a href="/pages/gabom/gabom.html">
+          <img src="/src/assets/images/icons/icon_gnb_gabom@x3.png" alt="" />
+          <span>가봄</span>
+        </a>
+        <a href="/pages/sabom/sabom.html">
+          <img src="/src/assets/images/icons/icon_gnb_sabom@x3.png" alt="" />
+          <span>사봄</span>
+        </a>
+      </div>
+    </nav>
 
     <!-- 문의 유형 팝업 -->
     <div class="myp_inqType_pop">
       <div class="myp_inqType_pop_dimm"></div>
       <div class="myp_inqType_wrap">
-        <p class="title">문의 유형</p>
+        <p class="title">
+          문의 유형
+          <button type="button" class="myp_inqType_close_btn">
+            <img
+              src="/src/assets/images//icons/icon_close_black_24@x3.png"
+              alt=""
+            />
+          </button>
+        </p>
         <ul class="myp_inqType_list">
           <li class="myp_inqType_item">
             <a href="javascript:;" class="myp_inqType_link">
@@ -295,6 +303,22 @@
     </div>
 
     <script>
+      const gnbContainer = document.querySelector(".gnb_container");
+
+      if (window.visualViewport) {
+        const initialHeight = window.visualViewport.height;
+
+        window.visualViewport.addEventListener("resize", () => {
+          const currentHeight = window.visualViewport.height;
+          // 화면 높이가 줄어들면 → 키보드가 올라온 상태
+          if (currentHeight < initialHeight - 100) {
+            gnbContainer.style.position = "absolute";
+          } else {
+            gnbContainer.style.position = "fixed";
+          }
+        });
+      }
+
       /* 첨부 파일 업로드 */
       const fileInput = document.querySelector(".myp_attachment");
       const preview = document.querySelector(".myp_attachment_preview");
@@ -341,13 +365,13 @@
       /* 문의 유형 팝업 */
       const inquiryBtn = document.querySelector(".myp_inquiry_btn");
       const inquiryPop = document.querySelector(".myp_inqType_pop");
-      const inquiryPopDimm = document.querySelector(".myp_inqType_pop_dimm");
+      const inquiryCloseBtn = document.querySelector(".myp_inqType_close_btn");
 
       inquiryBtn.addEventListener("click", () => {
         inquiryPop.classList.add("active");
       });
 
-      inquiryPopDimm.addEventListener("click", () => {
+      inquiryCloseBtn.addEventListener("click", () => {
         inquiryPop.classList.remove("active");
       });
 
