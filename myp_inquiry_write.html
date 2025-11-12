@@ -315,7 +315,7 @@
           // 키패드 올라왔는지 여부 판별
           if (currentHeight < initialHeight - 100) {
             // fixed 유지하면서 하단에 정확히 붙도록 보정
-            gnbContainer.style.transform = `translateY(${offsetTop}px)`;
+            gnbContainer.style.transform = `translateY(calc(${offsetTop}px - 7.8rem))`;
           } else {
             // 원상복귀
             gnbContainer.style.transform = "translateY(0)";
