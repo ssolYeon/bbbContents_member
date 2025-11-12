@@ -311,23 +311,13 @@
         window.visualViewport.addEventListener("resize", () => {
           const currentHeight = window.visualViewport.height;
 
+          // 키보드 올라온 상태 감지
           if (currentHeight < initialHeight - 100) {
-            // 키보드 올라왔을 때
-            gnbContainer.style.position = "absolute";
-
-            // 보이는 화면 하단에 붙이기 위해 bottom 대신 top 계산
-            const scrollTop =
-              window.scrollY || document.documentElement.scrollTop;
-            const topValue =
-              scrollTop + currentHeight - gnbContainer.offsetHeight;
-
-            gnbContainer.style.top = `${topValue}px`;
-            gnbContainer.style.bottom = "auto";
+            // nav를 화면 아래로 내리기
+            gnbContainer.style.transform = "translateY(100%)";
           } else {
-            // 키보드 내려갔을 때
-            gnbContainer.style.position = "fixed";
-            gnbContainer.style.bottom = "0";
-            gnbContainer.style.top = "auto";
+            // 키보드 내려가면 다시 복귀
+            gnbContainer.style.transform = "translateY(0)";
           }
         });
       }
