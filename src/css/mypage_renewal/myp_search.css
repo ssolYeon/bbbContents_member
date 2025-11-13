@@ -7,8 +7,13 @@
 /* category_toggle_navigation */
 #app_wrapper:has(.myp_searchResult_navigation a[data-tab="bb"].active)
   .category_toggle_navigation {
-  top: 19rem;
-  height: calc(100% - 26.8rem);
+  top: 13.5rem;
+  height: calc(100% - 59.2rem);
+}
+#app_wrapper:has(.myp_searchResult_navigation a[data-tab="bb"].active)
+  .category_toggle_navigation
+  .scroller_container {
+  max-height: 38.4rem;
 }
 #app_wrapper:has(.myp_searchResult_navigation a[data-tab="hb"].active)
   .category_toggle_navigation,
@@ -16,8 +21,19 @@
   .category_toggle_navigation,
 #app_wrapper:has(.myp_searchResult_navigation a[data-tab="sb"].active)
   .category_toggle_navigation {
-  top: 13rem;
-  height: calc(100% - 20.8rem);
+  top: 7.5rem;
+  height: calc(100% - 47.1rem);
+}
+#app_wrapper:has(.myp_searchResult_navigation a[data-tab="hb"].active)
+  .category_toggle_navigation
+  .scroller_container,
+#app_wrapper:has(.myp_searchResult_navigation a[data-tab="gb"].active)
+  .category_toggle_navigation
+  .scroller_container,
+#app_wrapper:has(.myp_searchResult_navigation a[data-tab="sb"].active)
+  .category_toggle_navigation
+  .scroller_container {
+  max-height: 44.4rem;
 }
 
 /* 검색 창 */

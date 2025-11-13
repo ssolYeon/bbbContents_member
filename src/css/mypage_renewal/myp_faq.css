@@ -4,9 +4,6 @@
 @import "../components/components.css";
 @import "myp_common.css";
 
-#app_wrapper main {
-  padding-bottom: 0;
-}
 footer {
   display: none;
 }

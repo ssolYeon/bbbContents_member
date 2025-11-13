@@ -7,15 +7,6 @@
 #app_wrapper:has(.myp_inquiry_container) {
   background-color: var(--bg-light-gray);
 }
-#app_wrapper:has(.myp_detail_container) main {
-  padding-bottom: 0;
-}
-#app_wrapper:has(.myp_inquiry_container) main {
-  padding-bottom: 7.8rem;
-}
-#app_wrapper:has(.myp_inqWrite_container) main {
-  padding-bottom: 7.8rem;
-}
 footer {
   display: none;
 }
@@ -110,7 +101,7 @@ footer {
 
 /* 문의하기 */
 .myp_inqWrite_container {
-  padding: 4rem 1.6rem 4rem;
+  padding: 4rem 1.6rem;
   overflow: hidden;
 }
 

@@ -4,83 +4,321 @@
 @import "../components/components.css";
 @import "myp_common.css";
 
-#app_wrapper:has(.myp_notice_container) {
+#app_wrapper:has(.myp_inquiry_container) {
   background-color: var(--bg-light-gray);
-}
-#app_wrapper main {
-  padding-bottom: 0;
 }
 footer {
   display: none;
 }
 
-/* 공지사항 목록 */
-.myp_notice_container {
-  padding: 2.4rem 1.6rem 4rem;
+/* 문의내역 */
+.myp_inquiry_container {
+  padding: 2.4rem 1.6rem 0;
   height: 100%;
   position: relative;
 }
-
-.myp_notice_container:has(.myp_pagination) {
-  padding-bottom: 11rem;
-}
-.myp_notice_container .myp_pagination {
+.myp_inquiry_container .myp_pagination {
   position: absolute;
-  bottom: 4rem;
+  bottom: 5.8rem;
   left: 50%;
   transform: translateX(-50%);
   width: calc(100% - 3.2rem);
 }
 
-.myp_notice_list {
-  margin-top: 1.6rem;
+.myp_inquiry_container:has(.myp_pagination) .myp_inquiry_list {
+  margin-bottom: 7rem;
 }
-.myp_notice_item {
-  padding: 2rem;
+.myp_inquiry_item {
+  padding: 2rem 1.6rem;
   border-radius: 1.2rem;
   background-color: #fff;
 }
-.myp_notice_item + .myp_notice_item {
+.myp_inquiry_item + .myp_inquiry_item {
   margin-top: 1rem;
 }
-.myp_notice_top {
+.myp_inquiry_title {
+  color: #000;
+  font-family: var(--font-600);
+  font-size: 1.6rem;
+  line-height: 1.4;
+  letter-spacing: -0.016rem;
+}
+.myp_inquiry_bottom {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  margin-top: 1.2rem;
 }
-.myp_notice_info {
-  font-size: 0;
+.myp_inquiry_info {
+  display: flex;
 }
-.myp_notice_info .sub_title {
-  color: #000;
-  font-family: var(--font-700);
-  font-size: 1.4rem;
-  line-height: 1.4;
-  letter-spacing: -0.014rem;
-}
-.myp_notice_info .sub_title + .sub_title:before {
-  content: "";
-  margin: 0 0.8rem;
-  display: inline-block;
-  height: 1rem;
-  width: 0.1rem;
-  background-color: rgba(0, 0, 0, 0.2);
-}
-.myp_notice_info .emphasis {
-  color: #f33;
-}
-.myp_notice_date {
-  color: rgba(0, 0, 0, 0.4);
+.myp_inquiry_info .sub_title,
+.myp_inquiry_info .date {
   font-family: var(--font-400);
   font-size: 1.2rem;
   line-height: 1;
   letter-spacing: -0.012rem;
 }
-.myp_notice_title {
+.myp_inquiry_info .sub_title {
+  color: rgba(0, 0, 0, 0.56);
+}
+.myp_inquiry_info .sub_title:after {
+  content: "";
+  margin: 0 0.8rem;
+  display: inline-block;
+  height: 0.8rem;
+  width: 0.1rem;
+  background-color: rgba(0, 0, 0, 0.2);
+}
+.myp_inquiry_info .date {
+  display: flex;
+  gap: 0.4rem;
+  color: rgba(0, 0, 0, 0.4);
+}
+.myp_inquiry_status {
+  color: rgba(0, 0, 0, 0.56);
+  font-family: var(--font-400);
+  font-size: 1.2rem;
+  line-height: 1;
+  letter-spacing: -0.012rem;
+}
+.myp_inquiry_status.completed {
+  display: flex;
+  gap: 0.4rem;
+  color: var(--color-primary-myp);
+  font-family: var(--font-500);
+}
+.myp_inquiry_status.completed:before {
+  content: "";
+  display: inline-block;
+  width: 1.21rem;
+  height: 1.21rem;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12' fill='none'%3E%3Ccircle cx='6' cy='6' r='6' fill='%235700ED'/%3E%3Cpath d='M3 5.5L5.30769 8L9 4' stroke='white'/%3E%3C/svg%3E");
+  background-position: center;
+  background-size: 1.2rem;
+  background-repeat: no-repeat;
+}
+
+/* 문의하기 */
+.myp_inqWrite_container {
+  padding: 4rem 1.6rem;
+  overflow: hidden;
+}
+
+.myp_inqWrite_container .myp_input_attachment {
+  border-radius: 1.2rem;
+  background-color: #f5f5f5;
+  padding: 1.6rem;
+}
+.myp_inqWrite_container .myp_attachment_inner {
+  overflow-x: scroll;
+  display: flex;
+  scrollbar-width: none;
+}
+.myp_inqWrite_container .myp_input_attachment input[type="file"] {
+  position: absolute;
+  width: 0;
+  height: 0;
+  opacity: 0;
+}
+.myp_inqWrite_container .myp_input_attachment input[type="file"] + label {
+  flex: 0 0 auto;
+  width: 6.4rem;
+  height: 6.4rem;
+}
+.myp_inqWrite_container .myp_attachment_preview {
+  display: flex;
+  align-items: center;
+  flex: 0 0 auto;
+  gap: 0.8rem;
+}
+.myp_inqWrite_container .myp_attachment_preview:has(.image_box) {
+  margin-left: 0.8rem;
+}
+.myp_inqWrite_container .myp_attachment_preview .image_box {
+  position: relative;
+  width: 6.4rem;
+  height: 6.4rem;
+  border-radius: 0.6rem;
+  overflow: hidden;
+}
+.myp_inqWrite_container .myp_attachment_preview .btn_delete {
+  position: absolute;
+  right: 0;
+  top: 0;
+  width: 2.4rem;
+  height: 2.4rem;
+  background-image: url("data:image/svg+xml,%3Csvg width='24' height='24' viewBox='0 0 24 24' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Crect x='3' y='3' width='18' height='18' rx='9' fill='black' fill-opacity='0.8'/%3E%3Cpath d='M8.25 8.25L15.75 15.75' stroke='white' stroke-linecap='round'/%3E%3Cpath d='M15.75 8.25L8.25 15.75' stroke='white' stroke-linecap='round'/%3E%3C/svg%3E%0A");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: 2.4rem;
+}
+.myp_inqWrite_container .myp_input_attachment + .info_text {
+  color: rgba(0, 0, 0, 0.56);
+  font-family: var(--font-400);
+  font-size: 1.2rem;
+  line-height: 1.4;
+  letter-spacing: -0.012rem;
   margin-top: 1.2rem;
+}
+
+.myp_inqWrite_container .myp_chackbox label {
+  color: #000;
+  font-family: var(--font-500);
+  font-size: 1.4rem;
+  line-height: 1;
+  letter-spacing: -0.014rem;
+}
+.myp_inqWrite_container .myp_chackbox .info_text {
+  color: rgba(0, 0, 0, 0.56);
+  font-family: var(--font-400);
+  font-size: 1.4rem;
+  line-height: 1;
+  letter-spacing: -0.014rem;
+  margin-left: 2.8rem;
+}
+.myp_inqWrite_container .myp_input_group {
+  margin-bottom: 2.4rem;
+}
+.myp_inqWrite_container .myp_button_wrap {
+  margin-top: 3rem;
+}
+
+.myp_inquiry_btn {
+  display: block;
+  color: #000;
+  font-family: var(--font-500);
+  font-size: 1.4rem;
+  letter-spacing: -0.014rem;
+  height: 4.4rem;
+  width: 100%;
+  padding: 0 1.2rem;
+  line-height: 1;
+  text-align: left;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  border-radius: 0.6rem;
+  background-color: #fff;
+  background-color: #fff;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 16 16' fill='none'%3E%3Cpath d='M4 6.5L7.85858 10.3586C7.93668 10.4367 8.06332 10.4367 8.14142 10.3586L12 6.5' stroke='black' stroke-linecap='round'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 1.2rem center;
+  background-size: 1.6rem;
+}
+
+.myp_inqType_pop {
+  display: none;
+  flex-direction: column;
+  justify-content: flex-end;
+  position: fixed;
+  top: 0;
+  left: 50%;
+  max-width: 39.3rem;
+  width: 100%;
+  height: 100vh;
+  transform: translateX(-50%);
+  z-index: 100;
+}
+.myp_inqType_pop.active {
+  display: flex;
+}
+body:has(.myp_inqType_pop.active) {
+  overflow: hidden;
+}
+.myp_inqType_pop_dimm {
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-color: rgba(0, 0, 0, 0.8);
+  height: 100%;
+  width: 100%;
+  z-index: -1;
+}
+.myp_inqType_wrap {
+  padding: 1.6rem 1.6rem 2.4rem;
+  background-color: #fff;
+  border-radius: 1.6rem 1.6rem 0 0;
+}
+.myp_inqType_wrap .title {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 2.4rem;
+  color: #000;
+  font-family: var(--font-700);
+  font-size: 1.8rem;
+  line-height: 1;
+  letter-spacing: -0.018rem;
+}
+.myp_inqType_close_btn {
+  width: 2.4rem;
+  height: 2.4rem;
+}
+.myp_inqType_item + .myp_inqType_item {
+  border-top: 1px solid rgba(0, 0, 0, 0.08);
+}
+.myp_inqType_link {
+  display: flex;
+  align-items: center;
+  gap: 1.2rem;
+  padding: 1.8rem 0.8rem;
   color: #000;
   font-family: var(--font-500);
   font-size: 1.6rem;
-  line-height: 1.4;
+  line-height: 1;
   letter-spacing: -0.016rem;
+}
+.myp_inqType_link img {
+  width: 2rem;
+  height: 2rem;
+}
+
+/* 문의하기 상세 */
+.detail_attachment {
+  overflow-x: scroll;
+  scrollbar-width: none;
+  display: flex;
+  gap: 0.8rem;
+  margin-top: 2.4rem;
+}
+.detail_attachment_item {
+  width: 12rem;
+  height: 12rem;
+  flex: 0 0 auto;
+}
+
+.myp_detail_answer {
+  border-radius: 0.6rem;
+  background: #fafafa;
+  padding: 2.4rem 1.6rem;
+  margin-bottom: 2rem;
+}
+.myp_detail_answer .manager {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  margin-bottom: 1.2rem;
+}
+.myp_detail_answer .manager span:nth-of-type(1) {
+  border-radius: 3rem;
+  background-color: #000;
+  color: #fff;
+  font-family: var(--font-400);
+  font-size: 1.2rem;
+  line-height: 1;
+  letter-spacing: -0.012rem;
+  padding: 0.4rem 0.8rem;
+}
+.myp_detail_answer .manager span:nth-of-type(2) {
+  color: rgba(0, 0, 0, 0.8);
+  font-family: var(--font-500);
+  font-size: 1.4rem;
+  line-height: 1.4;
+  letter-spacing: -0.014rem;
+}
+.myp_detail_answer p {
+  color: rgba(0, 0, 0, 0.8);
+  font-family: var(--font-400);
+  font-size: 1.4rem;
+  line-height: 1.48;
+  letter-spacing: -0.014rem;
 }

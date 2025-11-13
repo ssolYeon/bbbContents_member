@@ -4,16 +4,13 @@
 @import "../components/components.css";
 @import "myp_common.css";
 
-#app_wrapper main {
-  padding-bottom: 4rem;
-}
 footer {
   display: none;
 }
 
 /* 제휴 문의 */
 .myp_ptsInquiry_container {
-  padding: 2.4rem 1.6rem 0;
+  padding: 2.4rem 1.6rem 4rem;
   overflow: hidden;
 }
 .myp_ptsInquiry_container .myp_input_group {
