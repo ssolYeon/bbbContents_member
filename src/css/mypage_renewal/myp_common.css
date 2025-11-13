@@ -2,6 +2,23 @@
 
 @import url("https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap");
 
+/******* 로컬 폴더에서만 적용*******/
+.sr-only {
+  position: absolute;
+  overflow: hidden;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  border: 0;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+}
+#app_wrapper {
+  position: relative;
+}
+/******* 로컬 폴더에서만 적용*******/
+
 :root {
   --color-primary-myp: #5700ed;
 }

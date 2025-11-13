@@ -290,32 +290,21 @@
         slidesPerView: "auto",
       });
 
-      /* sticky + 마크업 위추 수정 안 먹힐 경우 시도 */
-      //   document.addEventListener("DOMContentLoaded", () => {
-      //     const searchInputs = document.querySelector(".myp_search_form input");
-      //     const gnb = document.querySelector(".gnb_container");
+      const gnbContainer = document.querySelector(".gnb_container");
 
-      //     if (!gnb) return;
+      if (window.visualViewport) {
+        const initialHeight = window.visualViewport.height;
 
-      //     // iOS 가상 키보드 감지용
-      //     const isIOS = /iP(ad|hone|od)/i.test(navigator.userAgent);
-
-      //     searchInputs.forEach((input) => {
-      //       input.addEventListener("focus", () => {
-      //         if (isIOS) {
-      //           // 키패드가 올라왔을 때 살짝 내려줌 (시각적으로 안 사라짐)
-      //           gnb.style.bottom = `-8rem`;
-      //         }
-      //       });
-
-      //       input.addEventListener("blur", () => {
-      //         if (isIOS) {
-      //           // 키패드 내려가면 다시 제자리
-      //           gnb.style.bottom = `0`;
-      //         }
-      //       });
-      //     });
-      //   });
+        window.visualViewport.addEventListener("resize", () => {
+          const currentHeight = window.visualViewport.height;
+          // 화면 높이가 줄어들면 → 키보드가 올라온 상태
+          if (currentHeight < initialHeight - 100) {
+            gnbContainer.style.position = "absolute";
+          } else {
+            gnbContainer.style.position = "fixed";
+          }
+        });
+      }
     </script>
   </body>
 </html>
