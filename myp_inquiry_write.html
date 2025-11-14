@@ -302,14 +302,18 @@
     </div>
 
     <script>
+      /* --------------------------------------------------------------
+				안드로이드·iOS 키보드 활성화 시 GNB 고정 해제
+			-------------------------------------------------------------- */
       const gnbContainer = document.querySelector(".gnb_container");
 
-      if (window.visualViewport) {
+      if (gnbContainer && window.visualViewport) {
         const initialHeight = window.visualViewport.height;
 
         window.visualViewport.addEventListener("resize", () => {
           const currentHeight = window.visualViewport.height;
-          // 화면 높이가 줄어들면 → 키보드가 올라온 상태
+
+          // 키보드가 올라오면 화면 높이가 줄어듦
           if (currentHeight < initialHeight - 100) {
             gnbContainer.style.position = "absolute";
           } else {
@@ -317,6 +321,26 @@
           }
         });
       }
+
+      /* --------------------------------------------------------------
+				iOS Safari 더블 탭으로 화면 내려가는 현상 방지
+			-------------------------------------------------------------- */
+      let lastTouchTime = 0;
+
+      document.addEventListener(
+        "touchstart",
+        function (event) {
+          const now = Date.now();
+
+          // 300ms 이내 연속 터치면 더블탭으로 처리
+          if (now - lastTouchTime <= 300) {
+            event.preventDefault(); // Safari 기본 동작 차단
+          }
+
+          lastTouchTime = now;
+        },
+        { passive: false } // preventDefault() 허용
+      );
 
       /* 첨부 파일 업로드 */
       const fileInput = document.querySelector(".myp_attachment");
