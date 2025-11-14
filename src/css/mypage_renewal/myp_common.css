@@ -3,6 +3,14 @@
 @import url("https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap");
 
 /******* 로컬 폴더에서만 적용*******/
+html,
+body {
+  -webkit-touch-callout: none;
+  -webkit-tap-highlight-color: transparent;
+}
+* {
+  -webkit-user-select: none;
+}
 .sr-only {
   position: absolute;
   overflow: hidden;
@@ -24,10 +32,6 @@
 }
 
 /* layout */
-* {
-  -webkit-user-select: none;
-}
-
 html,
 body {
   height: 100%;
