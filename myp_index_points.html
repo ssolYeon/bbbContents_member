@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>나의 쇼핑 전체보기 - 마이페이지</title>
+    <title>포인트 내역 - 마이페이지</title>
 
     <link rel="stylesheet" href="/src/css/base/defalt.css" />
     <link rel="stylesheet" href="/src/css/components/components.css" />
@@ -12,82 +12,80 @@
   </head>
   <body>
     <header>
-      <h1 class="sr-only">나의 쇼핑 전체</h1>
+      <h1 class="sr-only">포인트 내역</h1>
       <div class="container">
         <a href="javascript:;" id="backLink"
           ><img src="/src/assets/images/icons/icon_back_black@x3.png" alt=""
         /></a>
-        <h1>나의 쇼핑 전체</h1>
+        <h1>포인트 내역</h1>
       </div>
     </header>
 
     <div id="app_wrapper">
       <main>
-        <div class="myp_container">
-          <ul class="myp_shopping_menu">
-            <li class="menu_item">
-              <a
-                href="https://shop.bombombom.im/mypage/order_catalog"
-                class="menu_link"
-                >예약/구매 내역</a
-              >
+        <!-- 포인트 내역이 있을 때 -->
+        <div class="myp_container bg_grey">
+          <div class="myp_points_top">
+            <img
+              src="src/assets/images/myp_renewl_images/icon_point_list.png"
+            />
+            <p class="points_info">
+              <b class="name">홍길동(honggildong)님</b>이<br />
+              보유한 포인트는 <b class="number">10,000P</b> 입니다.
+            </p>
+            <dl class="points_expiring">
+              <dt>소멸 예정</dt>
+              <dd>483 P</dd>
+            </dl>
+          </div>
+
+          <ul class="myp_points_list">
+            <li class="points_item">
+              <p class="title">적립</p>
+              <p class="info text_ellipsis_2">
+                구매 포인트 적립 구매 포인트 적립 구매 포인트 적립 구매 포인트
+                적립 구매 포인트 적립 구매 포인트 적립 구매 포인트 적립
+              </p>
+              <p class="date">2025.10.13</p>
+              <div class="point"><b>+132</b> P</div>
             </li>
-            <li class="menu_item">
-              <a
-                href="https://shop.bombombom.im/mypage/refund_catalog"
-                class="menu_link"
-                >취소/환불 내역</a
-              >
+            <li class="points_item">
+              <p class="title">적립</p>
+              <p class="info text_ellipsis_2">구매 포인트 적립</p>
+              <p class="date">2025.10.13</p>
+              <div class="point"><b>+132</b> P</div>
             </li>
-            <li class="menu_item">
-              <a
-                href="https://shop.bombombom.im/mypage/return_catalog"
-                class="menu_link"
-                >반품/교환 내역</a
-              >
+            <li class="points_item">
+              <p class="title">적립</p>
+              <p class="info text_ellipsis_2">구매 포인트 적립</p>
+              <p class="date">2025.10.13</p>
+              <div class="point"><b>+132</b> P</div>
             </li>
-            <li class="menu_item">
-              <a
-                href="https://shop.bombombom.im/mypage/wish?code=all"
-                class="menu_link"
-                >찜한 상품</a
-              >
+            <li class="points_item">
+              <p class="title">적립</p>
+              <p class="info text_ellipsis_2">구매 포인트 적립</p>
+              <p class="date">2025.10.13</p>
+              <div class="point"><b>+132</b> P</div>
             </li>
-            <li class="menu_item">
-              <a
-                href="https://shop.bombombom.im/goods/recently"
-                class="menu_link"
-                >최근본상품</a
-              >
-            </li>
-            <li class="menu_item">
-              <a href="https://shop.bombombom.im/order/cart" class="menu_link"
-                >장바구니</a
-              >
-            </li>
-            <li class="menu_item">
-              <a
-                href="https://shop.bombombom.im/mypage/mygdreview_catalog"
-                class="menu_link"
-                >리뷰관리</a
-              >
-            </li>
-            <li class="menu_item">
-              <a
-                href="https://shop.bombombom.im/mypage/delivery_address?tab=1"
-                class="menu_link"
-                >배송지 관리</a
-              >
-            </li>
-            <li class="menu_item">
-              <a
-                href="https://shop.bombombom.im/mypage/taxinvoice"
-                class="menu_link"
-                >세금계산서</a
-              >
+            <li class="points_item">
+              <p class="title">적립</p>
+              <p class="info text_ellipsis_2">구매 포인트 적립</p>
+              <p class="date">2025.10.13</p>
+              <div class="point"><b>+132</b> P</div>
             </li>
           </ul>
         </div>
+
+        <!-- 포인트 내역이 없을 때 -->
+        <!-- <div class="myp_container_empty">
+          <div class="bbb_empty_container" id="bbb_empty_container">
+            <img
+              src="/src/assets/images/icons/icon_empty_search@x3.png"
+              alt=""
+            />
+            <p>포인트 내역이 없습니다.</p>
+          </div>
+        </div> -->
       </main>
 
       <footer>

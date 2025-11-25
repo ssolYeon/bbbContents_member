@@ -1,0 +1,183 @@
+@charset "UTF-8";
+
+footer {
+  display: none;
+}
+
+.myp_container {
+  padding: 2.4rem 1.6rem 6rem;
+}
+.myp_container.bg_grey {
+  background-color: #f5f5f5;
+}
+
+/* ************************
+	나의 쇼핑 전체
+************************ */
+#app_wrapper:has(.myp_shopping_menu) main {
+  padding-bottom: 0;
+}
+#app_wrapper:has(.myp_shopping_menu) .gnb_container {
+  display: none;
+}
+.myp_shopping_menu {
+  border-top: 1px solid rgba(0, 0, 0, 0.08);
+}
+.myp_shopping_menu .menu_item {
+  border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+}
+.myp_shopping_menu .menu_link {
+  display: block;
+  padding: 2.4rem 0;
+  color: rgba(0, 0, 0, 0.8);
+  font-family: var(--font-500);
+  font-size: 1.6rem;
+  letter-spacing: -0.016rem;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 20 20' fill='none'%3E%3Cg opacity='0.4'%3E%3Cpath d='M7 16L12.7879 10.2121C12.905 10.095 12.905 9.90503 12.7879 9.78787L7 4' stroke='black' stroke-linecap='round'/%3E%3C/g%3E%3C/svg%3E");
+  background-position: right center;
+  background-repeat: no-repeat;
+  background-size: 2rem 2rem;
+}
+
+/* ************************
+	최근 본, 좋아요
+************************ */
+.myp_contents_wrap .total_post {
+  margin-bottom: 1.6rem;
+  color: #000;
+  font-family: var(--font-500);
+  font-size: 1.4rem;
+  line-height: 1;
+  letter-spacing: -0.042rem;
+}
+.myp_contents_wrap .total_post b {
+  font-family: "Inter", sans-serif;
+  font-weight: 700;
+}
+.myp_contents_wrap .thumbnail .card_top_marker span {
+  max-width: 12.2rem;
+  display: inline-block;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.myp_contents_wrap .component_information_container a {
+  padding-top: 1.2rem;
+}
+.myp_contents_wrap
+  .contents_card.half
+  .component_information_container
+  .card_tag_container {
+  display: flex;
+}
+
+/* ************************
+	포인트 내역
+************************ */
+.myp_points_top {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 2.4rem 0;
+  border-radius: 1.2rem;
+  background-color: #fff;
+}
+.myp_points_top img {
+  width: 8rem;
+}
+.myp_points_top .points_info {
+  margin: 1.6rem 0;
+  color: #000;
+  text-align: center;
+  font-family: var(--font-400);
+  font-size: 1.8rem;
+  line-height: 1.48;
+  letter-spacing: -0.018rem;
+  opacity: 0.8;
+}
+.myp_points_top .name,
+.myp_points_top .number {
+  font-family: var(--font-700);
+}
+.myp_points_top .number {
+  color: #5700ed;
+}
+.myp_points_top .points_expiring {
+  display: flex;
+  gap: 0.6rem;
+}
+.myp_points_top .points_expiring dt,
+.myp_points_top .points_expiring dd {
+  color: #000;
+  font-size: 1.4rem;
+  line-height: 1;
+  letter-spacing: -0.014rem;
+}
+.myp_points_top .points_expiring dt {
+  font-family: var(--font-500);
+  opacity: 0.8;
+}
+.myp_points_top .points_expiring dd {
+  font-family: "Inter", sans-serif;
+  font-weight: 700;
+  opacity: 0.96;
+}
+.myp_points_list {
+  margin-top: 2.4rem;
+}
+.myp_points_list .points_item {
+  position: relative;
+  padding: 1.6rem 6.4rem 1.6rem 2rem;
+  border-radius: 1.2rem;
+  background-color: #fff;
+}
+.myp_points_list .points_item + .points_item {
+  margin-top: 1rem;
+}
+.myp_points_list .title {
+  color: #000;
+  font-family: var(--font-700);
+  font-size: 1.4rem;
+  line-height: 1.4;
+  letter-spacing: -0.014rem;
+}
+.myp_points_list .info {
+  margin: 0.2rem 0 1.2rem;
+  color: rgba(0, 0, 0, 0.8);
+  font-family: var(--font-400);
+  font-size: 1.4rem;
+  line-height: 1.4;
+  letter-spacing: -0.014rem;
+}
+.myp_points_list .date {
+  color: rgba(0, 0, 0, 0.4);
+  font-family: var(--font-400);
+  font-size: 1.2rem;
+  line-height: 1;
+  letter-spacing: -0.012rem;
+}
+.myp_points_list .point {
+  position: absolute;
+  top: 50%;
+  right: 1.2rem;
+  transform: translateY(-50%);
+  padding: 0.4rem 0.6rem;
+  color: #5700ed;
+  font-family: "Inter", sans-serif;
+  font-size: 1.2rem;
+  font-weight: 500;
+  line-height: 1.4;
+  letter-spacing: -0.012rem;
+  border-radius: 0.6rem;
+  background-color: rgba(87, 0, 237, 0.08);
+}
+.myp_points_list .point .num {
+}
+
+/* ************************
+	내역이 없을 때 (공통)
+************************ */
+.myp_container_empty {
+  display: flex;
+  height: 100%;
+}

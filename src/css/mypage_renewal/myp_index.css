@@ -7,8 +7,6 @@
 /* ************************
 	마이페이지 메인	
 ************************ */
-
-/* 마이페이지 공통 */
 .inter-600 {
   font-family: "Inter", sans-serif;
   font-weight: 600;
@@ -22,11 +20,8 @@
   border-color: #5700ed !important;
 }
 
-.myp_container {
-  padding: 2.4rem 1.6rem 4rem;
-}
-.myp_common_section + .myp_common_section {
-  margin-top: 4rem;
+.myp_common_section {
+  padding: 2rem 1.6rem;
 }
 .myp_common_title {
   display: flex;
@@ -329,7 +324,7 @@
 
 /* myp_user_cs */
 .myp_cs_section {
-  margin-top: 6rem;
+  padding: 4rem 1.6rem;
 }
 .myp_cs_title {
   margin-bottom: 1.2rem;
@@ -344,8 +339,8 @@
   flex-wrap: wrap;
 }
 .myp_user_cs .cs_item {
-  padding: 1.6rem 0;
   width: 50%;
+  padding: 1.6rem;
 }
 .myp_user_cs .cs_link {
   color: #000;
@@ -356,11 +351,7 @@
 }
 
 /* ************************
-	나의 쇼핑 전체
-************************ */
-
-/* ************************
-	모달창
+	마이페이지 모달창
 ************************ */
 .modal_container {
   position: fixed;
