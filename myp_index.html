@@ -419,6 +419,61 @@
       </nav>
     </div>
 
+    <!-- 회원 등급 기존 모달창 -->
+    <div class="modal_container">
+      <div class="modal_container_dimm"></div>
+      <div class="inner_container">
+        <div class="component_modal">
+          <div class="modal_control_container">
+            <span class="title">포인트 안내</span>
+            <button type="button" class="btn_closed">
+              <img
+                src="/src/assets/images/icons/icon_close_black@x3.png"
+                alt=""
+              />
+            </button>
+          </div>
+          <div class="modal_description">
+            회원의 구매 및 활동에 따라 적립되며 상품 구매 시점에<br />
+            사용 기준을 만족할 경우 사용이 가능합니다.
+          </div>
+          <div class="modal_table_container">
+            <div class="modal_table_body column_2">
+              <div class="modal_table_row">
+                <span>성격</span>
+                <span>비현금성</span>
+              </div>
+              <div class="modal_table_row">
+                <span>유효기간</span>
+                <span>적립일 기준 12개월 (이후 자동 소멸)</span>
+              </div>
+              <div class="modal_table_row">
+                <span>지급(적립)<br />방법</span>
+                <span>
+                  <ul role="list">
+                    <li role="listitem">ㆍ구매 시 포인트</li>
+                    <li role="listitem">ㆍ이벤트 기간에 구매 시 추가 포인트</li>
+                    <li role="listitem">ㆍ모바일에서 구매 시 추가포인트</li>
+                    <li role="listitem">
+                      ㆍ위시리스트 상품 구매 시 추가 포인트
+                    </li>
+                    <li role="listitem">ㆍ회원등급별 추가 포인트</li>
+                    <li role="listitem">ㆍ회원가입 시 포인트</li>
+                    <li role="listitem">ㆍ스크랩 포인트</li>
+                    <li role="listitem">ㆍ리뷰작성 포인트</li>
+                  </ul>
+                </span>
+              </div>
+              <div class="modal_table_row">
+                <span>사용방법</span>
+                <span>구매 시 포인트 사용, 사은품 교환 시 사용</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
 
     <script>
@@ -453,6 +508,30 @@
           // });
         }
       });
+
+      /* 회원 등급 기존 모달창 */
+      const btnRankInfo = document.querySelector(".btn_rank_info");
+      const modalContainer = document.querySelector(".modal_container");
+      const modalContainerDimm = document.querySelector(
+        ".modal_container_dimm"
+      );
+      const btnModalclosed = document.querySelector(
+        ".modal_container .btn_closed"
+      );
+
+      function openModal() {
+        modalContainer.classList.add("active");
+        document.body.style.overflow = "hidden";
+      }
+
+      function closeModal() {
+        modalContainer.classList.remove("active");
+        document.body.style.overflow = "";
+      }
+
+      btnRankInfo.addEventListener("click", openModal);
+      btnModalclosed.addEventListener("click", closeModal);
+      modalContainerDimm.addEventListener("click", closeModal);
 
       /* 예약 구매 상품 스와이퍼 */
       var swiper = new Swiper(".mySwiper", {
