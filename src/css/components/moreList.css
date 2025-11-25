@@ -1,11 +1,25 @@
-@import '../base/base.css';
+/* @import '../base/base.css';
 @import '../components/headerComponents.css';
 @import '../components/footerComponents.css';
-@import '../components/components.css';
+@import '../components/components.css'; */
 
-.more_container{padding-inline:1.6rem;}
-.more_container .title_container{margin-block:2rem 3rem;}
-.more_container .list_contents{display: flex; flex-direction: column; gap:3rem;}
+.more_container {
+    padding-inline: 1.6rem;
+}
+.more_container .title_container {
+    margin-block: 2rem 3rem;
+}
+.more_container .list_contents {
+    display: flex;
+    flex-direction: column;
+    gap: 3rem;
+}
 .more_container .list_contents.sabom,
-.more_container .list_contents.haebom{flex-direction: row; flex-wrap: wrap; gap:3rem 1.2rem;}
-.btn_view_more_container{margin-block:3rem 6rem;}
+.more_container .list_contents.haebom {
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 3rem 1.2rem;
+}
+.btn_view_more_container {
+    margin-block: 3rem 6rem;
+}

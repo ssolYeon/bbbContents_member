@@ -6,6 +6,7 @@ import {bindCaptureToast} from "../../utils/captureToast.js";
 import {showInformation} from "../common/footer.js";
 import {bindCaptureToggle} from "../../utils/bindCaptureToggle.js";
 import {initSearchHandler} from "../../utils/searchHandler.js";
+import {cardTemplates} from "../../utils/renderCardTemplate.js";
 
 const seriesDetailController = (() => {
     let lazy;
@@ -46,12 +47,12 @@ const seriesDetailController = (() => {
                     const pathSegments = window.location.pathname.split('/');
                     const seriesId = pathSegments[pathSegments.length - 1];
 
-                    if (!seriesId || isNaN(seriesId)) {
-                        // console.error('유효하지 않은 시리즈 ID:', seriesId);
-                        return;
-                    }
+                    // if (!seriesId || isNaN(seriesId)) {
+                    //      console.error('유효하지 않은 시리즈 ID:', seriesId);
+                    //     return;
+                    // }
 
-                    // console.log(`API 요청: /api/series-contents?cidx=${seriesId}&page=${page}`);
+                    console.log(`API 요청: /api/series-contents?cidx=${seriesId}&page=${page}`);
                     const response = await requestJson(`/api/series-contents?cidx=${seriesId}&page=${page}`);
 
                     // 응답 구조 확인
@@ -130,67 +131,16 @@ const seriesDetailController = (() => {
             },
 
             generateItemsHTML: (items) => {
-                // console.log('generateItemsHTML 호출됨, items:', items);
+                console.log('generateItemsHTML 호출됨, items:', items);
 
                 if (!Array.isArray(items)) {
-                    // console.error('items가 배열이 아닙니다:', typeof items, items);
                     return '';
                 }
 
-                const html = items.map((item) => {
-                    // console.log('개별 아이템 처리:', item);
-
-                    // 안전한 데이터 처리
-                    const categories = Array.isArray(item.category) ? item.category : [];
-                    const tags = Array.isArray(item.tag) ? item.tag : [];
-                    const title = item.title || '제목 없음';
-                    const description = item.description || '설명 없음';
-                    const thumbnail = item.thumbnail || '/src/assets/images/components/sample_360x480@x3.jpg';
-                    const detailUrl = item.detail_url || 'javascript:void(0)';
-                    const captureStatus = Number(item.capture) === 1;
-
-                    return `
-                        <li class="contents_card full">
-                            <div class="thumbnail">
-                                <a href="${detailUrl}">
-                                    <picture class="lazy_loading_container">
-                                        <img
-                                            data-src="${thumbnail}"
-                                            alt="${escapeHtml(title)}"
-                                            width="361"
-                                            height="270"
-                                            loading="lazy"
-                                        >
-                                    </picture>
-                                </a>
-                                <div class="card_top_marker">
-                                    ${categories.filter(cat => cat && cat.trim()).map(cat => `<span>${escapeHtml(cat)}</span>`).join('')}
-                                </div>
-                                <button type="button"
-                                    class="btn_capture ${captureStatus ? 'active' : ''}"
-                                    data-post-id="${item.id || ''}"
-                                    data-board-type="${item.board_type || 'bc'}"
-                                    data-capture="${captureStatus ? '1' : '0'}"
-                                    aria-pressed="${captureStatus ? 'true' : 'false'}"
-                                >
-                                    <img src="${getCaptureIconSrc(item.capture)}" alt="캡쳐버튼">
-                                </button>
-                                <div class="card_tag_container">
-                                    ${tags.filter(tag => tag && tag.trim()).map(tag => `<span>#${escapeHtml(tag)}</span>`).join('')}
-                                </div>
-                            </div>
-                            <div class="component_information_container">
-                                <a href="${detailUrl}">
-                                    <p class="card_title text_ellipsis_2">${escapeHtml(title)}</p>
-                                    <p class="card_description text_ellipsis_2">${escapeHtml(description)}</p>
-                                </a>
-                            </div>
-                        </li>
-                    `;
+                return items.map((item) => {
+                    // cardTemplates.contentCard 사용
+                    return cardTemplates.contentCard(item, 'full');
                 }).join('');
-
-                // console.log('생성된 HTML 길이:', html.length);
-                return html;
             },
 
             setLoadingState: (loading) => {

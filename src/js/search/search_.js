@@ -1,11 +1,16 @@
-import {requestJson} from "../../utils/requestJson.js";
-import {escapeHtml} from "../../utils/escapeHtml.js";
-import {createLazyLoader} from "../../utils/lazyLoader.js";
-import {renderCategory, renderTag, getCaptureIconSrc, discountPercent} from "../../utils/renderCardMeta.js";
-import {initSearchHandler} from "../../utils/searchHandler.js";
-import {bindCaptureToast} from "../../utils/captureToast.js";
-import {bindCaptureToggle} from "../../utils/bindCaptureToggle.js";
-import {cardTemplates} from "../../utils/renderCardTemplate.js";
+import { requestJson } from "../../utils/requestJson.js";
+import { escapeHtml } from "../../utils/escapeHtml.js";
+import { createLazyLoader } from "../../utils/lazyLoader.js";
+import {
+    renderCategory,
+    renderTag,
+    getCaptureIconSrc,
+    discountPercent,
+} from "../../utils/renderCardMeta.js";
+import { initSearchHandler } from "../../utils/searchHandler.js";
+import { bindCaptureToast } from "../../utils/captureToast.js";
+import { bindCaptureToggle } from "../../utils/bindCaptureToggle.js";
+import { cardTemplates } from "../../utils/renderCardTemplate.js";
 
 /**
  * 통합 검색 페이지 컨트롤러
@@ -14,9 +19,8 @@ import {cardTemplates} from "../../utils/renderCardTemplate.js";
  * - 1페이지: 더보기 버튼 / 2페이지 이후: 무한스크롤
  */
 const searchController = (() => {
-
     // API 기본 엔드포인트
-    const BASE_API = '/api/search';
+    const BASE_API = "/api/search";
 
     /**
      * 통합 상태 관리 객체
@@ -27,24 +31,24 @@ const searchController = (() => {
         lazy: null,
 
         // 현재 선택된 값들
-        currentSort: 'newest',        // 정렬 기준
-        currentPage: 1,              // 현재 페이지 번호
-        currentTab: 'bb',            // 현재 활성 탭 (bb=봄봄, hb=해봄, gb=가봄, sb=사봄)
-        currentCategory: 'all',       // 현재 선택된 카테고리
+        currentSort: "newest", // 정렬 기준
+        currentPage: 1, // 현재 페이지 번호
+        currentTab: "bb", // 현재 활성 탭 (bb=봄봄, hb=해봄, gb=가봄, sb=사봄)
+        currentCategory: "all", // 현재 선택된 카테고리
 
         // 검색 관련
-        searchKeyword: '',           // 검색어
-        allCategoriesData: null,     // 전체 카테고리 데이터
+        searchKeyword: "", // 검색어
+        allCategoriesData: null, // 전체 카테고리 데이터
 
         // 페이징 관련
-        totalPages: 1,               // 전체 페이지 수
-        hasMorePages: false,         // 추가 페이지 존재 여부
+        totalPages: 1, // 전체 페이지 수
+        hasMorePages: false, // 추가 페이지 존재 여부
 
         // 로딩 및 스크롤 관련
-        isLoading: false,            // 현재 로딩 중인지 여부
+        isLoading: false, // 현재 로딩 중인지 여부
         isInfiniteScrollActive: false, // 무한 스크롤 활성화 여부
-        observer: null,              // Intersection Observer 인스턴스
-        sentinel: null,              // 스크롤 감지용 센티넬 엘리먼트
+        observer: null, // Intersection Observer 인스턴스
+        sentinel: null, // 스크롤 감지용 센티넬 엘리먼트
     };
 
     /**
@@ -53,13 +57,13 @@ const searchController = (() => {
      */
     const initLazyLoader = () => {
         state.lazy = createLazyLoader({
-            selector: '.lazy_loading_container img[data-src]',
+            selector: ".lazy_loading_container img[data-src]",
             root: null,
-            rootMargin: '0px 0px',
-            onEnter: (img) => img.classList.add('is-loading'),
+            rootMargin: "0px 0px",
+            onEnter: (img) => img.classList.add("is-loading"),
             onLoad: (img) => {
-                img.classList.remove('is-loading');
-                img.classList.add('is-loaded');
+                img.classList.remove("is-loading");
+                img.classList.add("is-loaded");
             },
         });
         state.lazy.init();
@@ -78,8 +82,8 @@ const searchController = (() => {
         calculateDiscountRate: (originalPrice, discountPrice) => {
             if (!originalPrice || !discountPrice) return 0;
 
-            const original = parseInt(originalPrice.replace(/,/g, ''));
-            const discount = parseInt(discountPrice.replace(/,/g, ''));
+            const original = parseInt(originalPrice.replace(/,/g, ""));
+            const discount = parseInt(discountPrice.replace(/,/g, ""));
 
             if (original <= discount) return 0;
 
@@ -91,7 +95,8 @@ const searchController = (() => {
          * - 새로운 검색이나 필터 변경 시 호출
          */
         resetState: () => {
-            document.getElementById('bbb_empty_container').style.display = 'none';
+            document.getElementById("bbb_empty_container").style.display =
+                "none";
             state.currentPage = 1;
             state.totalPages = 1;
             state.isLoading = false;
@@ -113,7 +118,7 @@ const searchController = (() => {
                 state.sentinel.parentElement.removeChild(state.sentinel);
                 state.sentinel = null;
             }
-        }
+        },
     };
 
     /**
@@ -126,7 +131,7 @@ const searchController = (() => {
          */
         getSearchKeywordFromUrl: () => {
             const urlParams = new URLSearchParams(window.location.search);
-            return urlParams.get('s') || '';
+            return urlParams.get("s") || "";
         },
 
         /**
@@ -139,19 +144,21 @@ const searchController = (() => {
 
             // 검색어가 있으면 유지
             if (state.searchKeyword) {
-                params.set('s', state.searchKeyword);
+                params.set("s", state.searchKeyword);
             }
 
             // 기본값이 아닌 경우에만 URL에 포함
-            if (tab !== 'bb') {
-                params.set('tab', tab);
+            if (tab !== "bb") {
+                params.set("tab", tab);
             }
-            if (category !== 'all') {
-                params.set('category', category);
+            if (category !== "all") {
+                params.set("category", category);
             }
 
-            const newUrl = window.location.pathname + (params.toString() ? '?' + params.toString() : '');
-            window.history.pushState(null, '', newUrl);
+            const newUrl =
+                window.location.pathname +
+                (params.toString() ? "?" + params.toString() : "");
+            window.history.pushState(null, "", newUrl);
         },
 
         /**
@@ -165,11 +172,11 @@ const searchController = (() => {
             const params = new URLSearchParams({
                 tab: tab,
                 category: category,
-                page: page
+                page: page,
             });
 
             if (state.searchKeyword) {
-                params.set('s', state.searchKeyword);
+                params.set("s", state.searchKeyword);
             }
 
             return `${BASE_API}?${params.toString()}`;
@@ -183,26 +190,26 @@ const searchController = (() => {
             const urlParams = new URLSearchParams(window.location.search);
 
             // 검색어 설정
-            state.searchKeyword = urlParams.get('s') || '';
+            state.searchKeyword = urlParams.get("s") || "";
 
             // 탭 설정 (유효한 탭만 허용)
-            const urlTab = urlParams.get('tab');
-            if (urlTab && ['bb', 'hb', 'gb', 'sb'].includes(urlTab)) {
+            const urlTab = urlParams.get("tab");
+            if (urlTab && ["bb", "hb", "gb", "sb"].includes(urlTab)) {
                 state.currentTab = urlTab;
             }
 
             // 카테고리 설정
-            const urlCategory = urlParams.get('category');
+            const urlCategory = urlParams.get("category");
             if (urlCategory) {
                 state.currentCategory = urlCategory;
             }
 
-            console.log('URL에서 초기화:', {
+            console.log("URL에서 초기화:", {
                 tab: state.currentTab,
                 category: state.currentCategory,
-                search: state.searchKeyword
+                search: state.searchKeyword,
             });
-        }
+        },
     };
 
     /**
@@ -220,7 +227,7 @@ const searchController = (() => {
 
             // 상태 업데이트
             state.currentTab = tabType;
-            state.currentCategory = 'all'; // 탭 변경 시 카테고리 초기화
+            state.currentCategory = "all"; // 탭 변경 시 카테고리 초기화
 
             // 페이지 상태 초기화
             utils.resetState();
@@ -244,35 +251,46 @@ const searchController = (() => {
          * @param {string} activeTab - 활성화할 탭
          */
         updateTabUI: (activeTab) => {
-
-            document.querySelectorAll('#mainTabNavigation a').forEach(tab => {
-                tab.classList.remove('active');
+            document.querySelectorAll("#mainTabNavigation a").forEach((tab) => {
+                tab.classList.remove("active");
             });
-            document.querySelectorAll('#subTabNavigation a').forEach(subtab => {
-                subtab.classList.remove('active');
-            });
-            const targetTab = document.querySelector(`[data-tab="${activeTab}"]`);
-            console.log("updateTabUI::::::: targetTab==>["+activeTab+"]");
+            document
+                .querySelectorAll("#subTabNavigation a")
+                .forEach((subtab) => {
+                    subtab.classList.remove("active");
+                });
+            const targetTab = document.querySelector(
+                `[data-tab="${activeTab}"]`
+            );
+            console.log("updateTabUI::::::: targetTab==>[" + activeTab + "]");
             if (targetTab) {
-                if(activeTab == 'bb' || activeTab == 'bc' || activeTab == 'bs'){
+                if (
+                    activeTab == "bb" ||
+                    activeTab == "bc" ||
+                    activeTab == "bs"
+                ) {
+                    const bb_targetTab =
+                        document.querySelector(`[data-tab="bb"]`);
+                    bb_targetTab.classList.add("active");
+                    const subTabNavigation =
+                        document.getElementById(`subTabNavigation`);
+                    subTabNavigation.style.display = "block";
 
-                    const bb_targetTab = document.querySelector(`[data-tab="bb"]`);
-                    bb_targetTab.classList.add('active');
-                    const subTabNavigation = document.getElementById(`subTabNavigation`);
-                    subTabNavigation.style.display = 'block';
-
-                    let subactiveTab = 'bc';
-                    if(activeTab == 'bs'){
-                        subactiveTab  = 'bs';
+                    let subactiveTab = "bc";
+                    if (activeTab == "bs") {
+                        subactiveTab = "bs";
                     }
-                    const subtargetTab = document.querySelector(`[data-tab="${subactiveTab}"]`);
-                    subtargetTab.classList.add('active');
-                }else{
+                    const subtargetTab = document.querySelector(
+                        `[data-tab="${subactiveTab}"]`
+                    );
+                    subtargetTab.classList.add("active");
+                } else {
                     console.log("여긴데");
-                    targetTab.classList.add('active');
+                    targetTab.classList.add("active");
 
-                    const subTabNavigation = document.getElementById(`subTabNavigation`);
-                    subTabNavigation.style.display = 'none';
+                    const subTabNavigation =
+                        document.getElementById(`subTabNavigation`);
+                    subTabNavigation.style.display = "none";
                 }
             }
         },
@@ -281,19 +299,19 @@ const searchController = (() => {
          * 탭 이벤트 바인딩
          */
         bindEvents: () => {
-            document.querySelectorAll('#mainTabNavigation a').forEach(tab => {
-                tab.addEventListener('click', function(e) {
+            document.querySelectorAll("#mainTabNavigation a").forEach((tab) => {
+                tab.addEventListener("click", function (e) {
                     e.preventDefault();
                     tabControl.switchMainTab(this.dataset.tab);
                 });
             });
-            document.querySelectorAll('#subTabNavigation a').forEach(tab => {
-                tab.addEventListener('click', function(e) {
+            document.querySelectorAll("#subTabNavigation a").forEach((tab) => {
+                tab.addEventListener("click", function (e) {
                     e.preventDefault();
                     tabControl.switchMainTab(this.dataset.tab);
                 });
             });
-        }
+        },
     };
 
     /**
@@ -309,7 +327,9 @@ const searchController = (() => {
 
             state.currentCategory = categoryCode;
 
-            console.log(`카테고리 변경: ${categoryCode} (${state.currentTab} 탭)`);
+            console.log(
+                `카테고리 변경: ${categoryCode} (${state.currentTab} 탭)`
+            );
 
             //uiControl.removeSeriesContentStructure();
             utils.resetState();
@@ -327,12 +347,16 @@ const searchController = (() => {
          * @param {string} activeCategory - 활성화할 카테고리
          */
         updateCategoryUI: (activeCategory) => {
-            document.querySelectorAll('#categoryNavigation a').forEach(cat => {
-                cat.classList.remove('active');
-            });
-            const targetCategory = document.querySelector(`[data-category="${activeCategory}"]`);
+            document
+                .querySelectorAll("#categoryNavigation a")
+                .forEach((cat) => {
+                    cat.classList.remove("active");
+                });
+            const targetCategory = document.querySelector(
+                `[data-category="${activeCategory}"]`
+            );
             if (targetCategory) {
-                targetCategory.classList.add('active');
+                targetCategory.classList.add("active");
             }
         },
 
@@ -342,13 +366,13 @@ const searchController = (() => {
          */
         updateNavigation: (tabType) => {
             if (!state.allCategoriesData || !state.allCategoriesData[tabType]) {
-                console.error('카테고리 데이터가 없습니다:', tabType);
+                console.error("카테고리 데이터가 없습니다:", tabType);
                 return;
             }
 
-            const categoryNav = document.getElementById('categoryNavigation');
+            const categoryNav = document.getElementById("categoryNavigation");
             if (!categoryNav) {
-                console.error('categoryNavigation 요소를 찾을 수 없습니다');
+                console.error("categoryNavigation 요소를 찾을 수 없습니다");
                 return;
             }
 
@@ -356,18 +380,36 @@ const searchController = (() => {
 
             console.log(`${tabType} 탭의 카테고리 업데이트:`, categories);
 
-            categoryNav.innerHTML = categories.map(category =>
-                `<a href="javascript:void(0)" class="${category.data === state.currentCategory ? 'active' : ''}" data-category="${category.data}">${category.name}</a>`
-            ).join('');
+            categoryNav.innerHTML = categories
+                .map(
+                    (category) =>
+                        `<a href="javascript:void(0)" class="${
+                            category.data === state.currentCategory
+                                ? "active"
+                                : ""
+                        }" data-category="${category.data}">${
+                            category.name
+                        }</a>`
+                )
+                .join("");
 
-
-            const categoryScroller = document.getElementById('categoryScroller');
+            const categoryScroller =
+                document.getElementById("categoryScroller");
 
             const categoryDefault = `<li>카테고리</li>`;
 
-            const categoryAdd =  categories.map(category =>
-                `<li><a href="javascript:void(0)" class="${category.data === state.currentCategory ? 'active' : ''}" data-category="${category.data}">${category.name}</a></li>`
-            ).join('');
+            const categoryAdd = categories
+                .map(
+                    (category) =>
+                        `<li><a href="javascript:void(0)" class="${
+                            category.data === state.currentCategory
+                                ? "active"
+                                : ""
+                        }" data-category="${category.data}">${
+                            category.name
+                        }</a></li>`
+                )
+                .join("");
 
             categoryScroller.innerHTML = categoryDefault + categoryAdd;
 
@@ -379,27 +421,29 @@ const searchController = (() => {
          * 카테고리 이벤트 바인딩
          */
         bindEvents: () => {
-            document.querySelectorAll('#categoryNavigation a').forEach(cat => {
-                cat.addEventListener('click', function(e) {
-                    e.preventDefault();
-                    const categoryCode = this.dataset.category;
-                    console.log('카테고리 클릭:', categoryCode);
-                    categoryControl.switchCategory(categoryCode);
+            document
+                .querySelectorAll("#categoryNavigation a")
+                .forEach((cat) => {
+                    cat.addEventListener("click", function (e) {
+                        e.preventDefault();
+                        const categoryCode = this.dataset.category;
+                        console.log("카테고리 클릭:", categoryCode);
+                        categoryControl.switchCategory(categoryCode);
+                    });
                 });
-            });
 
             //dewbian 추가
-            const $panel = document.getElementById('category_toggle_navigation');
-            const $openBtn = document.querySelector('.btn_category_toggle');
-            const $closeBtn= document.querySelector('.btn_category_closed');
+            const $panel = document.getElementById(
+                "category_toggle_navigation"
+            );
+            const $openBtn = document.querySelector(".btn_category_toggle");
+            const $closeBtn = document.querySelector(".btn_category_closed");
             // 열기/닫기
-            const open  = () => $panel.classList.add('active');
-            const close = () => $panel.classList.remove('active');
+            const open = () => $panel.classList.add("active");
+            const close = () => $panel.classList.remove("active");
 
-            $openBtn.addEventListener('click', open);
-            $closeBtn.addEventListener('click', close);
-
-
+            $openBtn.addEventListener("click", open);
+            $closeBtn.addEventListener("click", close);
         },
 
         /**
@@ -407,7 +451,7 @@ const searchController = (() => {
          */
         loadAll: async () => {
             try {
-                const response = await fetch('/api/categories');
+                const response = await fetch("/api/categories");
                 const data = await response.json();
 
                 if (data) {
@@ -415,9 +459,9 @@ const searchController = (() => {
                     categoryControl.updateNavigation(state.currentTab);
                 }
             } catch (error) {
-                console.error('카테고리 로드 오류:', error);
+                console.error("카테고리 로드 오류:", error);
             }
-        }
+        },
     };
 
     /**
@@ -429,10 +473,14 @@ const searchController = (() => {
          * @param {Object} data - API 응답 데이터
          */
         updateResultsCount: (data) => {
-            const resultsCount = document.querySelector('.total_posts');
+            const resultsCount = document.querySelector(".total_posts");
             if (!resultsCount) return;
 
-            const totalCount = data?.data?.meta?.total_count || data?.meta?.total_count || data?.total || 0;
+            const totalCount =
+                data?.data?.meta?.total_count ||
+                data?.meta?.total_count ||
+                data?.total ||
+                0;
             resultsCount.innerHTML = `검색결과 <b>${totalCount}</b> 개`;
         },
 
@@ -441,18 +489,20 @@ const searchController = (() => {
          * - 1페이지에서만 표시, 2페이지부터는 무한스크롤 사용
          */
         updateViewMoreButton: () => {
-            const container = document.querySelector('.btn_view_more_container');
-            const button = document.querySelector('.btn_view_more');
+            const container = document.querySelector(
+                ".btn_view_more_container"
+            );
+            const button = document.querySelector(".btn_view_more");
 
             if (!container || !button) return;
 
             // 2페이지부터는 더보기 버튼 숨김 (무한스크롤 사용)
             if (state.currentPage >= 2 || !state.hasMorePages) {
-                container.style.display = 'none';
+                container.style.display = "none";
             } else {
-                container.style.display = 'flex';
+                container.style.display = "flex";
                 button.disabled = false;
-                button.textContent = '더 보기';
+                button.textContent = "더 보기";
             }
         },
 
@@ -461,21 +511,21 @@ const searchController = (() => {
          * @param {boolean} loading - 로딩 중 여부
          */
         toggleLoadingState: (loading) => {
-            const button = document.querySelector('.btn_view_more');
-            const contentContainer = document.querySelector('.list_contents');
+            const button = document.querySelector(".btn_view_more");
+            const contentContainer = document.querySelector(".list_contents");
 
             if (button && state.currentPage === 1) {
                 if (loading) {
                     button.disabled = true;
-                    button.textContent = '로딩 중...';
+                    button.textContent = "로딩 중...";
                 } else {
                     button.disabled = false;
-                    button.textContent = '더 보기';
+                    button.textContent = "더 보기";
                 }
             }
 
             if (contentContainer) {
-                contentContainer.style.opacity = loading ? '0.5' : '1';
+                contentContainer.style.opacity = loading ? "0.5" : "1";
             }
         },
 
@@ -492,7 +542,7 @@ const searchController = (() => {
          * bb 탭용 시리즈 콘텐츠 구조 삽입
          */
         insertSeriesContentStructure: () => {
-            document.getElementById('subTabNavigation').style.display = 'flex';
+            document.getElementById("subTabNavigation").style.display = "flex";
             // const totalPosts = document.querySelector('.total_posts');
             //
             // if (totalPosts) {
@@ -512,7 +562,7 @@ const searchController = (() => {
          * 시리즈 콘텐츠 구조 제거
          */
         removeSeriesContentStructure: () => {
-            document.getElementById('subTabNavigation').style.display = 'none';
+            document.getElementById("subTabNavigation").style.display = "none";
             // const elementsToRemove = [
             //     document.getElementById('add_series_list'),
             //     document.getElementById('add_series_title'),
@@ -526,7 +576,7 @@ const searchController = (() => {
             //         console.log('시리즈 관련 요소 제거됨:', element.id);
             //     }
             // });
-        }
+        },
     };
 
     /**
@@ -546,15 +596,20 @@ const searchController = (() => {
             uiControl.toggleLoadingState(true);
 
             fetch(url)
-                .then(response => response.json())
-                .then(data => {
+                .then((response) => response.json())
+                .then((data) => {
                     console.log(`${tabType} 콘텐츠 로드 완료:`, data);
 
                     // 페이지네이션 정보 업데이트
-                    const pagination = data?.data?.pagination || data?.pagination || {};
-                    state.currentPage = pagination.current_page || state.currentPage;
-                    state.totalPages = pagination.last_page || pagination.total_pages || 1;
-                    state.hasMorePages = pagination.has_more_pages || (state.currentPage < state.totalPages);
+                    const pagination =
+                        data?.data?.pagination || data?.pagination || {};
+                    state.currentPage =
+                        pagination.current_page || state.currentPage;
+                    state.totalPages =
+                        pagination.last_page || pagination.total_pages || 1;
+                    state.hasMorePages =
+                        pagination.has_more_pages ||
+                        state.currentPage < state.totalPages;
 
                     // 결과 개수 업데이트
                     uiControl.updateResultsCount(data);
@@ -570,14 +625,17 @@ const searchController = (() => {
                     uiControl.updateViewMoreButton();
 
                     // 무한 스크롤 활성화 (2페이지부터)
-                    if (state.currentPage === 2 && !state.isInfiniteScrollActive) {
+                    if (
+                        state.currentPage === 2 &&
+                        !state.isInfiniteScrollActive
+                    ) {
                         state.isInfiniteScrollActive = true;
                         scrollControl.initInfiniteScroll();
                     }
                 })
-                .catch(error => {
-                    console.error('콘텐츠 로드 오류:', error);
-                    uiControl.showError('데이터를 불러오는데 실패했습니다.');
+                .catch((error) => {
+                    console.error("콘텐츠 로드 오류:", error);
+                    uiControl.showError("데이터를 불러오는데 실패했습니다.");
                 })
                 .finally(() => {
                     state.isLoading = false;
@@ -597,7 +655,11 @@ const searchController = (() => {
                 utils.resetState();
             }
 
-            const url = urlUtils.buildApiUrl(tabType, state.currentCategory, state.currentPage);
+            const url = urlUtils.buildApiUrl(
+                tabType,
+                state.currentCategory,
+                state.currentPage
+            );
             contentLoader.loadContent(url, tabType, resetPage);
         },
 
@@ -607,10 +669,16 @@ const searchController = (() => {
          * @param {string} categoryCode - 카테고리 코드
          */
         loadForCategory: (tabType, categoryCode) => {
-            console.log(`${tabType} 탭의 ${categoryCode} 카테고리 콘텐츠 로드 중...`);
+            console.log(
+                `${tabType} 탭의 ${categoryCode} 카테고리 콘텐츠 로드 중...`
+            );
 
             utils.resetState();
-            const url = urlUtils.buildApiUrl(tabType, categoryCode, state.currentPage);
+            const url = urlUtils.buildApiUrl(
+                tabType,
+                categoryCode,
+                state.currentPage
+            );
             contentLoader.loadContent(url, tabType, true);
         },
 
@@ -623,9 +691,13 @@ const searchController = (() => {
             }
 
             state.currentPage += 1;
-            const url = urlUtils.buildApiUrl(state.currentTab, state.currentCategory, state.currentPage);
+            const url = urlUtils.buildApiUrl(
+                state.currentTab,
+                state.currentCategory,
+                state.currentPage
+            );
             contentLoader.loadContent(url, state.currentTab, false);
-        }
+        },
     };
 
     /**
@@ -638,30 +710,31 @@ const searchController = (() => {
          * @param {string} tabType - 탭 타입
          */
         renderContent: (data, tabType) => {
-
             console.log(`${tabType} 콘텐츠 렌더링:`, data);
 
             //const $contentContainer = document.querySelector('.list_contents');
-            const $contentContainer = document.getElementById('origin_list');
+            const $contentContainer = document.getElementById("origin_list");
 
             if (!$contentContainer) {
-                console.error('list_contents 컨테이너를 찾을 수 없습니다');
+                console.error("list_contents 컨테이너를 찾을 수 없습니다");
                 return;
             }
 
             // 빈 데이터 처리
-            const items = data?.data?.items || data?.items || data?.posts || data || [];
+            const items =
+                data?.data?.items || data?.items || data?.posts || data || [];
             if (!items || items.length === 0) {
-                document.getElementById('bbb_empty_container').style.display = 'block';
-                $contentContainer.innerHTML = '';
+                document.getElementById("bbb_empty_container").style.display =
+                    "block";
+                $contentContainer.innerHTML = "";
                 //$contentContainer.innerHTML = '<li class="nodata">검색 결과가 없습니다.</li>';
                 return;
             }
 
-            let renderedHTML = '';
+            let renderedHTML = "";
 
             // bb 탭은 시리즈 데이터 처리가 필요
-            if (tabType === 'bb' || tabType === 'bc' ||  tabType === 'bs' ) {
+            if (tabType === "bb" || tabType === "bc" || tabType === "bs") {
                 uiControl.insertSeriesContentStructure();
                 // 시리즈 데이터 처리
                 // if (data?.series?.items && data.series.meta.total_count > 0) {
@@ -685,46 +758,56 @@ const searchController = (() => {
                 // }
 
                 // bb 탭 일반 콘텐츠 렌더링
-                if(tabType === 'bs'){
-
-                    renderedHTML = items.map(item =>
-                        cardTemplates.seriesCard (item, 'full')
-                    ).join('');
-
-                }else{
-
-                    renderedHTML = items.map(item =>
-                        cardTemplates.contentCard_home(item, 'full')
-                    ).join('');
+                if (tabType === "bs") {
+                    renderedHTML = items
+                        .map((item) => cardTemplates.seriesCard(item, "full"))
+                        .join("");
+                } else {
+                    renderedHTML = items
+                        .map((item) =>
+                            cardTemplates.contentCard_home(item, "full")
+                        )
+                        .join("");
                 }
             } else {
                 uiControl.removeSeriesContentStructure();
                 // 다른 탭들의 콘텐츠 렌더링
-                switch(tabType) {
-                    case 'hb':
-                        renderedHTML = items.map(item =>
-                            cardTemplates.haebomCard(item, 'half')
-                        ).join('');
+                switch (tabType) {
+                    case "hb":
+                        renderedHTML = items
+                            .map((item) =>
+                                cardTemplates.haebomCard(item, "half")
+                            )
+                            .join("");
                         break;
-                    case 'gb':
-                        renderedHTML = items.map(item => cardTemplates.gabomCard_02(item, 'half')).join('');
+                    case "gb":
+                        renderedHTML = items
+                            .map((item) =>
+                                cardTemplates.gabomCard_02(item, "half")
+                            )
+                            .join("");
                         break;
-                    case 'sb':
-                        renderedHTML = items.map(item =>
-                            cardTemplates.sabomCard(item, 'half')
-                        ).join('');
+                    case "sb":
+                        renderedHTML = items
+                            .map((item) =>
+                                cardTemplates.sabomCard(item, "half")
+                            )
+                            .join("");
                         break;
                     default:
-                        renderedHTML = items.map(item =>
-                            cardTemplates.contentCard_home(item, 'full')
-                        ).join('');
+                        renderedHTML = items
+                            .map((item) =>
+                                cardTemplates.contentCard_home(item, "full")
+                            )
+                            .join("");
                 }
             }
 
             // 컨테이너에 렌더링된 HTML 삽입
             $contentContainer.innerHTML = renderedHTML;
 
-            const search_Container = document.querySelector('.search_container');
+            const search_Container =
+                document.querySelector(".search_container");
             state.lazy.refresh(search_Container);
             // if (state.lazy?.refresh) {
             //     state.lazy.refresh($contentContainer);
@@ -741,57 +824,68 @@ const searchController = (() => {
             console.log(`${tabType} 콘텐츠 추가:`, data);
 
             // 시리즈 리스트가 아닌 메인 콘텐츠 컨테이너 선택
-            const contentContainer = document.querySelector('.list_contents:not(#add_series_list)');
+            const contentContainer = document.querySelector(
+                ".list_contents:not(#add_series_list)"
+            );
             if (!contentContainer) {
-                console.error('list_contents 컨테이너를 찾을 수 없습니다');
+                console.error("list_contents 컨테이너를 찾을 수 없습니다");
                 return;
             }
 
-            const items = data?.data?.items || data?.items || data?.posts || data || [];
+            const items =
+                data?.data?.items || data?.items || data?.posts || data || [];
             if (!items || items.length === 0) {
                 return;
             }
 
-            let renderedHTML = '';
+            let renderedHTML = "";
 
             // 탭별 카드 템플릿 적용
-            if (tabType === 'bb') {
-                renderedHTML = items.map(item =>
-                    cardTemplates.contentCard_home(item, 'full')
-                ).join('');
+            if (tabType === "bb") {
+                renderedHTML = items
+                    .map((item) => cardTemplates.contentCard_home(item, "full"))
+                    .join("");
             } else {
-                switch(tabType) {
-                    case 'hb':
-                        renderedHTML = items.map(item =>
-                            cardTemplates.haebomCard(item, 'full')
-                        ).join('');
+                switch (tabType) {
+                    case "hb":
+                        renderedHTML = items
+                            .map((item) =>
+                                cardTemplates.haebomCard(item, "full")
+                            )
+                            .join("");
                         break;
-                    case 'gb':
-                        renderedHTML = items.map(item =>
-                            cardTemplates.gabomCard_02(item, 'full')
-                        ).join('');
+                    case "gb":
+                        renderedHTML = items
+                            .map((item) =>
+                                cardTemplates.gabomCard_02(item, "full")
+                            )
+                            .join("");
                         break;
-                    case 'sb':
-                        renderedHTML = items.map(item =>
-                            cardTemplates.sabomCard(item, 'full')
-                        ).join('');
+                    case "sb":
+                        renderedHTML = items
+                            .map((item) =>
+                                cardTemplates.sabomCard(item, "full")
+                            )
+                            .join("");
                         break;
                     default:
-                        renderedHTML = items.map(item =>
-                            cardTemplates.contentCard_home(item, 'full')
-                        ).join('');
+                        renderedHTML = items
+                            .map((item) =>
+                                cardTemplates.contentCard_home(item, "full")
+                            )
+                            .join("");
                 }
             }
 
             // 기존 콘텐츠 뒤에 HTML 추가
-            contentContainer.insertAdjacentHTML('beforeend', renderedHTML);
+            contentContainer.insertAdjacentHTML("beforeend", renderedHTML);
 
             // 새로 추가된 이미지들에 대해 레이지 로딩 적용
             if (state.lazy?.refresh) {
                 console.log("추가 콘텐츠 레이지 로딩 새로고침");
                 state.lazy.refresh(contentContainer);
             }
-        }
+        },
     };
 
     /**
@@ -802,10 +896,10 @@ const searchController = (() => {
          * 더보기 버튼 이벤트 초기화
          */
         initViewMoreButton: () => {
-            const button = document.querySelector('.btn_view_more');
+            const button = document.querySelector(".btn_view_more");
             if (!button) return;
 
-            button.addEventListener('click', (e) => {
+            button.addEventListener("click", (e) => {
                 e.preventDefault();
                 contentLoader.loadNextPage();
             });
@@ -818,8 +912,8 @@ const searchController = (() => {
         initInfiniteScroll: () => {
             // 기존 observer 정리
             utils.cleanupObserver();
-            const sentinel = document.createElement('div');
-            sentinel.className = 'scroll-sentinel';
+            const sentinel = document.createElement("div");
+            sentinel.className = "scroll-sentinel";
             sentinel.style.cssText = `
                 position: absolute;
                 bottom: 300px;
@@ -830,13 +924,13 @@ const searchController = (() => {
             `;
 
             // 센티넬을 컨테이너에 추가
-            const listContainer = document.querySelector('.list_contents');
+            const listContainer = document.querySelector(".list_contents");
             if (listContainer?.parentElement) {
                 const parent = listContainer.parentElement;
 
                 // 부모 요소가 static position이면 relative로 변경
-                if (window.getComputedStyle(parent).position === 'static') {
-                    parent.style.position = 'relative';
+                if (window.getComputedStyle(parent).position === "static") {
+                    parent.style.position = "relative";
                 }
 
                 parent.appendChild(sentinel);
@@ -844,28 +938,36 @@ const searchController = (() => {
             }
 
             // Intersection Observer 설정
-            state.observer = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting &&
-                        state.currentPage < state.totalPages &&
-                        !state.isLoading &&
-                        state.isInfiniteScrollActive) {
-
-                        console.log(`무한 스크롤 트리거: ${state.currentPage + 1}페이지 로드`);
-                        contentLoader.loadNextPage();
-                    }
-                });
-            }, {
-                root: null,
-                rootMargin: '0px',
-                threshold: 0
-            });
+            state.observer = new IntersectionObserver(
+                (entries) => {
+                    entries.forEach((entry) => {
+                        if (
+                            entry.isIntersecting &&
+                            state.currentPage < state.totalPages &&
+                            !state.isLoading &&
+                            state.isInfiniteScrollActive
+                        ) {
+                            console.log(
+                                `무한 스크롤 트리거: ${
+                                    state.currentPage + 1
+                                }페이지 로드`
+                            );
+                            contentLoader.loadNextPage();
+                        }
+                    });
+                },
+                {
+                    root: null,
+                    rootMargin: "0px",
+                    threshold: 0,
+                }
+            );
 
             // 센티넬 요소 관찰 시작
             if (state.sentinel) {
                 state.observer.observe(state.sentinel);
             }
-        }
+        },
     };
 
     /**
@@ -904,17 +1006,28 @@ const searchController = (() => {
             bindCaptureToast({
                 bindClick: false,
                 listen: true,
-                getText: (_btn, next, success) => success ? (next ? '스크랩되었습니다.' : '취소되었습니다.') : '요청에 실패했습니다.',
+                getText: (_btn, next, success) =>
+                    success
+                        ? next
+                            ? "스크랩되었습니다."
+                            : "취소되었습니다."
+                        : "요청에 실패했습니다.",
                 //getText: (_btn, next) => next ? '스크랩되었습니다.' : '취소되었습니다.',
             });
 
             bindCaptureToggle({
-                endpoint: '/api/capture',
-                goLogin: typeof goLogin !== 'undefined' ? goLogin : () => console.warn('goLogin 함수가 정의되지 않았습니다'),
+                endpoint: "/api/capture",
+                goLogin:
+                    typeof goLogin !== "undefined"
+                        ? goLogin
+                        : () =>
+                              console.warn(
+                                  "goLogin 함수가 정의되지 않았습니다"
+                              ),
 
                 onToggleStart: (btn, { prev, next, postId, boardType }) => {
-                    if (typeof isLogin !== 'undefined' && !isLogin) {
-                        throw new Error('Login required');
+                    if (typeof isLogin !== "undefined" && !isLogin) {
+                        throw new Error("Login required");
                     }
                 },
             });
@@ -923,7 +1036,7 @@ const searchController = (() => {
             initSearchHandler({
                 activateOnLoad: true,
                 prefillFromURL: true,
-                closeButtonDeactivatesForm: false
+                closeButtonDeactivatesForm: false,
             });
 
             // 탭 시스템 초기화
@@ -935,7 +1048,7 @@ const searchController = (() => {
          */
         destroy: () => {
             utils.cleanupObserver();
-        }
+        },
     };
 
     /**
@@ -956,9 +1069,11 @@ const searchController = (() => {
                 hasMorePages: state.hasMorePages,
                 isLoading: state.isLoading,
                 isInfiniteScrollActive: state.isInfiniteScrollActive,
-                tabData: state.allCategoriesData ? state.allCategoriesData[state.currentTab] : null
+                tabData: state.allCategoriesData
+                    ? state.allCategoriesData[state.currentTab]
+                    : null,
             };
-        }
+        },
     };
 
     // 개발자 도구용 전역 함수 등록
@@ -968,15 +1083,15 @@ const searchController = (() => {
         switchCategory: categoryControl.switchCategory,
         categories: () => state.allCategoriesData,
         loadNext: contentLoader.loadNextPage,
-        state: () => state
+        state: () => state,
     };
 
     // 외부 API 반환
     return {
         init: systemInit.initialize,
-        destroy: systemInit.destroy
+        destroy: systemInit.destroy,
     };
 })();
 
 // DOM 로드 완료 시 컨트롤러 초기화
-document.addEventListener('DOMContentLoaded', searchController.init);
+document.addEventListener("DOMContentLoaded", searchController.init);

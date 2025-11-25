@@ -1,22 +1,94 @@
-@import '../base/base.css';
+/* @import '../base/base.css';
 @import '../components/headerComponents.css';
 @import '../components/footerComponents.css';
-@import '../components/components.css';
+@import '../components/components.css'; */
 
-header .container{ position:relative; padding-inline:1.6rem;}
-header .container a{ width:2.4rem; height:2.4rem;}
-header .container h1{ position:absolute; top:50%; left:50%; transform: translate(-50%, -50%); font-family: var(--font-700); font-size:1.8rem; line-height:1.4;}
+header .container {
+    position: relative;
+    padding-inline: 1.6rem;
+}
+header .container a {
+    width: 2.4rem;
+    height: 2.4rem;
+}
+header .container h1 {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-family: var(--font-700);
+    font-size: 1.8rem;
+    line-height: 1.4;
+}
 
-.setting_container h2{ font-family: var(--font-600); font-size:1.6rem; line-height:1; letter-spacing: -0.016rem; }
-.setting_container nav{margin-top:1.6rem; border-top:1px solid #000;}
-.setting_container nav a{ display: flex; align-items: center; justify-content: flex-start; gap:0.5rem; position:relative; padding-block:1.6rem; border-bottom: 1px solid rgba(0, 0, 0, 0.08); color:rgba(0,0,0,0.8); font-family: var(--font-500); font-size:1.4rem; letter-spacing: -0.014rem;}
-.setting_container nav a img{ width:2rem; height:2rem; margin-left: auto;}
+.setting_container h2 {
+    font-family: var(--font-600);
+    font-size: 1.6rem;
+    line-height: 1;
+    letter-spacing: -0.016rem;
+}
+.setting_container nav {
+    margin-top: 1.6rem;
+    border-top: 1px solid #000;
+}
+.setting_container nav a {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 0.5rem;
+    position: relative;
+    padding-block: 1.6rem;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+    color: rgba(0, 0, 0, 0.8);
+    font-family: var(--font-500);
+    font-size: 1.4rem;
+    letter-spacing: -0.014rem;
+}
+.setting_container nav a img {
+    width: 2rem;
+    height: 2rem;
+    margin-left: auto;
+}
 
-.setting_container .setting_nav_container{ padding-top:4rem; padding-inline:1.6rem;}
-.setting_container .setting_nav_container:first-child{padding-top:2.4rem;}
+.setting_container .setting_nav_container {
+    padding-top: 4rem;
+    padding-inline: 1.6rem;
+}
+.setting_container .setting_nav_container:first-child {
+    padding-top: 2.4rem;
+}
 
-.setting_container .btn_logout{ display:flex; align-items: center; justify-content: center; padding:1rem 4rem; color:rgba(0,0,0,0.8); font-family: var(--font-700); font-size:1.4rem; line-height:1.4; margin:3rem auto 8rem; background-color:#eee; border-radius: 0.4rem;}
-.marker{display: flex; align-items: center; justify-content: center; width: 1.6rem; height: 1.6rem; padding-top: 0.1rem; color: #fff; font-size: 1rem; line-height: 1; font-style: normal; background-color: #d90000; border-radius: 50%;}
-.marker.gray{background-color:#b1b1b1;}
+.setting_container .btn_logout {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem 4rem;
+    color: rgba(0, 0, 0, 0.8);
+    font-family: var(--font-700);
+    font-size: 1.4rem;
+    line-height: 1.4;
+    margin: 3rem auto 8rem;
+    background-color: #eee;
+    border-radius: 0.4rem;
+}
+.marker {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 1.6rem;
+    height: 1.6rem;
+    padding-top: 0.1rem;
+    color: #fff;
+    font-size: 1rem;
+    line-height: 1;
+    font-style: normal;
+    background-color: #d90000;
+    border-radius: 50%;
+}
+.marker.gray {
+    background-color: #b1b1b1;
+}
 
-footer{ display: none;}
+footer {
+    display: none;
+}

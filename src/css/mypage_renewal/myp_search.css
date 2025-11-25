@@ -1,19 +1,14 @@
-@import "../base/base.css";
-@import "../components/headerComponents.css";
-@import "../components/footerComponents.css";
-@import "../components/components.css";
-@import "myp_common.css";
+@charset "UTF-8";
 
 /* category_toggle_navigation */
 #app_wrapper:has(.myp_searchResult_navigation a[data-tab="bb"].active)
   .category_toggle_navigation {
   top: 13.5rem;
-  /* height: calc(100% - 59.2rem); */
 }
 #app_wrapper:has(.myp_searchResult_navigation a[data-tab="bb"].active)
   .category_toggle_navigation
   .scroller_container {
-  max-height: 38.4rem;
+  max-height: calc(100vh - 26.7rem);
 }
 #app_wrapper:has(.myp_searchResult_navigation a[data-tab="hb"].active)
   .category_toggle_navigation,
@@ -22,19 +17,18 @@
 #app_wrapper:has(.myp_searchResult_navigation a[data-tab="sb"].active)
   .category_toggle_navigation {
   top: 7.5rem;
-  /* height: calc(100% - 47.1rem); */
 }
-/* #app_wrapper:has(.myp_searchResult_navigation a[data-tab="hb"].active)
-    .category_toggle_navigation
-    .scroller_container,
+#app_wrapper:has(.myp_searchResult_navigation a[data-tab="hb"].active)
+  .category_toggle_navigation
+  .scroller_container,
 #app_wrapper:has(.myp_searchResult_navigation a[data-tab="gb"].active)
-    .category_toggle_navigation
-    .scroller_container,
+  .category_toggle_navigation
+  .scroller_container,
 #app_wrapper:has(.myp_searchResult_navigation a[data-tab="sb"].active)
-    .category_toggle_navigation
-    .scroller_container {
-    max-height: 44.4rem;
-} */
+  .category_toggle_navigation
+  .scroller_container {
+  max-height: calc(100vh - 20.7rem);
+}
 
 /* 검색 창 */
 .myp_search_container {
@@ -70,8 +64,8 @@
   right: 0.6rem;
   top: 50%;
   transform: translateY(-50%);
-  width: 1.6rem;
-  height: 1.6rem;
+  width: 2.4rem;
+  height: 2.4rem;
 }
 .myp_search_form input {
   height: 3.6rem;

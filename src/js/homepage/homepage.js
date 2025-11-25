@@ -176,6 +176,7 @@ const homepageController = (() => {
                     const groupTitle = group_info.title.replace(/\r\n/g, '<br>').replace(/\n/g, '<br>');
                     // items 배열을 직접 사용 (현재 데이터 구조)
                     const posts = Array.isArray(items) ? items : [];
+                    //console.log(JSON.stringify(posts));
                     const itemsHtml =  posts.map(item => cardTemplates.contentCard_home(item, 'half')).join('');
                     return `
                         <section class="curation">

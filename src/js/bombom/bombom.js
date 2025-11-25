@@ -49,6 +49,93 @@ const bombomController = (()=>{
         state.lazy.init();
     }
 
+    const renderBannerBCM = () => {
+        const DATA_URL = '/api/banners?type=bcm';
+        const $container = document.querySelector('.sub_visual_container');
+        if (!$container) return;
+        const methods = {
+            requestAPI: async () => {
+                try {
+                    const data = await requestJson(DATA_URL);
+                    methods.renderContent(data?.data || []);
+                } catch (err) {
+                    console.error('봄봄 메인 상단 배너 로드 실패:', err);
+                }
+            },
+            renderContent: (items = []) => {
+                const $list = $container.querySelector('.swiper-wrapper');
+                if (!$list) return;
+
+                // 배너 데이터가 없으면 섹션 숨김
+                if(items.length < 1){
+                    $container.style.display = "none";
+                    return;
+                }
+                $container.style.display = "block";
+
+                const contents = items.map((item) => `
+                    <div class="swiper-slide slider">
+                        <a href="${item.target_url}" target="${item.target}">
+                            <div class="slider_thumbnail_container">
+                                <img src="${item.banner}" alt="${item.title}">
+                            </div>
+                        </a>
+                    </div>
+                `).join('');
+
+                $list.innerHTML = contents;
+
+                countVisualSlider();
+            },
+        };
+
+        methods.requestAPI();
+    }
+
+    const renderBannerBCB = () => {
+        const DATA_URL = '/api/banners?type=bcb';
+        const $container = document.querySelector('.banner_container');
+        if (!$container) return;
+
+        const methods = {
+            requestAPI: async () => {
+                try {
+                    const data = await requestJson(DATA_URL);
+                    methods.renderContent(data?.data || []);
+                } catch (err) {
+                    console.error('봄봄 메인 하단 배너 로드 실패:', err);
+                }
+            },
+            renderContent: (items = []) => {
+                const $list = $container.querySelector('.swiper-wrapper');
+                if (!$list) return;
+
+                // 배너 데이터가 없으면 섹션 숨김
+                if(items.length < 1){
+                    $container.style.display = "none";
+                    return;
+                }
+                $container.style.display = "block";
+
+                const contents = items.map((item) => `
+                    <div class="swiper-slide slider">
+                        <a href="${item.target_url}" target="${item.target}">
+                            <div class="slider_thumbnail_container">
+                                <img src="${item.banner}" alt="${item.title}">
+                            </div>
+                        </a>
+                    </div>
+                `).join('');
+
+                $list.innerHTML = contents;
+
+                countVisualSlider();
+            },
+        };
+
+        methods.requestAPI();
+    }
+
     // 통합 데이터 처리 함수
     const loadUnifiedContent = async () => {
         const API_URL = '/api/bbC0100';
@@ -628,6 +715,10 @@ const bombomController = (()=>{
         countVisualSlider();
         lazyLoader();
         showInformation();
+
+        // 배너 렌더링
+        renderBannerBCM();
+        renderBannerBCB();
 
         // 통합된 콘텐츠 로딩
         loadUnifiedContent();

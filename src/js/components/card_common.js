@@ -25,6 +25,11 @@ class CardGroupManager {
         this.searchResults = [];
         this.selectedCards = [];
         this.currentTab = 0;
+        this.searchOffset = 0;
+        this.searchLimit = 20;
+        this.hasMore = false;
+        this.totalCount = 0;
+        this.isLoadingMore = false;
 
         this.init();
     }
@@ -397,15 +402,11 @@ class CardGroupManager {
             searchInput.value = '';
         }
 
+        // 페이징 초기화
+        this.searchOffset = 0;
+        this.hasMore = false;
+        this.totalCount = 0;
         this.searchResults = [];
-        const leftPanel = layer.querySelector('.layer_left_panel .layer_panel_body');
-        const leftCount = layer.querySelector('.layer_left_panel .layer_panel_count');
-        if (leftPanel) {
-            leftPanel.innerHTML = '<div style="padding: 4rem; text-align: center; color: #999;">검색어를 입력하세요.</div>';
-        }
-        if (leftCount) {
-            leftCount.textContent = '0';
-        }
 
         const vtypeToTabMap = {
             'bch': 0, 'bcv': 0, 'bsh': 1, 'bsv': 1,
@@ -440,6 +441,9 @@ class CardGroupManager {
         });
 
         this.renderSelectedCards();
+
+        // 빈 검색어로 초기 데이터 로드 (최신 20개)
+        this.search();
     }
 
     closeLayer() {
@@ -467,21 +471,33 @@ class CardGroupManager {
             }
         });
 
+        // 페이징 초기화
+        this.searchOffset = 0;
+        this.hasMore = false;
+        this.totalCount = 0;
         this.searchResults = [];
-        const leftPanel = layer.querySelector('.layer_left_panel .layer_panel_body');
-        const leftCount = layer.querySelector('.layer_left_panel .layer_panel_count');
-        if (leftPanel) {
-            leftPanel.innerHTML = '<div style="padding: 4rem; text-align: center; color: #999;">검색어를 입력하세요.</div>';
-        }
-        if (leftCount) {
-            leftCount.textContent = '0';
-        }
+
+        // 탭 전환 시에도 초기 데이터 로드
+        this.search();
     }
 
-    async search() {
+    async search(isLoadMore = false) {
         const layer = document.querySelector(this.options.layerSelector);
         const searchInput = layer.querySelector('.layer_search_input');
         const keyword = searchInput ? searchInput.value.trim() : '';
+
+        // 더보기가 아닌 경우 초기화
+        if (!isLoadMore) {
+            this.searchOffset = 0;
+            this.searchResults = [];
+        }
+
+        // 이미 로딩 중이거나, 더보기인데 더 이상 데이터가 없으면 리턴
+        if (this.isLoadingMore || (isLoadMore && !this.hasMore)) {
+            return;
+        }
+
+        this.isLoadingMore = true;
 
         try {
             const response = await fetch(this.options.searchEndpoint, {
@@ -492,7 +508,9 @@ class CardGroupManager {
                 },
                 body: JSON.stringify({
                     search: keyword,
-                    data_index: this.currentTab
+                    data_index: this.currentTab,
+                    limit: this.searchLimit,
+                    offset: this.searchOffset
                 })
             });
 
@@ -501,19 +519,33 @@ class CardGroupManager {
             }
 
             const result = await response.json();
-            this.searchResults = result.data || [];
+
+            // 결과 추가 (더보기인 경우 기존 결과에 추가)
+            if (isLoadMore) {
+                this.searchResults = [...this.searchResults, ...(result.data || [])];
+            } else {
+                this.searchResults = result.data || [];
+            }
+
+            // 페이징 정보 업데이트
+            this.totalCount = result.total || 0;
+            this.hasMore = result.has_more || false;
+            this.searchOffset += this.searchLimit;
+
             this.renderSearchResults();
 
         } catch (error) {
             console.error('검색 오류:', error);
             alert('검색 중 오류가 발생했습니다.');
+        } finally {
+            this.isLoadingMore = false;
         }
     }
 
     renderSearchResults() {
         const layer = document.querySelector(this.options.layerSelector);
-        const resultContainer = layer.querySelector('.layer_panel_body');
-        const countElement = layer.querySelector('.layer_panel_count');
+        const resultContainer = layer.querySelector('.layer_left_panel .layer_panel_body');
+        const countElement = layer.querySelector('.layer_left_panel .layer_panel_count');
 
         if (!resultContainer) return;
 
@@ -533,12 +565,29 @@ class CardGroupManager {
 
         if (this.searchResults.length === 0) {
             html = '<div style="padding: 4rem; text-align: center; color: #999;">검색 결과가 없습니다.</div>';
+        } else if (this.hasMore) {
+            // 더보기 버튼 추가
+            html += `
+                <div style="padding: 2rem; text-align: center;">
+                    <button type="button" class="btn_load_more" style="padding: 1rem 2rem; background: #007bff; color: white; border: none; border-radius: 4px; cursor: pointer;">
+                        더보기 (${visibleCount} / ${this.totalCount})
+                    </button>
+                </div>
+            `;
         }
 
         resultContainer.innerHTML = html;
 
         if (countElement) {
             countElement.textContent = visibleCount;
+        }
+
+        // 더보기 버튼 이벤트 바인딩
+        const loadMoreBtn = resultContainer.querySelector('.btn_load_more');
+        if (loadMoreBtn) {
+            loadMoreBtn.addEventListener('click', () => {
+                this.search(true); // 더보기 모드로 검색
+            });
         }
     }
 

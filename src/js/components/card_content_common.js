@@ -9,7 +9,7 @@ class CardGroupManager {
             containerSelector: options.containerSelector || '.groups_wrapper',
             layerSelector: options.layerSelector || '.layer_modal',
             onSave: options.onSave || null,
-            searchEndpoint: options.searchEndpoint || '/api/search',
+            searchEndpoint: options.searchEndpoint || '/master/keywords/contents',
             fieldPrefix: options.fieldPrefix || 'main_c', // main_c, main_hb, main_gb 등
             kValue: options.kValue || 'H0100',
             defaultVtype: options.defaultVtype || 'bch',
@@ -25,6 +25,11 @@ class CardGroupManager {
         this.searchResults = [];
         this.selectedCards = [];
         this.currentTab = 0;
+        this.searchOffset = 0;
+        this.searchLimit = 20;
+        this.hasMore = false;
+        this.totalCount = 0;
+        this.isLoadingMore = false;
 
         this.init();
     }
@@ -489,16 +494,11 @@ class CardGroupManager {
             searchInput.value = '';
         }
 
-        // 검색 결과 초기화
+        // 페이징 초기화
+        this.searchOffset = 0;
+        this.hasMore = false;
+        this.totalCount = 0;
         this.searchResults = [];
-        const leftPanel = layer.querySelector('.layer_left_panel .layer_panel_body');
-        const leftCount = layer.querySelector('.layer_left_panel .layer_panel_count');
-        if (leftPanel) {
-            leftPanel.innerHTML = '<div style="padding: 4rem; text-align: center; color: #999;">검색어를 입력하세요.</div>';
-        }
-        if (leftCount) {
-            leftCount.textContent = '0';
-        }
 
         // vtype에 따른 탭 매핑
         const vtypeToTabMap = {
@@ -536,6 +536,9 @@ class CardGroupManager {
         });
 
         this.renderSelectedCards();
+
+        // 빈 검색어로 초기 데이터 로드 (최신 20개)
+        this.search();
     }
 
     /**
@@ -570,24 +573,36 @@ class CardGroupManager {
             }
         });
 
+        // 페이징 초기화
+        this.searchOffset = 0;
+        this.hasMore = false;
+        this.totalCount = 0;
         this.searchResults = [];
-        const leftPanel = layer.querySelector('.layer_left_panel .layer_panel_body');
-        const leftCount = layer.querySelector('.layer_left_panel .layer_panel_count');
-        if (leftPanel) {
-            leftPanel.innerHTML = '<div style="padding: 4rem; text-align: center; color: #999;">검색어를 입력하세요.</div>';
-        }
-        if (leftCount) {
-            leftCount.textContent = '0';
-        }
+
+        // 탭 전환 시에도 초기 데이터 로드
+        this.search();
     }
 
     /**
      * 검색 실행
      */
-    async search() {
+    async search(isLoadMore = false) {
         const layer = document.querySelector(this.options.layerSelector);
         const searchInput = layer.querySelector('.layer_search_input');
         const keyword = searchInput ? searchInput.value.trim() : '';
+
+        // 더보기가 아닌 경우 초기화
+        if (!isLoadMore) {
+            this.searchOffset = 0;
+            this.searchResults = [];
+        }
+
+        // 이미 로딩 중이거나, 더보기인데 더 이상 데이터가 없으면 리턴
+        if (this.isLoadingMore || (isLoadMore && !this.hasMore)) {
+            return;
+        }
+
+        this.isLoadingMore = true;
 
         try {
             const response = await fetch(this.options.searchEndpoint, {
@@ -598,7 +613,9 @@ class CardGroupManager {
                 },
                 body: JSON.stringify({
                     search: keyword,
-                    data_index: this.currentTab
+                    data_index: this.currentTab,
+                    limit: this.searchLimit,
+                    offset: this.searchOffset
                 })
             });
 
@@ -607,12 +624,56 @@ class CardGroupManager {
             }
 
             const result = await response.json();
-            this.searchResults = result.data || [];
+            console.log('검색 API 응답:', result);
+
+            // API 응답 구조에 따라 데이터 추출
+            let searchData = [];
+
+            if (result.success && Array.isArray(result.data)) {
+                searchData = result.data;
+            } else if (result.success && result.data && typeof result.data === 'object') {
+                // data가 객체인 경우 (예: { content: [], series: [] })
+                // 컨텐츠 배열 찾기
+                if (Array.isArray(result.data.content)) {
+                    searchData = result.data.content;
+                } else if (Array.isArray(result.data.list)) {
+                    searchData = result.data.list;
+                } else {
+                    // 첫 번째 배열 속성 찾기
+                    for (let key in result.data) {
+                        if (Array.isArray(result.data[key])) {
+                            searchData = result.data[key];
+                            break;
+                        }
+                    }
+                }
+            } else if (Array.isArray(result.data)) {
+                searchData = result.data;
+            } else if (Array.isArray(result)) {
+                searchData = result;
+            }
+
+            // 결과 추가 (더보기인 경우 기존 결과에 추가)
+            if (isLoadMore) {
+                this.searchResults = [...this.searchResults, ...searchData];
+            } else {
+                this.searchResults = searchData;
+            }
+
+            // 페이징 정보 업데이트
+            this.totalCount = result.total || 0;
+            this.hasMore = result.has_more || false;
+            this.searchOffset += this.searchLimit;
+
+            console.log('추출된 검색 결과:', this.searchResults);
+
             this.renderSearchResults();
 
         } catch (error) {
             console.error('검색 오류:', error);
             alert('검색 중 오류가 발생했습니다.');
+        } finally {
+            this.isLoadingMore = false;
         }
     }
 
@@ -620,20 +681,37 @@ class CardGroupManager {
      * 검색 결과 렌더링
      */
     renderSearchResults() {
+        console.log('=== renderSearchResults 호출 ===');
         const layer = document.querySelector(this.options.layerSelector);
-        const resultContainer = layer.querySelector('.layer_panel_body');
-        const countElement = layer.querySelector('.layer_panel_count');
+        const resultContainer = layer.querySelector('.layer_left_panel .layer_panel_body');
+        const countElement = layer.querySelector('.layer_left_panel .layer_panel_count');
 
-        if (!resultContainer) return;
+        console.log('레이어:', layer);
+        console.log('결과 컨테이너:', resultContainer);
+
+        if (!resultContainer) {
+            console.error('검색 결과 컨테이너를 찾을 수 없습니다.');
+            return;
+        }
+
+        // searchResults가 배열인지 확인
+        if (!Array.isArray(this.searchResults)) {
+            console.error('searchResults가 배열이 아닙니다:', this.searchResults);
+            this.searchResults = [];
+        }
+
+        console.log('검색 결과 개수:', this.searchResults.length);
+        console.log('선택된 카드 개수:', this.selectedCards.length);
 
         // 이미 선택된 카드 ID 목록
-        const selectedIds = this.selectedCards.map(card => card.idx || card.goods_seq);
+        const selectedIds = this.selectedCards.map(card => card.id || card.idx || card.goods_seq);
+        console.log('선택된 카드 IDs:', selectedIds);
 
         let html = '';
         let visibleCount = 0;
 
         this.searchResults.forEach((card) => {
-            const cardId = card.idx || card.goods_seq;
+            const cardId = card.id || card.idx || card.goods_seq;
             const isHidden = selectedIds.includes(cardId);
 
             if (!isHidden) visibleCount++;
@@ -643,20 +721,41 @@ class CardGroupManager {
 
         if (this.searchResults.length === 0) {
             html = '<div style="padding: 4rem; text-align: center; color: #999;">검색 결과가 없습니다.</div>';
+        } else if (this.hasMore) {
+            // 더보기 버튼 추가
+            html += `
+                <div style="padding: 2rem; text-align: center;">
+                    <button type="button" class="btn_load_more" style="padding: 1rem 2rem; background: #007bff; color: white; border: none; border-radius: 4px; cursor: pointer;">
+                        더보기 (${visibleCount} / ${this.totalCount})
+                    </button>
+                </div>
+            `;
         }
+
+        console.log('생성된 HTML 길이:', html.length);
+        console.log('표시될 카드 수:', visibleCount);
 
         resultContainer.innerHTML = html;
 
         if (countElement) {
             countElement.textContent = visibleCount;
         }
+
+        // 더보기 버튼 이벤트 바인딩
+        const loadMoreBtn = resultContainer.querySelector('.btn_load_more');
+        if (loadMoreBtn) {
+            loadMoreBtn.addEventListener('click', () => {
+                this.search(true); // 더보기 모드로 검색
+            });
+        }
+
+        console.log('=== renderSearchResults 완료 ===');
     }
 
     /**
      * 검색 결과 카드 HTML 생성
      */
     createSearchCardHTML(card, isHidden = false) {
-        const cardId = card.idx || card.goods_seq;
         const title = card.title || card.goods_name || '제목 없음';
         const category = card.ktitle || card.category_title || '';
         const image = card.thum_s || card.goods_image || '/src/assets/images/no_profile.png';
@@ -690,11 +789,15 @@ class CardGroupManager {
      * 선택 목록에 추가
      */
     addToSelected(card) {
-        const cardId = card.idx || card.goods_seq;
+        console.log('=== addToSelected 호출 ===');
+        console.log('추가할 카드:', card);
+
+        const cardId = card.id || card.idx || card.goods_seq;
+        console.log('카드 ID:', cardId);
 
         // 중복 체크
         const exists = this.selectedCards.find(c =>
-            (c.idx || c.goods_seq) === cardId
+            (c.id || c.idx || c.goods_seq) === cardId
         );
 
         if (exists) {
@@ -704,8 +807,71 @@ class CardGroupManager {
 
         // 맨 앞에 추가 (기존: push → 변경: unshift)
         this.selectedCards.unshift(card);
+        console.log('선택된 카드 목록 업데이트됨, 총 개수:', this.selectedCards.length);
+
         this.renderSelectedCards();
-        this.renderSearchResults(); // 검색 결과에서 숨김 처리
+
+        // 검색 결과에서 해당 카드만 숨김 처리 (전체 재렌더링 대신)
+        this.hideSearchResultCard(cardId);
+
+        // 카운트 업데이트
+        this.updateSearchResultCount();
+
+        console.log('=== addToSelected 완료 ===');
+    }
+
+    /**
+     * 검색 결과에서 특정 카드만 숨김
+     */
+    hideSearchResultCard(cardId) {
+        const layer = document.querySelector(this.options.layerSelector);
+        if (!layer) {
+            console.error('레이어를 찾을 수 없습니다.');
+            return;
+        }
+
+        const searchCards = layer.querySelectorAll('.search_result_card');
+        console.log(`숨기려는 카드 ID: ${cardId}, 검색 결과 카드 수: ${searchCards.length}`);
+
+        let found = false;
+        searchCards.forEach(cardEl => {
+            try {
+                const cardData = JSON.parse(
+                    cardEl.dataset.card
+                        .replace(/&quot;/g, '"')
+                        .replace(/&#039;/g, "'")
+                        .replace(/&amp;/g, '&')
+                        .replace(/&lt;/g, '<')
+                        .replace(/&gt;/g, '>')
+                );
+
+                const currentCardId = cardData.id || cardData.idx || cardData.goods_seq;
+                if (currentCardId === cardId) {
+                    cardEl.classList.add('hidden');
+                    found = true;
+                    console.log(`카드 ID ${cardId} 숨김 처리 완료`);
+                }
+            } catch (e) {
+                console.error('카드 데이터 파싱 실패:', e);
+            }
+        });
+
+        if (!found) {
+            console.warn(`카드 ID ${cardId}를 찾을 수 없습니다.`);
+        }
+    }
+
+    /**
+     * 검색 결과 카운트 업데이트
+     */
+    updateSearchResultCount() {
+        const layer = document.querySelector(this.options.layerSelector);
+        const countElement = layer.querySelector('.layer_left_panel .layer_panel_count');
+        const visibleCards = layer.querySelectorAll('.search_result_card:not(.hidden)');
+
+        if (countElement) {
+            countElement.textContent = visibleCards.length;
+        }
     }
 
     /**
@@ -797,9 +963,45 @@ class CardGroupManager {
      * 선택 목록에서 제거
      */
     removeSelected(index) {
+        const removedCard = this.selectedCards[index];
+        const cardId = removedCard.id || removedCard.idx || removedCard.goods_seq;
+
         this.selectedCards.splice(index, 1);
         this.renderSelectedCards();
-        this.renderSearchResults(); // 검색 결과에서 다시 표시
+
+        // 검색 결과에서 해당 카드만 다시 표시 (전체 재렌더링 대신)
+        this.showSearchResultCard(cardId);
+
+        // 카운트 업데이트
+        this.updateSearchResultCount();
+    }
+
+    /**
+     * 검색 결과에서 특정 카드 다시 표시
+     */
+    showSearchResultCard(cardId) {
+        const layer = document.querySelector(this.options.layerSelector);
+        const searchCards = layer.querySelectorAll('.search_result_card');
+
+        searchCards.forEach(cardEl => {
+            try {
+                const cardData = JSON.parse(
+                    cardEl.dataset.card
+                        .replace(/&quot;/g, '"')
+                        .replace(/&#039;/g, "'")
+                        .replace(/&amp;/g, '&')
+                        .replace(/&lt;/g, '<')
+                        .replace(/&gt;/g, '>')
+                );
+
+                const currentCardId = cardData.id || cardData.idx || cardData.goods_seq;
+                if (currentCardId === cardId) {
+                    cardEl.classList.remove('hidden');
+                }
+            } catch (e) {
+                console.error('카드 데이터 파싱 실패:', e);
+            }
+        });
     }
 
     /**
@@ -981,8 +1183,8 @@ class CardGroupManager {
         const vsdate = card.vsdate || new Date().toISOString();
         const isFuture = new Date(vsdate) > new Date();
         const dateText = this.formatDate(vsdate);
-        const cardId = card.idx || card.goods_seq || '';
-        const cardType = card.ctype || card.is_type || 'hb';
+        const cardId = card.id || card.idx || card.goods_seq || '';
+        const cardType = card.board_type || card.ctype || card.is_type || 'bc';
 
         // JSON을 안전하게 이스케이프
         const cardDataJson = JSON.stringify(card)
@@ -1155,3 +1357,325 @@ class CardGroupManager {
 
 // 전역 export
 window.CardGroupManager = CardGroupManager;
+
+/**
+ * 폼 체크 및 전송 처리
+ * content_registration.js에서 복사
+ */
+document.addEventListener('DOMContentLoaded', function() {
+    const form = document.getElementById('mainForm');
+    const submitBtn = document.getElementById('submitBtn');
+
+    if (!form || !submitBtn) {
+        console.log('폼 또는 제출 버튼을 찾을 수 없습니다.');
+        return;
+    }
+
+    // 에러 메시지 표시 함수
+    function showError(elementId, message) {
+        const errorElement = document.getElementById(elementId);
+        if (errorElement) {
+            errorElement.textContent = message;
+            errorElement.style.display = 'block';
+            window.scrollTo({
+                top: 400,
+                behavior: 'smooth'
+            });
+        }
+    }
+
+    // 에러 메시지 숨김 함수
+    function hideError(elementId) {
+        const errorElement = document.getElementById(elementId);
+        if (errorElement) {
+            errorElement.textContent = '';
+            errorElement.style.display = 'none';
+        }
+    }
+
+    // 모든 에러 메시지 숨김
+    function hideAllErrors() {
+        hideError('title_error');
+        hideError('editer_error');
+        hideError('description_error');
+        hideError('thum_s_error');
+        hideError('thum_m_error');
+        hideError('thum_l_error');
+    }
+
+    // 파일 유효성 검사
+    function validateFile(input, errorId) {
+        if (!input.files || input.files.length === 0) {
+            return true;
+        }
+
+        const file = input.files[0];
+        const allowedTypes = ['image/jpeg', 'image/png', 'image/gif'];
+        const maxSize = 10 * 1024 * 1024; // 10MB
+
+        if (!allowedTypes.includes(file.type)) {
+            showError(errorId, 'JPG, PNG, GIF 파일만 업로드 가능합니다.');
+            return false;
+        }
+
+        if (file.size > maxSize) {
+            showError(errorId, '파일 크기는 10MB 이하여야 합니다.');
+            return false;
+        }
+
+        hideError(errorId);
+        return true;
+    }
+
+    // 폼 유효성 검사
+    function validateForm() {
+        hideAllErrors();
+        let isValid = true;
+
+        const post_title_main = document.getElementById('post_title_main');
+        if (post_title_main) {
+            if (!post_title_main.value) {
+                showError('title_error', '대제목을 입력해주세요.');
+                isValid = false;
+            } else if (post_title_main.value.length > 30) {
+                showError('title_error', '최대 글자 수는 공백 포함 30자입니다.');
+                isValid = false;
+            }
+        }
+
+        const post_subtitle = document.getElementById('post_subtitle');
+        if (post_subtitle && !post_subtitle.value) {
+            showError('description_error', '부제목을 입력해주세요.');
+            isValid = false;
+        }
+
+        const member_seq = document.getElementById('member_seq');
+        if (member_seq && (!member_seq.value || member_seq.value == 0)) {
+            showError('editer_error', '에디터를 선택해주세요.');
+            isValid = false;
+        }
+
+        const thum_s = document.getElementById('thum_s');
+        if (thum_s && !validateFile(thum_s, 'thum_s_error')) {
+            isValid = false;
+        }
+
+        const thum_m = document.getElementById('thum_m');
+        if (thum_m && !validateFile(thum_m, 'thum_m_error')) {
+            isValid = false;
+        }
+
+        const thum_l = document.getElementById('thum_l');
+        if (thum_l && !validateFile(thum_l, 'thum_l_error')) {
+            isValid = false;
+        }
+
+        return isValid;
+    }
+
+    // 버튼 상태 변경
+    function setSubmitButtonState(loading) {
+        if (loading) {
+            submitBtn.disabled = true;
+            submitBtn.innerHTML = '<span>처리중...</span>';
+            submitBtn.style.opacity = '0.6';
+        } else {
+            submitBtn.disabled = false;
+            const isEditPage = form.action.includes('/update/');
+            submitBtn.innerHTML = isEditPage ? '<span>수정</span>' : '<span>등록</span>';
+            submitBtn.style.opacity = '1';
+        }
+    }
+
+    // 폼 전송 처리
+    form.addEventListener('submit', function(e) {
+        e.preventDefault();
+
+        const recommendTitles = document.querySelectorAll('input[name^="recommend_title"]');
+        let hasEmptyTitle = false;
+
+        recommendTitles.forEach((input, index) => {
+            if (!input.value || input.value.trim() === '') {
+                hasEmptyTitle = true;
+                console.warn(`추천 그룹 ${index}의 타이틀이 비어있습니다.`);
+            }
+        });
+
+        if (hasEmptyTitle) {
+            alert('추천 컨텐츠의 그룹 타이틀을 모두 입력해주세요.');
+            submitBtn.disabled = false;
+            return false;
+        }
+
+        function setValueSafely(targetName, sourceName) {
+            const target = document.querySelector(`input[name="${targetName}"]`);
+            const source = document.querySelector(`input[name="${sourceName}"]`);
+
+            if (target && source) {
+                const value = source.getAttribute('data-value');
+                target.value = (value === null || value === undefined || value === '') ? '0' : value;
+            } else {
+                if (target) {
+                    target.value = '0';
+                }
+            }
+        }
+
+        setValueSafely('category', 'category_tmp');
+        setValueSafely('sidx', 'sidx_tmp');
+        setValueSafely('member_seq', 'member_tmp');
+
+        // 유효성 검사
+        if (!validateForm()) {
+            return false;
+        }
+
+        // 버튼 상태 변경
+        setSubmitButtonState(true);
+
+        // CSRF 토큰 가져오기
+        let csrfToken = '';
+        const inputCsrf = form.querySelector('input[name="_token"]');
+        if (inputCsrf && inputCsrf.value) {
+            csrfToken = inputCsrf.value;
+        }
+
+        // FormData 생성
+        const formData = new FormData(form);
+
+        // 헤더 설정
+        const headers = {
+            'X-Requested-With': 'XMLHttpRequest'
+        };
+
+        if (csrfToken) {
+            headers['X-CSRF-TOKEN'] = csrfToken;
+        }
+
+        // AJAX로 폼 전송
+        fetch(form.action, {
+            method: 'POST',
+            body: formData,
+            headers: headers
+        })
+            .then(response => {
+                if (response.ok) {
+                    const contentType = response.headers.get('content-type');
+                    if (contentType && contentType.includes('application/json')) {
+                        return response.json();
+                    } else {
+                        return { success: true };
+                    }
+                } else {
+                    return response.text().then(text => {
+                        try {
+                            const errorData = JSON.parse(text);
+
+                            // 인증이 필요한 경우 리다이렉트 처리
+                            if (!errorData.success && errorData.redirect) {
+                                alert(errorData.message || '로그인후 다시 작업 해주세요.');
+                                window.location.href = errorData.redirect;
+                                return;
+                            }
+
+                            throw new Error(errorData.message || '서버 오류가 발생했습니다.');
+                        } catch (e) {
+                            // JSON 파싱 실패 시
+                            if (e instanceof SyntaxError) {
+                                throw new Error('서버 오류가 발생했습니다. (HTTP ' + response.status + ')');
+                            }
+                            // 다른 에러는 그대로 전파
+                            throw e;
+                        }
+                    });
+                }
+            })
+            .then(data => {
+                // 성공 처리
+                if (data.success !== false) {
+                    const currentUrl = '/master/c/contents';
+                    const isEditPage = form.action.includes('/update/');
+                    const successMessage = encodeURIComponent(isEditPage ? '수정 되었습니다.' : '등록 되었습니다.');
+                    window.location.href = currentUrl + '?success=' + successMessage;
+                } else {
+                    setSubmitButtonState(false);
+                    if (data.errors) {
+                        Object.keys(data.errors).forEach(field => {
+                            const errorId = field + '_error';
+                            showError(errorId, data.errors[field][0]);
+                        });
+                    }
+                    alert(data.message || '저장 중 오류가 발생했습니다.');
+                }
+            })
+            .catch(error => {
+                setSubmitButtonState(false);
+                let errorMessage = '오류가 발생했습니다.';
+
+                if (error.message.includes('500')) {
+                    errorMessage = '서버 내부 오류가 발생했습니다. ';
+                } else if (error.message.includes('419')) {
+                    errorMessage = 'CSRF 토큰이 만료되었습니다. 페이지를 새로고침 후 다시 시도하세요.';
+                } else if (error.message.includes('422')) {
+                    errorMessage = '입력값에 오류가 있습니다.';
+                } else {
+                    errorMessage = error.message;
+                }
+
+                alert(errorMessage);
+            });
+
+        return false;
+    });
+
+    // 파일 삭제 버튼 처리
+    document.addEventListener('click', function(e) {
+        if (e.target.classList.contains('del_btn')) {
+            const targetId = e.target.getAttribute('data-target');
+            const fileInput = document.getElementById(targetId);
+            const imgBox = e.target.closest('.img_box');
+
+            if (fileInput) {
+                fileInput.value = '';
+            }
+
+            if (imgBox) {
+                imgBox.style.display = 'none';
+            }
+        }
+    });
+
+    // 파일 선택 시 미리보기
+    document.addEventListener('change', function(e) {
+        if (e.target.type === 'file' && e.target.files.length > 0) {
+            const file = e.target.files[0];
+            const targetId = e.target.id;
+            let previewId = '';
+
+            if (targetId === 'thum_s') {
+                previewId = 'preViewthum_s';
+            } else if (targetId === 'thum_m') {
+                previewId = 'preViewthum_m';
+            } else if (targetId === 'thum_l') {
+                previewId = 'preViewthum_l';
+            }
+
+            if (previewId) {
+                const reader = new FileReader();
+                reader.onload = function(event) {
+                    const previewImg = document.getElementById(previewId);
+                    const imgBox = previewImg ? previewImg.closest('.img_box') : null;
+
+                    if (previewImg) {
+                        previewImg.src = event.target.result;
+                    }
+
+                    if (imgBox) {
+                        imgBox.style.display = 'block';
+                    }
+                };
+                reader.readAsDataURL(file);
+            }
+        }
+    });
+});

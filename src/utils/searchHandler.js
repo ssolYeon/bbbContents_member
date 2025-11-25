@@ -49,6 +49,7 @@ export function initSearchHandler(opts = {}) {
     if (savedAutoSave !== null) {
         autoSaveOn = savedAutoSave === 'true';
     }
+    console.log('자동저장 설정 로드:', autoSaveOn ? '켜짐' : '꺼짐');
 
     // localStorage에서 최근 검색어 불러오기
     let recentKeywords = [];
@@ -201,10 +202,38 @@ export function initSearchHandler(opts = {}) {
     }
 
     // ---- 이벤트 ----
-    // 열기(헤더의 검색 버튼)
+    // 열기(헤더의 검색 버튼) - 검색 페이지로 이동
     searchBtn.addEventListener('click', () => {
-        searchForm.classList.add('active');
-        keywordWrap.classList.add('active');
+        // 현재 페이지에서 탭 정보 가져오기
+        const currentPath = window.location.pathname;
+        let currentTab = 'bb'; // 기본값
+
+        if (currentPath.startsWith('/bc')) {
+            currentTab = 'bc';
+        } else if (currentPath.startsWith('/bs')) {
+            currentTab = 'bs';
+        } else if (currentPath.startsWith('/gb')) {
+            currentTab = 'gb';
+        } else if (currentPath.startsWith('/hb')) {
+            currentTab = 'hb';
+        } else if (currentPath.startsWith('/sb')) {
+            currentTab = 'sb';
+        } else if (currentPath.startsWith('/bb')) {
+            currentTab = 'bb';
+        } else if (currentPath === '/' || currentPath === '') {
+            currentTab = 'bb';
+        }
+
+        // 검색 페이지에서는 URL 파라미터의 tab 사용
+        if (currentPath.startsWith('/search')) {
+            const urlParams = new URLSearchParams(window.location.search);
+            const tabParam = urlParams.get('tab');
+            if (tabParam) {
+                currentTab = tabParam;
+            }
+        }
+
+        window.location.href = `/search-ready?tab=${currentTab}`;
     });
 
     // 검색 실행 함수
@@ -249,21 +278,22 @@ export function initSearchHandler(opts = {}) {
         closeKeywords({ blurInput: true });
     });
 
-    // 인풋 포커스/블러/입력
-    input.addEventListener('focus', () => {
-        // 포커스 시 억제 해제(검색 페이지)
-        if (options.keywordsRequireFocus) searchForm.classList.remove('kw-suppress');
-        updateKeywordVisibility();
-    });
+    // // 인풋 포커스/블러/입력
+    // input.addEventListener('focus', () => {
+    //     // 포커스 시 억제 해제(검색 페이지)
+    //     if (options.keywordsRequireFocus) searchForm.classList.remove('kw-suppress');
+    //     updateKeywordVisibility();
+    // });
 
-    input.addEventListener('blur', () => {
-        if (isClosing) return;
-        // 블러되면 다시 억제(검색 페이지)
-        if (options.keywordsRequireFocus) searchForm.classList.add('kw-suppress');
-        setTimeout(updateKeywordVisibility, 0);
-    });
+    // input.addEventListener('blur', () => {
+    //     if (isClosing) return;
+    //     // 블러되면 다시 억제(검색 페이지)
+    //     if (options.keywordsRequireFocus) searchForm.classList.add('kw-suppress');
+    //     setTimeout(updateKeywordVisibility, 0);
+    // });
 
-    input.addEventListener('input', updateKeywordVisibility);
+    // input.addEventListener('input', updateKeywordVisibility);
+
     // dewbian 기존 코드 수정
     deleteAllBtn?.addEventListener('click', (e) => {
         e.preventDefault();

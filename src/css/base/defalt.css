@@ -1,0 +1,372 @@
+@charset "UTF-8";
+
+/* ---------------------------------------
+	font
+--------------------------------------- */
+@font-face {
+    font-family: "Pretendard-Black";
+    src: url(../../fonts/Pretendard-Black.subset.woff) format("woff");
+}
+
+@font-face {
+    font-family: "Pretendard-Bold";
+    src: url(../../fonts/Pretendard-Bold.subset.woff) format("woff");
+}
+
+@font-face {
+    font-family: "Pretendard-SemiBold";
+    src: url(../../fonts/Pretendard-SemiBold.subset.woff) format("woff");
+}
+
+@font-face {
+    font-family: "Pretendard-Medium";
+    src: url(../../fonts/Pretendard-Medium.subset.woff) format("woff");
+}
+
+@font-face {
+    font-family: "Pretendard-Regular";
+    src: url(../../fonts/Pretendard-Regular.subset.woff) format("woff");
+}
+
+@font-face {
+    font-family: "Pretendard-Light";
+    src: url(../../fonts/Pretendard-Light.subset.woff) format("woff");
+}
+
+@font-face {
+    font-family: "Pretendard-Thin";
+    src: url(../../fonts/Pretendard-Thin.subset.woff) format("woff");
+}
+
+@font-face {
+    font-family: "Pretendard Variable";
+    font-weight: 45 920;
+    font-style: normal;
+    font-display: swap;
+    src: url("../../fonts/PretendardVariable.woff2") format("woff2-variations");
+}
+
+/* ---------------------------------------
+	root
+--------------------------------------- */
+:root {
+    font-family: "Pretendard-Regular", -apple-system, BlinkMacSystemFont,
+        "Segoe UI", Roboto, "Helvetica Neue", Arial, "Apple Color Emoji",
+        "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji", sans-serif;
+    line-height: 1.5;
+    -webkit-text-size-adjust: 100%;
+    font-size: min(calc(10 / (393 / 100) * 1vw), 19.54px);
+    word-break: keep-all;
+
+    --font-800: "Pretendard-Black", sans-serif;
+    --font-700: "Pretendard-Bold", sans-serif;
+    --font-600: "Pretendard-SemiBold", sans-serif;
+    --font-500: "Pretendard-Medium", sans-serif;
+    --font-400: "Pretendard-Regular", sans-serif;
+    --font-300: "Pretendard-Light", sans-serif;
+    --font-200: "Pretendard-Thin", sans-serif;
+
+    --bbb-green: #0afd1c;
+    --bg-light-gray: #f5f5f5;
+    --color-primary: #5d00ff;
+
+    --lc-gap-l: 6rem;
+    --lc-gap-m: 4rem;
+    --lc-gap-hz: 1.6rem;
+    --lc-gap-hz-half: 1.2rem;
+    --lc-gap-halftext: 2rem;
+
+    --lc-tit-gap: 2.5rem;
+    --pd-in: 1.6rem;
+}
+
+/* ---------------------------------------
+	reset
+--------------------------------------- */
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+form,
+fieldset {
+    margin: 0;
+    padding: 0;
+    border: none;
+}
+
+legend {
+    margin: 0;
+    padding: 0;
+    font: inherit;
+    color: inherit;
+}
+label {
+    margin: 0;
+    padding: 0;
+    font: inherit;
+    color: inherit;
+    cursor: pointer;
+}
+input,
+textarea,
+select,
+button {
+    margin: 0;
+    padding: 0;
+    border: none;
+    background: none;
+    font: inherit;
+    color: inherit;
+    box-sizing: border-box;
+    outline: none;
+}
+button,
+input[type="button"],
+input[type="submit"],
+input[type="reset"] {
+    cursor: pointer;
+    background: none;
+}
+select {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+}
+textarea {
+    resize: none;
+}
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+ol,
+ul,
+li {
+    list-style: none;
+}
+
+img,
+video {
+    display: block;
+    width: 100%;
+    max-width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* ---------------------------------------
+	layout
+--------------------------------------- */
+/* 안드로이드 webview 텍스트 선택 막기 */
+* {
+    -webkit-user-select: none;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+}
+
+#app_wrapper {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    width: 100%;
+    max-width: 39.3rem;
+    margin: 0 auto;
+    position: relative;
+}
+#app_wrapper.hidden {
+    overflow-y: hidden !important;
+}
+#app_wrapper main {
+    flex: 1 1 0;
+    padding-bottom: var(--lc-gap-l);
+}
+
+#app_wrapper::-webkit-scrollbar {
+    display: none;
+}
+.is-hidden + #app_wrapper {
+    margin-top: -6rem;
+}
+
+/* ---------------------------------------
+	headerComponents
+--------------------------------------- */
+header {
+    position: sticky;
+    top: 0;
+    width: 100%;
+    height: 5.4rem;
+    z-index: 100;
+    background-color: #fff;
+    transition: transform 0.2s ease;
+    will-change: transform;
+}
+header.is-hidden {
+    transform: translateY(-100%);
+}
+header .container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    max-width: 39.3rem;
+    margin: 0 auto;
+    height: 100%;
+    padding-inline: 1.6rem;
+}
+header .logo img {
+    width: 2.8rem;
+    height: 2.8rem;
+}
+header .header_button_group {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1.4rem;
+}
+header .btn_header_search,
+header .btn_header_my {
+    position: relative;
+}
+header .btn_header_search,
+header .btn_header_my,
+header .btn_header_bookmark {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 2.8rem;
+    height: 2.8rem;
+}
+
+header .btn_nav {
+    position: relative;
+    width: 2.4rem;
+    height: 2.4rem;
+}
+header .btn_nav .btn_line {
+    position: absolute;
+    left: 0.2rem;
+    height: 0.15rem;
+    background-color: #000;
+}
+header .btn_nav .btn_line.top {
+    top: 0.325rem;
+    width: 2rem;
+}
+header .btn_nav .btn_line.center {
+    top: 50%;
+    transform: translateY(-50%);
+    width: 1rem;
+}
+header .btn_nav .btn_line.bottom {
+    top: 1.925rem;
+    width: 1.5rem;
+}
+
+.search_form_container.active.fix .header_button_group a {
+    padding: 0.6rem 0.2rem;
+}
+.search_form_container.active.fix .header_button_group a img {
+    width: 2.4rem;
+    height: 2.4rem;
+}
+
+/* ---------------------------------------
+	footerComponents
+--------------------------------------- */
+footer {
+    padding: 4rem 1.6rem 11rem;
+    background-color: #000;
+}
+#app_wrapper:has(.floating_actions_container) footer {
+    padding-bottom: 4.2rem;
+}
+footer .footer_top_container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+footer .footer_top_container .logo {
+    width: 2.4rem;
+    height: 2.4rem;
+}
+footer .footer_top_container .btn_business_toggle {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 0.2rem;
+    color: #8f8f8f;
+    font-size: 1.3rem;
+}
+footer .footer_top_container .btn_business_toggle img {
+    width: 1.2rem;
+    height: 1.2rem;
+    transition: transform 0.2s;
+    opacity: 0.56;
+}
+footer .footer_top_container .btn_business_toggle.active img {
+    transform: rotate(180deg);
+}
+footer .footer_business_information_container {
+    display: none;
+    margin-top: 1.6rem;
+}
+footer .footer_business_information_container.active {
+    display: block;
+}
+footer .footer_business_information_container p {
+    color: #8f8f8f;
+    font-size: 1.1rem;
+    line-height: 1.48;
+    letter-spacing: -0.01em;
+}
+footer .footer_service_container {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    margin-top: 1.6rem;
+}
+footer .footer_service_container a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    margin-right: 1.6rem;
+    padding-right: 1.6rem;
+    color: #8f8f8f;
+    font-family: var(--font-700);
+    font-size: 1.1rem;
+}
+footer .footer_service_container a:last-child {
+    margin-right: 0;
+    padding-right: 0;
+}
+footer .footer_service_container a:after {
+    content: "";
+    position: absolute;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 1px;
+    height: 1.1rem;
+    background-color: #8f8f8f;
+}
+footer .footer_service_container a:last-child:after {
+    display: none;
+}
+footer .footer_notice {
+    margin-top: 1.6rem;
+    color: #8f8f8f;
+    font-size: 1.1rem;
+}
+footer copy {
+    display: block;
+    margin-top: 1.6rem;
+    color: #8f8f8f;
+    font-size: 1.1rem;
+}

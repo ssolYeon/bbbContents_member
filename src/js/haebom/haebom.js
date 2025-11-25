@@ -565,6 +565,7 @@ const haebomSubMainController = (()=>{
                 // button.disabled = true;
                 // button.textContent = '로딩 중...';
             } else if (!loading && state.currentPage === 1) {
+                button.style.display = 'block';
                 button.disabled = false;
                 button.textContent = '더 보기';
             }

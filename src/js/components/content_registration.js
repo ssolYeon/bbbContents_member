@@ -184,13 +184,14 @@ document.addEventListener("DOMContentLoaded", () => {
     };
 
     // ------------ vtype에 따른 탭 인덱스 매핑 ------------
+    // CardGroupManager와 동일한 매핑 사용
     const getTabIndexByVtype = (vtype) => {
         const vtypeToTabMap = {
-            'bch': 0, 'bcv': 0, // 컨텐츠 탭
-            'bsh': 1, 'bsv': 1, // 시리즈 탭
-            'hbh': 2, 'hbv': 2, // 해봄 탭
-            'gbh': 3, 'gbv': 3, // 가봄 탭
-            'sbh': 4, 'sbv': 4  // 사봄 탭
+            'bch': 0, 'bcv': 0,
+            'bsh': 1, 'bsv': 1,
+            'hbh': 2, 'hbv': 2,
+            'gbh': 3, 'gbv': 3,
+            'sbh': 4, 'sbv': 4
         };
         return vtypeToTabMap[vtype] ?? 0;
     };
@@ -658,6 +659,9 @@ document.addEventListener("DOMContentLoaded", () => {
             const post_title_main = document.getElementById('post_title_main');
             if (!post_title_main.value) {
                 showError('title_error', '대제목을 입력해주세요.');
+                isValid = false;
+            } else if (post_title_main.value.length > 30) {
+                showError('title_error', '최대 글자 수는 공백 포함 30자입니다.');
                 isValid = false;
             }
             const post_subtitle = document.getElementById('post_subtitle');

@@ -1,13 +1,33 @@
-@import '../base/base.css';
+/* @import '../base/base.css';
 @import '../components/headerComponents.css';
 @import '../components/footerComponents.css';
-@import '../components/components.css';
+@import '../components/components.css'; */
 
-header { position:relative; }
-header .container{padding-inline:1.6rem;}
-header .container p{ position:absolute; top:50%; left:50%; transform:translate(-50%,-50%); width:20.9rem; padding-inline:2rem; font-family: var(--font-700); font-size:1.9rem;}
-header .header_button_group{display: flex; gap:1.6rem;}
-header .header_button_group .btn_header_back, header .header_button_group .btn_header_home{width:2.4rem; height:2.4rem;}
+/* header {
+    position: relative;
+} */
+header .container {
+    padding-inline: 1.6rem;
+}
+header .container p {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 20.9rem;
+    padding-inline: 2rem;
+    font-family: var(--font-700);
+    font-size: 1.9rem;
+}
+header .header_button_group {
+    display: flex;
+    gap: 1.6rem;
+}
+header .header_button_group .btn_header_back,
+header .header_button_group .btn_header_home {
+    width: 2.4rem;
+    height: 2.4rem;
+}
 
 /* .series_detail_container{background-color:#000;}
 .series_detail_container .visual_thumbnail{position: relative; width:100%; height:auto; aspect-ratio: 393/524; background: linear-gradient(180deg, rgba(0, 0, 0, 0) 55.53%, rgba(0, 0, 0, 0.6) 100%);border-radius:0}
