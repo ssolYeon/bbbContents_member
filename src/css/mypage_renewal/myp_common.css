@@ -179,6 +179,11 @@ header .container h1 {
   display: flex;
   gap: 0.8rem;
 }
+.myp_button_wrap.column {
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+}
 .myp_button {
   flex: 1;
   padding: 1.8rem 2.4rem;

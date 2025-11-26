@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>좋아요 - 마이페이지</title>
+    <title>뉴스레터 구독 설정(구독) - 마이페이지</title>
 
     <link rel="stylesheet" href="/src/css/base/defalt.css" />
     <link rel="stylesheet" href="/src/css/components/components.css" />
@@ -29,13 +29,9 @@
               src="/src/assets/images/myp_renewl_images/image_newsletter.svg"
             />
             <p class="title">봄봄봄 뉴스레터</p>
-            <p class="text">
-              매월 오전 8시에 새로운 소식을<br />
-              이메일로 뉴스레터를 전달해 드려요.<br />
-              봄봄봄을 통해서 새로운 경험을 찾을 수 있어요.
-            </p>
+            <p class="text">2025.10.26 구독신청 하셨어요.</p>
 
-            <div class="myp_input_box">
+            <div class="input_box subscribed">
               <input
                 type="email"
                 id="userEmail"
@@ -45,13 +41,15 @@
                 disabled
               />
             </div>
-            <p class="email_info">
-              이메일 주소는 [설정]>[회원정보]에서 변경할 수 있습니다.
-            </p>
-          </div>
 
-          <div class="myp_button_wrap">
-            <a href="javascript:;" class="myp_button bg_point">구독 신청</a>
+            <div class="myp_button_wrap column">
+              <button type="button" class="myp_button bd_grey">
+                구독 취소
+              </button>
+              <a href="javascript:;" class="myp_button bg_black"
+                >뉴스레터 보러가기</a
+              >
+            </div>
           </div>
         </div>
       </main>
