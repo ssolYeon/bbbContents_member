@@ -7,6 +7,9 @@ footer {
 .myp_container {
   padding: 2.4rem 1.6rem 6rem;
 }
+.myp_container.side {
+  padding: 0 1.6rem;
+}
 .myp_container.bg_grey {
   background-color: #f5f5f5;
 }
@@ -180,4 +183,55 @@ footer {
 .myp_container_empty {
   display: flex;
   height: 100%;
+}
+
+/* ************************
+	뉴스레터 구독 설정
+************************ */
+.myp_newsletter {
+  display: flex;
+  flex-direction: column;
+  padding: 0 1.6rem 4rem;
+  height: 100%;
+  overflow-x: hidden;
+}
+.myp_newsletter_box {
+  text-align: center;
+  margin-top: auto;
+}
+.myp_newsletter_box img {
+  width: 16rem;
+  height: 16rem;
+  margin: 0 auto;
+}
+.myp_newsletter_box .title {
+  margin: 2.4rem 0 1.6rem;
+  color: #000;
+  font-family: var(--font-700);
+  font-size: 2.4rem;
+  line-height: 1;
+  letter-spacing: -0.024rem;
+}
+.myp_newsletter_box .text {
+  color: rgba(0, 0, 0, 0.8);
+  font-family: var(--font-400);
+  font-size: 1.6rem;
+  line-height: 1.48;
+  letter-spacing: -0.016rem;
+}
+.myp_newsletter_box .myp_input_box {
+  margin: 1.6rem 0;
+}
+.myp_newsletter_box .myp_input_box input {
+  text-align: center;
+}
+.myp_newsletter_box .email_info {
+  color: rgba(0, 0, 0, 0.56);
+  font-family: var(--font-400);
+  font-size: 1.4rem;
+  line-height: 1;
+  letter-spacing: -0.014rem;
+}
+.myp_newsletter .myp_button_wrap {
+  margin-top: auto;
 }

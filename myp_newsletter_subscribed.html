@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>좋아요 - 마이페이지</title>
+
+    <link rel="stylesheet" href="/src/css/base/defalt.css" />
+    <link rel="stylesheet" href="/src/css/components/components.css" />
+    <link rel="stylesheet" href="/src/css/mypage_renewal/myp_common.css" />
+    <link rel="stylesheet" href="/src/css/mypage_renewal/myp_index_sub.css" />
+  </head>
+  <body>
+    <header>
+      <h1 class="sr-only">뉴스레터 구독 설정</h1>
+      <div class="container">
+        <a href="javascript:;" id="backLink"
+          ><img src="/src/assets/images/icons/icon_back_black@x3.png" alt=""
+        /></a>
+        <h1>뉴스레터 구독 설정</h1>
+      </div>
+    </header>
+
+    <div id="app_wrapper">
+      <main>
+        <div class="myp_newsletter">
+          <div class="myp_newsletter_box">
+            <img
+              src="/src/assets/images/myp_renewl_images/image_newsletter.svg"
+            />
+            <p class="title">봄봄봄 뉴스레터</p>
+            <p class="text">
+              매월 오전 8시에 새로운 소식을<br />
+              이메일로 뉴스레터를 전달해 드려요.<br />
+              봄봄봄을 통해서 새로운 경험을 찾을 수 있어요.
+            </p>
+
+            <div class="myp_input_box">
+              <input
+                type="email"
+                id="userEmail"
+                name="userEmail"
+                required
+                placeholder="gildong@b-lot.co.kr"
+                disabled
+              />
+            </div>
+            <p class="email_info">
+              이메일 주소는 [설정]>[회원정보]에서 변경할 수 있습니다.
+            </p>
+          </div>
+
+          <div class="myp_button_wrap">
+            <a href="javascript:;" class="myp_button bg_point">구독 신청</a>
+          </div>
+        </div>
+      </main>
+
+      <footer>
+        <div class="footer_top_container">
+          <a href="javascript:void(0)" class="logo">
+            <img
+              src="/src/assets/images/common/footer_logo_white@x3.png"
+              alt="봄봄봄"
+            />
+          </a>
+          <button type="button" class="btn_business_toggle">
+            사업자 정보
+            <img
+              src="/src/assets/images/icons/icon_btn_footer_down@x3.png"
+              alt=""
+            />
+          </button>
+        </div>
+        <div class="footer_business_information_container">
+          <div class="company_information">
+            <p><strong>상호명</strong> : 주식회사 비롯엑스(Blot X)</p>
+            <p><strong>대표자명</strong> : 장희덕</p>
+            <p><strong>사업자등록번호</strong> : 252-87-03502</p>
+            <p><strong>통신판매업 신고번호</strong> : 제2025-서울강서-2564호</p>
+            <p>
+              <strong>주소</strong> : 서울특별시 강서구 양천로 357 (려산빌딩)
+              지하1층
+            </p>
+          </div>
+          <div class="contact_information">
+            <p>
+              <strong>고객센터</strong> :
+              <a href="mailto:cs@bombombom.im">cs@bombombom.im</a> /
+              <a href="tel:02-6673-0955"> 02-6673-0955</a>
+            </p>
+            <p>
+              <strong>개인정보보호 책임자</strong> : 개인정보보호팀장 (<a
+                href="mailto:privacy@bombombom.im"
+                >privacy@bombombom.im</a
+              >)
+            </p>
+          </div>
+        </div>
+        <div class="footer_service_container">
+          <a href="https://dev.bombombom.im/service/privacy"
+            >개인정보처리방침</a
+          >
+          <a href="https://dev.bombombom.im/service/agreement"
+            >서비스 이용약관</a
+          >
+          <!--<a href="https://dev.bombombom.im/board/?id=bulkorder">제휴문의 바로가기</a>-->
+          <a href="http://127.0.0.1:8000/my/partner">제휴문의 바로가기</a>
+        </div>
+        <p class="footer_notice">
+          비롯엑스는 통신판매 중개자로서 통신판매의 당사자가 아니며 상품의 예약,
+          이용 및 환불 등과 관련한 의무와 책임은 각 판매자에게 있습니다.
+        </p>
+        <copy>Copyright (c) 2025 BOMBOMBOM. All Rights Reserved.</copy>
+      </footer>
+
+      <nav class="gnb_container gnb">
+        <div class="container">
+          <a href="/" class="">
+            <img src="/src/assets/images/icons/icon_gnb_logo.png" alt="" />
+            <span>홈</span>
+          </a>
+          <a href="/bb/" class="">
+            <img src="/src/assets/images/icons/icon_gnb_bombom.svg" alt="" />
+            <span>봄,봄</span>
+          </a>
+          <a href="/hb/" class="">
+            <img src="/src/assets/images/icons/icon_gnb_haebom.svg" alt="" />
+            <span>해봄</span>
+          </a>
+          <a href="/gb/" class="">
+            <img src="/src/assets/images/icons/icon_gnb_gabom.svg" alt="" />
+            <span>가봄</span>
+          </a>
+          <a href="/sb/" class="">
+            <img src="/src/assets/images/icons/icon_gnb_sabom.svg" alt="" />
+            <span>사봄</span>
+          </a>
+        </div>
+      </nav>
+    </div>
+  </body>
+</html>
