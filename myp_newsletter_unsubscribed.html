@@ -50,7 +50,9 @@
             </p>
 
             <div class="myp_button_wrap">
-              <a href="javascript:;" class="myp_button bg_point">구독 신청</a>
+              <a href="javascript:;" class="myp_button bg_point btn_complete"
+                >구독 신청</a
+              >
             </div>
           </div>
         </div>
@@ -139,5 +141,41 @@
         </div>
       </nav>
     </div>
+
+    <!-- 구독 취소 확인 팝업 -->
+    <div class="myp_complete_pop">
+      <div class="myp_complete_pop_dimm"></div>
+      <div class="myp_complete_wrap">
+        <p class="desc">
+          <b>구독이 신청되었습니다.</b><br />
+          뉴스레터로 바로 이동 하시겠습니까?
+        </p>
+        <div class="myp_button_wrap">
+          <a href="javascript:;" class="myp_button bd_grey">아니오</a>
+          <a href="javascript:;" class="myp_button bg_black">네</a>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      const btnComplete = document.querySelector(".btn_complete");
+      const completePop = document.querySelector(".myp_complete_pop");
+      const completePopDimm = document.querySelector(".myp_complete_pop_dimm");
+      const btnClosed = document.querySelector(".myp_complete_pop .btn_closed");
+
+      function openModal() {
+        completePop.classList.add("active");
+        document.body.style.overflow = "hidden";
+      }
+
+      function closeModal() {
+        completePop.classList.remove("active");
+        document.body.style.overflow = "";
+      }
+
+      btnComplete.addEventListener("click", openModal);
+      btnClosed.addEventListener("click", closeModal);
+      completePopDimm.addEventListener("click", closeModal);
+    </script>
   </body>
 </html>

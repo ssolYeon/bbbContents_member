@@ -43,7 +43,7 @@
             </div>
 
             <div class="myp_button_wrap column">
-              <button type="button" class="myp_button bd_grey">
+              <button type="button" class="myp_button bd_grey btn_unsubscribed">
                 구독 취소
               </button>
               <a href="javascript:;" class="myp_button bg_black"
@@ -137,5 +137,40 @@
         </div>
       </nav>
     </div>
+
+    <!-- 구독 취소 확인 팝업 -->
+    <div class="myp_complete_pop">
+      <div class="myp_complete_pop_dimm"></div>
+      <div class="myp_complete_wrap">
+        <p class="desc">뉴스레터 <b>구독을 취소</b>하시겠습니까?</p>
+        <div class="myp_button_wrap">
+          <a href="javascript:;" class="myp_button bd_grey">구독 취소</a>
+          <a href="javascript:;" class="myp_button bg_black btn_closed"
+            >구독 유지</a
+          >
+        </div>
+      </div>
+    </div>
+
+    <script>
+      const btnUnsubscribed = document.querySelector(".btn_unsubscribed");
+      const completePop = document.querySelector(".myp_complete_pop");
+      const completePopDimm = document.querySelector(".myp_complete_pop_dimm");
+      const btnClosed = document.querySelector(".myp_complete_pop .btn_closed");
+
+      function openModal() {
+        completePop.classList.add("active");
+        document.body.style.overflow = "hidden";
+      }
+
+      function closeModal() {
+        completePop.classList.remove("active");
+        document.body.style.overflow = "";
+      }
+
+      btnUnsubscribed.addEventListener("click", openModal);
+      btnClosed.addEventListener("click", closeModal);
+      completePopDimm.addEventListener("click", closeModal);
+    </script>
   </body>
 </html>
