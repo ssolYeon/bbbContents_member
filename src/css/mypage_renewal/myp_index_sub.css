@@ -226,21 +226,15 @@ footer {
 .myp_newsletter_box .input_box input {
   height: 5.2rem;
   width: 100%;
-  color: rgba(0, 0, 0, 0.2) !important;
-  -webkit-text-fill-color: rgba(0, 0, 0, 0.2) !important;
+  olor: #000 !important;
+  -webkit-text-fill-color: #000 !important;
   font-size: 1.6rem;
   font-family: var(--font-500);
   line-height: 1.48;
   letter-spacing: -0.016rem;
   text-align: center;
-  border: 1px solid #5700ed;
   background-color: #eee;
   border-radius: 0.6rem;
-}
-.myp_newsletter_box .input_box.subscribed input {
-  color: #000 !important;
-  -webkit-text-fill-color: #000 !important;
-  border: none;
 }
 .myp_newsletter_box .email_info {
   color: rgba(0, 0, 0, 0.56);
