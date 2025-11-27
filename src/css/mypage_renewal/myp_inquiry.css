@@ -10,8 +10,16 @@ footer {
 /* 문의내역 */
 .myp_inquiry_container {
   padding: 2.4rem 1.6rem 0;
-  height: 100%;
+  height: calc(100% - 5.4rem);
   position: relative;
+}
+.myp_inquiry_container:has(.bbb_empty_container) {
+  display: flex;
+  flex-direction: column;
+  padding: 0 1.6rem;
+}
+.myp_inquiry_container .bbb_empty_container {
+  margin-top: -5.4rem;
 }
 .myp_inquiry_container:has(.myp_pagination) .myp_inquiry_list {
   margin-bottom: 15rem;
