@@ -73,6 +73,9 @@ footer {
   .card_tag_container {
   display: flex;
 }
+.myp_contents_wrap .btn_view_more_container {
+  margin-top: 3rem;
+}
 
 /* ************************
 	포인트 내역
