@@ -5,6 +5,7 @@ footer {
 }
 
 .myp_container {
+  height: 100%;
   padding: 2.4rem 1.6rem 6rem;
 }
 .myp_container.side {
@@ -12,6 +13,19 @@ footer {
 }
 .myp_container.bg_grey {
   background-color: #f5f5f5;
+}
+
+/* ************************
+	리스트 수가 적을 경우
+	페이지네이션
+	항상 하단에 위치
+************************ */
+.myp_container:has(.myp_pagination) {
+  display: flex;
+  flex-direction: column;
+}
+.myp_container .myp_pagination {
+  margin-top: auto;
 }
 
 /* ************************
@@ -129,7 +143,7 @@ footer {
   opacity: 0.96;
 }
 .myp_points_list {
-  margin-top: 2.4rem;
+  margin: 2.4rem 0 3rem;
 }
 .myp_points_list .points_item {
   position: relative;
@@ -177,8 +191,6 @@ footer {
   border-radius: 0.6rem;
   background-color: rgba(87, 0, 237, 0.08);
 }
-.myp_points_list .point .num {
-}
 
 /* ************************
 	내역이 없을 때 (공통)
@@ -203,7 +215,7 @@ footer {
   width: 100%;
   text-align: center;
 }
-.myp_newsletter_box img {
+.myp_newsletter_box > img {
   width: 16rem;
   height: 16rem;
   margin: 0 auto;
@@ -248,4 +260,14 @@ footer {
 }
 .myp_newsletter .myp_button_wrap {
   margin-top: 6rem;
+}
+
+/* ************************
+	뉴스레터 리스트
+************************ */
+.myp_button_wrap + .myp_contents_wrap {
+  margin-top: 3rem;
+}
+.myp_contents_wrap:has(+ .myp_pagination) {
+  margin-bottom: 3rem;
 }
