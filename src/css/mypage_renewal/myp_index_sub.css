@@ -271,3 +271,7 @@ footer {
 .myp_contents_wrap:has(+ .myp_pagination) {
   margin-bottom: 3rem;
 }
+.btn_newsletter_pop .component_information_container {
+  margin-top: 1.2rem;
+  text-align: left;
+}

@@ -37,8 +37,8 @@
           <div class="myp_contents_wrap">
             <ul role="list" class="list_contents">
               <li class="contents_card half">
-                <div class="thumbnail">
-                  <a href="/bc/9">
+                <button type="button" class="btn_newsletter_pop">
+                  <div class="thumbnail">
                     <picture class="lazy_loading_container">
                       <img
                         alt="미슐랭 가시기 전 이것만 숙지하면 기죽을 일 없어요"
@@ -47,10 +47,8 @@
                         src="/src/assets/images/components/sample_visual_01@x3.jpg"
                       />
                     </picture>
-                  </a>
-                </div>
-                <div class="component_information_container">
-                  <a href="/bc/9">
+                  </div>
+                  <div class="component_information_container">
                     <h2 class="card_title text_ellipsis_2">
                       미슐랭 가시기 전 이것만 숙지하면 기죽을 일 없어요
                     </h2>
@@ -59,12 +57,12 @@
                       고급 레스토랑 매너 가이드
                     </p>
                     <p class="card_date">2025.08</p>
-                  </a>
-                </div>
+                  </div>
+                </button>
               </li>
               <li class="contents_card half">
-                <div class="thumbnail">
-                  <a href="/bc/9">
+                <button type="button" class="btn_newsletter_pop">
+                  <div class="thumbnail">
                     <picture class="lazy_loading_container">
                       <img
                         alt="미슐랭 가시기 전 이것만 숙지하면 기죽을 일 없어요"
@@ -73,10 +71,8 @@
                         src="/src/assets/images/components/sample_visual_01@x3.jpg"
                       />
                     </picture>
-                  </a>
-                </div>
-                <div class="component_information_container">
-                  <a href="/bc/9">
+                  </div>
+                  <div class="component_information_container">
                     <h2 class="card_title text_ellipsis_2">
                       미슐랭 가시기 전 이것만 숙지하면 기죽을 일 없어요
                     </h2>
@@ -85,12 +81,12 @@
                       고급 레스토랑 매너 가이드
                     </p>
                     <p class="card_date">2025.08</p>
-                  </a>
-                </div>
+                  </div>
+                </button>
               </li>
               <li class="contents_card half">
-                <div class="thumbnail">
-                  <a href="/bc/9">
+                <button type="button" class="btn_newsletter_pop">
+                  <div class="thumbnail">
                     <picture class="lazy_loading_container">
                       <img
                         alt="미슐랭 가시기 전 이것만 숙지하면 기죽을 일 없어요"
@@ -99,10 +95,8 @@
                         src="/src/assets/images/components/sample_visual_01@x3.jpg"
                       />
                     </picture>
-                  </a>
-                </div>
-                <div class="component_information_container">
-                  <a href="/bc/9">
+                  </div>
+                  <div class="component_information_container">
                     <h2 class="card_title text_ellipsis_2">
                       미슐랭 가시기 전 이것만 숙지하면 기죽을 일 없어요
                     </h2>
@@ -111,12 +105,12 @@
                       고급 레스토랑 매너 가이드
                     </p>
                     <p class="card_date">2025.08</p>
-                  </a>
-                </div>
+                  </div>
+                </button>
               </li>
               <li class="contents_card half">
-                <div class="thumbnail">
-                  <a href="/bc/9">
+                <button type="button" class="btn_newsletter_pop">
+                  <div class="thumbnail">
                     <picture class="lazy_loading_container">
                       <img
                         alt="미슐랭 가시기 전 이것만 숙지하면 기죽을 일 없어요"
@@ -125,10 +119,8 @@
                         src="/src/assets/images/components/sample_visual_01@x3.jpg"
                       />
                     </picture>
-                  </a>
-                </div>
-                <div class="component_information_container">
-                  <a href="/bc/9">
+                  </div>
+                  <div class="component_information_container">
                     <h2 class="card_title text_ellipsis_2">
                       미슐랭 가시기 전 이것만 숙지하면 기죽을 일 없어요
                     </h2>
@@ -137,8 +129,8 @@
                       고급 레스토랑 매너 가이드
                     </p>
                     <p class="card_date">2025.08</p>
-                  </a>
-                </div>
+                  </div>
+                </button>
               </li>
             </ul>
           </div>
@@ -242,5 +234,48 @@
         </div>
       </nav>
     </div>
+
+    <!-- 뉴스레터 레이어 팝업 -->
+    <div class="myp_layer_pop">
+      <div class="myp_layer_pop_dimm"></div>
+      <div class="myp_layer_wrap">
+        <div class="myp_layer_header">
+          <!-- <p class="myp_layer_title">타이틀이 있을 경우</p> -->
+          <button type="button" class="btn_layer_closed">닫기</button>
+        </div>
+
+        <div class="myp_layer_inner">
+          <!-- 
+				내용에 따라 스트롤 활성화/비활성화 됨
+				작업하실 때 p태그 삭제해주시면 됩니다!
+			-->
+          <p style="height: 3000px; border: 1px solid red">sdfkljsdfl</p>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      const btnNewsletterPop = document.querySelectorAll(".btn_newsletter_pop");
+      const layerPop = document.querySelector(".myp_layer_pop");
+      const layerPopDimm = document.querySelector(".myp_layer_pop_dimm");
+      const btnLayerClosed = document.querySelector(".btn_layer_closed");
+
+      function openModal() {
+        layerPop.classList.add("active");
+        document.body.style.overflow = "hidden";
+      }
+
+      function closeModal() {
+        layerPop.classList.remove("active");
+        document.body.style.overflow = "";
+      }
+
+      btnNewsletterPop.forEach((btn) => {
+        btn.addEventListener("click", openModal);
+      });
+
+      btnLayerClosed.addEventListener("click", closeModal);
+      layerPopDimm.addEventListener("click", closeModal);
+    </script>
   </body>
 </html>
