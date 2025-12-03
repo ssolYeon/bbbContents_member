@@ -6,6 +6,7 @@ footer {
 
 /* 자주하는질문 목록 */
 .myp_faq_container {
+  overflow: hidden;
   padding: 2.4rem 1.6rem 6rem;
 }
 .myp_faq_container .myp_round_tab {

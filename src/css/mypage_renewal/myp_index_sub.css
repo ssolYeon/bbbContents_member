@@ -275,3 +275,12 @@ footer {
   margin-top: 1.2rem;
   text-align: left;
 }
+.bbb_empty_container.newsletter img {
+  width: 16rem;
+  height: 16rem;
+}
+.bbb_empty_container.newsletter p {
+  margin-top: 2.4rem;
+  font-family: var(--font-400);
+  letter-spacing: -0.018rem;
+}
