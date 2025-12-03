@@ -237,7 +237,6 @@
 
     <!-- 뉴스레터 레이어 팝업 -->
     <div class="myp_layer_pop">
-      <div class="myp_layer_pop_dimm"></div>
       <div class="myp_layer_wrap">
         <div class="myp_layer_header">
           <!-- <p class="myp_layer_title">타이틀이 있을 경우</p> -->
@@ -257,7 +256,6 @@
     <script>
       const btnNewsletterPop = document.querySelectorAll(".btn_newsletter_pop");
       const layerPop = document.querySelector(".myp_layer_pop");
-      const layerPopDimm = document.querySelector(".myp_layer_pop_dimm");
       const btnLayerClosed = document.querySelector(".btn_layer_closed");
 
       function openModal() {
@@ -275,7 +273,6 @@
       });
 
       btnLayerClosed.addEventListener("click", closeModal);
-      layerPopDimm.addEventListener("click", closeModal);
     </script>
   </body>
 </html>
