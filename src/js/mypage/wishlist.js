@@ -25,7 +25,7 @@ const wishlistController = (() => {
         bindCaptureToast({
             bindClick: false,
             listen: true,
-            getText: (_btn, next, success) => success ? (next ? '스크랩되었습니다.' : '취소되었습니다.') : '요청에 실패했습니다.',
+            //getText: (_btn, next, success) => success ? (next ? '스크랩되었습니다.' : '취소되었습니다.') : '요청에 실패했습니다.',
             //getText: (_btn, next) => next ? '스크랩 되었습니다.' : '취소되었습니다.',
         });
         bindCaptureToggle({

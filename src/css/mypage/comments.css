@@ -3,6 +3,13 @@
 @import '../components/footerComponents.css';
 @import '../components/components.css'; */
 
+#app_wrapper {
+    min-height: calc(100vh - 5.4rem);
+}
+#app_wrapper main {
+    padding-bottom: 7.8rem;
+}
+
 /* header */
 header .container {
     position: relative;
@@ -39,12 +46,12 @@ body:has(.bbb_empty_container) #app_wrapper main {
     flex-direction: column;
     align-items: flex-start;
     position: relative;
-    padding: 1.2rem 1.6rem 0;
+    padding: 2.4rem 1.6rem 6rem;
+    height: 100%;
+    min-height: calc(100vh - 13.4rem);
 }
 .comments_list_container:has(.bbb_empty_container) {
-    display: flex;
-    flex-direction: column;
-    height: 100%;
+    padding: 0 1.6rem;
 }
 .comments_list_container > form {
     display: flex;
@@ -68,6 +75,10 @@ body:has(.bbb_empty_container) #app_wrapper main {
 
 .comments_list_container .list_contents {
     width: 100%;
+    /* height: 100%; */
+}
+.comments_list_container .list_contents:has(+ .pagination_container) {
+    margin-bottom: 3rem;
 }
 .list_contents .comments_group {
     margin-bottom: 1.6rem;
@@ -75,7 +86,7 @@ body:has(.bbb_empty_container) #app_wrapper main {
     border-bottom: 1px solid rgba(0, 0, 0, 0.08);
 }
 .list_contents .comments_group:last-child {
-    padding-bottom: 1rem;
+    padding-bottom: 0;
     margin-bottom: 0;
     border-bottom: none;
 }
@@ -225,16 +236,16 @@ body:has(.bbb_empty_container) #app_wrapper main {
 }
 
 /* 하단 페이지네이션(섹션 하단) */
-.comments_list_container:not(:has(.pagination_container)) {
+/* .comments_list_container:not(:has(.pagination_container)) {
     padding-bottom: 3rem;
-}
+} */
 .comments_list_container .pagination_container {
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: space-between;
     gap: 2.45rem;
     width: 100%;
-    padding-block: 2rem 3rem;
+    margin-top: auto;
     pointer-events: auto;
 }
 .comments_list_container .pagination_num_container {
@@ -256,7 +267,7 @@ body:has(.bbb_empty_container) #app_wrapper main {
 }
 .comments_list_container .pagination_num_container a.active {
     color: #fff;
-    background-color: #000;
+    background-color: #5700ed;
 }
 .comments_list_container .pagination_container .btn_page_preview,
 .comments_list_container .pagination_container .btn_page_next {
@@ -335,6 +346,9 @@ body:has(.bbb_empty_container) #app_wrapper main {
 }
 
 /*삭제 모달창*/
+body:has(.modal_button_container.active) {
+    overflow: hidden;
+}
 .list_contents li .modal_button_container {
     display: flex;
     flex-direction: column;
@@ -350,7 +364,10 @@ body:has(.bbb_empty_container) #app_wrapper main {
     background-color: rgba(0, 0, 0, 0);
     transition: opacity 0.22s ease, background-color 0.22s ease;
     will-change: opacity, background-color;
-    z-index: 1;
+    z-index: 100;
+
+    transform: translateZ(0);
+    -webkit-transform: translateZ(0);
 }
 .list_contents li .modal_button_container.active {
     opacity: 1;

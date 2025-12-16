@@ -132,12 +132,18 @@ export const bindCaptureToast = ({
     buttonSelector = ".btn_capture",
     hostSelector = ".thumbnail",
 
-    getText = (_btn, next, success) =>
-        success === false
-            ? "요청에 실패했습니다."
-            : next
-            ? "스크랩 되었습니다."
-            : "취소되었습니다.",
+    getText = (_btn, next, success, boardType) => {
+        if (success === false) return "요청에 실패했습니다.";
+
+        // bc, bs: 북마크 메시지 / hb, gb, sb: 찜한 상품 메시지
+        const isBookmark = boardType === 'bc' || boardType === 'bs';
+
+        if (next) {
+            return isBookmark ? "북마크에 추가되었습니다." : "찜한 상품에 추가되었습니다.";
+        } else {
+            return "취소되었습니다.";
+        }
+    },
 
     getIcon = (_btn, next, success) =>
         next
@@ -200,8 +206,11 @@ export const bindCaptureToast = ({
             }
             const next = cur ? 0 : 1;
 
+            // boardType 가져오기
+            const boardType = btn.closest('[data-board-type]')?.dataset.boardType;
+
             captureToast(host, {
-                text: getText(btn, next, /* success= */ true),
+                text: getText(btn, next, /* success= */ true, boardType),
                 icon: getIcon(btn, next, /* success= */ true),
                 duration,
                 onDone: () => {
@@ -220,7 +229,7 @@ export const bindCaptureToast = ({
     let eventHandler = null;
     if (listen) {
         eventHandler = (ev) => {
-            const { btn, next, success } = ev.detail || {};
+            const { btn, next, success, boardType } = ev.detail || {};
             if (!btn) return;
 
             // ⬇️ 필요 시 가드
@@ -232,7 +241,7 @@ export const bindCaptureToast = ({
                 btn;
 
             captureToast(host, {
-                text: getText(btn, next, success),
+                text: getText(btn, next, success, boardType),
                 icon: getIcon(btn, next, success),
                 duration,
             });

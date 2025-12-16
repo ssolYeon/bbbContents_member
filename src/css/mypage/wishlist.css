@@ -40,7 +40,9 @@ footer {
 #app_wrapper.hidden main {
     height: 100%;
 }
-
+#app_wrapper main {
+    padding-bottom: 7.8rem;
+}
 /* 상단 카테고리 탭 */
 .wishlist_category {
     display: flex;
@@ -75,7 +77,7 @@ footer {
     min-height: 0;
 }
 .wishlist_list_container:has(.bbb_empty_container) {
-    height: calc(100vh - 18.9rem);
+    height: calc(100vh - 21rem);
     padding: 0;
 }
 .wishlist_list_container > form {
@@ -198,10 +200,9 @@ footer {
 .pagination_container {
     display: flex;
     align-items: center;
-    justify-content: center;
-    gap: 2.45rem;
+    justify-content: space-between;
     width: 100%;
-    padding-block: 2rem 3rem;
+    padding-block: 2rem 6rem;
     pointer-events: auto;
 }
 .pagination_num_container {
@@ -223,7 +224,7 @@ footer {
 }
 .pagination_num_container a.active {
     color: #fff;
-    background-color: #000;
+    background-color: #5700ed;
 }
 .pagination_container .btn_page_preview,
 .pagination_container .btn_page_next {

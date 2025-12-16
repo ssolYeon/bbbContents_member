@@ -109,7 +109,7 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
     //////////////////////////////////// 게이지바
-    const CONTENT_SELECTOR = "#app_wrapper"; // 진행률 기준
+    const CONTENT_SELECTOR = ".post_content_container"; // 진행률 기준
     const MOUNT_SELECTOR = "header"; // 게이지를 넣을 위치
 
     const target = document.querySelector(CONTENT_SELECTOR);

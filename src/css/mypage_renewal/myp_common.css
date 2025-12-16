@@ -85,8 +85,8 @@ header .container h1 {
 .myp_round_tab a.active,
 .myp_round_tab button.active {
   color: #fff;
-  border: 1px solid var(--color-primary-myp);
-  background-color: var(--color-primary-myp);
+  border: 1px solid #5d00ff;
+  background-color: #5d00ff;
 }
 
 /* 스퀘어 탭 */
@@ -171,68 +171,7 @@ header .container h1 {
 }
 .myp_pagination .page_num_list .num.active {
   color: #fff;
-  background-color: var(--color-primary-myp);
-}
-
-/* 공통 버튼 */
-.myp_button_wrap {
-  display: flex;
-  gap: 0.8rem;
-}
-.myp_button_wrap.column {
-  display: flex;
-  flex-direction: column;
-  gap: 1.2rem;
-}
-.myp_button {
-  flex: 1;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  height: 5.2rem;
-  padding: 0 2.4rem;
-  text-align: center;
-  font-family: var(--font-600);
-  font-size: 1.6rem;
-  line-height: 1;
-  letter-spacing: -0.016rem;
-  border-radius: 0.6rem;
-}
-.myp_button_wrap.column .myp_button {
-  flex: 0 0 auto;
-}
-.myp_button.bd_grey {
-  color: #000;
-  border: 1px solid rgba(0, 0, 0, 0.2);
-  background-color: #fff;
-}
-.myp_button.bd_point {
-  color: var(--color-primary-myp);
-  border: 1px solid var(--color-primary-myp);
-  background-color: #fff;
-}
-.myp_button.bg_grey {
-  color: #fff;
-  border: 1px solid transparent;
-  background-color: #ccc;
-}
-.myp_button.bg_black {
-  color: #fff;
-  border: 1px solid transparent;
-  background-color: #000;
-}
-.myp_button.bg_point {
-  color: #fff;
-  border: 1px solid transparent;
-  background-color: var(--color-primary-myp);
-}
-
-.myp_button:has(img) {
-  gap: 0.6rem;
-}
-.myp_button img {
-  width: 2.4rem;
-  height: 2.4rem;
+  background-color: #5d00ff;
 }
 
 /* 플로팅 버튼 */
@@ -256,231 +195,8 @@ header .container h1 {
   line-height: 1.4;
   letter-spacing: -0.014rem;
   border-radius: 3rem;
-  background-color: var(--color-primary-myp);
+  background-color: #5d00ff;
   box-shadow: 0 4px 12px 0 rgba(93, 0, 255, 0.24);
-}
-
-/* 정보입력 input */
-.myp_input_group .title {
-  display: inline-block;
-  margin-bottom: 0.8rem;
-  color: rgba(0, 0, 0, 0.8);
-  font-family: var(--font-700);
-  font-size: 1.4rem;
-  line-height: 1;
-  letter-spacing: -0.014rem;
-}
-.myp_input_group .title .required {
-  color: #ff3333;
-  opacity: 0.8;
-}
-
-.myp_input_group .bytes {
-  color: rgba(0, 0, 0, 0.56);
-  text-align: right;
-  font-family: var(--font-400);
-  font-size: 1.2rem;
-  line-height: 1.4;
-  letter-spacing: -0.012rem;
-  margin-top: 0.4rem;
-}
-.myp_input_group .alert_massage {
-  margin-top: 0.8rem;
-  color: #ff3300;
-  font-size: 1.4rem;
-  line-height: 1.4;
-  letter-spacing: -0.014rem;
-}
-
-.myp_input_box input[type="text"],
-.myp_input_box input[type="password"],
-.myp_input_box input[type="email"],
-.myp_input_box input[type="tel"],
-.myp_input_box select,
-.myp_input_box textarea {
-  --input-scale: 0.875;
-  font-size: 1.6rem;
-  transform: scale(var(--input-scale));
-  transform-origin: left center;
-  box-sizing: border-box;
-  width: calc(100% / var(--input-scale));
-  height: calc(4.4rem / 0.875);
-  padding: 0 calc(1.2rem / 0.875);
-  color: #000;
-  border: 1px solid rgba(0, 0, 0, 0.2);
-  border-radius: 0.6rem;
-  background-color: #fff;
-}
-.myp_input_box input[type="text"],
-.myp_input_box input[type="password"],
-.myp_input_box input[type="email"],
-.myp_input_box input[type="tel"],
-.myp_input_box select {
-  line-height: 1;
-  margin-top: -0.35rem;
-}
-.myp_input_box textarea {
-  height: calc(17rem / 0.875);
-  padding: calc(1.5rem / 0.875) calc(1.2rem / 0.875);
-  line-height: 1.3;
-  margin-top: -1.2rem;
-}
-.myp_input_box input[type="text"]::placeholder,
-.myp_input_box input[type="password"]::placeholder,
-.myp_input_box input[type="email"]::placeholder,
-.myp_input_box input[type="tel"]::placeholder,
-.myp_input_box textarea::placeholder {
-  color: rgba(0, 0, 0, 0.2);
-}
-.myp_input_box input[type="text"]:disabled,
-.myp_input_box input[type="password"]:disabled,
-.myp_input_box input[type="email"]:disabled,
-.myp_input_box input[type="tel"]:disabled,
-.myp_input_box textarea:disabled {
-  border: 1px solid rgba(0, 0, 0, 0.08);
-  background-color: #eee;
-}
-.myp_input_box input[type="text"]:disabled::placeholder,
-.myp_input_box input[type="password"]:disabled::placeholder,
-.myp_input_box input[type="email"]:disabled::placeholder,
-.myp_input_box input[type="tel"]:disabled::placeholder,
-.myp_input_box textarea:disabled::placeholder {
-  color: rgba(0, 0, 0, 0.26);
-}
-.myp_input_box input[type="text"]:focus,
-.myp_input_box input[type="password"]:focus,
-.myp_input_box input[type="email"]:focus,
-.myp_input_box input[type="tel"]:focus,
-.myp_input_box select:focus,
-.myp_input_box textarea:focus {
-  border: 1px solid var(--color-primary-myp);
-}
-
-.myp_input_box select {
-  background-color: #fff;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 16 16' fill='none'%3E%3Cpath d='M4 6.5L7.85858 10.3586C7.93668 10.4367 8.06332 10.4367 8.14142 10.3586L12 6.5' stroke='black' stroke-linecap='round'/%3E%3C/svg%3E");
-  background-repeat: no-repeat;
-  background-position: right 1.2rem center;
-  background-size: 1.6rem;
-  cursor: pointer;
-}
-
-.myp_input_box .separator {
-  color: rgba(0, 0, 0, 0.54);
-  font-family: var(--font-500);
-  font-size: 1.4rem;
-  line-height: 1;
-  letter-spacing: -0.1rem;
-  margin-left: -1.3rem;
-  margin-right: 0.4rem;
-  margin-top: -0.35rem;
-}
-
-/* .myp_input_box.email input {
-  width: 10.4rem;
-}
-.myp_input_box.email .select_domain {
-  width: 100%;
-  display: flex;
-  gap: 0.4rem;
-}
-.myp_input_box.email .domain_direct_input {
-  display: none;
-} */
-.myp_input_box.phone {
-  display: flex;
-  align-items: center;
-}
-.myp_input_box.phone input {
-  flex: 0 0 calc(((100% / 3) - 0.8rem) / var(--input-scale));
-  /* width: calc((100% / 3) / var(--input-scale)); */
-}
-/* .myp_input_box.phone input ~ input {
-  margin-left: -1.7rem;
-} */
-/* .myp_input_box.phone input .myp_input_box.adress {
-  flex-direction: column;
-  gap: 0.6rem;
-}
-.myp_input_box.adress > * {
-  width: 100%;
-}
-.myp_input_box.adress > * input {
-  width: 100%;
-}
-.myp_input_box.adress .search {
-  font-size: 0;
-}
-.myp_input_box.adress .search input {
-  width: 8.8rem;
-  flex: 0;
-}
-.myp_input_box.adress .myp_button {
-  padding: 1.4rem 2.4rem;
-  font-size: 1.4rem;
-  letter-spacing: -0.014rem;
-  margin-left: 0.8rem;
-} */
-
-.myp_input_box:has(input[type="radio"]) {
-  gap: 1.6rem;
-  height: 3.8rem;
-}
-.myp_input_box input[type="radio"] {
-  position: absolute;
-  width: 0;
-  height: 0;
-  opacity: 0;
-}
-.myp_input_box input[type="radio"] + label {
-  display: flex;
-  align-items: center;
-  gap: 0.2rem;
-  color: rgba(0, 0, 0, 0.8);
-  font-family: var(--font-500);
-  font-size: 1.4rem;
-  line-height: 1;
-  letter-spacing: -0.014rem;
-}
-.myp_input_box input[type="radio"] + label:before {
-  content: "";
-  width: 2.8rem;
-  height: 2.8rem;
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: 2.8rem;
-}
-.myp_input_box input[type="radio"] + label:before {
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='28' height='28' viewBox='0 0 28 28' fill='none'%3E%3Ccircle cx='14' cy='14' r='9.5' fill='white' stroke='%23DDDDDD'/%3E%3C/svg%3E");
-}
-.myp_input_box input[type="radio"]:checked + label:before {
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='28' height='28' viewBox='0 0 28 28' fill='none'%3E%3Ccircle cx='14' cy='14' r='9.5' fill='white' stroke='black'/%3E%3Ccircle cx='14' cy='14' r='5' fill='black'/%3E%3C/svg%3E");
-}
-
-.myp_chackbox input[type="checkbox"] {
-  position: absolute;
-  width: 0;
-  height: 0;
-  opacity: 0;
-}
-.myp_chackbox input[type="checkbox"] + label {
-  display: flex;
-  align-items: center;
-  gap: 0.2rem;
-}
-.myp_chackbox input[type="checkbox"] + label:before {
-  content: "";
-  width: 2.8rem;
-  height: 2.8rem;
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: 2.8rem;
-}
-.myp_chackbox input[type="checkbox"] + label:before {
-  background-image: url("data:image/svg+xml,%3Csvg width='28' height='28' viewBox='0 0 28 28' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Ccircle cx='14' cy='14' r='10' fill='white'/%3E%3Ccircle cx='14' cy='14' r='9.5' stroke='black' stroke-opacity='0.16'/%3E%3Cpath d='M9 13.1818L12.8889 17L19 11' stroke='black' stroke-opacity='0.16'/%3E%3C/svg%3E%0A");
-}
-.myp_chackbox input[type="checkbox"]:checked + label:before {
-  background-image: url("data:image/svg+xml,%3Csvg width='28' height='28' viewBox='0 0 28 28' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Ccircle cx='14' cy='14' r='9.5' fill='white' stroke='black'/%3E%3Cpath d='M9 13.1818L12.8889 17L19 11' stroke='black'/%3E%3C/svg%3E%0A");
 }
 
 /* 상세페이지 */
@@ -596,7 +312,6 @@ header .container h1 {
   height: 100vh;
   transform: translateX(-50%);
   z-index: 100;
-  padding: 0 1.6rem;
 }
 .myp_layer_pop.active {
   display: block;

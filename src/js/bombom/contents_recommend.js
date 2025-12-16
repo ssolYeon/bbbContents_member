@@ -180,12 +180,6 @@ const contentsRecommendController = (() => {
             hostSelector: '.btn_capture_container',
             bindClick: false,
             listen: true,
-            getText: (_btn, next, success) =>
-                success
-                    ? next
-                        ? '스크랩되었습니다.'
-                        : '취소되었습니다.'
-                    : '요청에 실패했습니다.',
             duration: 500,
         });
 

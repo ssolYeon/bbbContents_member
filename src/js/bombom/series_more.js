@@ -72,7 +72,7 @@ const bombomController = (()=>{
                                   <div class="card_count_posts">총 콘텐츠 <b>${item.posts_count}</b>개</div>
                               </div>
                             </a>
-                            <button type="button" 
+                            <button type="button"
                               class="btn_capture ${Number(item.capture) === 1 ? 'active' : ''}"
                               data-post-id="${item.id}"
                               data-board-type = "${item.board_type}"

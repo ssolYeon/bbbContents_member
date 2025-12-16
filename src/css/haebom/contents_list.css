@@ -4,23 +4,22 @@
 @import '../components/components.css'; */
 
 header .container {
-    padding-inline: 1.6rem;
+  padding-inline: 1.6rem;
 }
 .category_toggle_navigation {
-    top: 5.4rem;
-    height: calc(100% - 5.4rem);
+  top: 0;
 }
 .list_container {
-    padding-inline: 1.6rem;
+  padding-inline: 1.6rem;
 }
 .list_container .list_contents {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 3rem 1.2rem;
-    margin-top: 1.6rem;
-    gap: 4rem 1.2rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 3rem 1.2rem;
+  margin-top: 1.6rem;
+  gap: 4rem 1.2rem;
 }
 
 .btn_view_more_container {
-    margin-top: 3rem;
+  margin-top: 3rem;
 }

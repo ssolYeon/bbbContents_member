@@ -5,6 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>가입 - 로그인</title>
 
+    <link rel="stylesheet" href="/src/css/base/defalt.css" />
+    <link rel="stylesheet" href="/src/css/components/components.css" />
+    <link rel="stylesheet" href="/src/css/mypage_renewal/myp_common.css" />
     <link rel="stylesheet" href="/src/css/mypage_renewal/myp_login.css" />
   </head>
   <body>
@@ -22,17 +25,17 @@
       <!-- 로그인 작업 -->
       <main>
         <div class="myp_join_container">
-          <div class="myp_form_wrap">
+          <div class="default_inputform_wrap">
             <form action="#" method="post">
               <fieldset>
                 <legend class="sr-only">로그인</legend>
 
-                <div class="myp_input_group">
-                  <label for="userId" class="title"
+                <div class="default_inputform_gruop">
+                  <label for="userId" class="default_inputform_title"
                     >아이디
                     <span aria-hidden="true" class="required">*</span></label
                   >
-                  <div class="myp_input_box duplicateCheck">
+                  <div class="default_inputform duplicateCheck">
                     <input
                       type="text"
                       id="userId"
@@ -46,12 +49,12 @@
                   </div>
                 </div>
 
-                <div class="myp_input_group">
-                  <label for="userCurrentPw" class="title"
+                <div class="default_inputform_gruop">
+                  <label for="userCurrentPw" class="default_inputform_title"
                     >비밀번호
                     <span aria-hidden="true" class="required">*</span></label
                   >
-                  <div class="myp_input_box pwdShowHide">
+                  <div class="default_inputform pwdShowHide">
                     <input
                       type="password"
                       id="userCurrentPw"
@@ -63,9 +66,11 @@
                   </div>
                 </div>
 
-                <div class="myp_input_group">
-                  <label for="userNewPw" class="title">비밀번호 확인</label>
-                  <div class="myp_input_box pwdShowHide">
+                <div class="default_inputform_gruop">
+                  <label for="userNewPw" class="default_inputform_title"
+                    >비밀번호 확인</label
+                  >
+                  <div class="default_inputform pwdShowHide">
                     <input
                       type="password"
                       id="userNewPw"
@@ -76,12 +81,12 @@
                   </div>
                 </div>
 
-                <div class="myp_input_group">
-                  <label for="userNickname" class="title"
+                <div class="default_inputform_gruop">
+                  <label for="userNickname" class="default_inputform_title"
                     >닉네임
                     <span aria-hidden="true" class="required">*</span></label
                   >
-                  <div class="myp_input_box duplicateCheck">
+                  <div class="default_inputform duplicateCheck">
                     <input
                       type="text"
                       id="userNickname"
@@ -95,62 +100,48 @@
                   </div>
                 </div>
 
-                <div class="myp_input_group">
-                  <p class="title">
-                    이메일 <span aria-hidden="true" class="required">*</span>
-                  </p>
-
-                  <div class="myp_input_box email">
-                    <label for="userEmailId" class="sr-only">이메일 입력</label>
+                <div class="default_inputform_gruop">
+                  <label for="companyName" class="default_inputform_title"
+                    >이메일
+                    <span aria-hidden="true" class="required">*</span></label
+                  >
+                  <div class="default_inputform">
                     <input
                       type="email"
                       id="userEmailId"
                       name="userEmailId"
-                      placeholder="이메일 입력"
+                      placeholder="이메일을 입력해 주세요"
                       required
                     />
-                    <span aria-hidden="true" class="separator">@</span>
-
-                    <label for="userEmailDomain" class="sr-only"
-                      >이메일 도메인 선택</label
-                    >
-                    <select
-                      id="userEmailDomain"
-                      name="userEmailDomain"
-                      required
-                    >
-                      <option value="">메일선택</option>
-                      <option value="naver.com">naver.com</option>
-                      <option value="gmail.com">gmail.com</option>
-                      <option value="daum.net">daum.net</option>
-                    </select>
                   </div>
+
+                  <p class="alert_massage"></p>
                 </div>
 
-                <div class="myp_input_group">
-                  <label for="userNickname" class="title"
+                <div class="default_inputform_gruop">
+                  <label for="userName" class="default_inputform_title"
                     >이름
                     <span aria-hidden="true" class="required">*</span></label
                   >
-                  <div class="myp_input_box">
+                  <div class="default_inputform">
                     <input
                       type="text"
                       id="userName"
                       name="userName"
                       required
                       placeholder="김봄봄"
-                      disabled
+                      readonly
                     />
                   </div>
                 </div>
 
-                <div class="myp_input_group">
-                  <p class="title">
+                <div class="default_inputform_gruop">
+                  <p class="default_inputform_title">
                     휴대폰 번호
                     <span aria-hidden="true" class="required">*</span>
                   </p>
 
-                  <div class="myp_input_box phone">
+                  <div class="default_inputform phone">
                     <label for="userPhone_1" class="sr-only"
                       >휴대폰 번호 첫 자리</label
                     >
@@ -163,8 +154,6 @@
                       required
                     />
 
-                    <span aria-hidden="true" class="separator">-</span>
-
                     <label for="userPhone_2" class="sr-only"
                       >휴대폰 번호 중간 자리</label
                     >
@@ -176,8 +165,6 @@
                       maxlength="4"
                       required
                     />
-
-                    <span aria-hidden="true" class="separator">-</span>
 
                     <label for="userPhone_3" class="sr-only"
                       >휴대폰 번호 끝 자리</label
@@ -193,12 +180,12 @@
                   </div>
                 </div>
 
-                <div class="myp_input_group">
-                  <p class="title">
+                <div class="default_inputform_gruop">
+                  <p class="default_inputform_title">
                     생년월일 <span aria-hidden="true" class="required">*</span>
                   </p>
 
-                  <div class="myp_input_box">
+                  <div class="default_inputform">
                     <label for="userBirthYear" class="sr-only">년도 선택</label>
                     <select id="userBirthYear" name="userBirthYear" required>
                       <option value="">년</option>
@@ -225,11 +212,11 @@
                   </div>
                 </div>
 
-                <div class="myp_input_group">
-                  <p class="title">
+                <div class="default_inputform_gruop">
+                  <p class="default_inputform_title">
                     주소 <span aria-hidden="true" class="required">*</span>
                   </p>
-                  <div class="myp_input_box adress">
+                  <div class="default_inputform adress">
                     <div class="search">
                       <label for="userZip" class="sr-only">우편번호 입력</label>
                       <input
@@ -271,10 +258,10 @@
                   </div>
                 </div>
 
-                <div class="myp_input_group">
-                  <p class="title">성별</p>
-                  <div class="myp_input_box">
-                    <div class="myp_input_radio">
+                <div class="default_inputform_gruop">
+                  <p class="default_inputform_title">성별</p>
+                  <div class="default_radio_list row">
+                    <div class="default_inputform">
                       <input
                         type="radio"
                         id="genderNone"
@@ -284,21 +271,24 @@
                       />
                       <label for="genderNone">선택하지 않음</label>
                     </div>
-                    <div class="myp_input_radio">
+                    <div class="default_inputform">
                       <input
                         type="radio"
                         id="genderMmale"
                         name="gender"
                         value="male"
+                        checked
+                        disabled
                       />
                       <label for="genderMmale">남성</label>
                     </div>
-                    <div class="myp_input_radio">
+                    <div class="default_inputform">
                       <input
                         type="radio"
                         id="genderFemale"
                         name="gender"
                         value="female"
+                        disabled
                       />
                       <label for="genderFemale">여성</label>
                     </div>
@@ -398,6 +388,7 @@
     </nav>
 
     <script>
+      /* 비밀번호 입력 보기 */
       const btnPwdShowHide = document.querySelectorAll(".btn_password_show");
 
       btnPwdShowHide.forEach((btn) => {
@@ -411,6 +402,27 @@
             input.type = "password";
             btn.classList.remove("active");
           }
+        });
+      });
+
+      /* 이메일 형식 조건 부힙 */
+      document.addEventListener("DOMContentLoaded", function () {
+        const emailInput = document.querySelector("input[name='userEmailId']");
+        const alertMessage = document.querySelector(".alert_massage");
+
+        emailInput.addEventListener("blur", function () {
+          const inptEmail = emailInput.value.trim();
+          if (!inptEmail) return;
+
+          const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+          if (!emailPattern.test(inptEmail)) {
+            alertMessage.textContent =
+              "올바른 이메일 형식이 아닙니다. 다시 입력해 주세요.";
+            return;
+          }
+
+          alertMessage.textContent = "";
         });
       });
     </script>

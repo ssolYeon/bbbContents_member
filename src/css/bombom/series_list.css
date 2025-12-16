@@ -7,7 +7,7 @@ header .container {
     padding-inline: 1.6rem;
 }
 
-.bombom_category_navigation {
+/* .bombom_category_navigation {
     display: flex;
     gap: 2.4rem;
     margin-bottom: 1.2rem;
@@ -22,6 +22,26 @@ header .container {
 }
 .bombom_category_navigation a.active {
     opacity: 1;
+} */
+
+.bombom_category_navigation {
+    display: flex;
+    margin-bottom: 1.6rem;
+}
+.bombom_category_navigation a {
+    flex: 1;
+    padding: 1.6rem 0;
+    color: rgba(0, 0, 0, 0.4);
+    font-family: var(--font-700);
+    font-size: 2.4rem;
+    line-height: 1.4;
+    letter-spacing: -0.024rem;
+    text-align: center;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+}
+.bombom_category_navigation a.active {
+    color: #000;
+    border-bottom: 0.2rem solid #000;
 }
 
 /* .list_container{padding:0 1.6rem 6rem;}
@@ -32,8 +52,10 @@ header .container {
 }
 
 .category_toggle_navigation {
-    top: 5.5rem;
+    /* top: 5.5rem; */
+    top: 8rem;
 }
 .category_toggle_navigation .scroller_container {
-    max-height: calc(100vh - 18.7rem);
+    /* max-height: calc(100vh - 18.7rem); */
+    max-height: calc(100vh - 21.2rem);
 }

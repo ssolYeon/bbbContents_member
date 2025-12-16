@@ -48,7 +48,7 @@ footer {
     display: flex;
     flex: 0 0 auto;
     position: sticky;
-    top: 0;
+    top: 5.4rem;
     background-color: #fff;
     z-index: 1;
     border-bottom: 1px solid rgba(0, 0, 0, 0.08);
@@ -103,8 +103,9 @@ footer {
     flex-direction: column;
     align-items: flex-start;
     position: relative;
-    height: calc(100% - 5.7rem);
-    padding: var(--lc-tit-gap) var(--pd-in) 6rem;
+    height: calc(100% - 5.8rem);
+    min-height: calc(100vh - 19rem);
+    padding: 2.4rem var(--pd-in) 6rem;
 }
 .notification_list_container > form {
     display: flex;
@@ -116,6 +117,9 @@ footer {
 body:has(.notification_list_container .bbb_empty_container) {
     height: 100vh;
 }
+#app_wrapper:has(.notification_list_container) {
+    min-height: calc(100vh - 5.4rem);
+}
 #app_wrapper main:has(.notification_list_container) {
     padding-bottom: 7.8rem;
 }
@@ -126,12 +130,14 @@ body:has(.notification_list_container .bbb_empty_container) {
 /* 스크롤 영역 */
 .list_contents {
     width: 100%;
-    height: 100%;
-    overflow: visible;
+    /*overflow: visible;
     min-height: 0;
     overflow-y: auto;
     -webkit-overflow-scrolling: touch;
-    overscroll-behavior: contain;
+    overscroll-behavior: contain;*/
+}
+.list_contents:has(+ .pagination_container) {
+    margin-bottom: 3rem;
 }
 .list_contents::-webkit-scrollbar {
     display: none;
@@ -145,6 +151,9 @@ body:has(.notification_list_container .bbb_empty_container) {
     background-color: #fff;
     border-radius: 1.2rem;
     margin-bottom: 0.8rem;
+}
+.list_contents li:last-child {
+    margin-bottom: 0;
 }
 .list_contents li a {
     width: 100%;
@@ -213,7 +222,7 @@ body:has(.notification_list_container .bbb_empty_container) {
     justify-content: space-between;
     gap: 2.45rem;
     width: 100%;
-    margin-top: 2rem;
+    margin-top: auto;
     pointer-events: auto;
 }
 .notification_list_container .pagination_num_container {
@@ -375,6 +384,17 @@ body:has(.notification_setting_container) {
 }
 
 /*삭제 모달창*/
+body:has(.modal_button_container.active) {
+    overflow: hidden;
+}
+body:has(.modal_button_container.active) .gnb_container,
+body:has(.modal_button_container.active) header,
+body:has(.modal_button_container.active) .notification_category {
+    z-index: -1;
+}
+body:has(.modal_button_container.active) .gnb_container {
+    position: absolute;
+}
 .list_contents li .modal_button_container {
     display: flex;
     flex-direction: column;
@@ -390,7 +410,10 @@ body:has(.notification_setting_container) {
     background-color: rgba(0, 0, 0, 0);
     transition: opacity 0.22s ease, background-color 0.22s ease;
     will-change: opacity, background-color;
-    z-index: 2;
+    z-index: 110;
+
+    transform: translateZ(0);
+    -webkit-transform: translateZ(0);
 }
 .list_contents li .modal_button_container.active {
     opacity: 1;

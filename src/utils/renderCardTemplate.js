@@ -72,7 +72,7 @@ export const cardTemplates = {
                             <img src="/src/assets/images/icons/icon_place_black@x3.png" alt="위치">
                             <span>${item.place}</span>
                         </div>
-                        <h2 class="card_title text_ellipsis_2">TMP:::: ${
+                        <h2 class="card_title text_ellipsis_2"> ${
                             item.title
                         }</h2>
                         <div class="price_container">
@@ -158,7 +158,7 @@ export const cardTemplates = {
                             ${item.place}
                         </div>
                         <h2 class="card_title text_ellipsis_2">
-                           TMP:::: ${item.title}
+                            ${item.title}
                         </h2>
                         <div class="price_container">
                             <!-- 원가 표시 (할인이 있을 때만) -->
@@ -258,7 +258,7 @@ export const cardTemplates = {
                 </div>
                 <div class="component_information_container">
                     <a href="${item.detail_url}">
-                        <h2 class="card_title text_ellipsis_2">TMP:::: ${escapeHtml(
+                        <h2 class="card_title text_ellipsis_2"> ${escapeHtml(
                             item.title
                         )}</h2>
                         <p class="card_description text_ellipsis_2">${escapeHtml(
@@ -346,7 +346,7 @@ export const cardTemplates = {
                             <img src="/src/assets/images/icons/icon_place_black@x3.png" alt="">
                             <span>${item.place}</span>
                         </div>
-                        <h2 class="card_title text_ellipsis_2">TMP:::: ${escapeHtml(
+                        <h2 class="card_title text_ellipsis_2"> ${escapeHtml(
                             item.title
                         )}</h2>
                         <div class="price_container">
@@ -428,7 +428,7 @@ export const cardTemplates = {
             <div class="component_information_container">
                 <a href="${item.detail_url}">
                     <span class="card_seller">${item.brand_title}</span>
-                    <h2 class="card_title text_ellipsis_2">TMP:::: ${
+                    <h2 class="card_title text_ellipsis_2"> ${
                         item.title
                     }</h2>
                     <p class="card_description  text_ellipsis_2">${
@@ -498,7 +498,7 @@ export const cardTemplates = {
             </div>
             <div class="component_information_container">
                 <a href="${item.detail_url}">
-                    <h2 class="card_title text_ellipsis_2">TMP:::: ${escapeHtml(
+                    <h2 class="card_title text_ellipsis_2"> ${escapeHtml(
                         item.title
                     )}</h2>
                     <p class="card_description text_ellipsis_2">${escapeHtml(
@@ -543,7 +543,50 @@ export const cardTemplates = {
             </div>
             <div class="component_information_container">
                 <a href="${item.detail_url}">
-                    <h2 class="card_title text_ellipsis_2">TMP:::: ${escapeHtml(
+                    <h2 class="card_title text_ellipsis_2"> ${escapeHtml(
+                        item.title
+                    )}</h2>
+                    <p class="card_description text_ellipsis_2">${escapeHtml(
+                        item.description
+                    )} </p>
+                </a>
+            </div>
+        </li>
+    `;
+    },
+    contentCard_like: (item, cardType = "content_card") => {
+        return `
+        <li class="contents_card ${cardType}">
+            <div class="thumbnail">
+                <a href="${item.detail_url}">
+                  <picture class="lazy_loading_container">
+                    <img
+                      data-src="${item.thumbnail}"
+                      alt="${escapeHtml(item.title)}"
+                      loading="lazy"
+                    >
+                  </picture>
+              </a>
+              <div class="card_top_marker">
+                ${renderCategory(item.category)}
+              </div>
+              <button type="button"
+                  class="btn_capture ${
+                      Number(item.capture) === 1 ? "active" : ""
+                  }"
+                  data-post-id="${item.id}"
+                  data-board-type = "${item.board_type}"
+                  data-capture="${Number(item.capture) === 1 ? "1" : "0"}"
+                  aria-pressed="${
+                      Number(item.capture) === 1 ? "true" : "false"
+                  }"
+               >
+                <img src="${getCaptureIconSrc(item.capture)}" alt="캡쳐버튼">
+              </button>
+            </div>
+            <div class="component_information_container">
+                <a href="${item.detail_url}">
+                    <h2 class="card_title text_ellipsis_2"> ${escapeHtml(
                         item.title
                     )}</h2>
                     <p class="card_description text_ellipsis_2">${escapeHtml(
@@ -573,7 +616,7 @@ export const cardTemplates = {
                         item.category
                     )}</div>
                     <div class="component_information_container">
-                        <h2 class="card_title text_ellipsis_2">TMP:::: ${escapeHtml(
+                        <h2 class="card_title text_ellipsis_2"> ${escapeHtml(
                             item.title
                         )}</h2>
                         <p class="card_description text_ellipsis_2">${escapeHtml(
@@ -624,7 +667,7 @@ export const cardTemplates = {
                         item.category
                     )}</div>
                     <div class="component_information_container">
-                        <h2 class="card_title text_ellipsis_2">TMP:::: ${escapeHtml(
+                        <h2 class="card_title text_ellipsis_2"> ${escapeHtml(
                             item.title
                         )}</h2>
                         <p class="card_description text_ellipsis_2">${escapeHtml(

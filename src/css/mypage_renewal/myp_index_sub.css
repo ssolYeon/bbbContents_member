@@ -147,7 +147,7 @@ footer {
 }
 .myp_points_list .points_item {
   position: relative;
-  padding: 1.6rem 6.4rem 1.6rem 2rem;
+  padding: 1.6rem 9rem 1.6rem 2rem;
   border-radius: 1.2rem;
   background-color: #fff;
 }
@@ -195,9 +195,12 @@ footer {
 /* ************************
 	내역이 없을 때 (공통)
 ************************ */
-.myp_container_empty {
+.myp_container_empty.bg_grey {
   display: flex;
   height: 100%;
+}
+.myp_container_empty.bg_grey {
+  background-color: #f5f5f5;
 }
 
 /* ************************
@@ -241,7 +244,7 @@ footer {
 .myp_newsletter_box .input_box input {
   height: 5.2rem;
   width: 100%;
-  olor: #000 !important;
+  color: #000 !important;
   -webkit-text-fill-color: #000 !important;
   font-size: 1.6rem;
   font-family: var(--font-500);
@@ -283,4 +286,687 @@ footer {
   margin-top: 2.4rem;
   font-family: var(--font-400);
   letter-spacing: -0.018rem;
+}
+
+/* ************************
+	예약/구매 내역
+************************ */
+.myp_reservation_item:has(+ .myp_pagination) {
+  margin-bottom: 3rem;
+}
+.myp_reservation_item + .underline_button_wrap {
+  margin-top: 3.2rem;
+}
+.myp_reservation_item + .myp_reservation_item {
+  margin-top: 1.6rem;
+}
+.myp_reservation_title {
+  margin-bottom: 1rem;
+  color: #000;
+  font-family: var(--font-700);
+  font-size: 1.8rem;
+  line-height: 2.6rem;
+  letter-spacing: -0.036rem;
+}
+.myp_reservation_title .required {
+  color: #e32727;
+}
+.myp_reservation_box {
+  display: block;
+  padding: 1.6rem;
+  background-color: #fff;
+  border-radius: 1.2rem;
+}
+
+.myp_reservation_box.canceled {
+  padding: 2.4rem;
+}
+.myp_reservation_box.canceled .info_text {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  color: #191d1c;
+  font-family: var(--font-600);
+  font-size: 1.6rem;
+  line-height: 2.4rem;
+}
+.myp_reservation_box.canceled .info_text:before {
+  content: "";
+  height: 4rem;
+  width: 4rem;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='40' height='40' viewBox='0 0 40 40' fill='none'%3E%3Cpath d='M20 1.57358e-06C8.9543 2.44264e-06 8.69808e-07 8.95431 1.94277e-06 20C3.01573e-06 31.0457 8.95431 40 20 40C31.0457 40 40 31.0457 40 20C40 8.9543 31.0457 7.04514e-07 20 1.57358e-06Z' fill='%23E1E3E1'/%3E%3Cpath d='M19.5 26C20.604 26 21.5 26.896 21.5 28C21.5 29.104 20.604 30 19.5 30C18.396 30 17.5 29.104 17.5 28C17.5 26.896 18.396 26 19.5 26Z' fill='white'/%3E%3Cpath d='M19.5 11L19.5 21' stroke='white' stroke-width='4' stroke-miterlimit='10' stroke-linecap='round'/%3E%3C/svg%3E");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.myp_reservation_box .product_box {
+  display: flex;
+  gap: 1.6rem;
+}
+.myp_reservation_box .product_box + .myp_reservation_info {
+  padding-top: 1.6rem;
+  margin-top: 1.6rem;
+  border-top: 1px solid #e1e3e1;
+}
+.myp_reservation_box .product_box + .box_button_wrap {
+  margin-top: 1.6rem;
+}
+.myp_reservation_box .product_item + .product_item {
+  margin-top: 1.6rem;
+  padding-top: 1.6rem;
+  border-top: 1px solid #eff2ef;
+}
+.myp_reservation_box .product_thumb {
+  overflow: hidden;
+  width: 8rem;
+  height: 8rem;
+  border-radius: 0.4rem;
+}
+.myp_reservation_box .product_status {
+  display: block;
+  width: 8rem;
+  height: 2.7rem;
+  margin-top: 1rem;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+.myp_reservation_box .product_status.pending_payment {
+  /* 입금대기 */
+  background-image: url("../../assets/images/myp_renewl_images/status_pending_payment.svg");
+}
+.myp_reservation_box .product_status.paid {
+  /* 결제완료 */
+  background-image: url("../../assets/images/myp_renewl_images/status_paid.svg");
+}
+.myp_reservation_box .product_status.preparing {
+  /* 준비중 */
+  background-image: url("../../assets/images/myp_renewl_images/status_preparing.svg");
+}
+.myp_reservation_box .product_status.preparing_part {
+  /* 부분준비중 */
+  background-image: url("../../assets/images/myp_renewl_images/status_preparing_part.svg");
+}
+.myp_reservation_box .product_status.shipped {
+  /* 출고완료 */
+  background-image: url("../../assets/images/myp_renewl_images/status_shipped.svg");
+}
+.myp_reservation_box .product_status.shipped_part {
+  /* 부분출고완료 */
+  background-image: url("../../assets/images/myp_renewl_images/status_shipped_part.svg");
+}
+.myp_reservation_box .product_status.in_transit {
+  /* 배송중 */
+  background-image: url("../../assets/images/myp_renewl_images/status_in_transit.svg");
+}
+.myp_reservation_box .product_status.in_transit_part {
+  /* 부분배송중 */
+  background-image: url("../../assets/images/myp_renewl_images/status_in_transit_part.svg");
+}
+.myp_reservation_box .product_status.delivered {
+  /* 배송완료 */
+  background-image: url("../../assets/images/myp_renewl_images/status_delivered.svg");
+}
+.myp_reservation_box .product_status.delivered_part {
+  /* 부분배송완료 */
+  background-image: url("../../assets/images/myp_renewl_images/status_delivered_part.svg");
+}
+.myp_reservation_box .product_status.confirmed {
+  /* 구매확정 */
+  background-image: url("../../assets/images/myp_renewl_images/status_confirmed.svg");
+}
+.myp_reservation_box .product_status.canceled {
+  /* 주문취소 */
+  background-image: url("../../assets/images/myp_renewl_images/status_canceled.svg");
+}
+.myp_reservation_box .product_status.refunded {
+  /* 취소/환불 */
+  background-image: url("../../assets/images/myp_renewl_images/status_refunded.svg");
+}
+.myp_reservation_box .product_status.payment_failed {
+  /* 결제실패 */
+  background-image: url("../../assets/images/myp_renewl_images/status_payment_failed.svg");
+}
+.myp_reservation_box .product_status.return_req {
+  /* 반품신청 */
+  background-image: url("../../assets/images/myp_renewl_images/status_return_req.svg");
+}
+.myp_reservation_box .product_status.return_proc {
+  /* 반품처리중 */
+  background-image: url("../../assets/images/myp_renewl_images/status_return_proc.svg");
+}
+.myp_reservation_box .product_status.return_done {
+  /* 반품완료 */
+  background-image: url("../../assets/images/myp_renewl_images/status_return_done.svg");
+}
+.myp_reservation_box .product_status.exchange_req {
+  /* 교환신청 */
+  background-image: url("../../assets/images/myp_renewl_images/status_exchange_req.svg");
+}
+.myp_reservation_box .product_status.exchange_proc {
+  /* 교환처리중 */
+  background-image: url("../../assets/images/myp_renewl_images/status_exchange_proc.svg");
+}
+.myp_reservation_box .product_status.exchange_done {
+  /* 교환완료 */
+  background-image: url("../../assets/images/myp_renewl_images/status_exchange_done.svg");
+}
+.myp_reservation_box .product_status.ticket_hold {
+  /* 티켓사용대기 */
+  background-image: url("../../assets/images/myp_renewl_images/status_ticket_hold.svg");
+}
+.myp_reservation_box .product_status.ticket_used {
+  /* 티켓사용중 */
+  background-image: url("../../assets/images/myp_renewl_images/status_ticket_used.svg");
+}
+.myp_reservation_box .product_status.ticket_done {
+  /* 티켓사용완료 */
+  background-image: url("../../assets/images/myp_renewl_images/status_ticket_done.svg");
+}
+.myp_reservation_box .product_right {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.myp_reservation_box .product_title {
+  color: #000;
+  font-family: var(--font-700);
+  font-size: 1.6rem;
+  line-height: 2.2rem;
+}
+.myp_reservation_box .product_info {
+  margin-top: 0.2rem;
+  color: #444746;
+  font-family: var(--font-400);
+  font-size: 1.4rem;
+  line-height: 2.2rem;
+  letter-spacing: -0.028rem;
+}
+.myp_reservation_box .product_dl {
+  display: flex;
+  gap: 0.8rem;
+}
+.myp_reservation_box .product_dl dt,
+.myp_reservation_box .product_dl dd {
+  font-size: 1.4rem;
+  line-height: 2.2rem;
+  letter-spacing: -0.028rem;
+}
+.myp_reservation_box .product_dl dt {
+  color: #000;
+  font-family: var(--font-700);
+}
+.myp_reservation_box .product_dl dd {
+  color: #444746;
+  font-family: var(--font-400);
+}
+.myp_reservation_box .product_price {
+  margin-top: 0.4rem;
+  color: #000;
+  font-family: var(--font-700);
+  font-size: 1.4rem;
+  line-height: 1.4rem;
+  letter-spacing: -0.028rem;
+}
+.myp_reservation_box .product_track_shipment {
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 0.4rem;
+}
+.myp_reservation_box .product_track_shipment .btn_link {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.2rem;
+  height: 2.7rem;
+  padding: 0 1rem;
+  color: #191d1c;
+  font-family: var(--font-600);
+  font-size: 1.1rem;
+  line-height: 1.1rem;
+  letter-spacing: -0.022rem;
+  border-radius: 0.4rem;
+  border: 1px solid #c4c7c5;
+  background-color: #fff;
+}
+.myp_reservation_box .product_track_shipment .btn_link:after {
+  content: "";
+  height: 1rem;
+  width: 1rem;
+  background-image: url("../../assets/images/myp_renewl_images/icon_arrow_black_10.svg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.myp_reservation_box_title {
+  color: #000;
+  font-family: var(--font-700);
+  font-size: 1.6rem;
+  line-height: 2.2rem;
+}
+.myp_reservation_box_title .required {
+  color: #e32727;
+}
+.myp_reservation_box_title + .myp_reservation_info {
+  margin-top: 1.2rem;
+}
+.myp_reservation_box_title + .product_list {
+  padding-top: 1.6rem;
+}
+.myp_reservation_header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  padding-bottom: 1.6rem;
+  margin-bottom: 1.2rem;
+  border-bottom: 1px solid #e1e3e1;
+}
+.myp_reservation_header.center {
+  align-items: center;
+}
+
+.myp_reservation_header .myp_reservation_title {
+  margin-bottom: 0;
+}
+.myp_reservation_header:has(+ .product_list) {
+  margin-bottom: 1.6rem;
+  border-bottom: 1px solid #c4c7c5;
+}
+.myp_reservation_header:has(+ .default_inputform_wrap) {
+  margin-bottom: 1.6rem;
+}
+.myp_reservation_header .header_orderNum {
+  font-family: var(--font-400);
+  font-size: 1.4rem;
+  line-height: 2.2rem;
+  letter-spacing: -0.028rem;
+}
+.myp_reservation_header .header_button {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  color: #444746;
+  font-family: var(--font-400);
+  font-size: 1.4rem;
+  line-height: 2.2rem;
+  letter-spacing: -0.028rem;
+}
+.myp_reservation_header .header_button:after {
+  content: "";
+  width: 1.6rem;
+  height: 1.6rem;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 16 16' fill='none'%3E%3Cpath d='M5.33334 2.66663L10.3131 7.64641C10.5084 7.84167 10.5084 8.15825 10.3131 8.35351L5.33334 13.3333' stroke='%23444746' stroke-linecap='round'/%3E%3C/svg%3E");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+.myp_reservation_header .header_info {
+  margin-top: 0.5rem;
+  color: #191d1c;
+  font-family: var(--font-400);
+  font-size: 1.4rem;
+  line-height: 2.2rem;
+  letter-spacing: -0.028rem;
+}
+
+/* ************************
+	예약/구매 상세
+************************ */
+.myp_reservation_bg_text {
+  padding: 1.6rem;
+  color: #000;
+  font-family: var(--font-400);
+  font-size: 1.4rem;
+  line-height: 2.2rem;
+  letter-spacing: -0.028rem;
+  border-radius: 0.8rem;
+  background-color: #f9f9f9;
+}
+
+.myp_reservation_info dl {
+  display: flex;
+}
+.myp_reservation_info.between dl {
+  justify-content: space-between;
+}
+.myp_reservation_info dl + dl {
+  margin-top: 0.2rem;
+}
+.myp_reservation_info dt,
+.myp_reservation_info dd {
+  color: #444746;
+  font-size: 1.4rem;
+  line-height: 2.2rem;
+  letter-spacing: -0.028rem;
+}
+.myp_reservation_info dd.total {
+  color: #191d1c;
+  font-family: var(--font-700);
+}
+
+.myp_reservation_info.defalt:has(+ .myp_reservation_bg_text) {
+  padding-bottom: 1.6rem;
+  margin-bottom: 1.2rem;
+  border-bottom: 1px solid #e1e3e1;
+}
+.myp_reservation_info.defalt:has(+ .myp_reservation_info.orderSummary) {
+  margin-bottom: 1.6rem;
+}
+.myp_reservation_info.defalt dl {
+  gap: 0.8rem;
+}
+.myp_reservation_info.defalt dt {
+  min-width: 6rem;
+  font-family: var(--font-600);
+}
+
+.myp_reservation_info.Payment dt {
+  min-width: 6rem;
+}
+.myp_reservation_info.Payment dd {
+  color: #2d312f;
+  font-family: var(--font-700);
+}
+.myp_reservation_info.Payment + .box_button_wrap {
+  margin: 1.6rem 0;
+}
+
+.myp_reservation_info.productPrice {
+  margin-top: 2.4rem;
+  padding-bottom: 1.6rem;
+}
+.myp_reservation_info.productPrice dt {
+  font-family: var(--font-700);
+}
+.myp_reservation_info.productPrice dd {
+  color: #191d1c;
+  font-family: var(--font-700);
+}
+
+.myp_reservation_info.orderSummary {
+  padding: 1.2rem 0;
+  border-top: 1px solid #e1e3e1;
+  border-bottom: 1px solid #e1e3e1;
+}
+.myp_reservation_info.orderSummary dl:not(.discount) + dl:not(.discount) {
+  margin-top: 0.8rem;
+}
+.myp_reservation_info.orderSummary dl:not(.discount) + dl.discount {
+  margin-top: 0.8rem;
+}
+.myp_reservation_info.orderSummary dl:not(.discount) dd {
+  font-family: var(--font-700);
+}
+.myp_reservation_info.orderSummary dl.discount {
+  padding-left: 1.6rem;
+}
+.myp_reservation_info.orderSummary dl.discount span {
+  margin-right: 0.6rem;
+}
+
+.myp_reservation_info.totalPayment {
+  margin-top: 1.6rem;
+}
+.myp_reservation_info.totalPayment dt {
+  font-family: var(--font-700);
+}
+.myp_reservation_info.totalPayment dd {
+  color: #191d1c;
+  font-family: var(--font-700);
+  font-size: 2rem;
+  letter-spacing: -0.04rem;
+}
+
+.myp_reservation_info .adress {
+  margin-bottom: 1.6rem;
+  color: #191d1c;
+  font-family: var(--font-700);
+  font-size: 1.6rem;
+  line-height: 2.2rem;
+}
+.myp_reservation_info .info_text {
+  margin-top: 1.2rem;
+  color: #444746;
+  font-family: var(--font-400);
+  font-size: 1.4rem;
+  line-height: 2.2rem;
+  letter-spacing: -0.028rem;
+}
+
+/* ************************
+	예약/구매 상세 팝업
+************************ */
+body:has(.reservation_layer_popUp.active) {
+  overflow: hidden;
+}
+.reservation_layer_popUp {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  left: 50%;
+  width: 100%;
+  height: 100%;
+  max-width: 39.3rem;
+  transform: translateX(-50%);
+  z-index: 100;
+}
+.reservation_layer_popUp.active {
+  display: block;
+}
+.reservation_layer_popUp .popUp_header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  padding: 0 1.6rem;
+  height: 5.4rem;
+  text-align: center;
+  background-color: #fff;
+}
+.reservation_layer_popUp .popUp_title {
+  color: #000;
+  font-family: var(--font-700);
+  font-size: 1.8rem;
+  line-height: 2.6rem;
+  letter-spacing: -0.036rem;
+}
+.reservation_layer_popUp .btn_popUp_close {
+  position: absolute;
+  right: 1.6rem;
+  top: 50%;
+  width: 2.4rem;
+  height: 2.4rem;
+  font-size: 0;
+  transform: translateY(-50%);
+  background-image: url("../../assets/icons/icon_close_black_24.svg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+.reservation_layer_popUp .popup_body {
+  overflow-y: auto;
+  scrollbar-width: none;
+  height: calc(100% - 5.4rem);
+  padding: 2.4rem 1.6rem 6rem;
+  background-color: #f5f5f5;
+}
+.reservation_layer_popUp .box_button_wrap {
+  margin-top: 3.2rem;
+}
+
+.reservation_layer_popUp .tab_contents_wrap {
+  padding-top: 2.4rem;
+}
+.reservation_layer_popUp .radio_selection {
+  display: none;
+}
+.reservation_layer_popUp .radio_selection.active {
+  display: block;
+}
+.reservation_layer_popUp .btn_guide {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  color: #2d312f;
+  font-family: var(--font-400);
+  font-size: 1.4rem;
+  line-height: 2.2rem;
+  letter-spacing: -0.028rem;
+}
+.reservation_layer_popUp .btn_guide:after {
+  content: "";
+  width: 1.6rem;
+  height: 1.6rem;
+  background-image: url("../../assets/images/icons/icon_pop_guide.svg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+.reservation_layer_popUp .default_inputform_title:has(.btn_guide) {
+  display: flex;
+  gap: 0.4rem;
+}
+.reservation_layer_popUp .default_inputform_title .btn_guide {
+  margin-left: auto;
+}
+
+.reservation_pop_info_box + .reservation_pop_info_box,
+.reservation_pop_info_greyBox + .reservation_pop_info_box {
+  margin-top: 1.6rem;
+}
+.reservation_pop_info_box + .reservation_pop_info_greyBox {
+  margin-top: 0.8rem;
+}
+
+.reservation_pop_info_greyBox {
+  padding: 1.6rem;
+  border-radius: 0.8rem;
+  border: 1px solid #eff2ef;
+  background-color: #f9f9f9;
+}
+.reservation_pop_title {
+  color: #000;
+  font-family: var(--font-700);
+  font-size: 1.6rem;
+  line-height: 2.2rem;
+}
+.reservation_pop_info_greyBox .reservation_pop_title {
+  font-size: 1.4rem;
+  letter-spacing: -0.028rem;
+}
+.reservation_pop_title + .reservation_pop_info_text {
+  margin-top: 0.4rem;
+}
+.reservation_pop_info_text {
+  color: #444746;
+  font-family: var(--font-400);
+  font-size: 1.4rem;
+  line-height: 2.2rem;
+  letter-spacing: -0.028rem;
+  word-break: break-all;
+}
+.reservation_pop_info_text + .reservation_pop_info_list {
+  margin-top: 0.8rem;
+}
+.reservation_pop_info_list li {
+  display: flex;
+  gap: 0.4rem;
+  color: #444746;
+  font-family: var(--font-400);
+  font-size: 1.4rem;
+  line-height: 2.2rem;
+  letter-spacing: -0.028rem;
+}
+.reservation_pop_info_list.number li + li {
+  margin-top: 0.4rem;
+}
+.reservation_pop_info_list.number li:before {
+  content: attr(data-num);
+}
+.reservation_pop_info_list.dash li + li {
+  margin-top: 1.6rem;
+}
+.reservation_pop_info_list.dash li:before {
+  content: "-";
+}
+
+/* ************************
+	예약/구매 가이드 팝업
+************************ */
+body:has(.reservation_guide_popUp.active) {
+  overflow: hidden;
+}
+.reservation_guide_popUp {
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: fixed;
+  top: 0;
+  left: 50%;
+  width: 100%;
+  height: 100%;
+  max-width: 39.3rem;
+  transform: translateX(-50%);
+  z-index: 100;
+}
+.reservation_guide_popUp.active {
+  display: flex;
+}
+.reservation_guide_popUp .popUp_dimm {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.8);
+  z-index: -1;
+}
+.reservation_guide_popUp .popUp_wrap {
+  position: relative;
+  max-height: calc(100% - 10rem);
+  width: 36rem;
+  padding: 2.4rem;
+  border-radius: 1.2rem;
+  background-color: #fff;
+}
+.reservation_guide_popUp .popUp_header {
+  position: relative;
+  margin-bottom: 2.4rem;
+}
+.reservation_guide_popUp .popUp_title {
+  color: #000;
+  font-family: var(--font-700);
+  font-size: 1.8rem;
+  line-height: 2.6rem;
+  letter-spacing: -0.036rem;
+}
+.reservation_guide_popUp .btn_popUp_close {
+  position: absolute;
+  right: 0;
+  top: 50%;
+  width: 2.4rem;
+  height: 2.4rem;
+  font-size: 0;
+  transform: translateY(-50%);
+  background-image: url(../../assets/icons/icon_close_black_24.svg);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.reservation_guide_popUp .popUp_body {
+  overflow-y: auto;
+  scrollbar-width: none;
+  max-height: calc(100% - 5rem);
+}
+.reservation_guide_popUp .popUp_bottom {
+  margin-top: 2.4rem;
+  position: sticky;
+  bottom: 0;
+}
+.reservation_guide_popUp:has(.popUp_bottom) .popUp_body {
+  max-height: calc(100% - 12rem);
 }

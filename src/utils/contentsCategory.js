@@ -43,48 +43,37 @@ export function initCategoryToggleNav({
                     ? String(urlCategory)
                     : null;
 
+            // all과 0001을 동일하게 처리하는 함수
+            const normalizeCategory = (val) => {
+                return (val === 'all' || val === '0001') ? 'all' : String(val);
+            };
+
             // Top Nav 렌더
             if ($topNav) {
-                $topNav.innerHTML = categories
-                    .map((item) => {
-                        const isActive =
-                            currentKey && String(item.data) === currentKey;
-                        return `<a href="${item.url}" data-category="${
-                            item.data
-                        }"${
-                            isActive
-                                ? ' class="active" aria-current="page"'
-                                : ""
-                        }>${item.name}</a>`;
-                    })
-                    .join("");
+                $topNav.innerHTML = categories.map(item => {
+                    const isActive = normalizeCategory(item.data) === normalizeCategory(currentKey);
+                    return `<a href="${encodeURI(item.url)}" data-category="${item.data}"${isActive ? ' class="active" aria-current="page"' : ''}>${item.name}</a>`;
+                }).join('');
             }
 
             // 토글 패널 리스트 렌더
             if ($list) {
-                //       $list.innerHTML = categories.map(item => {
-                //           const isActive = currentKey && String(item.data) === currentKey;
-                //           return `
-                //   <li>
-                //     <a href="${item.url}" data-category="${item.data}"${isActive ? ' class="active" aria-current="page"' : ''}>${item.name}</a>
-                //   </li>
-                // `;
-                //       }).join('');
-                const toggle_list = categories
-                    .map((item) => {
-                        const isActive =
-                            currentKey && String(item.data) === currentKey;
-                        return `
-            <li>
-              <a href="${item.url}" data-category="${item.data}"${
-                            isActive
-                                ? ' class="active" aria-current="page"'
-                                : ""
-                        }>${item.name}</a>
-            </li>
-          `;
-                    })
-                    .join("");
+          //       $list.innerHTML = categories.map(item => {
+          //           const isActive = currentKey && String(item.data) === currentKey;
+          //           return `
+          //   <li>
+          //     <a href="${item.url}" data-category="${item.data}"${isActive ? ' class="active" aria-current="page"' : ''}>${item.name}</a>
+          //   </li>
+          // `;
+          //       }).join('');
+                const toggle_list = categories.map(item => {
+                    const isActive = normalizeCategory(item.data) === normalizeCategory(currentKey);
+                    return `
+                        <li>
+                        <a href="${encodeURI(item.url)}" data-category="${item.data}"${isActive ? ' class="active" aria-current="page"' : ''}>${item.name}</a>
+                        </li>
+                    `;
+                }).join('');
 
                 $list.innerHTML = "<li>카테고리</li>" + toggle_list;
             }
@@ -101,7 +90,7 @@ export function initCategoryToggleNav({
                             .querySelectorAll("a[data-category]")
                             .forEach((el) => {
                                 const on =
-                                    el.dataset.category === a.dataset.category;
+                                    normalizeCategory(el.dataset.category) === normalizeCategory(a.dataset.category);
                                 el.classList.toggle("active", on);
                                 if (on) el.setAttribute("aria-current", "page");
                                 else el.removeAttribute("aria-current");

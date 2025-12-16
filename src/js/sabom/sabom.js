@@ -1,23 +1,27 @@
-import {requestJson} from "../../utils/requestJson.js";
-import {escapeHtml} from "../../utils/escapeHtml.js";
-import {countVisualSlider} from "../../utils/sliderController.js";
-import {createLazyLoader} from "../../utils/lazyLoader.js";
-import {renderCategory, renderTag, getCaptureIconSrc, discountPercent} from "../../utils/renderCardMeta.js";
-import {bindCaptureToast} from "../../utils/captureToast.js";
-import {showInformation} from "../common/footer.js";
-import {renderCategoryNavigation} from "../../utils/renderCategoryNvigation.js";
-import {bindCaptureToggle} from "../../utils/bindCaptureToggle.js";
-import {allmenu} from "../common/allmenu.js";
-import {initSearchHandler} from "../../utils/searchHandler.js";
-import {initCategoryToggleNav} from "../../utils/contentsCategory.js";
-import {wheelCustom} from "../../utils/horizontalScroll.js";
-import {cardTemplates} from "../../utils/renderCardTemplate.js";
+import { requestJson } from "../../utils/requestJson.js";
+import { escapeHtml } from "../../utils/escapeHtml.js";
+import { countVisualSlider } from "../../utils/sliderController.js";
+import { createLazyLoader } from "../../utils/lazyLoader.js";
+import {
+    renderCategory,
+    renderTag,
+    getCaptureIconSrc,
+    discountPercent,
+} from "../../utils/renderCardMeta.js";
+import { bindCaptureToast } from "../../utils/captureToast.js";
+import { showInformation } from "../common/footer.js";
+import { renderCategoryNavigation } from "../../utils/renderCategoryNvigation.js";
+import { bindCaptureToggle } from "../../utils/bindCaptureToggle.js";
+import { allmenu } from "../common/allmenu.js";
+import { initSearchHandler } from "../../utils/searchHandler.js";
+import { initCategoryToggleNav } from "../../utils/contentsCategory.js";
+import { wheelCustom } from "../../utils/horizontalScroll.js";
+import { cardTemplates } from "../../utils/renderCardTemplate.js";
 
-const sabomSubMainController = (()=>{
-
+const sabomSubMainController = (() => {
     const state = {
         lazy: null, // 여기서 lazy 인스턴스 관리
-        currentSort: 'newest',
+        currentSort: "newest",
         currentPage: 1,
         totalPages: 1,
         isLoading: false,
@@ -25,34 +29,34 @@ const sabomSubMainController = (()=>{
         observer: null,
         sentinel: null,
         isGroupMode: false,
-        groupTitle: null
+        groupTitle: null,
     };
 
     const config = {
-        API_BASE: '/api/sbList',
+        API_BASE: "/api/sbList",
         CARD_TYPES: {
-            SHOP: 'shop_174_174',
-            CONTENT: 'card_174_174'
-        }
+            SHOP: "shop_174_174",
+            CONTENT: "card_174_174",
+        },
     };
 
-    const lazyLoader = ()=>{
+    const lazyLoader = () => {
         // state.lazy에 할당하도록 수정
         state.lazy = createLazyLoader({
             // selector: '.lazy_loading_container img[data-src]',
             // root: null,
             // rootMargin: '0px 0px',
-            onEnter: (img) => img.classList.add('is-loading'),
-            onLoad:  (img) => {
-                img.classList.remove('is-loading');
-                img.classList.add('is-loaded');
+            onEnter: (img) => img.classList.add("is-loading"),
+            onLoad: (img) => {
+                img.classList.remove("is-loading");
+                img.classList.add("is-loaded");
             },
         });
         state.lazy.init();
-    }
-    const renderCarousel = ()=>{
-        const DATA_URL = '/api/banners?type=sbm';
-        const $container = document.querySelector('.sub_visual_container');
+    };
+    const renderCarousel = () => {
+        const DATA_URL = "/api/banners?type=sbm";
+        const $container = document.querySelector(".sub_visual_container");
         if (!$container) return;
 
         const methods = {
@@ -61,22 +65,24 @@ const sabomSubMainController = (()=>{
                     const data = await requestJson(DATA_URL);
                     methods.renderContent(data?.data || []);
                 } catch (err) {
-                    console.error('홈페이지 데이터 로드 실패:', err);
+                    console.error("홈페이지 데이터 로드 실패:", err);
                 }
             },
             renderContent: (items = []) => {
-                const $list = $container.querySelector('.swiper-wrapper');
+                const $list = $container.querySelector(".swiper-wrapper");
                 if (!$list) return;
 
                 // S : dewbian 배너데이터가 없으면 섹션 숨김
-                if(items.length < 1){
+                if (items.length < 1) {
                     $container.style.display = "none";
                     return;
                 }
                 $container.style.display = "block";
                 // E : dewbian 배너데이터가 없으면 섹션 숨김
 
-                const contents = items.map((item) => `
+                const contents = items
+                    .map(
+                        (item) => `
                     <div class="swiper-slide slider">
                         <a href="${item.target_url}" target="${item.target}">
                             <div class="slider_thumbnail_container">
@@ -84,7 +90,9 @@ const sabomSubMainController = (()=>{
                             </div>
                         </a>
                     </div>
-                `).join('');
+                `
+                    )
+                    .join("");
 
                 $list.innerHTML = contents;
 
@@ -93,10 +101,10 @@ const sabomSubMainController = (()=>{
         };
 
         methods.requestAPI();
-    }
+    };
     const renderBanner = () => {
-        const DATA_URL = '/api/banners?type=sbb';
-        const $container = document.querySelector('.banner_container');
+        const DATA_URL = "/api/banners?type=sbb";
+        const $container = document.querySelector(".banner_container");
         if (!$container) return;
 
         const methods = {
@@ -105,23 +113,24 @@ const sabomSubMainController = (()=>{
                     const data = await requestJson(DATA_URL);
                     methods.renderContent(data?.data || []);
                 } catch (err) {
-                    console.error('홈페이지 데이터 로드 실패:', err);
+                    console.error("홈페이지 데이터 로드 실패:", err);
                 }
             },
             renderContent: (items = []) => {
-                const $list = $container.querySelector('.swiper-wrapper');
+                const $list = $container.querySelector(".swiper-wrapper");
                 if (!$list) return;
 
-
                 // S : dewbian 배너데이터가 없으면 섹션 숨김
-                if(items.length < 1){
+                if (items.length < 1) {
                     $container.style.display = "none";
                     return;
                 }
                 $container.style.display = "block";
                 // E : dewbian 배너데이터가 없으면 섹션 숨김
 
-                const contents = items.map((item) => `
+                const contents = items
+                    .map(
+                        (item) => `
                     <div class="swiper-slide slider">
                         <a href="${item.target_url}" target="${item.target}">
                             <div class="slider_thumbnail_container">
@@ -129,7 +138,9 @@ const sabomSubMainController = (()=>{
                             </div>
                         </a>
                     </div>
-                `).join('');
+                `
+                    )
+                    .join("");
 
                 $list.innerHTML = contents;
 
@@ -138,20 +149,23 @@ const sabomSubMainController = (()=>{
         };
 
         methods.requestAPI();
-    }
+    };
 
     const groupSabomContents = async () => {
         const methods = {
             requestAPI: async () => {
                 try {
                     // API 호출
-                    const response = await fetch('/api/bbS0100', {
-                        method: 'GET',
+                    const response = await fetch("/api/bbS0100", {
+                        method: "GET",
                         headers: {
-                            'Accept': 'application/json',
-                            'Content-Type': 'application/json',
-                            'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]')?.getAttribute('content') || '',
-                        }
+                            Accept: "application/json",
+                            "Content-Type": "application/json",
+                            "X-CSRF-TOKEN":
+                                document
+                                    .querySelector('meta[name="csrf-token"]')
+                                    ?.getAttribute("content") || "",
+                        },
                     });
 
                     if (!response.ok) {
@@ -160,9 +174,8 @@ const sabomSubMainController = (()=>{
 
                     const data = await response.json();
                     methods.renderContent(data);
-
                 } catch (err) {
-                    console.error('해봄 콘텐츠 데이터 로드 실패:', err);
+                    console.error("해봄 콘텐츠 데이터 로드 실패:", err);
                     methods.renderContent({});
                 }
             },
@@ -170,32 +183,38 @@ const sabomSubMainController = (()=>{
             renderContent: (data = {}) => {
                 // 모든 list_container 요소들 가져오기
                 //const $listContainers = document.querySelectorAll('.list_container');
-                const $listContainers = document.querySelectorAll('.list_container:not(.list_newest)');
-                const $subVisual = document.querySelector('.sub_visual_container .swiper-wrapper');
+                const $listContainers = document.querySelectorAll(
+                    ".list_container:not(.list_newest)"
+                );
+                const $subVisual = document.querySelector(
+                    ".sub_visual_container .swiper-wrapper"
+                );
 
                 // 먼저 모든 컨테이너 숨기기
-                $listContainers.forEach(container => {
-                    container.style.display = 'none';
+                $listContainers.forEach((container) => {
+                    container.style.display = "none";
                 });
 
                 // 데이터를 배열로 변환하고 정렬 (키 순서대로)
                 const sortedData = Object.keys(data)
                     .sort((a, b) => parseInt(a) - parseInt(b))
-                    .map(key => data[key]);
+                    .map((key) => data[key]);
 
                 // 모든 그룹을 하나의 배열로 수집
                 const allGroups = [];
-                sortedData.forEach(content => {
-                    content.groups.forEach(group => {
+                sortedData.forEach((content) => {
+                    content.groups.forEach((group) => {
                         allGroups.push({
                             ...group,
-                            vtype: content.vtype // 그룹에 vtype 추가
+                            vtype: content.vtype, // 그룹에 vtype 추가
                         });
                     });
                 });
 
                 // 아이템이 있는 그룹들만 필터링
-                const validGroups = allGroups.filter(group => group.items && group.items.length > 0);
+                const validGroups = allGroups.filter(
+                    (group) => group.items && group.items.length > 0
+                );
 
                 // // 첫 번째 그룹을 서브 비주얼에 할당
                 // if ($subVisual && validGroups.length > 0) {
@@ -207,31 +226,42 @@ const sabomSubMainController = (()=>{
                     const $container = $listContainers[index];
                     if ($container) {
                         // 컨테이너 표시
-                        $container.style.display = 'block';
+                        $container.style.display = "block";
 
                         // 타이틀 설정
-                        const $title = $container.querySelector('.title_container .title');
+                        const $title = $container.querySelector(
+                            ".title_container .title"
+                        );
                         if ($title) {
                             //$title.innerHTML = group.group_info.title;
-                            const formattedTitle = group.group_info.title.replace(/\r\n/g, '<br>').replace(/\n/g, '<br>');
+                            const formattedTitle = group.group_info.title
+                                .replace(/\r\n/g, "<br>")
+                                .replace(/\n/g, "<br>");
                             $title.innerHTML = formattedTitle;
                         }
                         // S : dewbian 그룹 더보기 하이퍼링크 변경
-                        const viewMoreBtn = $container.querySelector('.btn_view_more');
-                        viewMoreBtn.style.display = 'block';
+                        const viewMoreBtn =
+                            $container.querySelector(".btn_view_more");
+                        viewMoreBtn.style.display = "block";
                         if (viewMoreBtn) {
-                            viewMoreBtn.href = '/sbl?group='+group.group_info.gidx;
+                            viewMoreBtn.href =
+                                "/sbl?group=" + group.group_info.gidx;
                         }
                         // E : dewbian 그룹 더보기 하이퍼링크 변경
 
-
                         // 리스트 타입에 따라 렌더링
-                        const $horizontalList = $container.querySelector('.list_horizontal');
-                        const $doubleRowList = $container.querySelector('.list_double_row');
-                        const $contentsList = $container.querySelector('.list_contents');
+                        const $horizontalList =
+                            $container.querySelector(".list_horizontal");
+                        const $doubleRowList =
+                            $container.querySelector(".list_double_row");
+                        const $contentsList =
+                            $container.querySelector(".list_contents");
 
                         if ($horizontalList) {
-                            methods.renderHorizontalList($horizontalList, group);
+                            methods.renderHorizontalList(
+                                $horizontalList,
+                                group
+                            );
                         } else if ($doubleRowList) {
                             methods.renderDoubleRowList($doubleRowList, group);
                         } else if ($contentsList) {
@@ -245,44 +275,52 @@ const sabomSubMainController = (()=>{
             renderSubVisual: ($container, group) => {
                 const items = group.items || [];
 
-                const slidesHtml = items.map(item => {
-                    const {
-                        id,
-                        category,
-                        title,
-                        thumbnail,
-                        detail_url,
-                        place,
-                        price,
-                        discount_price,
-                        origin_price,
-                        unit,
-                        tag,
-                        capture = false
-                    } = item;
+                const slidesHtml = items
+                    .map((item) => {
+                        const {
+                            id,
+                            category,
+                            title,
+                            thumbnail,
+                            detail_url,
+                            place,
+                            price,
+                            discount_price,
+                            origin_price,
+                            unit,
+                            tag,
+                            capture = false,
+                        } = item;
 
-                    const categoryText = Array.isArray(category) ? category[0] : (category || '');
-                    const tagList = Array.isArray(tag) ? tag : [];
+                        const categoryText = Array.isArray(category)
+                            ? category[0]
+                            : category || "";
+                        const tagList = Array.isArray(tag) ? tag : [];
 
-                    return `
+                        return `
                     <div class="swiper-slide slider">
                         <a href="${detail_url}">
                             <div class="slider_thumbnail_container">
-                                <img src="${thumbnail}" alt="${escapeHtml(title)}">
+                                <img src="${thumbnail}" alt="${escapeHtml(
+                            title
+                        )}">
                             </div>
                         </a>
                     </div>
                 `;
-                }).join('');
+                    })
+                    .join("");
 
                 $container.innerHTML = slidesHtml;
                 countVisualSlider();
             },
-// 가로 리스트 렌더링
+            // 가로 리스트 렌더링
             renderHorizontalList: ($container, group) => {
                 const items = group.items || [];
 
-                const contents = items.map(item => cardTemplates.sabomCard(item, 'half')).join('');
+                const contents = items
+                    .map((item) => cardTemplates.sabomCard(item, "half"))
+                    .join("");
 
                 $container.innerHTML = contents;
                 //lazy.refresh($container);
@@ -291,15 +329,19 @@ const sabomSubMainController = (()=>{
                 }
             },
 
-// 더블 로우 리스트 렌더링
+            // 더블 로우 리스트 렌더링
             renderDoubleRowList: ($container, group) => {
                 const items = group.items || [];
                 const topRows = items.slice(0, Math.ceil(items.length / 2));
                 const bottomRows = items.slice(Math.ceil(items.length / 2));
 
-                const topRowRender = topRows.map(item => cardTemplates.sabomCard(item, 'half')).join('');
+                const topRowRender = topRows
+                    .map((item) => cardTemplates.sabomCard(item, "half"))
+                    .join("");
 
-                const bottomRowRender = bottomRows.map(item => cardTemplates.sabomCard(item, 'half')).join('');
+                const bottomRowRender = bottomRows
+                    .map((item) => cardTemplates.sabomCard(item, "half"))
+                    .join("");
 
                 $container.innerHTML = `
                     <div class="row">${topRowRender}</div>
@@ -313,26 +355,27 @@ const sabomSubMainController = (()=>{
             // 콘텐츠 리스트 렌더링
             renderContentsList: ($container, group) => {
                 const items = group.items || [];
-                const contents = items.map(item => cardTemplates.sabomCard(item, 'half')).join('');
+                const contents = items
+                    .map((item) => cardTemplates.sabomCard(item, "half"))
+                    .join("");
 
                 $container.innerHTML = contents;
                 if (state.lazy?.refresh) {
                     state.lazy.refresh($container);
                 }
-            }
+            },
         };
 
         // 초기화
         methods.requestAPI();
     };
 
-
-// 할인율 계산 함수
+    // 할인율 계산 함수
     const calculateDiscountRate = (originalPrice, discountPrice) => {
         if (!originalPrice || !discountPrice) return 0;
 
-        const original = parseInt(originalPrice.replace(/,/g, ''));
-        const discount = parseInt(discountPrice.replace(/,/g, ''));
+        const original = parseInt(originalPrice.replace(/,/g, ""));
+        const discount = parseInt(discountPrice.replace(/,/g, ""));
 
         if (original <= discount) return 0;
 
@@ -344,9 +387,9 @@ const sabomSubMainController = (()=>{
         getCategoryFromQuery: (url = window.location.href) => {
             try {
                 const u = new URL(url, window.location.origin);
-                return u.searchParams.get('category') || 'all';
+                return u.searchParams.get("category") || "all";
             } catch {
-                return 'all';
+                return "all";
             }
         },
         // 현재 활성화된 카테고리 가져오기 - dewbian
@@ -357,18 +400,22 @@ const sabomSubMainController = (()=>{
             const fromURL = utils.getCategoryFromQuery();
             if (fromURL) return fromURL;
 
-            const selectVal = document.querySelector('.js_custom_select .select_value')?.dataset?.value;
+            const selectVal = document.querySelector(
+                ".js_custom_select .select_value"
+            )?.dataset?.value;
             if (selectVal) return selectVal;
 
-            const navActive = document.querySelector('.category_navigation [data-value].active, .category_navigation [aria-current="page"]');
+            const navActive = document.querySelector(
+                '.category_navigation [data-value].active, .category_navigation [aria-current="page"]'
+            );
             const navVal = navActive?.dataset?.value;
             if (navVal) return navVal;
 
-            return 'all';
+            return "all";
         },
 
         // API URL 빌드 함수 - dewbian
-        buildApiUrl: (category,  sort = null, page = 1) => {
+        buildApiUrl: (category, sort = null, page = 1) => {
             const params = new URLSearchParams();
 
             // group이 있으면 group 우선, 없으면 category - dewbian
@@ -378,10 +425,12 @@ const sabomSubMainController = (()=>{
             //     params.set('category', category);
             // }
 
-            if (sort) params.set('sort', sort);
-            if (page > 1) params.set('page', page);
+            if (sort) params.set("sort", sort);
+            if (page > 1) params.set("page", page);
 
-            return params.toString() ? `${config.API_BASE}?${params.toString()}` : config.API_BASE;
+            return params.toString()
+                ? `${config.API_BASE}?${params.toString()}`
+                : config.API_BASE;
         },
 
         // 상태 초기화 함수 - dewbian
@@ -399,12 +448,14 @@ const sabomSubMainController = (()=>{
             state.isGroupMode = !!group;
 
             // 카테고리 네비게이션 표시/숨김 처리 - dewbian
-            const categoryNav = document.querySelector('.category_navigation_container');
+            const categoryNav = document.querySelector(
+                ".category_navigation_container"
+            );
             if (categoryNav) {
                 if (state.isGroupMode) {
-                    categoryNav.style.display = 'none';
+                    categoryNav.style.display = "none";
                 } else {
-                    categoryNav.style.display = '';
+                    categoryNav.style.display = "";
                 }
             }
         },
@@ -414,19 +465,19 @@ const sabomSubMainController = (()=>{
             if (!state.isGroupMode || state.currentPage !== 1) return;
 
             //dewbian 그룹모드일때는 정렬셀렉트 삭제
-            const sort_container = document.querySelector('.sort_container');
-            if(sort_container){
-                sort_container.style.display = 'none';
+            const sort_container = document.querySelector(".sort_container");
+            if (sort_container) {
+                sort_container.style.display = "none";
             }
 
             const groupTitle = data?.data?.meta?.recommendation_group?.title;
             if (groupTitle) {
                 state.groupTitle = groupTitle;
 
-                const groupTitleElement = document.getElementById('groupTitle');
+                const groupTitleElement = document.getElementById("groupTitle");
                 if (groupTitleElement) {
                     // \r\n을 <br>로 변환하여 HTML에 표시 - dewbian
-                    const formattedTitle = groupTitle.replace(/\r\n/g, '<br>');
+                    const formattedTitle = groupTitle.replace(/\r\n/g, "<br>");
                     groupTitleElement.innerHTML = formattedTitle;
                 }
             }
@@ -438,18 +489,18 @@ const sabomSubMainController = (()=>{
             if (!originalPrice || !discountPrice) return 0;
 
             // 쉼표 제거 후 숫자로 변환 - dewbian
-            const original = parseInt(originalPrice.replace(/,/g, ''));
-            const discount = parseInt(discountPrice.replace(/,/g, ''));
+            const original = parseInt(originalPrice.replace(/,/g, ""));
+            const discount = parseInt(discountPrice.replace(/,/g, ""));
 
             // 할인가가 원가보다 크거나 같으면 할인 없음 - dewbian
             if (original <= discount) return 0;
 
             // 할인율 계산 후 올림 - dewbian
             return Math.ceil(((original - discount) / original) * 100);
-        }
+        },
     };
 
-// API 관련 함수들 - dewbian
+    // API 관련 함수들 - dewbian
     const api = {
         // 데이터 요청 함수 - dewbian
         fetchData: async (url) => {
@@ -460,19 +511,18 @@ const sabomSubMainController = (()=>{
                 ui.toggleLoadingState(true);
 
                 const response = await fetch(url, {
-                    method: 'GET',
-                    credentials: 'include',
-                    headers: { 'Accept': 'application/json' },
+                    method: "GET",
+                    credentials: "include",
+                    headers: { Accept: "application/json" },
                 });
 
                 if (!response.ok) throw new Error(`HTTP ${response.status}`);
 
                 const data = await response.json();
                 return data;
-
             } catch (error) {
-                console.error('API 요청 실패:', error);
-                ui.showError('상품 데이터를 불러오는데 실패했습니다.');
+                console.error("API 요청 실패:", error);
+                ui.showError("상품 데이터를 불러오는데 실패했습니다.");
                 return null;
             } finally {
                 state.isLoading = false;
@@ -484,8 +534,12 @@ const sabomSubMainController = (()=>{
         loadContent: async (resetPage = false) => {
             if (resetPage) utils.resetState();
 
-            const category = '';
-            const url = utils.buildApiUrl(category, state.currentSort, state.currentPage);
+            const category = "";
+            const url = utils.buildApiUrl(
+                category,
+                state.currentSort,
+                state.currentPage
+            );
             console.log(`상품 로드: ${url} (그룹모드: ${state.isGroupMode})`);
             const data = await api.fetchData(url);
 
@@ -495,7 +549,8 @@ const sabomSubMainController = (()=>{
             utils.updateGroupTitle(data);
 
             // 다양한 응답 구조 지원 - dewbian
-            const items = data?.data?.items || data?.items || data?.posts || data || [];
+            const items =
+                data?.data?.items || data?.items || data?.posts || data || [];
             const pagination = data?.data?.pagination || data?.pagination || {};
 
             // 페이지 정보 업데이트 - dewbian
@@ -521,17 +576,21 @@ const sabomSubMainController = (()=>{
 
         // 다음 페이지 로드 함수 - dewbian
         loadNextPage: () => {
-            if (state.currentPage >= state.totalPages || state.isLoading) return;
+            if (state.currentPage >= state.totalPages || state.isLoading)
+                return;
 
             state.currentPage += 1;
             api.loadContent();
-        }
+        },
     };
 
     // 콘텐츠 렌더링 관련 함수들 - dewbian
     const content = {
         // 컨테이너 요소 가져오기 - dewbian
-        getContainer: () => document.querySelector('.list_container .list_contents.list_newest'),
+        getContainer: () =>
+            document.querySelector(
+                ".list_container .list_contents.list_newest"
+            ),
 
         // 콘텐츠 렌더링 (새로고침) - dewbian
         render: (items = []) => {
@@ -545,7 +604,9 @@ const sabomSubMainController = (()=>{
             }
 
             // 상품 카드 템플릿 사용하여 HTML 생성 - dewbian
-            const html = items.map(item => cardTemplates.sabomCard(item, 'half')).join('');
+            const html = items
+                .map((item) => cardTemplates.sabomCard(item, "half"))
+                .join("");
             container.innerHTML = html;
             // 직접 templates 객체 사용도 가능
 
@@ -559,8 +620,10 @@ const sabomSubMainController = (()=>{
             if (!container) return;
 
             // 상품 카드 템플릿 사용하여 HTML 생성 - dewbian
-            const html = items.map(item => cardTemplates.sabomCard(item, 'half')).join('');
-            container.insertAdjacentHTML('beforeend', html);
+            const html = items
+                .map((item) => cardTemplates.sabomCard(item, "half"))
+                .join("");
+            container.insertAdjacentHTML("beforeend", html);
 
             // 레이지 로더 새로고침 - dewbian
             if (state.lazy?.refresh) state.lazy.refresh(container);
@@ -572,38 +635,40 @@ const sabomSubMainController = (()=>{
             if (!container) return;
 
             container.innerHTML = `<li class="nodata">상품이 없습니다.</li>`;
-        }
+        },
     };
 
     // UI 관련 함수들 - dewbian
     const ui = {
         // 더보기 버튼 상태 업데이트 - dewbian
         updateViewMoreButton: (pagination) => {
-            const container = document.querySelector('.btn_view_more_container');
-            const button = document.querySelector('.btn_view_more.list_newest');
+            const container = document.querySelector(
+                ".btn_view_more_container"
+            );
+            const button = document.querySelector(".btn_view_more.list_newest");
 
             if (!container || !button) return;
 
             // 2페이지 이상이거나 더 이상 페이지가 없으면 숨김 - dewbian
             if (state.currentPage >= 2 || !pagination.has_more_pages) {
-                container.style.display = 'none';
+                container.style.display = "none";
             } else {
-                container.style.display = 'flex';
+                container.style.display = "flex";
                 button.disabled = false;
-                button.textContent = '더 보기';
+                button.textContent = "더 보기";
             }
         },
         // 로딩 상태 토글 - dewbian
         toggleLoadingState: (loading) => {
-            const button = document.querySelector('.btn_view_more.list_newest');
+            const button = document.querySelector(".btn_view_more.list_newest");
             if (!button) return;
 
             if (loading && state.currentPage === 1) {
                 button.disabled = true;
-                button.textContent = '로딩 중...';
+                button.textContent = "로딩 중...";
             } else if (!loading && state.currentPage === 1) {
                 button.disabled = false;
-                button.textContent = '더 보기';
+                button.textContent = "더 보기";
             }
         },
 
@@ -611,20 +676,19 @@ const sabomSubMainController = (()=>{
         showError: (message) => {
             console.error(message);
             // 필요하다면 사용자에게 에러 토스트 표시 - dewbian
-        }
+        },
     };
-
 
     // 스크롤 관련 기능들 - dewbian
     const scroll = {
         // 더보기 버튼 초기화 - dewbian
         initViewMoreButton: () => {
-            const button = document.querySelector('.btn_view_more.list_newest');
+            const button = document.querySelector(".btn_view_more.list_newest");
             if (!button) {
                 return;
             }
 
-            button.addEventListener('click', (e) => {
+            button.addEventListener("click", (e) => {
                 e.preventDefault();
                 api.loadNextPage();
             });
@@ -636,8 +700,8 @@ const sabomSubMainController = (()=>{
             utils.cleanupObserver();
 
             // 센티넬 엘리먼트 생성 - dewbian
-            const sentinel = document.createElement('div');
-            sentinel.className = 'scroll-sentinel';
+            const sentinel = document.createElement("div");
+            sentinel.className = "scroll-sentinel";
             sentinel.style.cssText = `
                 position: absolute;
                 bottom: 300px;
@@ -652,8 +716,8 @@ const sabomSubMainController = (()=>{
             if (listContainer?.parentElement) {
                 const parent = listContainer.parentElement;
 
-                if (window.getComputedStyle(parent).position === 'static') {
-                    parent.style.position = 'relative';
+                if (window.getComputedStyle(parent).position === "static") {
+                    parent.style.position = "relative";
                 }
 
                 parent.appendChild(sentinel);
@@ -661,28 +725,36 @@ const sabomSubMainController = (()=>{
             }
 
             // Intersection Observer 설정 - dewbian
-            state.observer = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting &&
-                        state.currentPage < state.totalPages &&
-                        !state.isLoading &&
-                        state.isInfiniteScrollActive) {
-
-                        console.log(`무한 스크롤 트리거: ${state.currentPage + 1}페이지 로드`);
-                        api.loadNextPage();
-                    }
-                });
-            }, {
-                root: null,
-                rootMargin: '0px',
-                threshold: 0
-            });
+            state.observer = new IntersectionObserver(
+                (entries) => {
+                    entries.forEach((entry) => {
+                        if (
+                            entry.isIntersecting &&
+                            state.currentPage < state.totalPages &&
+                            !state.isLoading &&
+                            state.isInfiniteScrollActive
+                        ) {
+                            console.log(
+                                `무한 스크롤 트리거: ${
+                                    state.currentPage + 1
+                                }페이지 로드`
+                            );
+                            api.loadNextPage();
+                        }
+                    });
+                },
+                {
+                    root: null,
+                    rootMargin: "0px",
+                    threshold: 0,
+                }
+            );
 
             // 센티넘 관찰 시작 - dewbian
             if (state.sentinel) {
                 state.observer.observe(state.sentinel);
             }
-        }
+        },
     };
 
     // 정리 함수들 - dewbian
@@ -690,7 +762,7 @@ const sabomSubMainController = (()=>{
         // 모든 리소스 정리 - dewbian
         all: () => {
             utils.cleanupObserver();
-        }
+        },
     };
 
     // 관찰자 정리 함수 - dewbian
@@ -705,9 +777,8 @@ const sabomSubMainController = (()=>{
         }
     };
 
-
-    const initialize = ()=>{
-        renderCategoryNavigation('/api/sbCategory');
+    const initialize = () => {
+        renderCategoryNavigation("/api/sbCategory");
         renderCarousel();
         renderBanner();
         groupSabomContents();
@@ -719,34 +790,56 @@ const sabomSubMainController = (()=>{
         scroll.initViewMoreButton();
         // E : dewbian 무한스크롤페이지
 
-
         bindCaptureToast({
             bindClick: false,
             listen: true,
-            getText: (_btn, next, success) => success ? (next ? '스크랩되었습니다.' : '취소되었습니다.') : '요청에 실패했습니다.',
-            //getText: (_btn, next) => next ? '스크랩되었습니다.':'취소되었습니다.',
         });
         bindCaptureToggle({
-            endpoint: '/api/capture',
+            endpoint: "/api/capture",
             //dewbian 로그인 포함시키자
             goLogin: goLogin, // 로그인 함수 전달
 
             onToggleStart: (btn, { prev, next, postId, boardType }) => {
                 if (!isLogin) {
-                    throw new Error('Login required');
+                    throw new Error("Login required");
                 }
             },
         });
         allmenu();
         initSearchHandler();
-        initCategoryToggleNav({dataUrl:"/api/sbCategory"})
+        initCategoryToggleNav({ dataUrl: "/api/sbCategory" });
+
+        /* ===== DEFAULT CATEGORY ACTIVE FIX ===== */
+        (() => {
+            const getCategory = () => {
+                try {
+                    const u = new URL(window.location.href);
+                    return u.searchParams.get("category") || "all";
+                } catch {
+                    return "all";
+                }
+            };
+
+            const current = getCategory();
+
+            requestAnimationFrame(() => {
+                document
+                    .querySelectorAll(".category_navigation [data-category]")
+                    .forEach((el) => el.classList.remove("active"));
+
+                document
+                    .querySelector(
+                        `.category_navigation [data-category="${current}"]`
+                    )
+                    ?.classList.add("active");
+            });
+        })();
         //renderAllSlots.forEach(fn=> fn())
         wheelCustom();
-    }
+    };
     return {
-        init : initialize,
-    }
-
+        init: initialize,
+    };
 })();
 
-document.addEventListener('DOMContentLoaded', sabomSubMainController.init);
+document.addEventListener("DOMContentLoaded", sabomSubMainController.init);

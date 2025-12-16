@@ -1,0 +1,2258 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>예약/구매 상세 - 마이페이지</title>
+
+    <link rel="stylesheet" href="/src/css/base/defalt.css" />
+    <link rel="stylesheet" href="/src/css/components/components.css" />
+    <link rel="stylesheet" href="/src/css/mypage_renewal/myp_common.css" />
+    <link rel="stylesheet" href="/src/css/mypage_renewal/myp_index_sub.css" />
+  </head>
+  <body>
+    <header>
+      <h1 class="sr-only">예약/구매 상세</h1>
+      <div class="container">
+        <a href="javascript:;" id="backLink"
+          ><img src="/src/assets/images/icons/icon_back_black@x3.png" alt=""
+        /></a>
+        <h1>예약/구매 상세</h1>
+      </div>
+    </header>
+
+    <div id="app_wrapper">
+      <main>
+        <!-- 
+			현황 뱃지(product_status): myp_index_sub.css 파일에 클래스별로 정리해두었습니다
+			공통 버튼(box_button): 상황에 따라 button 또는 a태그로 교체해서 작업되도록 스타일 잡아놨습니다
+			해당 주석은 삭제하셔도 됩니다
+		 -->
+        <div class="myp_container bg_grey">
+          <!-- 취소된 주문 상세만 노출 -->
+          <div class="myp_reservation_item">
+            <div class="myp_reservation_box canceled">
+              <p class="info_text">2025년 10월 23일에 취소된 주문입니다.</p>
+            </div>
+          </div>
+          <!-- 취소된 주문 상세만 노출 end -->
+
+          <!-- 입금 대기 중 상세만 노출 -->
+          <div class="myp_reservation_item">
+            <div class="myp_reservation_box">
+              <div class="myp_reservation_header">
+                <div>
+                  <p class="myp_reservation_box_title">입금 대기 중</p>
+                  <p class="header_info">
+                    <b>12월 25일</b>까지 아래 계좌로 입금해주세요.
+                  </p>
+                </div>
+              </div>
+              <div class="myp_reservation_info between defalt">
+                <dl>
+                  <dt>입금계좌</dt>
+                  <dd>신한은행 111-222-345689</dd>
+                </dl>
+                <dl>
+                  <dt>예금주</dt>
+                  <dd>비롯시앤엠</dd>
+                </dl>
+                <dl>
+                  <dt>입금금액</dt>
+                  <dd class="total">85,000원</dd>
+                </dl>
+              </div>
+            </div>
+          </div>
+          <!-- 입금 대기 중 상세만 노출 end -->
+
+          <div class="myp_reservation_item">
+            <p class="myp_reservation_title">배송 정보</p>
+            <div class="myp_reservation_box">
+              <div class="myp_reservation_header">
+                <p class="myp_reservation_box_title">홍길동</p>
+                <a href="javascript:;" class="header_button">배송정보 수정</a>
+              </div>
+              <div class="myp_reservation_info defalt">
+                <p class="adress">
+                  <!-- 해봄/가봄 상품 adress 미노출 -->
+                  [57923] 전라남도 순천시 고지1길 10 강남철재 12 (전라도 순천시
+                  가곡동 964-7 강남철재 12)
+                </p>
+
+                <dl>
+                  <dt>전화번호</dt>
+                  <dd>010-1234-5678</dd>
+                </dl>
+                <dl>
+                  <dt>이메일</dt>
+                  <dd>test123@naver.com</dd>
+                </dl>
+
+                <p class="info_text">
+                  <!-- 해봄/가봄 상품 info_text 미노출 -->
+                  부재시 전화주시거나 문자남겨주세요.
+                </p>
+              </div>
+              <p class="myp_reservation_bg_text">
+                <!-- 임금 대기 중 myp_reservation_bg_text 미노출 -->
+                ※ 티켓번호는 문자와 이메일로 보내드립니다.
+              </p>
+            </div>
+          </div>
+
+          <div class="myp_reservation_item">
+            <p class="myp_reservation_title">예약/구매 정보</p>
+            <div class="myp_reservation_box">
+              <p class="myp_reservation_box_title">사봄 상품</p>
+              <ul class="product_list">
+                <li class="product_item">
+                  <a href="javascript:;" class="product_box">
+                    <div class="product_left">
+                      <div class="product_thumb">
+                        <img
+                          src="src/assets/images/components/sample_132x88@x3.jpg"
+                          alt=""
+                        />
+                      </div>
+                      <span class="product_status paid"></span>
+                    </div>
+                    <div class="product_right">
+                      <div>
+                        <p class="product_title text_ellipsis">
+                          네스프레소 커피머신
+                        </p>
+                        <p class="product_info text_ellipsis_2">
+                          자동세척,다양한 커피옵션, 컴팩트 디자인, 2년 무상 AS
+                        </p>
+                      </div>
+                      <div>
+                        <dl class="product_dl">
+                          <dt>수량</dt>
+                          <dd>1개</dd>
+                        </dl>
+                        <p class="product_price">49,000 원</p>
+                      </div>
+                    </div>
+                  </a>
+                  <div class="box_button_wrap">
+                    <button
+                      type="button"
+                      class="box_button medium bd_C4C7C5 btn_canceled"
+                    >
+                      취소 · 환불 신청
+                    </button>
+                  </div>
+                </li>
+                <li class="product_item">
+                  <div class="product_track_shipment">
+                    <a href="javascript:;" class="btn_link">배송조회</a>
+                  </div>
+                  <a href="javascript:;" class="product_box">
+                    <div class="product_left">
+                      <div class="product_thumb">
+                        <img
+                          src="src/assets/images/components/sample_132x88@x3.jpg"
+                          alt=""
+                        />
+                      </div>
+                      <span class="product_status shipped"></span>
+                    </div>
+                    <div class="product_right">
+                      <div>
+                        <p class="product_title text_ellipsis">소니 4K TV</p>
+                        <p class="product_info text_ellipsis_2">
+                          HDR지원, 스파트TV,55인치
+                        </p>
+                      </div>
+                      <div>
+                        <dl class="product_dl">
+                          <dt>수량</dt>
+                          <dd>1개</dd>
+                        </dl>
+                        <p class="product_price">49,000 원</p>
+                      </div>
+                    </div>
+                  </a>
+                  <div class="box_button_wrap">
+                    <button
+                      type="button"
+                      class="box_button medium bd_C4C7C5 btn_exchange"
+                    >
+                      교환 · 반품
+                    </button>
+                    <button
+                      type="button"
+                      class="box_button medium bg_2D312F btn_purchaseConfirmed"
+                    >
+                      구매확정
+                    </button>
+                  </div>
+                </li>
+                <li class="product_item">
+                  <div class="product_track_shipment">
+                    <a href="javascript:;" class="btn_link">배송조회</a>
+                  </div>
+                  <a href="javascript:;" class="product_box">
+                    <div class="product_left">
+                      <div class="product_thumb">
+                        <img
+                          src="src/assets/images/components/sample_132x88@x3.jpg"
+                          alt=""
+                        />
+                      </div>
+                      <span class="product_status delivered"></span>
+                    </div>
+                    <div class="product_right">
+                      <div>
+                        <p class="product_title text_ellipsis">
+                          애플 에어팟 프로
+                        </p>
+                        <p class="product_info text_ellipsis_2">
+                          액티브 노이즈 캔슬링,무선충전,편안한 착용감
+                        </p>
+                      </div>
+                      <div>
+                        <dl class="product_dl">
+                          <dt>수량</dt>
+                          <dd>1개</dd>
+                        </dl>
+                        <p class="product_price">49,000 원</p>
+                      </div>
+                    </div>
+                  </a>
+                  <div class="box_button_wrap">
+                    <button
+                      type="button"
+                      class="box_button medium bd_C4C7C5 btn_exchange"
+                    >
+                      교환 · 반품
+                    </button>
+                    <button
+                      type="button"
+                      class="box_button medium bg_2D312F btn_purchaseConfirmed"
+                    >
+                      구매확정
+                    </button>
+                    <a
+                      href="javascript:;"
+                      class="box_button full medium bd_C4C7C5"
+                      >후기 작성</a
+                    >
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="myp_reservation_item">
+            <p class="myp_reservation_title">예약/구매 정보</p>
+            <div class="myp_reservation_box">
+              <p class="myp_reservation_box_title">사봄 상품</p>
+              <ul class="product_list">
+                <li class="product_item">
+                  <a href="javascript:;" class="product_box">
+                    <div class="product_left">
+                      <div class="product_thumb">
+                        <img
+                          src="src/assets/images/components/sample_132x88@x3.jpg"
+                          alt=""
+                        />
+                      </div>
+                      <span class="product_status ticket_hold"></span>
+                    </div>
+                    <div class="product_right">
+                      <div>
+                        <p class="product_title text_ellipsis">
+                          [연극]그대를 사랑합니다
+                        </p>
+                        <p class="product_info text_ellipsis_2">
+                          12월 31일 20시 공연
+                        </p>
+                      </div>
+                      <div>
+                        <dl class="product_dl">
+                          <dt>수량</dt>
+                          <dd>1개</dd>
+                        </dl>
+                        <p class="product_price">49,000 원</p>
+                      </div>
+                    </div>
+                  </a>
+                  <div class="box_button_wrap">
+                    <button type="button" class="box_button medium bd_C4C7C5">
+                      티켓관리
+                    </button>
+                    <button
+                      type="button"
+                      class="box_button medium bd_C4C7C5 btn_canceled"
+                    >
+                      취소 · 환불
+                    </button>
+                  </div>
+                </li>
+                <li class="product_item">
+                  <a href="javascript:;" class="product_box">
+                    <div class="product_left">
+                      <div class="product_thumb">
+                        <img
+                          src="src/assets/images/components/sample_132x88@x3.jpg"
+                          alt=""
+                        />
+                      </div>
+                      <span class="product_status ticket_done"></span>
+                    </div>
+                    <div class="product_right">
+                      <div>
+                        <p class="product_title text_ellipsis">
+                          [뮤지컬]빌리 엘리어트
+                        </p>
+                        <p class="product_info text_ellipsis_2">
+                          1월 5일 19시 공연
+                        </p>
+                      </div>
+                      <div>
+                        <dl class="product_dl">
+                          <dt>수량</dt>
+                          <dd>1개</dd>
+                        </dl>
+                        <p class="product_price">49,000 원</p>
+                      </div>
+                    </div>
+                  </a>
+                  <div class="box_button_wrap">
+                    <button type="button" class="box_button medium bd_C4C7C5">
+                      티켓관리
+                    </button>
+                    <a href="javascript:;" class="box_button medium bd_C4C7C5"
+                      >후기작성</a
+                    >
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="myp_reservation_item">
+            <p class="myp_reservation_title">예약/구매 정보</p>
+            <div class="myp_reservation_box">
+              <p class="myp_reservation_box_title">사봄 상품</p>
+              <ul class="product_list">
+                <li class="product_item">
+                  <a href="javascript:;" class="product_box">
+                    <div class="product_left">
+                      <div class="product_thumb">
+                        <img
+                          src="src/assets/images/components/sample_132x88@x3.jpg"
+                          alt=""
+                        />
+                      </div>
+                      <span class="product_status pending_payment"></span>
+                    </div>
+                    <div class="product_right">
+                      <div>
+                        <p class="product_title text_ellipsis">소니 4K TV</p>
+                        <p class="product_info text_ellipsis_2">
+                          HDR지원, 스파트TV,55인치
+                        </p>
+                      </div>
+                      <div>
+                        <dl class="product_dl">
+                          <dt>수량</dt>
+                          <dd>1개</dd>
+                        </dl>
+                        <p class="product_price">49,000 원</p>
+                      </div>
+                    </div>
+                  </a>
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="myp_reservation_item">
+            <p class="myp_reservation_title">예약/구매 정보</p>
+            <div class="myp_reservation_box">
+              <p class="myp_reservation_box_title">가봄 상품</p>
+              <ul class="product_list">
+                <li class="product_item">
+                  <a href="javascript:;" class="product_box">
+                    <div class="product_left">
+                      <div class="product_thumb">
+                        <img
+                          src="src/assets/images/components/sample_132x88@x3.jpg"
+                          alt=""
+                        />
+                      </div>
+                      <span class="product_status canceled"></span>
+                    </div>
+                    <div class="product_right">
+                      <div>
+                        <p class="product_title text_ellipsis">소니 4K TV</p>
+                        <p class="product_info text_ellipsis_2">
+                          HDR지원, 스파트TV,55인치
+                        </p>
+                      </div>
+                      <div>
+                        <dl class="product_dl">
+                          <dt>수량</dt>
+                          <dd>1개</dd>
+                        </dl>
+                        <p class="product_price">49,000 원</p>
+                      </div>
+                    </div>
+                  </a>
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="myp_reservation_item">
+            <p class="myp_reservation_title">결제 정보</p>
+            <div class="myp_reservation_box">
+              <p class="myp_reservation_box_title">결제 정보</p>
+              <div class="myp_reservation_info Payment">
+                <dl>
+                  <dt>전화번호</dt>
+                  <dd>010-1234-5678</dd>
+                </dl>
+                <dl>
+                  <dt>이메일</dt>
+                  <dd>test123@naver.com</dd>
+                </dl>
+              </div>
+              <div class="box_button_wrap">
+                <!-- 입금 대기 중, 취소된 주문 상세 box_button_wrap 미노출 -->
+                <button type="button" class="box_button medium bd_C4C7C5">
+                  세금계산서
+                </button>
+                <a href="javascript:;" class="box_button medium bd_C4C7C5"
+                  >현금영수증</a
+                >
+              </div>
+              <p class="myp_reservation_bg_text">
+                ※ 2025년 12월 5일까지 신청가능
+              </p>
+
+              <div class="myp_reservation_info between productPrice">
+                <dl>
+                  <dt>총 상품금액</dt>
+                  <dd>5,650,000 원</dd>
+                </dl>
+              </div>
+
+              <div class="myp_reservation_info between orderSummary">
+                <dl>
+                  <dt>배송비</dt>
+                  <dd>0 원</dd>
+                </dl>
+                <dl>
+                  <dt>할인금액</dt>
+                  <dd>- 50,000 원</dd>
+                </dl>
+                <dl class="discount">
+                  <dt><span>└</span> 쿠폰 할인</dt>
+                  <dd>- 25 ,000 원</dd>
+                </dl>
+                <dl class="discount">
+                  <dt><span>└</span> 등급 할인</dt>
+                  <dd>- 25 ,000 원</dd>
+                </dl>
+              </div>
+
+              <div class="myp_reservation_info between totalPayment">
+                <dl>
+                  <dt>최종 결제 금액</dt>
+                  <dd>5,600,000 원</dd>
+                </dl>
+              </div>
+            </div>
+          </div>
+
+          <div class="myp_reservation_item">
+            <p class="myp_reservation_title">주문자 정보</p>
+            <div class="myp_reservation_box">
+              <div class="myp_reservation_header">
+                <p class="myp_reservation_box_title">홍길동</p>
+              </div>
+              <div class="myp_reservation_info defalt">
+                <dl>
+                  <dt>전화번호</dt>
+                  <dd>010-1234-5678</dd>
+                </dl>
+                <dl>
+                  <dt>이메일</dt>
+                  <dd>test123@naver.com</dd>
+                </dl>
+              </div>
+            </div>
+          </div>
+
+          <!-- 입금 대기 중 상세만 노출 -->
+          <div class="underline_button_wrap">
+            <button type="button" class="underline_button">주문 취소</button>
+          </div>
+          <!-- 입금 대기 중 상세만 노출 end -->
+        </div>
+      </main>
+
+      <footer>
+        <div class="footer_top_container">
+          <a href="javascript:void(0)" class="logo">
+            <img
+              src="/src/assets/images/common/footer_logo_white@x3.png"
+              alt="봄봄봄"
+            />
+          </a>
+          <button type="button" class="btn_business_toggle">
+            사업자 정보
+            <img
+              src="/src/assets/images/icons/icon_btn_footer_down@x3.png"
+              alt=""
+            />
+          </button>
+        </div>
+        <div class="footer_business_information_container">
+          <div class="company_information">
+            <p><strong>상호명</strong> : 주식회사 비롯엑스(Blot X)</p>
+            <p><strong>대표자명</strong> : 장희덕</p>
+            <p><strong>사업자등록번호</strong> : 252-87-03502</p>
+            <p><strong>통신판매업 신고번호</strong> : 제2025-서울강서-2564호</p>
+            <p>
+              <strong>주소</strong> : 서울특별시 강서구 양천로 357 (려산빌딩)
+              지하1층
+            </p>
+          </div>
+          <div class="contact_information">
+            <p>
+              <strong>고객센터</strong> :
+              <a href="mailto:cs@bombombom.im">cs@bombombom.im</a> /
+              <a href="tel:02-6673-0955"> 02-6673-0955</a>
+            </p>
+            <p>
+              <strong>개인정보보호 책임자</strong> : 개인정보보호팀장 (<a
+                href="mailto:privacy@bombombom.im"
+                >privacy@bombombom.im</a
+              >)
+            </p>
+          </div>
+        </div>
+        <div class="footer_service_container">
+          <a href="https://dev.bombombom.im/service/privacy"
+            >개인정보처리방침</a
+          >
+          <a href="https://dev.bombombom.im/service/agreement"
+            >서비스 이용약관</a
+          >
+          <!--<a href="https://dev.bombombom.im/board/?id=bulkorder">제휴문의 바로가기</a>-->
+          <a href="http://127.0.0.1:8000/my/partner">제휴문의 바로가기</a>
+        </div>
+        <p class="footer_notice">
+          비롯엑스는 통신판매 중개자로서 통신판매의 당사자가 아니며 상품의 예약,
+          이용 및 환불 등과 관련한 의무와 책임은 각 판매자에게 있습니다.
+        </p>
+        <copy>Copyright (c) 2025 BOMBOMBOM. All Rights Reserved.</copy>
+      </footer>
+
+      <nav class="gnb_container gnb">
+        <div class="container">
+          <a href="/" class="">
+            <img src="/src/assets/images/icons/icon_gnb_logo.png" alt="" />
+            <span>홈</span>
+          </a>
+          <a href="/bb/" class="">
+            <img src="/src/assets/images/icons/icon_gnb_bombom.svg" alt="" />
+            <span>봄,봄</span>
+          </a>
+          <a href="/hb/" class="">
+            <img src="/src/assets/images/icons/icon_gnb_haebom.svg" alt="" />
+            <span>해봄</span>
+          </a>
+          <a href="/gb/" class="">
+            <img src="/src/assets/images/icons/icon_gnb_gabom.svg" alt="" />
+            <span>가봄</span>
+          </a>
+          <a href="/sb/" class="">
+            <img src="/src/assets/images/icons/icon_gnb_sabom.svg" alt="" />
+            <span>사봄</span>
+          </a>
+        </div>
+      </nav>
+    </div>
+
+    <!-- default_selectform 오픈 팝업 -->
+    <div class="default_select_pop">
+      <div class="default_select_pop_dimm"></div>
+      <div class="default_select_pop_wrap">
+        <p class="default_select_pop_title">
+          사유 선택
+          <button type="button" class="btn_close_select_pop"></button>
+        </p>
+        <ul class="default_select_pop_list">
+          <li class="default_select_pop_item">
+            <p class="default_select_pop_link">개인 사유로 반품을 요청해요</p>
+          </li>
+          <li class="default_select_pop_item">
+            <p class="default_select_pop_link">
+              사이즈, 색상, 수량 등을 잘못 선택했어요
+            </p>
+          </li>
+          <li class="default_select_pop_item">
+            <p class="default_select_pop_link">다른 상품이 왔어요</p>
+          </li>
+          <li class="default_select_pop_item">
+            <p class="default_select_pop_link">파손된 상품이 왔어요</p>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <!-- default_selectform 오픈 팝업 end -->
+
+    <!-- 취소 · 환불 신청 팝업 -->
+    <div class="reservation_layer_popUp canceled">
+      <div class="popUp_header">
+        <p class="popUp_title">취소 · 환불</p>
+        <button type="button" class="btn_popUp_close">닫기</button>
+      </div>
+      <div class="popup_body">
+        <form action="#" method="post">
+          <fieldset>
+            <legend class="sr-only">취소 · 환불 사유 작성</legend>
+          </fieldset>
+
+          <div class="myp_reservation_item">
+            <div class="myp_reservation_box">
+              <div class="product_box">
+                <div class="product_left">
+                  <div class="product_thumb">
+                    <img
+                      src="src/assets/images/components/sample_132x88@x3.jpg"
+                      alt=""
+                    />
+                  </div>
+                </div>
+                <div class="product_right">
+                  <p class="product_title text_ellipsis_2">소니 4K TV</p>
+                  <div>
+                    <dl class="product_dl">
+                      <dt>수량</dt>
+                      <dd>1개</dd>
+                    </dl>
+                    <p class="product_price">49,000 원</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="myp_reservation_item">
+            <p class="myp_reservation_title">사유 작성</p>
+            <div class="myp_reservation_box">
+              <div class="default_inputform_gruop">
+                <label for="cancelRefundMessage" class="default_inputform_title"
+                  >사유 작성</label
+                >
+                <div class="default_inputform">
+                  <textarea
+                    id="cancelRefundMessage"
+                    name="cancelRefundMessage"
+                    placeholder="사유를 작성해주세요."
+                    rows="5"
+                    required
+                  ></textarea>
+                </div>
+                <p class="bytes">0/500</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- 무통장만 노출 -->
+          <div class="myp_reservation_item">
+            <p class="myp_reservation_title">환불 정보</p>
+            <div class="myp_reservation_box">
+              <div class="default_inputform_gruop">
+                <label
+                  for="cancel_refund_user_name"
+                  class="default_inputform_title"
+                  >구매자
+                  <span aria-hidden="true" class="required">*</span></label
+                >
+                <div class="default_inputform">
+                  <input
+                    type="text"
+                    id="cancel_refund_user_name"
+                    name="userName"
+                    required
+                    placeholder="김봄봄"
+                  />
+                </div>
+              </div>
+
+              <div class="default_inputform_gruop">
+                <p class="default_inputform_title">
+                  연락처
+                  <span aria-hidden="true" class="required">*</span>
+                </p>
+
+                <div class="default_inputform phone">
+                  <label for="cancel_refund_phone_1" class="sr-only"
+                    >연락처 첫 자리</label
+                  >
+                  <input
+                    type="tel"
+                    id="cancel_refund_phone_1"
+                    name="userPhone1"
+                    placeholder="010"
+                    maxlength="3"
+                    required
+                  />
+
+                  <label for="cancel_refund_phone_2" class="sr-only"
+                    >연락처 중간 자리</label
+                  >
+                  <input
+                    type="tel"
+                    id="cancel_refund_phone_2"
+                    name="userPhone2"
+                    placeholder="9278"
+                    maxlength="4"
+                    required
+                  />
+
+                  <label for="cancel_refund_phone_3" class="sr-only"
+                    >연락처 끝 자리</label
+                  >
+                  <input
+                    type="tel"
+                    id="cancel_refund_phone_3"
+                    name="userPhone3"
+                    placeholder="7192"
+                    maxlength="4"
+                    required
+                  />
+                </div>
+              </div>
+
+              <div class="default_inputform_gruop">
+                <label for="cancel_refund_bank" class="default_inputform_title"
+                  >은행
+                  <span aria-hidden="true" class="required">*</span></label
+                >
+                <div class="default_inputform">
+                  <input
+                    type="text"
+                    id="cancel_refund_bank"
+                    name="cancelRefundBank"
+                    required
+                    placeholder="은행을 입력해주세요."
+                  />
+                </div>
+              </div>
+
+              <div class="default_inputform_gruop">
+                <label
+                  for="cancel_refund_account_holder"
+                  class="default_inputform_title"
+                  >예금주
+                  <span aria-hidden="true" class="required">*</span></label
+                >
+                <div class="default_inputform">
+                  <input
+                    type="text"
+                    id="cancel_refund_account_holder"
+                    name="cancelRefundAccountHolder"
+                    required
+                    placeholder="예금주를 입력해주세요."
+                  />
+                </div>
+              </div>
+
+              <div class="default_inputform_gruop">
+                <label
+                  for="cancel_refund_account_number"
+                  class="default_inputform_title"
+                  >계좌번호
+                  <span aria-hidden="true" class="required">*</span></label
+                >
+                <div class="default_inputform">
+                  <input
+                    type="text"
+                    id="cancel_refund_account_number"
+                    name="cancelRefundAccountNumber"
+                    required
+                    placeholder="계좌번호를 입력해주세요."
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- 무통장만 노출 end -->
+
+          <!-- 신용카드만 노출 -->
+          <div class="myp_reservation_item">
+            <div class="myp_reservation_box">
+              <div class="myp_reservation_header">
+                <p class="myp_reservation_box_title">추가 배송비 안내</p>
+              </div>
+
+              <p class="reservation_pop_info_text">
+                부분 결제 취소 시 추가 배송비가 발생할 수 있으며, 이 때 추가
+                배송비를 결제해주셔야만 결제취소 처리완료가 가능합니다.
+                <br /><br />
+                추가배송비가 발생하는 경우,
+              </p>
+              <ul class="reservation_pop_info_list number">
+                <li data-num="1.">
+                  묶음 배송비’ 상품의 배송비 무료 (금액별 차등) 조건을 충족하여
+                  배송비 무료
+                </li>
+                <li data-num="2.">
+                  부분 결제취소로 배송비 무료 조건을 불충족하는 경우, 추가
+                  배송비 부과
+                </li>
+                <li data-num="3.">
+                  추가 배송비는 카드 또는 마일리지로 결제 가능
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="box_button_wrap">
+            <a
+              href="javascript:;"
+              class="box_button medium bg_black btn_canceledComplete"
+              >취소 · 환불 신청하기</a
+            >
+          </div>
+        </form>
+      </div>
+    </div>
+    <!-- 취소 · 환불 신청 팝업 end -->
+
+    <!-- 취소 · 환불 완료 팝업 -->
+    <div class="reservation_layer_popUp canceledComplete">
+      <div class="popUp_header">
+        <p class="popUp_title">취소 · 환불</p>
+        <button type="button" class="btn_popUp_close">닫기</button>
+      </div>
+      <div class="popup_body">
+        <div class="myp_reservation_item">
+          <p class="myp_reservation_title">환불상태</p>
+          <div class="myp_reservation_box">
+            <div class="myp_reservation_header">
+              <p class="myp_reservation_box_title">환불완료</p>
+            </div>
+            <div class="product_box">
+              <div class="product_left">
+                <div class="product_thumb">
+                  <img
+                    src="src/assets/images/components/sample_132x88@x3.jpg"
+                    alt=""
+                  />
+                </div>
+              </div>
+              <div class="product_right">
+                <p class="product_title text_ellipsis_2">소니 4K TV</p>
+                <div>
+                  <dl class="product_dl">
+                    <dt>수량</dt>
+                    <dd>1개</dd>
+                  </dl>
+                  <p class="product_price">49,000 원</p>
+                </div>
+              </div>
+            </div>
+            <div class="myp_reservation_info defalt">
+              <dl>
+                <dt>요청일시</dt>
+                <dd>2025.11.09 15:15</dd>
+              </dl>
+              <dl>
+                <dt>취소사유</dt>
+                <dd>파손된 상품이 왔어요</dd>
+              </dl>
+            </div>
+          </div>
+        </div>
+        <div class="myp_reservation_item">
+          <p class="myp_reservation_title">환불 내역</p>
+          <div class="myp_reservation_box">
+            <div class="myp_reservation_info defalt">
+              <dl>
+                <dt>환불상태</dt>
+                <dd>환불완료</dd>
+              </dl>
+              <dl>
+                <dt>환불방식</dt>
+                <dd>계좌환불</dd>
+              </dl>
+              <dl>
+                <dt>입금계좌</dt>
+                <dd>농협 123-3323-44241</dd>
+              </dl>
+            </div>
+            <div class="myp_reservation_info between orderSummary">
+              <dl>
+                <dt>결제 금액</dt>
+                <dd>560,000 원</dd>
+              </dl>
+              <dl>
+                <dt>할인금액</dt>
+                <dd>- 80,000 원</dd>
+              </dl>
+            </div>
+            <div class="myp_reservation_info between totalPayment">
+              <dl>
+                <dt>최종 환불 금액</dt>
+                <dd>480,000 원</dd>
+              </dl>
+            </div>
+          </div>
+        </div>
+        <div class="myp_reservation_item">
+          <div class="myp_reservation_box">
+            <div class="myp_reservation_header">
+              <p class="myp_reservation_box_title">환불 안내</p>
+            </div>
+
+            <p class="reservation_pop_info_text">
+              신용카드로 결제하신 경우, 카드사로부터 최종 환불이 완료되기까지
+              환불 처리가 완료된 이후 영업일 기준 약 3~5일 가량 소요될 수
+              있습니다.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- 취소 · 환불 완료 팝업 end -->
+
+    <!-- 교환 · 반품 신청 팝업 -->
+    <div class="reservation_layer_popUp exchange active">
+      <div class="popUp_header">
+        <p class="popUp_title">교환 · 반품</p>
+        <button type="button" class="btn_popUp_close">닫기</button>
+      </div>
+      <div class="popup_body">
+        <form action="#" method="post">
+          <fieldset>
+            <legend class="sr-only">교환 · 반품 신청 폼</legend>
+          </fieldset>
+          <div class="myp_reservation_item">
+            <div class="myp_reservation_box">
+              <div class="product_box">
+                <div class="product_left">
+                  <div class="product_thumb">
+                    <img
+                      src="src/assets/images/components/sample_132x88@x3.jpg"
+                      alt=""
+                    />
+                  </div>
+                </div>
+                <div class="product_right">
+                  <p class="product_title text_ellipsis_2">소니 4K TV</p>
+                  <div>
+                    <dl class="product_dl">
+                      <dt>수량</dt>
+                      <dd>1개</dd>
+                    </dl>
+                    <p class="product_price">49,000 원</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="myp_reservation_item">
+            <p class="myp_reservation_title">처리 유형 선택</p>
+
+            <div class="contents_round_tabs">
+              <button type="button" class="round_tab active">제품 교환</button>
+              <button type="button" class="round_tab">제품 반품</button>
+            </div>
+
+            <div class="tab_contents_wrap">
+              <div class="tab_content active">
+                <div class="myp_reservation_item">
+                  <div class="myp_reservation_box">
+                    <div class="myp_reservation_header">
+                      <p class="myp_reservation_title">교환 사유 작성</p>
+                    </div>
+                    <div class="default_inputform_gruop">
+                      <p class="default_inputform_title">
+                        사유 선택
+                        <span aria-hidden="true" class="required">*</span>
+
+                        <button
+                          type="button"
+                          class="btn_guide btn_ExchangeFeePolicy"
+                        >
+                          배송비 기준 안내
+                        </button>
+                      </p>
+                      <button type="button" class="default_selectform">
+                        <!-- dsabled, readonly 클래스가 붙으면 팝업 미노출 및 스타일 자동 적용 -->
+                        사유를 선택해 주세요
+                      </button>
+                      <p class="alert_massage grey">
+                        배송비는 ‘구매자’가 부담합니다
+                      </p>
+                    </div>
+                    <div class="default_inputform_gruop">
+                      <label
+                        for="exchange_reason_message"
+                        class="default_inputform_title"
+                      >
+                        상세 사유
+                        <span aria-hidden="true" class="required">*</span>
+
+                        <button
+                          type="button"
+                          class="btn_guide btn_ExchangeEligibility"
+                        >
+                          사유에 따른 처리 가능 여부
+                        </button>
+                      </label>
+                      <div class="default_inputform">
+                        <textarea
+                          id="exchange_reason_message"
+                          name="exchangeMessage"
+                          placeholder="사유를 작성해주세요."
+                          rows="5"
+                          required
+                        ></textarea>
+                      </div>
+                      <p class="bytes">0/500</p>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="myp_reservation_item">
+                  <div class="myp_reservation_box">
+                    <div class="myp_reservation_header">
+                      <p class="myp_reservation_title">반송 정보</p>
+                    </div>
+                    <div class="default_inputform_gruop">
+                      <label
+                        for="exchange_user_name"
+                        class="default_inputform_title"
+                        >구매자
+                        <span aria-hidden="true" class="required"
+                          >*</span
+                        ></label
+                      >
+                      <div class="default_inputform">
+                        <input
+                          type="text"
+                          id="exchange_user_name"
+                          name="userName"
+                          required=""
+                          placeholder="김봄봄"
+                        />
+                      </div>
+                    </div>
+
+                    <div class="default_inputform_gruop">
+                      <p class="default_inputform_title">
+                        연락처
+                        <span aria-hidden="true" class="required">*</span>
+                      </p>
+
+                      <div class="default_inputform phone">
+                        <label for="exchange_phone_1" class="sr-only"
+                          >연락처 첫 자리</label
+                        >
+                        <input
+                          type="tel"
+                          id="exchange_phone_1"
+                          name="userPhone"
+                          placeholder="010"
+                          maxlength="3"
+                          required=""
+                        />
+
+                        <label for="exchange_phone_2" class="sr-only"
+                          >연락처 중간 자리</label
+                        >
+                        <input
+                          type="tel"
+                          id="exchange_phone_2"
+                          name="userPhone"
+                          placeholder="9278"
+                          maxlength="4"
+                          required=""
+                        />
+
+                        <label for="exchange_phone_3" class="sr-only"
+                          >연락처 끝 자리</label
+                        >
+                        <input
+                          type="tel"
+                          id="exchange_phone_3"
+                          name="userPhone"
+                          placeholder="7192"
+                          maxlength="4"
+                          required=""
+                        />
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="myp_reservation_item">
+                  <div class="myp_reservation_box">
+                    <div class="myp_reservation_header center">
+                      <p class="myp_reservation_title">
+                        반송 방법
+                        <span class="required">*</span>
+                      </p>
+                      <div class="default_radio_list row">
+                        <div class="default_inputform">
+                          <input
+                            type="radio"
+                            id="exchange_delivery_self"
+                            name="exchange_delivery_method"
+                            value="male"
+                            checked
+                          />
+                          <label for="exchange_delivery_self">직접발송</label>
+                        </div>
+                        <div class="default_inputform">
+                          <input
+                            type="radio"
+                            id="exchange_delivery_pickup"
+                            name="exchange_delivery_method"
+                            value="female"
+                          />
+                          <label for="exchange_delivery_pickup">수거신청</label>
+                        </div>
+                      </div>
+                    </div>
+                    <p class="reservation_pop_info_text radio_selection">
+                      [07530] 서울특별시 강서구 양천로 357 (려산빌딩) 8층
+                    </p>
+
+                    <div class="default_inputform_gruop radio_selection">
+                      <div class="default_inputform adress">
+                        <div class="search">
+                          <label for="exchange_zip" class="sr-only"
+                            >우편번호 입력</label
+                          >
+                          <input
+                            type="text"
+                            id="exchange_zip"
+                            name="userZip"
+                            placeholder="우편번호"
+                            required
+                            readonly
+                          />
+                          <button type="button" class="myp_button bg_black">
+                            주소찾기
+                          </button>
+                        </div>
+
+                        <div>
+                          <label for="exchange_address" class="sr-only"
+                            >주소 입력</label
+                          >
+                          <input
+                            type="text"
+                            id="exchange_address"
+                            name="userAddress"
+                            placeholder="서울특별시 강남구 도산대로99길 27-2"
+                            required
+                            readonly
+                          />
+                        </div>
+
+                        <div>
+                          <label for="exchange_address_detail" class="sr-only"
+                            >상세주소 입력</label
+                          >
+                          <input
+                            type="text"
+                            id="exchange_address_detail"
+                            name="userAddressDetail"
+                            placeholder="301호"
+                          />
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="box_button_wrap">
+                  <button
+                    type="button"
+                    class="box_button medium bg_black btn_exchangeComplete"
+                  >
+                    교환 신청하기
+                  </button>
+                </div>
+              </div>
+
+              <div class="tab_content">
+                <div class="myp_reservation_item">
+                  <div class="myp_reservation_box">
+                    <div class="myp_reservation_header">
+                      <p class="myp_reservation_title">반품 사유 작성</p>
+                    </div>
+                    <div class="default_inputform_gruop">
+                      <p class="default_inputform_title">
+                        사유 선택
+                        <span aria-hidden="true" class="required">*</span>
+
+                        <button
+                          type="button"
+                          class="btn_guide btn_ReturnFeePolicy"
+                        >
+                          배송비 기준 안내
+                        </button>
+                      </p>
+                      <button type="button" class="default_selectform">
+                        <!-- dsabled, readonly 클래스가 붙으면 팝업 미노출 및 스타일 자동 적용 -->
+                        사유를 선택해 주세요
+                      </button>
+                      <p class="alert_massage grey">
+                        배송비는 ‘구매자’가 부담합니다
+                      </p>
+                    </div>
+                    <div class="default_inputform_gruop">
+                      <label
+                        for="return_reason_message"
+                        class="default_inputform_title"
+                        >상세 사유
+                        <span aria-hidden="true" class="required">*</span>
+                        <button
+                          type="button"
+                          class="btn_guide btn_ReturnEligibility"
+                        >
+                          사유에 따른 처리 가능 여부
+                        </button>
+                      </label>
+                      <div class="default_inputform">
+                        <textarea
+                          id="return_reason_message"
+                          name="returnMessage"
+                          placeholder="사유를 작성해주세요."
+                          rows="5"
+                          required
+                        ></textarea>
+                      </div>
+                      <p class="bytes">0/500</p>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="myp_reservation_item">
+                  <div class="myp_reservation_box">
+                    <div class="myp_reservation_header">
+                      <p class="myp_reservation_title">환불 정보</p>
+                    </div>
+
+                    <div class="default_inputform_gruop">
+                      <label for="return_bank" class="default_inputform_title"
+                        >은행
+                        <span aria-hidden="true" class="required"
+                          >*</span
+                        ></label
+                      >
+                      <div class="default_inputform">
+                        <input
+                          type="text"
+                          id="return_bank"
+                          name="userBank"
+                          required
+                          placeholder="은행을 입력해주세요."
+                        />
+                      </div>
+                    </div>
+
+                    <div class="default_inputform_gruop">
+                      <label
+                        for="return_account_holder"
+                        class="default_inputform_title"
+                        >예금주
+                        <span aria-hidden="true" class="required"
+                          >*</span
+                        ></label
+                      >
+                      <div class="default_inputform">
+                        <input
+                          type="text"
+                          id="return_account_holder"
+                          name="accountHolder"
+                          required
+                          placeholder="예금주를 입력해주세요."
+                        />
+                      </div>
+                    </div>
+
+                    <div class="default_inputform_gruop">
+                      <label
+                        for="return_account_number"
+                        class="default_inputform_title"
+                        >계좌번호
+                        <span aria-hidden="true" class="required"
+                          >*</span
+                        ></label
+                      >
+                      <div class="default_inputform">
+                        <input
+                          type="text"
+                          id="return_account_number"
+                          name="accountNumber"
+                          required
+                          placeholder="계좌번호를 입력해주세요."
+                        />
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="myp_reservation_item">
+                  <div class="myp_reservation_box">
+                    <div class="myp_reservation_header">
+                      <p class="myp_reservation_title">반송 정보</p>
+                    </div>
+                    <div class="default_inputform_gruop">
+                      <label
+                        for="return_user_name"
+                        class="default_inputform_title"
+                        >구매자
+                        <span aria-hidden="true" class="required"
+                          >*</span
+                        ></label
+                      >
+                      <div class="default_inputform">
+                        <input
+                          type="text"
+                          id="return_user_name"
+                          name="userName"
+                          required=""
+                          placeholder="김봄봄"
+                        />
+                      </div>
+                    </div>
+
+                    <div class="default_inputform_gruop">
+                      <p class="default_inputform_title">
+                        연락처
+                        <span aria-hidden="true" class="required">*</span>
+                      </p>
+
+                      <div class="default_inputform phone">
+                        <label for="return_phone_1" class="sr-only"
+                          >연락처 첫 자리</label
+                        >
+                        <input
+                          type="tel"
+                          id="return_phone_1"
+                          name="userPhone"
+                          placeholder="010"
+                          maxlength="3"
+                          required=""
+                        />
+
+                        <label for="return_phone_2" class="sr-only"
+                          >연락처 중간 자리</label
+                        >
+                        <input
+                          type="tel"
+                          id="return_phone_2"
+                          name="userPhone"
+                          placeholder="9278"
+                          maxlength="4"
+                          required=""
+                        />
+
+                        <label for="return_phone_3" class="sr-only"
+                          >연락처 끝 자리</label
+                        >
+                        <input
+                          type="tel"
+                          id="return_phone_3"
+                          name="userPhone"
+                          placeholder="7192"
+                          maxlength="4"
+                          required=""
+                        />
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="myp_reservation_item">
+                  <div class="myp_reservation_box">
+                    <div class="myp_reservation_header center">
+                      <p class="myp_reservation_title">
+                        반송 방법
+                        <span class="required">*</span>
+                      </p>
+                      <div class="default_radio_list row">
+                        <div class="default_inputform">
+                          <input
+                            type="radio"
+                            id="return_delivery_self"
+                            name="return_delivery_method"
+                            value="male"
+                            checked
+                          />
+                          <label for="return_delivery_self">직접발송</label>
+                        </div>
+                        <div class="default_inputform">
+                          <input
+                            type="radio"
+                            id="return_delivery_pickup"
+                            name="return_delivery_method"
+                            value="female"
+                          />
+                          <label for="return_delivery_pickup">수거신청</label>
+                        </div>
+                      </div>
+                    </div>
+                    <p class="reservation_pop_info_text radio_selection">
+                      [07530] 서울특별시 강서구 양천로 357 (려산빌딩) 8층
+                    </p>
+
+                    <div class="default_inputform_gruop radio_selection">
+                      <div class="default_inputform adress">
+                        <div class="search">
+                          <label for="return_zip" class="sr-only"
+                            >우편번호 입력</label
+                          >
+                          <input
+                            type="text"
+                            id="return_zip"
+                            name="userZip"
+                            placeholder="우편번호"
+                            required
+                            readonly
+                          />
+                          <button type="button" class="myp_button bg_black">
+                            주소찾기
+                          </button>
+                        </div>
+
+                        <div>
+                          <label for="return_address" class="sr-only"
+                            >주소 입력</label
+                          >
+                          <input
+                            type="text"
+                            id="return_address"
+                            name="userAddress"
+                            placeholder="서울특별시 강남구 도산대로99길 27-2"
+                            required
+                            readonly
+                          />
+                        </div>
+
+                        <div>
+                          <label for="return_address_detail" class="sr-only"
+                            >상세주소 입력</label
+                          >
+                          <input
+                            type="text"
+                            id="return_address_detail"
+                            name="userAddressDetail"
+                            placeholder="301호"
+                          />
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="box_button_wrap">
+                  <button
+                    type="button"
+                    class="box_button medium bg_black btn_returnComplete"
+                  >
+                    반품 신청하기
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+    <!-- 교환 · 반품 신청 팝업 end -->
+
+    <!-- 교환 완료 팝업 -->
+    <div class="reservation_layer_popUp exchangeComplete">
+      <div class="popUp_header">
+        <p class="popUp_title">교환 · 반품</p>
+        <button type="button" class="btn_popUp_close">닫기</button>
+      </div>
+      <div class="popup_body">
+        <div class="myp_reservation_item">
+          <p class="myp_reservation_title">교환 상태</p>
+          <div class="myp_reservation_box">
+            <div class="myp_reservation_header">
+              <p class="myp_reservation_box_title">교환 완료</p>
+            </div>
+            <div class="product_box">
+              <div class="product_left">
+                <div class="product_thumb">
+                  <img
+                    src="src/assets/images/components/sample_132x88@x3.jpg"
+                    alt=""
+                  />
+                </div>
+              </div>
+              <div class="product_right">
+                <p class="product_title text_ellipsis_2">소니 4K TV</p>
+                <div>
+                  <dl class="product_dl">
+                    <dt>수량</dt>
+                    <dd>1개</dd>
+                  </dl>
+                  <p class="product_price">49,000 원</p>
+                </div>
+              </div>
+            </div>
+            <div class="myp_reservation_info defalt">
+              <dl>
+                <dt>요청일시</dt>
+                <dd>2025.11.09 15:15</dd>
+              </dl>
+              <dl>
+                <dt>교환사유</dt>
+                <dd>파손된 상품이 왔어요</dd>
+              </dl>
+            </div>
+          </div>
+        </div>
+        <div class="myp_reservation_item">
+          <p class="myp_reservation_title">상품 수거 방법</p>
+          <div class="myp_reservation_box">
+            <div class="myp_reservation_info defalt">
+              <dl>
+                <dt>수거방법</dt>
+                <dd>직접 발송</dd>
+              </dl>
+              <dl>
+                <dt>수거주소</dt>
+                <dd>서울시 강서구 미천동 려산빌딩 302호</dd>
+              </dl>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- 교환 완료 팝업 end -->
+
+    <!-- 반품 완료 팝업 -->
+    <div class="reservation_layer_popUp returnComplete">
+      <div class="popUp_header">
+        <p class="popUp_title">교환 · 반품</p>
+        <button type="button" class="btn_popUp_close">닫기</button>
+      </div>
+      <div class="popup_body">
+        <div class="myp_reservation_item">
+          <p class="myp_reservation_title">반품 상태</p>
+          <div class="myp_reservation_box">
+            <div class="myp_reservation_header">
+              <p class="myp_reservation_box_title">반품 완료</p>
+            </div>
+            <div class="product_box">
+              <div class="product_left">
+                <div class="product_thumb">
+                  <img
+                    src="src/assets/images/components/sample_132x88@x3.jpg"
+                    alt=""
+                  />
+                </div>
+              </div>
+              <div class="product_right">
+                <p class="product_title text_ellipsis_2">소니 4K TV</p>
+                <div>
+                  <dl class="product_dl">
+                    <dt>수량</dt>
+                    <dd>1개</dd>
+                  </dl>
+                  <p class="product_price">49,000 원</p>
+                </div>
+              </div>
+            </div>
+            <div class="myp_reservation_info defalt">
+              <dl>
+                <dt>요청일시</dt>
+                <dd>2025.11.09 15:15</dd>
+              </dl>
+              <dl>
+                <dt>교환사유</dt>
+                <dd>파손된 상품이 왔어요</dd>
+              </dl>
+            </div>
+          </div>
+        </div>
+        <div class="myp_reservation_item">
+          <p class="myp_reservation_title">상품 수거 방법</p>
+          <div class="myp_reservation_box">
+            <div class="myp_reservation_info defalt">
+              <dl>
+                <dt>수거방법</dt>
+                <dd>택배사 수거</dd>
+              </dl>
+              <dl>
+                <dt>수거주소</dt>
+                <dd>서울시 강서구 미천동 려산빌딩 302호</dd>
+              </dl>
+            </div>
+          </div>
+        </div>
+        <div class="myp_reservation_item">
+          <p class="myp_reservation_title">환불 내역</p>
+          <div class="myp_reservation_box">
+            <div class="myp_reservation_info defalt">
+              <dl>
+                <dt>환불상태</dt>
+                <dd>환불완료</dd>
+              </dl>
+              <dl>
+                <dt>환불방식</dt>
+                <dd>계좌환불</dd>
+              </dl>
+              <dl>
+                <dt>입금계좌</dt>
+                <dd>농협 123-3323-44241</dd>
+              </dl>
+            </div>
+            <div class="myp_reservation_info between orderSummary">
+              <dl>
+                <dt>결제 금액</dt>
+                <dd>560,000 원</dd>
+              </dl>
+              <dl>
+                <dt>할인금액</dt>
+                <dd>- 80,000 원</dd>
+              </dl>
+            </div>
+            <div class="myp_reservation_info between totalPayment">
+              <dl>
+                <dt>최종 환불 금액</dt>
+                <dd>480,000 원</dd>
+              </dl>
+            </div>
+          </div>
+        </div>
+        <div class="myp_reservation_item">
+          <div class="myp_reservation_box">
+            <div class="myp_reservation_header">
+              <p class="myp_reservation_box_title">환불 안내</p>
+            </div>
+
+            <p class="reservation_pop_info_text">
+              신용카드로 결제하신 경우, 카드사로부터 최종 환불이 완료되기까지
+              환불 처리가 완료된 이후 영업일 기준 약 3~5일 가량 소요될 수
+              있습니다.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- 반품 완료 팝업 end -->
+
+    <!-- 배송비 기준 안내(교환) -->
+    <div class="reservation_guide_popUp guide ExchangeFeePolicy">
+      <div class="popUp_dimm"></div>
+
+      <div class="popUp_wrap">
+        <div class="popUp_header">
+          <p class="popUp_title">교환으로 인한 배송비 기준 안내</p>
+          <button type="button" class="btn_popUp_close">닫기</button>
+        </div>
+
+        <div class="popUp_body">
+          <div class="reservation_pop_info_box">
+            <p class="reservation_pop_title">구매자 부담</p>
+            <p class="reservation_pop_info_text">
+              사이즈, 색상 등 구매자의 변심으로 교환을 원할 경우.
+            </p>
+          </div>
+
+          <div class="reservation_pop_info_box">
+            <p class="reservation_pop_title">판매자 부담</p>
+            <p class="reservation_pop_info_text">
+              상품의 하자나 제품의 오발송으로 인한 교환의 경우.
+            </p>
+          </div>
+
+          <div class="reservation_pop_info_greyBox">
+            <div class="reservation_pop_info_box">
+              <p class="reservation_pop_title">교환 배송비 입금</p>
+              <p class="reservation_pop_info_text">
+                수령한 상품의 사이즈 변경 또는 디자인, 색상 등이 마음에 들지
+                않아, 수령일 기준 7일 이내 반품 접수 및 배송비 입금, 반송
+                처리하시는 경우.
+              </p>
+            </div>
+            <div class="reservation_pop_info_box">
+              <p class="reservation_pop_title">교환 배송비</p>
+              <p class="reservation_pop_info_text">
+                발송 배송비 + 반송 배송비.<br />
+                (도서지역은 추가 배송비가 발생합니다)
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- 배송비 기준 안내(교환) end -->
+
+    <!-- 사유에 따른 교환 가능 여부(교환) -->
+    <div class="reservation_guide_popUp guide ExchangeEligibility">
+      <div class="popUp_dimm"></div>
+
+      <div class="popUp_wrap">
+        <div class="popUp_header">
+          <p class="popUp_title">사유에 따른 교환 가능 여부</p>
+          <button type="button" class="btn_popUp_close">닫기</button>
+        </div>
+
+        <div class="popUp_body">
+          <div class="reservation_pop_info_box">
+            <p class="reservation_pop_title">교환이 가능한 경우</p>
+          </div>
+
+          <div class="reservation_pop_info_greyBox">
+            <div class="reservation_pop_info_box">
+              <p class="reservation_pop_title">단순변심</p>
+              <p class="reservation_pop_info_text">
+                수령한 상품의 사이즈 변경 또는 디자인, 색상 등이 마음에 들지
+                않아, 수령일 기준 7일 이내 반품 접수 및 배송비 입금, 반송
+                처리하시는 경우.
+              </p>
+            </div>
+            <div class="reservation_pop_info_box">
+              <p class="reservation_pop_title">배송오류 및 불량</p>
+              <p class="reservation_pop_info_text">
+                주문하신 상품과 다른 상품을 수령하셨거나, 제조상 명백한 불량의
+                상품을 수령하신 경우.<br />
+                단, 불량 상품의 경우 세탁 및 수선과정 이후 발생 또는 발견하는
+                손상 및 불량은 확인이 불가하므로 해당되지 않습니다.
+              </p>
+            </div>
+          </div>
+
+          <div class="reservation_pop_info_box">
+            <p class="reservation_pop_title">교환이 불가능한 경우</p>
+          </div>
+
+          <div class="reservation_pop_info_greyBox">
+            <div class="reservation_pop_info_box">
+              <p class="reservation_pop_title">
+                청약철회 기간 경과 또는 구매 확정
+              </p>
+              <p class="reservation_pop_info_text">
+                상품 수령 후 7일 이내 반품 접수 및 배송비 입금, 반송 처리를 하지
+                않으신 경우 또는 구매 확정이 완료되어 포인트가 지급된 경우.
+              </p>
+            </div>
+            <div class="reservation_pop_info_box">
+              <p class="reservation_pop_title">상품 착용 또는 훼손</p>
+              <p class="reservation_pop_info_text">
+                상품의 사용/착용 흔적이 있거나, 라벨 및 택 제거, 제품 박스 및
+                포장 제거 등으로 새 상품으로서의 가치가 감소한 경우.
+              </p>
+            </div>
+            <div class="reservation_pop_info_box">
+              <p class="reservation_pop_title">교환불가(반품가능)</p>
+              <p class="reservation_pop_info_text">
+                구매하신 상품의 사이즈 또는 컬러, 동일가 상품 교환 이외에 교환을
+                원하시는 상품의 가격이 다른 경우 반품 후 재주문을 해주셔야
+                합니다.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- 사유에 따른 교환 가능 여부(교환) -->
+
+    <!-- 배송비 기준 안내(반품) -->
+    <div class="reservation_guide_popUp guide ReturnFeePolicy">
+      <div class="popUp_dimm"></div>
+
+      <div class="popUp_wrap">
+        <div class="popUp_header">
+          <p class="popUp_title">반품으로 인한 배송비 기준 안내</p>
+          <button type="button" class="btn_popUp_close">닫기</button>
+        </div>
+
+        <div class="popUp_body">
+          <div class="reservation_pop_info_box">
+            <p class="reservation_pop_title">구매자 부담</p>
+            <p class="reservation_pop_info_text">
+              사이즈, 색상 등 구매자의 변심으로 교환을 원할 경우.
+            </p>
+          </div>
+
+          <div class="reservation_pop_info_box">
+            <p class="reservation_pop_title">판매자 부담</p>
+            <p class="reservation_pop_info_text">
+              상품의 하자나 제품의 오발송으로 인한 교환의 경우.
+            </p>
+          </div>
+
+          <div class="reservation_pop_info_greyBox">
+            <div class="reservation_pop_info_box">
+              <p class="reservation_pop_title">반품 배송비 입금</p>
+              <p class="reservation_pop_info_text">
+                반송 시 상품에 배송비를 동봉하실 경우 발생할 수 있는 분실 사고
+                및 책임분쟁을 방지하고자 배송비 전용계좌로 입금을 해주셔야
+                합니다
+              </p>
+            </div>
+            <div class="reservation_pop_info_box">
+              <p class="reservation_pop_title">반품 배송비</p>
+              <p class="reservation_pop_info_text">
+                발송 배송비 + 반송 배송비.<br />
+                (도서지역은 추가 배송비가 발생합니다)
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- 배송비 기준 안내(반품) end -->
+
+    <!-- 사유에 따른 교환 가능 여부(반품) -->
+    <div class="reservation_guide_popUp guide ReturnEligibility">
+      <div class="popUp_dimm"></div>
+
+      <div class="popUp_wrap">
+        <div class="popUp_header">
+          <p class="popUp_title">사유에 따른 반품 가능 여부</p>
+          <button type="button" class="btn_popUp_close">닫기</button>
+        </div>
+
+        <div class="popUp_body">
+          <div class="reservation_pop_info_box">
+            <p class="reservation_pop_title">반품이 가능한 경우</p>
+          </div>
+
+          <div class="reservation_pop_info_greyBox">
+            <div class="reservation_pop_info_box">
+              <p class="reservation_pop_title">단순변심</p>
+              <p class="reservation_pop_info_text">
+                수령한 상품의 사이즈 변경 또는 디자인, 색상 등이 마음에 들지
+                않아, 수령일 기준 7일 이내 반품 접수 및 배송비 입금, 반송
+                처리하시는 경우
+              </p>
+            </div>
+            <div class="reservation_pop_info_box">
+              <p class="reservation_pop_title">배송오류 및 불량</p>
+              <p class="reservation_pop_info_text">
+                주문하신 상품과 다른 상품을 수령하셨거나, 제조상 명백한 불량의
+                상품을 수령하신 경우.<br />
+                단, 불량 상품의 경우 세탁 및 수선과정 이후 발생 또는 발견하는
+                손상 및 불량은 확인이 불가하므로 해당되지 않습니다.
+              </p>
+            </div>
+          </div>
+
+          <div class="reservation_pop_info_box">
+            <p class="reservation_pop_title">반품이 불가능한 경우</p>
+          </div>
+
+          <div class="reservation_pop_info_greyBox">
+            <div class="reservation_pop_info_box">
+              <p class="reservation_pop_title">
+                청약철회 기간 경과 또는 구매 확정
+              </p>
+              <p class="reservation_pop_info_text">
+                상품 수령 후 7일 이내 반품 접수 및 배송비 입금, 반송 처리를 하지
+                않으신 경우 또는 구매 확정이 완료되어 포인트가 지급된 경우
+              </p>
+            </div>
+            <div class="reservation_pop_info_box">
+              <p class="reservation_pop_title">상품 착용 또는 훼손</p>
+              <p class="reservation_pop_info_text">
+                상품의 사용/착용 흔적이 있거나, 라벨 및 택 제거, 제품 박스 및
+                포장 제거 등으로 새 상품으로서의 가치가 감소한 경우
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- 사유에 따른 교환 가능 여부(반품) -->
+
+    <!-- 구매확정 팝업 -->
+    <div class="reservation_guide_popUp purchaseConfirmed">
+      <div class="popUp_dimm"></div>
+
+      <div class="popUp_wrap">
+        <div class="popUp_header">
+          <p class="popUp_title">구매 확정 및 마일리지/포인트 지급</p>
+          <button type="button" class="btn_popUp_close">닫기</button>
+        </div>
+
+        <div class="popUp_body">
+          <div class="reservation_pop_info_box">
+            <p class="reservation_pop_info_text">
+              구매 확정 및 마일리지/포인트 지급을 받으시기 전에<br />
+              <b>반드시 아래 사항을 확인</b>하여 주세요.<br />
+              <b>구매 확정 버튼 클릭 시</b><br />
+              <b>구매 확정 및 마일리지/포인트가 지급</b>됩니다.
+            </p>
+          </div>
+
+          <div class="reservation_pop_info_greyBox">
+            <ul class="reservation_pop_info_list dash">
+              <li>
+                주문 상품을 수령하셨고, 고객 변심 및 착오에 의한 교환 또는
+                환불의 의사가 없으실 경우 확인해주세요. 확인 후 즉시
+                마일리지/포인트가 지급됩니다.
+              </li>
+              <li>
+                동일 주문건의 상품 중 일부 만 교환 또는 반품을 원하실 경우 주문
+                번호 클릭 후 세부 주문내역에서 개별 상품에 대한 구매확정을
+                해주셔야 합니다.
+              </li>
+              <li>
+                구매 확정으로 마일리지/포인트가 지급된 이후 또는 제품 착용시
+                교환 또는 환불이 불가합니다.
+              </li>
+              <li>
+                구매 확정을 하시지 않으시더라도 출고 완료 후 7일 후에는 자동으로
+                구매 확정 및 마일리지/포인트가 지급됩니다.
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="popUp_bottom">
+          <div class="box_button_wrap">
+            <button
+              type="button"
+              class="box_button medium bd_C4C7C5 btn_canceled"
+            >
+              취소
+            </button>
+            <a href="javascript:;" class="box_button medium bg_black"
+              >구매확정</a
+            >
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- 구매확정 팝업 end -->
+
+    <script>
+      // ============================================
+      // 1. 탭 전환 (교환/반품)
+      // ============================================
+      function initRoundTabs() {
+        const tabs = document.querySelectorAll(
+          ".contents_round_tabs .round_tab"
+        );
+        const contents = document.querySelectorAll(".tab_content");
+
+        tabs.forEach((tab, index) => {
+          tab.addEventListener("click", (e) => {
+            e.preventDefault();
+
+            // 모든 탭 비활성화
+            tabs.forEach((t) => t.classList.remove("active"));
+            contents.forEach((c) => c.classList.remove("active"));
+
+            // 선택된 탭 활성화
+            tab.classList.add("active");
+            contents[index].classList.add("active");
+          });
+        });
+      }
+
+      // ============================================
+      // 2. 반송 방법 제어 (직접발송/수거신청)
+      // ============================================
+      function initDeliveryMethodToggle() {
+        // 각 탭의 반송 방법 섹션 찾기
+        document.querySelectorAll(".tab_content").forEach((tabContent) => {
+          const radios = tabContent.querySelectorAll(
+            'input[type="radio"][name$="_delivery_method"]'
+          );
+
+          // 해당 구조 없는 탭은 패스
+          if (!radios.length) return;
+
+          function updateUI() {
+            const checkedRadio = tabContent.querySelector(
+              'input[type="radio"][name$="_delivery_method"]:checked'
+            );
+
+            if (!checkedRadio) return;
+
+            const isSelf = checkedRadio.id.includes("self");
+
+            // 해당 라디오가 속한 myp_reservation_item 내의 radio_selection 요소들만 제어
+            const container = checkedRadio.closest(".myp_reservation_item");
+            if (!container) return;
+
+            const radioSelections =
+              container.querySelectorAll(".radio_selection");
+
+            radioSelections.forEach((element) => {
+              // reservation_pop_info_text는 직접발송일 때 표시
+              if (element.classList.contains("reservation_pop_info_text")) {
+                element.classList.toggle("active", isSelf);
+              }
+              // default_inputform_gruop은 수거신청일 때 표시
+              else if (element.classList.contains("default_inputform_gruop")) {
+                element.classList.toggle("active", !isSelf);
+              }
+            });
+          }
+
+          // 라디오 버튼 변경 이벤트
+          radios.forEach((radio) => {
+            radio.addEventListener("change", updateUI);
+          });
+
+          // 초기 상태 설정
+          updateUI();
+        });
+      }
+
+      // ============================================
+      // 3. 셀렉트 팝업 (사유 선택)
+      // ============================================
+      function initSelectPopup() {
+        const popup = document.querySelector(".default_select_pop");
+        const dimm = popup.querySelector(".default_select_pop_dimm");
+        const closeBtn = popup.querySelector(".btn_close_select_pop");
+
+        // 팝업 열기 (이벤트 위임 방식)
+        document.addEventListener("click", (e) => {
+          const btn = e.target.closest(".default_selectform");
+          if (!btn) return;
+          if (
+            btn.classList.contains("readonly") ||
+            btn.classList.contains("disabled")
+          )
+            return;
+
+          popup.classList.add("active");
+        });
+
+        // 팝업 닫기
+        function closePopup() {
+          popup.classList.remove("active");
+        }
+
+        closeBtn.addEventListener("click", closePopup);
+        dimm.addEventListener("click", closePopup);
+      }
+
+      // ============================================
+      // 4. 취소·환불 팝업
+      // ============================================
+      function initCancelPopup() {
+        const cancelPopup = document.querySelector(
+          ".reservation_layer_popUp.canceled"
+        );
+        const completePopup = document.querySelector(
+          ".reservation_layer_popUp.canceledComplete"
+        );
+        const cancelCloseBtn = cancelPopup.querySelector(".btn_popUp_close");
+        const completeCloseBtn =
+          completePopup.querySelector(".btn_popUp_close");
+
+        // 취소·환불 신청 팝업 열기
+        document.addEventListener("click", (e) => {
+          const btn = e.target.closest(".btn_canceled");
+          if (!btn) return;
+
+          cancelPopup.classList.add("active");
+        });
+
+        // 취소·환불 신청 팝업 닫기
+        cancelCloseBtn.addEventListener("click", () => {
+          cancelPopup.classList.remove("active");
+        });
+
+        // 취소·환불 신청하기 버튼 클릭 시 완료 팝업 열기
+        document.addEventListener("click", (e) => {
+          const btn = e.target.closest(".btn_canceledComplete");
+          if (!btn) return;
+
+          cancelPopup.classList.remove("active");
+          completePopup.classList.add("active");
+        });
+
+        // 취소·환불 완료 팝업 닫기 (두 팝업 모두 닫기)
+        completeCloseBtn.addEventListener("click", () => {
+          cancelPopup.classList.remove("active");
+          completePopup.classList.remove("active");
+        });
+      }
+
+      // ============================================
+      // 5. 교환·반품 팝업
+      // ============================================
+      function initExchangePopup() {
+        const exchangePopup = document.querySelector(
+          ".reservation_layer_popUp.exchange"
+        );
+        const exchangeCompletePopup = document.querySelector(
+          ".reservation_layer_popUp.exchangeComplete"
+        );
+        const returnCompletePopup = document.querySelector(
+          ".reservation_layer_popUp.returnComplete"
+        );
+
+        const exchangeCloseBtn =
+          exchangePopup.querySelector(".btn_popUp_close");
+        const exchangeCompleteCloseBtn =
+          exchangeCompletePopup.querySelector(".btn_popUp_close");
+        const returnCompleteCloseBtn =
+          returnCompletePopup.querySelector(".btn_popUp_close");
+
+        // 교환·반품 신청 팝업 열기
+        document.addEventListener("click", (e) => {
+          const btn = e.target.closest(".btn_exchange");
+          if (!btn) return;
+
+          exchangePopup.classList.add("active");
+        });
+
+        // 교환·반품 신청 팝업 닫기
+        exchangeCloseBtn.addEventListener("click", () => {
+          exchangePopup.classList.remove("active");
+        });
+
+        // 교환 신청하기 버튼 클릭 시 교환 완료 팝업 열기
+        document.addEventListener("click", (e) => {
+          const btn = e.target.closest(".btn_exchangeComplete");
+          if (!btn) return;
+
+          exchangePopup.classList.remove("active");
+          exchangeCompletePopup.classList.add("active");
+        });
+
+        // 반품 신청하기 버튼 클릭 시 반품 완료 팝업 열기
+        document.addEventListener("click", (e) => {
+          const btn = e.target.closest(".btn_returnComplete");
+          if (!btn) return;
+
+          exchangePopup.classList.remove("active");
+          returnCompletePopup.classList.add("active");
+        });
+
+        // 교환 완료 팝업 닫기 (신청 팝업과 완료 팝업 모두 닫기)
+        exchangeCompleteCloseBtn.addEventListener("click", () => {
+          exchangePopup.classList.remove("active");
+          exchangeCompletePopup.classList.remove("active");
+        });
+
+        // 반품 완료 팝업 닫기 (신청 팝업과 완료 팝업 모두 닫기)
+        returnCompleteCloseBtn.addEventListener("click", () => {
+          exchangePopup.classList.remove("active");
+          returnCompletePopup.classList.remove("active");
+        });
+      }
+
+      // ============================================
+      // 5. 가이드 팝업
+      // ============================================
+      function initGuidePopup() {
+        // 가이드 버튼 → 팝업 열기
+        document.addEventListener("click", (e) => {
+          const btn = e.target.closest(".btn_guide");
+          if (!btn) return;
+
+          const popupClass = [...btn.classList]
+            .find((cls) => cls !== "btn_guide" && cls.startsWith("btn_"))
+            ?.replace("btn_", "");
+
+          if (!popupClass) return;
+
+          const popup = document.querySelector(
+            `.reservation_guide_popUp.guide.${popupClass}`
+          );
+          popup?.classList.add("active");
+        });
+
+        // 가이드 팝업 닫기만
+        document.addEventListener("click", (e) => {
+          if (
+            e.target.closest(".reservation_guide_popUp.guide .btn_popUp_close")
+          ) {
+            const popup = e.target.closest(".reservation_guide_popUp.guide");
+            popup?.classList.remove("active");
+            return;
+          }
+
+          if (
+            e.target.classList.contains("popUp_dimm") &&
+            e.target.closest(".reservation_guide_popUp.guide")
+          ) {
+            const popup = e.target.closest(".reservation_guide_popUp.guide");
+            popup?.classList.remove("active");
+          }
+        });
+      }
+
+      // ============================================
+      // 6. 구매확정 팝업
+      // ============================================
+      function initPurchaseConfirmedPopup() {
+        // 구매확정 버튼 → 팝업 열기
+        document.addEventListener("click", (e) => {
+          const btn = e.target.closest(".btn_purchaseConfirmed");
+          if (!btn) return;
+
+          const popup = document.querySelector(
+            ".reservation_guide_popUp.purchaseConfirmed"
+          );
+          if (!popup) return;
+
+          popup.classList.add("active");
+        });
+
+        // 닫기 (닫기 버튼 / 취소 / dimm)
+        document.addEventListener("click", (e) => {
+          const isCloseBtn =
+            e.target.closest(
+              ".reservation_guide_popUp.purchaseConfirmed .btn_popUp_close"
+            ) ||
+            e.target.closest(
+              ".reservation_guide_popUp.purchaseConfirmed .btn_canceled"
+            );
+
+          if (isCloseBtn) {
+            const popup = e.target.closest(
+              ".reservation_guide_popUp.purchaseConfirmed"
+            );
+            popup?.classList.remove("active");
+            return;
+          }
+
+          if (e.target.classList.contains("popUp_dimm")) {
+            const popup = e.target.closest(
+              ".reservation_guide_popUp.purchaseConfirmed"
+            );
+            popup?.classList.remove("active");
+          }
+        });
+      }
+
+      // ============================================
+      // 초기화 실행
+      // ============================================
+      document.addEventListener("DOMContentLoaded", () => {
+        initRoundTabs();
+        initDeliveryMethodToggle();
+        initSelectPopup();
+        initCancelPopup();
+        initExchangePopup();
+        initGuidePopup();
+        initPurchaseConfirmedPopup();
+      });
+    </script>
+  </body>
+</html>

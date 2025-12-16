@@ -1,34 +1,40 @@
-import {requestJson} from "../../utils/requestJson.js";
-import {escapeHtml} from "../../utils/escapeHtml.js";
-import {createLazyLoader} from "../../utils/lazyLoader.js";
-import {renderCategory, renderTag, getCaptureIconSrc} from "../../utils/renderCardMeta.js";
-import {bindCaptureToast} from "../../utils/captureToast.js";
-import {showInformation} from "../common/footer.js";
-import {bindCaptureToggle} from "../../utils/bindCaptureToggle.js";
-import {initSearchHandler} from "../../utils/searchHandler.js";
-import {cardTemplates} from "../../utils/renderCardTemplate.js";
+import { requestJson } from "../../utils/requestJson.js";
+import { escapeHtml } from "../../utils/escapeHtml.js";
+import { createLazyLoader } from "../../utils/lazyLoader.js";
+import {
+    renderCategory,
+    renderTag,
+    getCaptureIconSrc,
+} from "../../utils/renderCardMeta.js";
+import { bindCaptureToast } from "../../utils/captureToast.js";
+import { showInformation } from "../common/footer.js";
+import { bindCaptureToggle } from "../../utils/bindCaptureToggle.js";
+import { initSearchHandler } from "../../utils/searchHandler.js";
+import { cardTemplates } from "../../utils/renderCardTemplate.js";
 
 const seriesDetailController = (() => {
     let lazy;
 
     const lazyLoader = () => {
         lazy = createLazyLoader({
-            selector: '.lazy_loading_container img[data-src]',
+            selector: ".lazy_loading_container img[data-src]",
             root: null,
-            rootMargin: '0px 0px',
-            onEnter: (img) => img.classList.add('is-loading'),
+            rootMargin: "0px 0px",
+            onEnter: (img) => img.classList.add("is-loading"),
             onLoad: (img) => {
-                img.classList.remove('is-loading');
-                img.classList.add('is-loaded');
+                img.classList.remove("is-loading");
+                img.classList.add("is-loaded");
             },
         });
         lazy.init();
-    }
+    };
 
     const seriesList = () => {
-        const $container = document.querySelector('.series_detail_container');
-        const $moreBtn = document.querySelector('.btn_view_more');
-        const $moreBtnContainer = document.querySelector('.btn_view_more_container');
+        const $container = document.querySelector(".series_detail_container");
+        const $moreBtn = document.querySelector(".btn_view_more");
+        const $moreBtnContainer = document.querySelector(
+            ".btn_view_more_container"
+        );
 
         let currentPage = 1;
         let isLoading = false;
@@ -44,7 +50,7 @@ const seriesDetailController = (() => {
 
                 try {
                     // URL에서 시리즈 ID 추출
-                    const pathSegments = window.location.pathname.split('/');
+                    const pathSegments = window.location.pathname.split("/");
                     const seriesId = pathSegments[pathSegments.length - 1];
 
                     // if (!seriesId || isNaN(seriesId)) {
@@ -52,8 +58,12 @@ const seriesDetailController = (() => {
                     //     return;
                     // }
 
-                    console.log(`API 요청: /api/series-contents?cidx=${seriesId}&page=${page}`);
-                    const response = await requestJson(`/api/series-contents?cidx=${seriesId}&page=${page}`);
+                    console.log(
+                        `API 요청: /api/series-contents?cidx=${seriesId}&page=${page}`
+                    );
+                    const response = await requestJson(
+                        `/api/series-contents?cidx=${seriesId}&page=${page}`
+                    );
 
                     // 응답 구조 확인
                     // console.log('API 응답:', response);
@@ -69,7 +79,9 @@ const seriesDetailController = (() => {
 
                     // 페이지네이션 정보 확인
                     const pagination = response?.pagination;
-                    const hasMore = pagination?.has_more ?? (Array.isArray(data) && data.length >= 10);
+                    const hasMore =
+                        pagination?.has_more ??
+                        (Array.isArray(data) && data.length >= 10);
 
                     if (!hasMore) {
                         hasMoreData = false;
@@ -79,7 +91,6 @@ const seriesDetailController = (() => {
                         currentPage++;
                         methods.setupInfiniteScroll();
                     }
-
                 } catch (err) {
                     // console.error('시리즈 콘텐츠 로드 실패:', err);
                     hasMoreData = false;
@@ -91,7 +102,7 @@ const seriesDetailController = (() => {
             },
 
             renderContent: (items = []) => {
-                const $list = $container.querySelector('.list_container');
+                const $list = $container.querySelector(".list_container");
                 if (!$list) {
                     // console.error('list_container를 찾을 수 없습니다.');
                     return;
@@ -100,7 +111,8 @@ const seriesDetailController = (() => {
                 // console.log('renderContent 호출됨, items:', items);
 
                 if (!Array.isArray(items) || items.length === 0) {
-                    $list.innerHTML = '<li class="no-data">등록된 콘텐츠가 없습니다.</li>';
+                    $list.innerHTML =
+                        '<li class="no-data">등록된 콘텐츠가 없습니다.</li>';
                     methods.hideMoreButton();
                     return;
                 }
@@ -114,16 +126,17 @@ const seriesDetailController = (() => {
                 if (lazy) {
                     lazy.refresh($list);
                 } else {
-                    console.warn('lazy loader가 초기화되지 않았습니다.');
+                    console.warn("lazy loader가 초기화되지 않았습니다.");
                 }
             },
 
             appendContent: (items = []) => {
-                const $list = $container.querySelector('.list_container');
-                if (!$list || !Array.isArray(items) || items.length === 0) return;
+                const $list = $container.querySelector(".list_container");
+                if (!$list || !Array.isArray(items) || items.length === 0)
+                    return;
 
                 const contents = methods.generateItemsHTML(items);
-                $list.insertAdjacentHTML('beforeend', contents);
+                $list.insertAdjacentHTML("beforeend", contents);
 
                 if (lazy) {
                     lazy.refresh($list);
@@ -131,16 +144,18 @@ const seriesDetailController = (() => {
             },
 
             generateItemsHTML: (items) => {
-                console.log('generateItemsHTML 호출됨, items:', items);
+                console.log("generateItemsHTML 호출됨, items:", items);
 
                 if (!Array.isArray(items)) {
-                    return '';
+                    return "";
                 }
 
-                return items.map((item) => {
-                    // cardTemplates.contentCard 사용
-                    return cardTemplates.contentCard(item, 'full');
-                }).join('');
+                return items
+                    .map((item) => {
+                        // cardTemplates.contentCard 사용
+                        return cardTemplates.contentCard(item, "full");
+                    })
+                    .join("");
             },
 
             setLoadingState: (loading) => {
@@ -148,16 +163,16 @@ const seriesDetailController = (() => {
 
                 if (loading) {
                     $moreBtn.disabled = true;
-                    $moreBtn.textContent = '로딩 중...';
+                    $moreBtn.textContent = "로딩 중...";
                 } else {
                     $moreBtn.disabled = false;
-                    $moreBtn.textContent = '콘텐츠 더 보기';
+                    $moreBtn.textContent = "더 보기";
                 }
             },
 
             hideMoreButton: () => {
                 if ($moreBtnContainer) {
-                    $moreBtnContainer.style.display = 'none';
+                    $moreBtnContainer.style.display = "none";
                 }
             },
 
@@ -167,17 +182,24 @@ const seriesDetailController = (() => {
 
                 // 두 번째 페이지부터 무한 스크롤 활성화
                 if (currentPage > 2 && hasMoreData) {
-                    observer = new IntersectionObserver((entries) => {
-                        entries.forEach(entry => {
-                            if (entry.isIntersecting && !isLoading && hasMoreData) {
-                                methods.requestAPI(currentPage);
-                            }
-                        });
-                    }, {
-                        root: null,
-                        rootMargin: '100px',
-                        threshold: 0
-                    });
+                    observer = new IntersectionObserver(
+                        (entries) => {
+                            entries.forEach((entry) => {
+                                if (
+                                    entry.isIntersecting &&
+                                    !isLoading &&
+                                    hasMoreData
+                                ) {
+                                    methods.requestAPI(currentPage);
+                                }
+                            });
+                        },
+                        {
+                            root: null,
+                            rootMargin: "100px",
+                            threshold: 0,
+                        }
+                    );
 
                     if ($moreBtnContainer) {
                         observer.observe($moreBtnContainer);
@@ -195,14 +217,14 @@ const seriesDetailController = (() => {
             bindEvents: () => {
                 // 더보기 버튼 클릭 이벤트
                 if ($moreBtn) {
-                    $moreBtn.addEventListener('click', (e) => {
+                    $moreBtn.addEventListener("click", (e) => {
                         e.preventDefault();
                         // console.log('더보기 버튼 클릭, 현재 페이지:', currentPage);
                         methods.requestAPI(currentPage);
                     });
                 }
-            }
-        }
+            },
+        };
 
         // 초기화 전 요소 존재 확인
         if (!$container) {
@@ -218,8 +240,8 @@ const seriesDetailController = (() => {
         methods.requestAPI(1);
 
         // 페이지 언로드 시 observer 정리
-        window.addEventListener('beforeunload', methods.destroyObserver);
-    }
+        window.addEventListener("beforeunload", methods.destroyObserver);
+    };
 
     const initialize = () => {
         // console.log('시리즈 상세 페이지 초기화 시작');
@@ -228,29 +250,27 @@ const seriesDetailController = (() => {
         seriesList();
         showInformation();
         bindCaptureToast({
-            //getText: (_btn, next) => next ? '스크랩 되었습니다.' : '취소되었습니다.',
             bindClick: false,
             listen: true,
-            getText: (_btn, next, success) => success ? (next ? '스크랩되었습니다.' : '취소되었습니다.') : '요청에 실패했습니다.',
-         });
+        });
         bindCaptureToggle({
-            endpoint: '/api/capture',
+            endpoint: "/api/capture",
             //dewbian 로그인 포함
             goLogin: goLogin, // 로그인 함수 전달
             onToggleStart: (btn, { prev, next, postId, boardType }) => {
                 if (!isLogin) {
-                    throw new Error('Login required');
+                    throw new Error("Login required");
                 }
             },
         });
         initSearchHandler();
 
         // console.log('시리즈 상세 페이지 초기화 완료');
-    }
+    };
 
     return {
         init: initialize,
-    }
+    };
 })();
 
-document.addEventListener('DOMContentLoaded', seriesDetailController.init);
+document.addEventListener("DOMContentLoaded", seriesDetailController.init);

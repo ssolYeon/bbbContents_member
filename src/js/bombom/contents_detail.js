@@ -171,7 +171,13 @@ const contentDetailController = (() => {
         const toggle = () => snsBox.classList.toggle("active");
         shareBtn.addEventListener("click", (e) => {
             e.stopPropagation();
-            toggle();
+
+            // Flutter 앱 공유 기능
+            if (window.Flutter && typeof window.Flutter.share === "function") {
+                window.FlutterShareAPI.shareCurrentPage();
+            } else {
+                toggle();
+            }
         });
 
         // 바깥 클릭 시 닫기
@@ -341,7 +347,8 @@ const contentDetailController = (() => {
                     hasMore = result.hasMore;
 
                     // 댓글 수 업데이트
-                    const commentCountEl = document.querySelector('.comment_count b');
+                    const commentCountEl =
+                        document.querySelector(".comment_count b");
                     if (commentCountEl && result.totalCount !== undefined) {
                         commentCountEl.textContent = result.totalCount;
                     }
@@ -366,80 +373,104 @@ const contentDetailController = (() => {
             commentList.innerHTML = comments
                 .map(
                     (c) => `
-                <li class="list_item" data-id="${c.id}">
-                    <div class="comment_content">
-                        <div><span class="user">${c.user}</span>${
-                        c.is_editer == "y"
-                            ? '<span class="editor_user">작가</span>'
-                            : ""
-                    }${
-                        c.is_del == "y"
-                            ? `<button type="button" class="redel" data-value="${c.id}">삭제</button>`
-                            : ""
-                    }</div>
-                        <span class="date">${c.date}</span>
-                        <div>
-                            <p class="comment">${c.text}</p>
-                            <div class="like_container">
-                                <button type="button" class="btn_like ${
-                                    c.is_like == 1 ? "active" : ""
-                                }">
-                                    <img src="/src/assets/images/icons/icon_like_${
-                                        c.is_like == 1 ? "on" : "off"
-                                    }@x3.png" alt="">
-                                </button>
-                            </div>
-                        </div>
-                        <div class="comment_action_container">
-                            <button type="button" class="btn_re_comment">답글쓰기</button>
-                            <span class="like_count">좋아요 <b>${
-                                c.like
-                            }</b></span>
-                        </div>
-                    </div>
-                    <div class="comment_form_item re_comment_form">
-                        <input type="text" placeholder="답글을 남겨주세요.">
-                        <button type="button">등록</button>
-                    </div>
-                </li>
-                ${c.replies
-                    .map(
-                        (r) => `
-                    <li class="list_item re_comment" data-id="${r.id}">
-                        <div class="comment_content">
-                            <div><span class="user">${r.user}</span>${
-                            r.is_editer == "y"
-                                ? '<span class="editor_user">작가</span>'
-                                : ""
-                        }${
-                            r.is_del == "y"
-                                ? `<button type="button" class="redel" data-value="${r.id}">삭제</button>`
-                                : ""
-                        }</div>
-                            <span class="date">${r.date}</span>
-                            <div>
-                                <p class="comment">${r.text}</p>
-                                <div class="like_container">
-                                    <button type="button" class="btn_like ${
-                                        r.is_like == 1 ? "active" : ""
-                                    }">
-                                        <img src="/src/assets/images/icons/icon_like_${
-                                            r.is_like == 1 ? "on" : "off"
-                                        }@x3.png" alt="">
-                                    </button>
-                                </div>
-                            </div>
-                            <div class="comment_action_container">
-                                <span class="like_count" style="position: static;">좋아요 <b>${
-                                    r.like
-                                }</b></span>
-                            </div>
-                        </div>
-                    </li>
-                `
-                    )
-                    .join("")}
-            `
+					<li class="list_item" data-id="${c.id}">
+						<div class="kebab_popUp">
+							<div class="kebab_popUp_dimm"></div>
+							<div class="kebab_menu">
+								<button type="button" class="btn_kebeb bg_black btn_report is_icon icon_report">신고하기</button>
+								<button type="button" class="btn_kebeb bg_white btn_cancel">취소</button>
+							</div>
+						</div>
+						${
+                            c.is_reported == "y"
+                                ? `<div class="comment_content">
+								<div>
+									<p class="comment reported_comment">신고로 숨김 처리된 댓글입니다.</p>
+								</div>
+							</div>`
+                                : `<div class="comment_content">
+								<div><span class="user">${c.user}</span>${
+                                      c.is_editer == "y"
+                                          ? '<span class="editor_user">작가</span>'
+                                          : ""
+                                  }${
+                                      c.is_del == "y"
+                                          ? `<button type="button" class="redel" data-value="${c.id}">삭제</button>`
+                                          : `<button type="button" class="btn_kebab" data-value="${c.id}">신고하기</button>`
+                                  }</div>
+								<span class="date">${c.date}</span>
+								<div>
+									<p class="comment">${c.text}</p>
+								</div>
+								<div class="comment_action_container">
+									<button type="button" class="btn_re_comment">답글쓰기</button>
+									<div class="like_container">
+										<button type="button" class="btn_like ${c.is_like == 1 ? "active" : ""}">
+											<img src="/src/assets/images/icons/icon_like_${
+                                                c.is_like == 1 ? "on" : "off"
+                                            }@x3.png" alt="">
+										</button>
+									</div>
+									<span class="like_count"> <b>${c.like}</b></span>
+								</div>
+							</div>
+							<div class="comment_form_item re_comment_form">
+								<input type="text" placeholder="답글을 남겨주세요.">
+								<button type="button">등록</button>
+							</div>`
+                        }
+					</li>
+					${c.replies
+                        .map(
+                            (r) => `
+						<li class="list_item re_comment" data-id="${r.id}">
+							<div class="kebab_popUp">
+								<div class="kebab_popUp_dimm"></div>
+								<div class="kebab_menu">
+									<button type="button" class="btn_kebeb bg_black btn_report is_icon icon_report">신고하기</button>
+									<button type="button" class="btn_kebeb bg_white btn_cancel">취소</button>
+								</div>
+							</div>
+							${
+                                r.is_reported == "y"
+                                    ? `<div class="comment_content">
+									<div>
+										<p class="comment reported_comment">신고로 숨김 처리된 댓글입니다.</p>
+									</div>
+								</div>`
+                                    : `<div class="comment_content">
+									<div><span class="user">${r.user}</span>${
+                                          r.is_editer == "y"
+                                              ? '<span class="editor_user">작가</span>'
+                                              : ""
+                                      }${
+                                          r.is_del == "y"
+                                              ? `<button type="button" class="redel" data-value="${r.id}">삭제</button>`
+                                              : `<button type="button" class="btn_kebab" data-value="${r.id}">신고하기</button>`
+                                      }</div>
+									<span class="date">${r.date}</span>
+									<div>
+										<p class="comment">${r.text}</p>
+									</div>
+									<div class="comment_action_container">
+										<div class="like_container">
+											<button type="button" class="btn_like ${r.is_like == 1 ? "active" : ""}">
+												<img src="/src/assets/images/icons/icon_like_${
+                                                    r.is_like == 1
+                                                        ? "on"
+                                                        : "off"
+                                                }@x3.png" alt="">
+											</button>
+										</div>
+										<span class="like_count" style="position: static;"> <b>${r.like}</b></span>
+									</div>
+								</div>`
+                            }
+						</li>
+					`
+                        )
+                        .join("")}
+				`
                 )
                 .join("");
         };
@@ -510,6 +541,34 @@ const contentDetailController = (() => {
             if (!li) return;
 
             const id = li.dataset.id;
+
+            // 케밥 메뉴 열기
+            if (e.target.classList.contains("btn_kebab")) {
+                const popup = li.querySelector(".kebab_popUp");
+                popup.classList.add("active");
+            }
+
+            // 케밥 메뉴 닫기 (dimm 또는 취소 버튼)
+            if (
+                e.target.classList.contains("kebab_popUp_dimm") ||
+                e.target.classList.contains("btn_cancel")
+            ) {
+                const popup = e.target.closest(".kebab_popUp");
+                popup.classList.remove("active");
+            }
+
+            // 신고하기 버튼 클릭 (케밥 메뉴 닫고 신고 팝업 열기)
+            if (e.target.classList.contains("btn_report")) {
+                const kebabPopup = li.querySelector(".kebab_popUp");
+                kebabPopup.classList.remove("active");
+
+                const reportPopup = document.querySelector(
+                    ".report_layer_popUp"
+                );
+                if (reportPopup) {
+                    reportPopup.classList.add("active");
+                }
+            }
 
             // 좋아요 버튼
             if (e.target.closest(".btn_like")) {
@@ -705,6 +764,22 @@ const contentDetailController = (() => {
                 }
             }
         });
+
+        // 신고 팝업 닫기
+        const reportPopup = document.querySelector(".report_layer_popUp");
+        if (reportPopup) {
+            reportPopup
+                .querySelector(".btn_popUp_close")
+                ?.addEventListener("click", () => {
+                    reportPopup.classList.remove("active");
+                });
+
+            reportPopup
+                .querySelector(".myp_button.bd_grey")
+                ?.addEventListener("click", () => {
+                    reportPopup.classList.remove("active");
+                });
+        }
     };
 
     /** init */
@@ -727,12 +802,6 @@ const contentDetailController = (() => {
             hostSelector: ".btn_capture_container",
             bindClick: false,
             listen: true,
-            getText: (_btn, next, success) =>
-                success
-                    ? next
-                        ? "스크랩되었습니다."
-                        : "취소되었습니다."
-                    : "요청에 실패했습니다.",
             duration: 500,
         });
 
@@ -760,12 +829,12 @@ const contentDetailController = (() => {
             hostSelector: ".btn_capture_container",
             bindClick: false,
             listen: true,
-            getText: (_btn, next, success) =>
-                success
-                    ? next
-                        ? "스크랩되었습니다."
-                        : "취소되었습니다."
-                    : "요청에 실패했습니다.",
+            // getText: (_btn, next, success) =>
+            //     success
+            //         ? next
+            //             ? "스크랩되었습니다."
+            //             : "취소되었습니다."
+            //         : "요청에 실패했습니다.",
             duration: 500,
         });
 

@@ -155,7 +155,7 @@ eventName = 'capture:toggled',
                 try {
                     eventTarget.dispatchEvent(new CustomEvent(eventName, {
                         bubbles: true,
-                        detail: { btn, postId, prev, next, success }
+                        detail: { btn, postId, prev, next, success, boardType }
                     }));
                 } catch {}
             }

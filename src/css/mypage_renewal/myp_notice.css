@@ -1,79 +1,88 @@
 @charset "UTF-8";
 
 #app_wrapper:has(.myp_notice_container) {
-  background-color: var(--bg-light-gray);
+    background-color: var(--bg-light-gray);
 }
 footer {
-  display: none;
+    display: none;
 }
 
 /* 공지사항 목록 */
 .myp_notice_container {
-  padding: 2.4rem 1.6rem 4rem;
-  height: 100%;
-  position: relative;
+    padding: 2.4rem 1.6rem 4rem;
+    height: 100%;
+    position: relative;
+}
+
+.myp_notice_container:has(.bbb_empty_container) {
+    display: flex;
+    flex-direction: column;
+}
+.myp_notice_container:has(.bbb_empty_container) #notice-content {
+    margin-top: auto;
+    margin-bottom: auto;
 }
 
 .myp_notice_container:has(.myp_pagination) {
-  padding-bottom: 11rem;
+    padding-bottom: 11rem;
 }
 .myp_notice_container .myp_pagination {
-  position: absolute;
-  bottom: 4rem;
-  left: 50%;
-  transform: translateX(-50%);
-  width: calc(100% - 3.2rem);
+    position: absolute;
+    bottom: 4rem;
+    left: 50%;
+    transform: translateX(-50%);
+    width: calc(100% - 3.2rem);
 }
 
 .myp_notice_list {
-  margin-top: 1.6rem;
+    margin-top: 1.6rem;
 }
 .myp_notice_item {
-  padding: 2rem;
-  border-radius: 1.2rem;
-  background-color: #fff;
+    padding: 2rem;
+    border-radius: 1.2rem;
+    background-color: #fff;
 }
 .myp_notice_item + .myp_notice_item {
-  margin-top: 1rem;
+    margin-top: 1rem;
 }
 .myp_notice_top {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
 }
 .myp_notice_info {
-  font-size: 0;
+    font-size: 0;
 }
 .myp_notice_info .sub_title {
-  color: #000;
-  font-family: var(--font-700);
-  font-size: 1.4rem;
-  line-height: 1.4;
-  letter-spacing: -0.014rem;
+    color: #000;
+    font-family: var(--font-700);
+    font-size: 1.4rem;
+    line-height: 1.4;
+    letter-spacing: -0.014rem;
 }
 .myp_notice_info .sub_title + .sub_title:before {
-  content: "";
-  margin: 0 0.8rem;
-  display: inline-block;
-  height: 1rem;
-  width: 0.1rem;
-  background-color: rgba(0, 0, 0, 0.2);
+    content: "";
+    margin: 0 0.8rem;
+    display: inline-block;
+    height: 1rem;
+    width: 0.1rem;
+    background-color: rgba(0, 0, 0, 0.2);
 }
 .myp_notice_info .emphasis {
-  color: #f33;
+    color: #f33;
 }
 .myp_notice_date {
-  color: rgba(0, 0, 0, 0.4);
-  font-family: var(--font-400);
-  font-size: 1.2rem;
-  line-height: 1;
-  letter-spacing: -0.012rem;
+    color: rgba(0, 0, 0, 0.4);
+    font-family: var(--font-400);
+    font-size: 1.2rem;
+    line-height: 1;
+    letter-spacing: -0.012rem;
 }
 .myp_notice_title {
-  margin-top: 1.2rem;
-  color: #000;
-  font-family: var(--font-500);
-  font-size: 1.6rem;
-  line-height: 1.4;
-  letter-spacing: -0.016rem;
+    margin-top: 1.2rem;
+    color: #000;
+    font-family: var(--font-500);
+    font-size: 1.6rem;
+    line-height: 1.4;
+    letter-spacing: -0.016rem;
 }

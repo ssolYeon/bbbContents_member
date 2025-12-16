@@ -25,15 +25,15 @@
       <!-- 자주하는 질문 작업 -->
       <main>
         <div class="myp_faq_container">
-          <div class="myp_faq_search">
-            <form action="/search" method="get" role="search">
-              <label for="search-input" class="sr-only">검색어 입력</label>
+          <form action="/search" method="get" role="search">
+            <label for="search-input" class="sr-only">검색어 입력</label>
+            <div class="default_inputform">
               <input
                 type="text"
                 id="search-input"
                 name=""
-                placeholder="궁금한 키워드를 입력해 주세요"
                 required
+                placeholder="궁금한 키워드를 입력해 주세요"
               />
               <button type="submit">
                 <img
@@ -41,8 +41,8 @@
                   alt="검색"
                 />
               </button>
-            </form>
-          </div>
+            </div>
+          </form>
 
           <div class="myp_round_tab">
             <a href="javascript:;" class="active">전체</a>
@@ -155,18 +155,21 @@
             </li>
           </ul>
 
-          <div class="myp_pagination">
-            <a href="javascript:;" class="page_preview">이전 더보기</a>
+          <div id="faq-pagination">
+            <!-- 현행 파일에 faq-pagination로 감싸져있음 -->
+            <div class="myp_pagination">
+              <a href="javascript:;" class="page_preview">이전 더보기</a>
 
-            <div class="page_num_list">
-              <a href="javascript:;" class="num">1</a>
-              <a href="javascript:;" class="num active">2</a>
-              <a href="javascript:;" class="num">3</a>
-              <a href="javascript:;" class="num">4</a>
-              <a href="javascript:;" class="num">5</a>
+              <div class="page_num_list">
+                <a href="javascript:;" class="num">1</a>
+                <a href="javascript:;" class="num active">2</a>
+                <a href="javascript:;" class="num">3</a>
+                <a href="javascript:;" class="num">4</a>
+                <a href="javascript:;" class="num">5</a>
+              </div>
+
+              <a href="javascript:;" class="page_next">다음 더보기</a>
             </div>
-
-            <a href="javascript:;" class="page_next">다음 더보기</a>
           </div>
 
           <div class="myp_faq_bottom">

@@ -21,13 +21,22 @@ export const renderCategoryNavigation = async (url) => {
                 : (urlCategory ? String(urlCategory) : null);
         //dewbian
         //const currentItem = categories.find(c => String(c.data) === currentKey) || categories[0] || null;
+
         const currentItem = categories.find(c => String(c.data) === currentKey) || null;
 
         // 1) 상단 카테고리 탭 렌더링
         if ($topNav) {
             const topHtml = categories.map(item => {
-                const isActive = currentItem && String(item.data) === String(currentItem.data);
-                return `<a href="${item.url}" data-category="${item.data}"${isActive ? ' class="active" aria-current="page"' : ''}>${item.name}</a>`;
+                console.log('item.data:', item.data, 'currentKey:', currentKey);
+
+                // all과 0001을 동일하게 처리
+                const normalizeCategory = (val) => {
+                    return (val === 'all' || val === '0001') ? 'all' : String(val);
+                };
+
+                const isActive = normalizeCategory(item.data) === normalizeCategory(currentKey);
+
+                return `<a href="${encodeURI(item.url)}" data-category="${item.data}"${isActive ? ' class="active" aria-current="page"' : ''}>${item.name}</a>`;
             }).join("");
             $topNav.innerHTML = topHtml;
         }
@@ -43,14 +52,13 @@ export const renderCategoryNavigation = async (url) => {
 
                 if ($list) {
                     const listHtml = categories
-                        .map(item => `<li><a href="${item.url}" data-category="${item.data}">${item.name}</a></li>`)
+                        .map(item => `<li><a href="${encodeURI(item.url)}" data-category="${item.data}">${item.name}</a></li>`)
                         .join("");
                     $list.innerHTML = listHtml;
                 }
                 if ($labelSpan && currentItem) {
                     $labelSpan.textContent = currentItem.name;
                 }
-
                 // 초기 상태 접근성 속성
                 const $currentBtn = $container.querySelector(".category_current");
                 if ($currentBtn) {

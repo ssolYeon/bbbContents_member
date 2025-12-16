@@ -25,10 +25,11 @@ const mypageController = (() => {
     };
 
     const bindModalHandlers = () => {
+        //const openButtons = document.querySelectorAll(".degree dt button, .point dt button, .btn_rank_info");
         const openButtons = document.querySelectorAll(".degree dt button, .point dt button");
         openButtons.forEach((btn) => {
             btn.addEventListener("click", () => {
-                const container = btn.closest("div"); // .degree 또는 .point
+                const container = btn.closest("div"); // .degree 또는 .point 또는 .profile_name
                 const modal = container.querySelector(".modal_container");
                 modal?.classList.add("active");
             });
@@ -51,6 +52,86 @@ const mypageController = (() => {
     };
 
     /** 뉴스레터 구독: 셀렉트 ↔ 직접입력 토글 + 유효성 + 모달 */
+    /** 프로필 이미지 업로드 */
+    const bindProfileUpload = () => {
+        const profileInput = document.getElementById('profileInput');
+        const profilePreview = document.getElementById('profilePreview');
+
+        if (!profileInput || !profilePreview) {
+            console.warn('프로필 업로드 요소를 찾을 수 없습니다.');
+            return;
+        }
+
+        profileInput.addEventListener('change', async function(e) {
+            const file = e.target.files[0];
+
+            if (!file) return;
+
+            // 파일 타입 검증
+            if (!file.type.startsWith('image/')) {
+                alert('이미지 파일만 업로드 가능합니다.');
+                return;
+            }
+
+            // 파일 크기 검증 (5MB)
+            if (file.size > 5 * 1024 * 1024) {
+                alert('파일 크기는 5MB를 초과할 수 없습니다.');
+                return;
+            }
+
+            // 미리보기
+            const reader = new FileReader();
+            reader.onload = function(e) {
+                profilePreview.src = e.target.result;
+            };
+            reader.readAsDataURL(file);
+
+            // 서버에 업로드
+            const formData = new FormData();
+            formData.append('profile_img', file);
+
+            try {
+                const response = await fetch('/api/profile/upload', {
+                    method: 'POST',
+                    headers: {
+                        'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').content
+                    },
+                    body: formData
+                });
+
+                const result = await response.json();
+
+                if (response.ok && result.success) {
+                    console.log('프로필 이미지 업로드 성공:', result.file_path);
+                } else {
+                    alert(result.message || '프로필 이미지 업로드에 실패했습니다.');
+                    // 실패 시 원래 이미지로 복원
+                    if (result.original_img) {
+                        profilePreview.src = result.original_img;
+                    }
+                }
+            } catch (error) {
+                console.error('프로필 업로드 에러:', error);
+                alert('네트워크 오류가 발생했습니다.');
+            }
+        });
+    };
+
+    /** Swiper 초기화 */
+    const initSwiper = () => {
+        const swiperElement = document.querySelector('.mySwiper');
+
+        if (!swiperElement) {
+            console.warn('Swiper 요소를 찾을 수 없습니다.');
+            return;
+        }
+
+        // 예약 구매 상품 스와이퍼
+        const swiper = new Swiper('.mySwiper', {
+            slidesPerView: 'auto',
+        });
+    };
+
     const bindNewsletterSubscribe = () => {
         const emailId = document.getElementById('email_id');
         const emailDomain = document.getElementById('email_domain');
@@ -225,8 +306,6 @@ const mypageController = (() => {
         bindCaptureToast({
             bindClick: false,
             listen: true,
-            getText: (_btn, next, success) => success ? (next ? '스크랩되었습니다.' : '취소되었습니다.') : '요청에 실패했습니다.',
-            //getText: (_btn, next) => next ? '스크랩 되었습니다.' : '취소되었습니다.',
         });
         bindCaptureToggle({
             endpoint: '/api/capture',
@@ -264,7 +343,9 @@ const mypageController = (() => {
         initSearchHandler();
         bindModalHandlers();
         historyNavigationHandler();
-        bindNewsletterSubscribe();
+        bindProfileUpload();
+        initSwiper();
+        //bindNewsletterSubscribe();
         allmenu();
         wheelCustom();
     };

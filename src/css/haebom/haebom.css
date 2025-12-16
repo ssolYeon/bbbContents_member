@@ -28,3 +28,17 @@ header .container {
 .btn_view_more_container {
     margin-top: 3rem;
 }
+
+.sub_visual_container {
+    margin-bottom: 6rem;
+}
+.list_container {
+    margin-top: 1.6rem;
+    padding-inline: var(--pd-in);
+}
+.list_container + .list_container {
+    margin-top: 6rem;
+}
+.banner_container + .list_container {
+    margin-top: 6rem;
+}
