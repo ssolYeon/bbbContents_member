@@ -5,6 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>예약/구매 상세 - 마이페이지</title>
 
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"
+    />
+
     <link rel="stylesheet" href="/src/css/base/defalt.css" />
     <link rel="stylesheet" href="/src/css/components/components.css" />
     <link rel="stylesheet" href="/src/css/mypage_renewal/myp_common.css" />
@@ -280,7 +285,10 @@
                     </div>
                   </a>
                   <div class="box_button_wrap">
-                    <button type="button" class="box_button medium bd_C4C7C5">
+                    <button
+                      type="button"
+                      class="box_button medium bd_C4C7C5 btn_openTicket"
+                    >
                       티켓관리
                     </button>
                     <button
@@ -321,7 +329,10 @@
                     </div>
                   </a>
                   <div class="box_button_wrap">
-                    <button type="button" class="box_button medium bd_C4C7C5">
+                    <button
+                      type="button"
+                      class="box_button medium bd_C4C7C5 btn_openTicket"
+                    >
                       티켓관리
                     </button>
                     <a href="javascript:;" class="box_button medium bd_C4C7C5"
@@ -1942,7 +1953,236 @@
     </div>
     <!-- 구매확정 팝업 end -->
 
+    <!-- 티켓관리 팝업 -->
+    <div class="ticket_layer_popUp">
+      <div class="popUp_header">
+        <p class="popUp_title">티켓관리</p>
+        <button type="button" class="btn_popUp_close">닫기</button>
+      </div>
+
+      <div class="popUp_body">
+        <div class="ticket_bg_wrap">
+          <div class="ticket_bg_blur"></div>
+        </div>
+
+        <div class="ticket_handling_swiper swiper mySwiper">
+          <ul class="swiper-wrapper">
+            <li
+              class="swiper-slide"
+              data-bg="src/assets/images/myp_renewl_images/bg_ticket_sample1.jpg"
+            >
+              <div class="my_ticket">
+                <div class="my_ticket_top">
+                  <p class="my_ticket_title">바로 사용 가능한 티켓</p>
+
+                  <p class="my_ticket_count">2장</p>
+                </div>
+
+                <div class="my_ticket_bottom">
+                  <div class="my_ticket_summary total">
+                    <span class="label">총티켓</span>
+                    <b class="unit">3장</b>
+                  </div>
+                  <div class="my_ticket_summary used">
+                    <span class="label">총티켓</span>
+                    <b class="unit">3장</b>
+                  </div>
+                  <div class="my_ticket_summary expired">
+                    <span class="label">총티켓</span>
+                    <b class="unit">3장</b>
+                  </div>
+                </div>
+              </div>
+
+              <div class="ticket_thumb">
+                <img
+                  src="src/assets/images/myp_renewl_images/ticket_sample1.jpg"
+                  alt="티켓1"
+                />
+                <div class="ticket_thumb_info">
+                  <span class="ticket_thumb_badge hold"></span>
+                  <p class="ticket_thumb_title">
+                    2026 나카시마 미카 라이브 콘서트<br />
+                    in Seoul 관람권
+                  </p>
+                  <div class="ticket_thumb_dl">
+                    <dl>
+                      <dt>유효기간</dt>
+                      <dd>2026.04.21 (공연 당일)</dd>
+                    </dl>
+                    <dl>
+                      <dt>티켓번호</dt>
+                      <dd>MK6765DBB9425TY</dd>
+                    </dl>
+                  </div>
+                </div>
+              </div>
+
+              <div class="ticket_barcode">
+                <div class="ticket_barcode_img">
+                  <img
+                    src="src/assets/images/myp_renewl_images/barcode_sample.png"
+                    alt="바코드"
+                  />
+                  <p class="number">1234-5678-9101-112-131415</p>
+                </div>
+                <button type="button" class="btn_barcode">
+                  크게<br />보기
+                </button>
+              </div>
+            </li>
+            <li
+              class="swiper-slide"
+              data-bg="src/assets/images/myp_renewl_images/bg_ticket_sample2.jpg"
+            >
+              <div class="my_ticket">
+                <div class="my_ticket_top">
+                  <p class="my_ticket_title">바로 사용 가능한 티켓</p>
+
+                  <p class="my_ticket_count">2장</p>
+                </div>
+
+                <div class="my_ticket_bottom">
+                  <div class="my_ticket_summary total">
+                    <span class="label">총티켓</span>
+                    <b class="unit">3장</b>
+                  </div>
+                  <div class="my_ticket_summary used">
+                    <span class="label">총티켓</span>
+                    <b class="unit">3장</b>
+                  </div>
+                  <div class="my_ticket_summary expired">
+                    <span class="label">총티켓</span>
+                    <b class="unit">3장</b>
+                  </div>
+                </div>
+              </div>
+
+              <div class="ticket_thumb done">
+                <img
+                  src="src/assets/images/myp_renewl_images/ticket_sample2.jpg"
+                  alt="티켓1"
+                />
+                <div class="ticket_thumb_info">
+                  <span class="ticket_thumb_badge done"></span>
+                  <p class="ticket_thumb_title">
+                    2026 나카시마 미카 라이브 콘서트<br />
+                    in Seoul 관람권
+                  </p>
+                  <div class="ticket_thumb_dl">
+                    <dl>
+                      <dt>유효기간</dt>
+                      <dd>2026.04.21 (공연 당일)</dd>
+                    </dl>
+                    <dl>
+                      <dt>티켓번호</dt>
+                      <dd>MK6765DBB9425TY</dd>
+                    </dl>
+                  </div>
+                </div>
+              </div>
+
+              <div class="ticket_barcode done">
+                <p class="ticket_barcode_text">사용이 완료된 티켓입니다.</p>
+
+                <!-- ticket_barcode hold 일 경우 텍스트 -->
+                <!-- <p class="ticket_barcode_text">
+                  사용 가능한 일자가 되면 티켓 바코드를<br />
+                  확인하실 수 있습니다
+                </p> -->
+              </div>
+            </li>
+          </ul>
+
+          <div class="swiper-pagination"></div>
+        </div>
+      </div>
+    </div>
+    <!-- 티켓관리 팝업 end -->
+
+    <!-- 티켓관리 바코드 확대 팝업 -->
+    <div class="barcode_zoom_popUp">
+      <div class="barcode_zoom_popUp_dimm"></div>
+      <div class="barcode_zoom_wrap">
+        <button type="button" class="btn_popUp_close">닫기</button>
+        <p class="barcode_zoom_text">1234-5678-9101-112-131415</p>
+        <div class="barcode_zoom_img">바코드 들어가는 영역</div>
+      </div>
+    </div>
+
+    <!-- 티켓관리 바코드 확대 팝업 end -->
+
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+
     <script>
+      // 대상 요소 선택
+      const ticketLayer = document.querySelector(".ticket_layer_popUp");
+      const barcodeBtn = ticketLayer.querySelector(".btn_barcode");
+      const zoomPopUp = document.querySelector(".barcode_zoom_popUp");
+      const closeBtn = zoomPopUp.querySelector(".btn_popUp_close");
+
+      // 1. 바코드 버튼 클릭 시 확대 팝업 열기
+      barcodeBtn.addEventListener("click", () => {
+        zoomPopUp.classList.add("active");
+      });
+
+      // 2. 닫기 버튼 클릭 시 확대 팝업 닫기
+      closeBtn.addEventListener("click", () => {
+        zoomPopUp.classList.remove("active");
+      });
+      // ============================================
+      // 티켓관리 swiper 설정
+      // ============================================
+      const getRem = (rem) => {
+        return (
+          rem * parseFloat(getComputedStyle(document.documentElement).fontSize)
+        );
+      };
+
+      var ticketSwiper = new Swiper(".mySwiper", {
+        slidesPerView: "auto",
+        spaceBetween: getRem(1.4),
+        centeredSlides: true,
+        observer: true,
+        observeParents: true,
+
+        pagination: {
+          el: ".swiper-pagination",
+          clickable: true,
+        },
+        on: {
+          init: function () {
+            setTimeout(() => {
+              updateBg(this);
+            }, 100);
+          },
+          slideChange: function () {
+            updateBg(this);
+          },
+        },
+      });
+
+      /**
+       * 배경 이미지 업데이트 함수 (Vanilla JS)
+       */
+      function updateBg(swiper) {
+        // 1. 현재 활성화된 슬라이드 인덱스의 요소 가져오기
+        var activeSlide = swiper.slides[swiper.activeIndex];
+
+        if (activeSlide) {
+          // 2. data-bg 속성값 추출
+          var customBg = activeSlide.getAttribute("data-bg");
+
+          // 3. 배경 레이어 찾기
+          var bgBlur = document.querySelector(".ticket_bg_blur");
+
+          if (bgBlur && customBg) {
+            // 4. 배경 이미지 변경
+            bgBlur.style.backgroundImage = "url('" + customBg + "')";
+          }
+        }
+      }
+
       // ============================================
       // 1. 탭 전환 (교환/반품)
       // ============================================
@@ -2242,6 +2482,38 @@
       }
 
       // ============================================
+      // 7. 티켓관리 팝업
+      // ============================================
+      function initTicketPopup() {
+        // [열기] 티켓관리 버튼 클릭 시 팝업 오픈
+        document.addEventListener("click", (e) => {
+          const btn = e.target.closest(".btn_openTicket");
+          if (!btn) return;
+
+          const popup = document.querySelector(".ticket_layer_popUp");
+          if (!popup) return;
+
+          popup.classList.add("active");
+
+          if (typeof ticketSwiper !== "undefined") {
+            ticketSwiper.update();
+            updateBg(ticketSwiper);
+          }
+        });
+
+        document.addEventListener("click", (e) => {
+          const isCloseTarget =
+            e.target.closest(".ticket_layer_popUp .btn_popUp_close") ||
+            e.target.classList.contains("ticket_bg_wrap");
+
+          if (isCloseTarget) {
+            const popup = document.querySelector(".ticket_layer_popUp");
+            popup?.classList.remove("active");
+          }
+        });
+      }
+
+      // ============================================
       // 초기화 실행
       // ============================================
       document.addEventListener("DOMContentLoaded", () => {
@@ -2252,6 +2524,7 @@
         initExchangePopup();
         initGuidePopup();
         initPurchaseConfirmedPopup();
+        initTicketPopup();
       });
     </script>
   </body>
