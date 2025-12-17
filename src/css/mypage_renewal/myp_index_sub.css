@@ -291,6 +291,9 @@ footer {
 /* ************************
 	예약/구매 내역
 ************************ */
+.dateRange_button_wrap + .myp_reservation_item {
+  margin-top: 1.2rem;
+}
 .myp_reservation_item:has(+ .myp_pagination) {
   margin-bottom: 3rem;
 }
